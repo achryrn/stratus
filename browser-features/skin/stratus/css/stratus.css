@@ -165,3 +165,137 @@ menupopup {
 #PersonalToolbar .bookmark-item:hover {
   border-radius: 6px !important;
 }
+
+/* ------------------------------------------------------------------ *
+ * Command palette — accent selection, layered surface
+ * ------------------------------------------------------------------ */
+
+#command-palette-container {
+  border-radius: 14px !important;
+  border: 1px solid
+    color-mix(in srgb, var(--stratus-surface-1) 60%, transparent) !important;
+  box-shadow:
+    0 8px 24px rgb(0 0 0 / 0.16),
+    0 24px 64px rgb(0 0 0 / 0.28) !important;
+}
+
+.command-palette-search-wrapper {
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--stratus-surface-1) 70%, transparent) !important;
+}
+
+.command-palette-search-icon {
+  fill: var(--stratus-accent) !important;
+}
+
+.command-palette-category-header {
+  color: color-mix(in srgb, var(--stratus-accent) 82%, currentColor) !important;
+}
+
+.command-palette-item[data-selected="true"],
+.command-palette-step-choice-item[data-selected="true"] {
+  background: color-mix(
+    in srgb,
+    var(--stratus-accent) 14%,
+    transparent
+  ) !important;
+  border-left-color: var(--stratus-accent) !important;
+}
+
+.command-palette-item:hover,
+.command-palette-step-choice-item:hover {
+  background: color-mix(
+    in srgb,
+    var(--stratus-accent) 7%,
+    transparent
+  ) !important;
+}
+
+.command-palette-shortcut-badge,
+.command-palette-back-button {
+  background: color-mix(
+    in srgb,
+    var(--stratus-accent) 10%,
+    transparent
+  ) !important;
+}
+
+.command-palette-step-indicator {
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--stratus-surface-1) 70%, transparent) !important;
+}
+
+.command-palette-step-command-name {
+  color: var(--stratus-accent) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Panel sidebar — accent active pill, rounded surfaces
+ * ------------------------------------------------------------------ */
+
+#panel-sidebar-select-box .panel-sidebar-panel,
+#panel-sidebar-select-box .panel-sidebar-actions {
+  border-radius: var(--stratus-tab-radius) !important;
+}
+
+#panel-sidebar-select-box .panel-sidebar-panel[data-checked="true"] {
+  background-color: color-mix(
+    in srgb,
+    var(--stratus-accent) 22%,
+    transparent
+  ) !important;
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--stratus-accent) 40%, transparent) !important;
+}
+
+#panel-sidebar-select-box .panel-sidebar-panel:not([data-checked="true"]):hover,
+#panel-sidebar-select-box .panel-sidebar-actions:hover {
+  background-color: var(--stratus-tab-hover-background) !important;
+  box-shadow: none !important;
+}
+
+.panel-sidebar-user-context-border {
+  background-color: var(--stratus-accent) !important;
+}
+
+#panel-sidebar-box[data-floating="true"] {
+  border-radius: var(--stratus-tab-radius) !important;
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.24) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Status bar — cohesive text, keep shared bar background untouched
+ * ------------------------------------------------------------------ */
+
+#nora-statusbar {
+  border-top: 1px solid
+    color-mix(in srgb, var(--stratus-surface-1) 70%, transparent) !important;
+}
+
+#nora-statusbar .toolbarbutton-1 {
+  border-radius: var(--stratus-tab-radius) !important;
+}
+
+#nora-statusbar .toolbarbutton-1:hover {
+  background-color: var(--stratus-tab-hover-background) !important;
+}
+
+#statuspanel-label {
+  color: color-mix(in srgb, var(--stratus-accent) 70%, currentColor) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Find bar — rounded pill surface
+ * ------------------------------------------------------------------ */
+
+findbar {
+  border-radius: var(--stratus-tab-radius) !important;
+  border: 1px solid
+    color-mix(in srgb, var(--stratus-surface-1) 60%, transparent) !important;
+  margin: 6px !important;
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.12) !important;
+}
+
+findbar .findbar-textbox {
+  border-radius: var(--stratus-tab-radius) !important;
+}

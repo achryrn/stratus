@@ -120,6 +120,67 @@ function testStratusIncludesColorFix(): void {
   );
 }
 
+function getStratusInlineCss(): string {
+  const result = getCSSFromConfig(makeConfig("stratus"));
+  return result.chromeStylesRaw?.join("\n") ?? "";
+}
+
+function testStratusCoversCommandPalette(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes("#command-palette-container"),
+    "stratus should style the command palette container",
+  );
+  assert(
+    css.includes('.command-palette-item[data-selected="true"]'),
+    "stratus should give command palette selection an accent border",
+  );
+  assert(
+    css.includes("--stratus-accent"),
+    "stratus command palette styling should reference the stratus accent",
+  );
+}
+
+function testStratusCoversPanelSidebar(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes(".panel-sidebar-panel"),
+    "stratus should style panel sidebar buttons",
+  );
+  assert(
+    css.includes('[data-checked="true"]'),
+    "stratus should style the active sidebar panel state",
+  );
+  assert(
+    css.includes("--stratus-tab-radius"),
+    "stratus sidebar buttons should share the tab radius",
+  );
+}
+
+function testStratusCoversStatusbar(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes("#nora-statusbar"),
+    "stratus should style the status bar border and buttons",
+  );
+  // The color-consistency invariant requires all four chrome bars to share
+  // ONE background. Stratus must therefore never repaint the status bar
+  // background — only its border and inner controls.
+  const statusbarRule = css.match(/#nora-statusbar\s*\{[^}]*\}/)?.[0] ?? "";
+  assert(
+    !statusbarRule.includes("background"),
+    "stratus must not repaint the status bar background (shared-bar invariant)",
+  );
+}
+
+function testStratusCoversFindbar(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes("findbar"),
+    "stratus should style the find bar with a rounded surface",
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Tests — lepton theme
 // ---------------------------------------------------------------------------
@@ -450,6 +511,22 @@ export async function runAllTests(): Promise<void> {
     {
       name: "stratus includes the Gecko 152 color fix",
       fn: testStratusIncludesColorFix,
+    },
+    {
+      name: "stratus covers command palette",
+      fn: testStratusCoversCommandPalette,
+    },
+    {
+      name: "stratus covers panel sidebar",
+      fn: testStratusCoversPanelSidebar,
+    },
+    {
+      name: "stratus covers statusbar without repainting shared background",
+      fn: testStratusCoversStatusbar,
+    },
+    {
+      name: "stratus covers findbar",
+      fn: testStratusCoversFindbar,
     },
     // lepton
     { name: "lepton returns userjs", fn: testLeptonReturnsUserjs },

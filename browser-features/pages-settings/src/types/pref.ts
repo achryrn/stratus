@@ -32,6 +32,7 @@ export type AccountInfo = t.TypeOf<typeof zAccountInfo>;
 export const zDesignFormData = t.type({
   // Global
   design: t.union([
+    t.literal("stratus"),
     t.literal("fluerial"),
     t.literal("lepton"),
     t.literal("photon"),

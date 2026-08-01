@@ -1,0 +1,167 @@
+/* -*- indent-tabs-mode: nil; js-indent-level: 2 -*-
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/**
+ * Stratus design — the default visual identity of the Stratus browser.
+ *
+ * Design goals:
+ *   - Calm, modern surfaces: soft translucent toolbar, layered panels.
+ *   - Rounded, tactile tab surfaces with a single active-tab "pill".
+ *   - Cohesive accent color mapping (works with Light/Dark system themes).
+ *   - Keep native Gecko 152 tokens; only layer Stratus-specific decisions.
+ *
+ * This sheet is loaded as an AGENT_SHEET (all documents) in dev and as a
+ * chrome:// style in production — the same contract as fluerial.css.
+ */
+
+:root {
+  /* Stratus accent — a calm indigo/violet that reads well on both themes. */
+  --stratus-accent: #6c5ce7;
+  --stratus-accent-hover: color-mix(in srgb, var(--stratus-accent) 80%, white);
+  --stratus-accent-active: color-mix(in srgb, var(--stratus-accent) 65%, black);
+
+  /* Tab surface geometry */
+  --stratus-tab-radius: 9px;
+  --stratus-tab-gap: 4px;
+  --stratus-tab-block-margin: 4px;
+
+  /* Layered surface tokens (fall back to Gecko 152 toolbar tokens). */
+  --stratus-surface-1: var(--toolbar-bgcolor, var(--toolbar-background-color));
+  --stratus-surface-2: color-mix(
+    in srgb,
+    var(--stratus-surface-1) 92%,
+    var(--stratus-accent) 8%
+  );
+
+  /* Urlbar pill */
+  --stratus-urlbar-radius: 999px;
+  --stratus-urlbar-shadow: 0 1px 2px rgb(0 0 0 / 0.06);
+
+  &[lwt-toolbar="dark"] {
+    --stratus-tab-hover-background: rgb(255 255 255 / 0.06);
+  }
+  &[lwt-toolbar="light"] {
+    --stratus-tab-hover-background: rgb(0 0 0 / 0.05);
+  }
+
+  /* Compact tab geometry */
+  --tab-min-height: 32px !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Toolbar & urlbar surfaces
+ * ------------------------------------------------------------------ */
+
+#nav-bar {
+  background-color: var(--stratus-surface-1) !important;
+}
+
+#urlbar:not([breakout][breakout-extend]) > #urlbar-background,
+#urlbar[breakout][breakout-extend] > #urlbar-background {
+  border-radius: var(--stratus-urlbar-radius) !important;
+  box-shadow: var(--stratus-urlbar-shadow) !important;
+}
+
+#urlbar[open] > #urlbar-background {
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.12) !important;
+}
+
+#PersonalToolbar {
+  background-color: transparent !important;
+  border-bottom: 1px solid color-mix(
+    in srgb,
+    var(--stratus-surface-1) 70%,
+    transparent
+  );
+}
+
+/* ------------------------------------------------------------------ *
+ * Tabs — rounded "pill" active tab
+ * ------------------------------------------------------------------ */
+
+#TabsToolbar {
+  #tabbrowser-tabs {
+    --tab-block-margin: var(--stratus-tab-block-margin);
+  }
+
+  .tabbrowser-tab {
+    padding-inline: calc(var(--stratus-tab-gap) / 2) !important;
+  }
+
+  /* Active tab: rounded surface, accent-tinted */
+  .tabbrowser-tab[visuallyselected] > .tab-stack > .tab-background {
+    background-color: var(--stratus-surface-2) !important;
+    border-radius: var(--stratus-tab-radius) !important;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.08) !important;
+  }
+
+  .tabbrowser-tab[visuallyselected] > .tab-stack > .tab-background::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: var(--stratus-tab-radius) !important;
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--stratus-accent) 18%, transparent),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+
+  /* Hovered tabs */
+  .tabbrowser-tab:not([visuallyselected]):hover
+    > .tab-stack
+    > .tab-background {
+    background-color: var(--stratus-tab-hover-background) !important;
+    border-radius: var(--stratus-tab-radius) !important;
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Toolbar buttons — rounded hover surfaces
+ * ------------------------------------------------------------------ */
+
+#nav-bar .toolbarbutton-1,
+#unified-extensions-button,
+#PanelUI-menu-button,
+#tabs-newtab-button,
+#alltabs-button {
+  border-radius: var(--stratus-tab-radius) !important;
+}
+
+#nav-bar .toolbarbutton-1:not([disabled]):hover,
+#unified-extensions-button:hover,
+#PanelUI-menu-button:hover {
+  background-color: var(--stratus-tab-hover-background) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Panels — layered surface
+ * ------------------------------------------------------------------ */
+
+panel:is(#appMenu-popup, #widget-overflow, #unified-extensions-popup),
+menupopup {
+  border-radius: 12px !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Private browsing indicator
+ * ------------------------------------------------------------------ */
+
+:root[privatebrowsingmode="temporary"] #TabsToolbar {
+  background-image: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--stratus-accent) 14%, transparent),
+    transparent 70%
+  ) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Bookmark items — rounded hover
+ * ------------------------------------------------------------------ */
+
+#PersonalToolbar .bookmark-item:hover {
+  border-radius: 6px !important;
+}

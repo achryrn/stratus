@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="210.0pt" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 570 210" width="570.0pt" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path d="M49.3659 155C49.3659 143.954 58.3207 135 69.3669 135C80.4132 135 89.368 143.954 89.368 155C89.368 166.046 80.4132 175 69.3669 175C58.3207 175 49.3659 166.046 49.3659 155Z" id="dot-a"/>
+<path d="M129.37 155C129.37 143.954 138.325 135 149.371 135C160.418 135 169.372 143.954 169.372 155C169.372 166.046 160.418 175 149.371 175C138.325 175 129.37 166.046 129.37 155Z" id="dot-b"/>
+</defs>
+<path d="M0 0L570 0L570 210L0 210L0 0Z" fill="#f7f7fb" fill-rule="nonzero" opacity="1" stroke="none"/>
+<g>
+<!-- Browser frame -->
+<path d="M89.375 10C78.3293 10 69.375 18.9543 69.375 30L69.375 80C69.375 91.0457 60.4207 100 49.375 100L0 100L0 210L570 210L570 100L389.375 100C378.329 100 369.375 91.0457 369.375 80L369.375 30C369.375 18.9543 360.421 10 349.375 10L89.375 10Z" fill="#fbfbfe" fill-rule="nonzero" opacity="1" stroke="none"/>
+<!-- Nav bar: rounded urlbar pill -->
+<path d="M124.299 50C121.575 50 119.367 52.208 119.367 54.9318L119.367 55.0682C119.367 57.792 121.575 60 124.299 60L280 60C282.724 60 284.932 57.792 284.932 55.0682L284.932 54.9318C284.932 52.208 282.724 50 280 50L124.299 50Z" fill="#6c5ce7" fill-rule="nonzero" opacity="1" stroke="none"/>
+<!-- Nav bar text (url placeholder) -->
+<path d="M424.312 50C421.589 50 419.375 52.2138 419.375 54.9375L419.375 55.0625C419.375 57.7862 421.589 60 424.312 60L570 60L570 50L424.312 50Z" fill="#e6e6ee" fill-rule="nonzero" opacity="1" stroke="none"/>
+<!-- Tab strip: active tab with accent tint, rounded -->
+<path d="M46 100L119 100L119 82C119 76.4772 123.477 72 129 72L180 72C185.523 72 190 76.4772 190 82L190 100L570 100L570 128L46 128Z" fill="#6c5ce7" fill-rule="nonzero" opacity="0.92" stroke="none"/>
+<!-- Active tab inner highlight -->
+<path d="M46 100L119 100L119 84C119 78.4772 123.477 74 129 74L178 74C183.523 74 188 78.4772 188 84L188 100L570 100L570 102L46 102Z" fill="#ffffff" fill-rule="nonzero" opacity="0.22" stroke="none"/>
+<!-- Inactive tab hover -->
+<path d="M206 86C206 80.4772 210.477 76 216 76L262 76C267.523 76 272 80.4772 272 86L272 100L570 100L570 102L206 102Z" fill="#e9e9f2" fill-rule="nonzero" opacity="1" stroke="none"/>
+<!-- Web content surface -->
+<path d="M247.125 115C226.275 115 209.375 131.9 209.375 152.75L209.375 157.25C209.375 178.1 226.275 195 247.125 195L570 195L570 115L247.125 115Z" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="none"/>
+<!-- Traffic-light dots -->
+<g>
+<mask height="40" id="m-a" maskUnits="userSpaceOnUse" width="40.0022" x="49.3659" y="135">
+<rect fill="#000000" height="40" stroke="none" width="40.0022" x="49.3659" y="135"/>
+<use fill="#ffffff" fill-rule="evenodd" stroke="none" xlink:href="#dot-a"/>
+</mask>
+<use fill="none" mask="url(#m-a)" stroke="#6c5ce7" stroke-linecap="butt" stroke-linejoin="round" stroke-width="10" xlink:href="#dot-a"/>
+</g>
+<g>
+<mask height="40" id="m-b" maskUnits="userSpaceOnUse" width="40.0022" x="129.37" y="135">
+<rect fill="#000000" height="40" stroke="none" width="40.0022" x="129.37" y="135"/>
+<use fill="#ffffff" fill-rule="evenodd" stroke="none" xlink:href="#dot-b"/>
+</mask>
+<use fill="none" mask="url(#m-b)" stroke="#b9b4e8" stroke-linecap="butt" stroke-linejoin="round" stroke-width="10" xlink:href="#dot-b"/>
+</g>
+</g>
+</svg>

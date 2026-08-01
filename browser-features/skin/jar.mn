@@ -1,6 +1,7 @@
 noraneko.jar:
 % content noraneko-skin %nora-skin/ contentaccessible=yes
 
+  nora-skin/stratus/css/stratus.css (stratus/css/stratus.css)
   nora-skin/fluerial/css/fluerial.css (fluerial/css/fluerial.css)
   nora-skin/fluerial/icons/add_FILL0_wght700_GRAD200_opsz48.svg (fluerial/icons/add_FILL0_wght700_GRAD200_opsz48.svg)
   nora-skin/fluerial/icons/arrow_back_FILL0_wght700_GRAD200_opsz48.svg (fluerial/icons/arrow_back_FILL0_wght700_GRAD200_opsz48.svg)

@@ -54,7 +54,13 @@ import {
 
 type RgbTuple = readonly [number, number, number];
 
-type DesignName = "fluerial" | "lepton" | "photon" | "protonfix" | "proton";
+type DesignName =
+  | "stratus"
+  | "fluerial"
+  | "lepton"
+  | "photon"
+  | "protonfix"
+  | "proton";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -62,6 +68,7 @@ type DesignName = "fluerial" | "lepton" | "photon" | "protonfix" | "proton";
 
 /** Designs covered by the color matrix. */
 const DESIGNS: readonly DesignName[] = [
+  "stratus",
   "lepton",
   "photon",
   "protonfix",
@@ -76,6 +83,7 @@ const DESIGNS: readonly DesignName[] = [
  * `false` and `proton` is stock Firefox — both are exempt.
  */
 const TAB_TRACKS_TOOLBAR_DESIGNS: readonly DesignName[] = [
+  "stratus",
   "lepton",
   "photon",
   "fluerial",
@@ -300,6 +308,7 @@ function getActiveDesignFromPref(): DesignName | null {
     };
     const ui = parsed?.globalConfigs?.userInterface;
     if (
+      ui === "stratus" ||
       ui === "fluerial" ||
       ui === "lepton" ||
       ui === "photon" ||

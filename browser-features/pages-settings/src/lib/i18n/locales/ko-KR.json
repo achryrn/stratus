@@ -86,6 +86,7 @@
         "photon": "Photon",
         "protonfix": "Firefox UI 수정",
         "fluerial": "Fluerial",
+        "stratus": "Stratus",
         "interfaceDescription": "인터페이스 디자인을 선택합니다. 기본값은 \"Lepton\"입니다.",
         "otherInterfaceSettings": "기타 인터페이스 설정",
         "useFaviconColorToBackgroundOfNavigationBar": "탐색 모음 배경에 Favicon 색상 사용",

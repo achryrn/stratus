@@ -84,6 +84,43 @@ function testFluerialHasStylesOrRaw(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Tests — stratus theme
+// ---------------------------------------------------------------------------
+
+function testStratusReturnsUserjsNull(): void {
+  const result = getCSSFromConfig(makeConfig("stratus"));
+  assertEquals(result.userjs, null, "stratus should have null userjs");
+}
+
+function testStratusHasUseTabColorAsToolbarColor(): void {
+  const result = getCSSFromConfig(makeConfig("stratus"));
+  assertEquals(
+    result.useTabColorAsToolbarColor,
+    true,
+    "stratus should set useTabColorAsToolbarColor to true",
+  );
+}
+
+function testStratusHasStylesOrRaw(): void {
+  const result = getCSSFromConfig(makeConfig("stratus"));
+  const hasChromeStyles = (result.chromeStyles?.length ?? 0) > 0 ||
+    (result.chromeStylesRaw?.length ?? 0) > 0;
+  assert(
+    hasChromeStyles,
+    "stratus should have chromeStyles or chromeStylesRaw",
+  );
+}
+
+function testStratusIncludesColorFix(): void {
+  const result = getCSSFromConfig(makeConfig("stratus"));
+  const css = result.chromeStylesRaw?.join("\n") ?? "";
+  assert(
+    css.includes("Floorp Gecko 152 color fix"),
+    "stratus should include the shared Gecko 152 color-fix layer",
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Tests — lepton theme
 // ---------------------------------------------------------------------------
 
@@ -348,6 +385,7 @@ function testProtonNoStyles(): void {
 
 function testAllThemesReturnNonNullResult(): void {
   const themes: TFloorpDesignConfigs["globalConfigs"]["userInterface"][] = [
+    "stratus",
     "fluerial",
     "lepton",
     "photon",
@@ -402,6 +440,17 @@ export async function runAllTests(): Promise<void> {
       fn: testFluerialHasUseTabColorAsToolbarColor,
     },
     { name: "fluerial has styles", fn: testFluerialHasStylesOrRaw },
+    // stratus
+    { name: "stratus returns null userjs", fn: testStratusReturnsUserjsNull },
+    {
+      name: "stratus has useTabColorAsToolbarColor",
+      fn: testStratusHasUseTabColorAsToolbarColor,
+    },
+    { name: "stratus has styles", fn: testStratusHasStylesOrRaw },
+    {
+      name: "stratus includes the Gecko 152 color fix",
+      fn: testStratusIncludesColorFix,
+    },
     // lepton
     { name: "lepton returns userjs", fn: testLeptonReturnsUserjs },
     {

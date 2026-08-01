@@ -15,6 +15,7 @@ import protonfixUserJs from "@nora/skin/lepton/userjs/protonfix.js?raw";
 import leptonChromeStylesRaw from "@nora/skin/lepton/css/leptonChrome.css?raw";
 import leptonContentStylesRaw from "@nora/skin/lepton/css/leptonContent.css?raw";
 import fluerialStylesRaw from "@nora/skin/fluerial/css/fluerial.css?raw";
+import stratusStylesRaw from "@nora/skin/stratus/css/stratus.css?raw";
 import {
   FLUERIAL_TAB_CORNER_CSS,
   TAB_COLOR_LIKE_TOOLBAR_CSS,
@@ -166,6 +167,31 @@ export function getCSSFromConfig(
   const uiTheme = pref.globalConfigs.userInterface;
 
   switch (uiTheme) {
+    case "stratus": {
+      if (isDev) {
+        return {
+          chromeStylesRaw: [
+            stratusStylesRaw,
+            TAB_COLOR_LIKE_TOOLBAR_CSS,
+            GECKO_152_COLOR_FIX_CSS,
+          ],
+          iconBasePath: "http://localhost:5174/stratus/icons",
+          userjs: null,
+          useTabColorAsToolbarColor: true,
+        };
+      }
+      return {
+        chromeStylesRaw: [
+          stratusStylesRaw,
+          TAB_COLOR_LIKE_TOOLBAR_CSS,
+          GECKO_152_COLOR_FIX_CSS,
+        ],
+        iconBasePath: getIconBasePath("stratus"),
+        userjs: null,
+        useTabColorAsToolbarColor: true,
+      };
+    }
+
     case "fluerial": {
       if (isDev) {
         return {

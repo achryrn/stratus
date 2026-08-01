@@ -12,6 +12,7 @@ export const zFloorpDesignConfigs = t.intersection([
       t.type({
         faviconColor: t.boolean,
         userInterface: t.union([
+          t.literal("stratus"),
           t.literal("fluerial"),
           t.literal("lepton"),
           t.literal("photon"),

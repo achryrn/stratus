@@ -282,7 +282,13 @@ function testLeptonThemesIncludeCompatCss(): void {
  * exposed to the black-dialog / transparent-panel symptoms).
  */
 function testAllSkinnedThemesIncludeColorFix(): void {
-  for (const theme of ["fluerial", "lepton", "photon", "protonfix"] as const) {
+  for (const theme of [
+    "stratus",
+    "fluerial",
+    "lepton",
+    "photon",
+    "protonfix",
+  ] as const) {
     const css = getInlineChromeCss(theme);
     assert(
       css.includes("Floorp Gecko 152 color fix"),
@@ -547,6 +553,15 @@ function testFluerialExcludesLeptonIconPatches(): void {
   );
 }
 
+/** stratus gets the color fix but NOT the Lepton icon patches. */
+function testStratusExcludesLeptonIconPatches(): void {
+  const css = getInlineChromeCss("stratus");
+  assert(
+    !css.includes("#usercssloader-menu"),
+    "stratus must NOT include the Lepton-scoped Floorp icon patches",
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Runner
 // ---------------------------------------------------------------------------
@@ -587,6 +602,7 @@ export async function runAllTests(): Promise<void> {
     { name: "bundled compat is color + lepton + icons", fn: testBundledCompatIsColorPlusLeptonPlusIcons },
     { name: "lepton themes include floorp icon patches", fn: testLeptonThemesIncludeFloorpIconPatches },
     { name: "fluerial excludes lepton icon patches", fn: testFluerialExcludesLeptonIconPatches },
+    { name: "stratus excludes lepton icon patches", fn: testStratusExcludesLeptonIconPatches },
   ]);
 }
 

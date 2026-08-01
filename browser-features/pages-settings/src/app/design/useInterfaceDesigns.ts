@@ -2,12 +2,14 @@ import { useMemo } from "react";
 import { useTheme } from "@/components/theme-provider";
 import { useTranslation } from "react-i18next";
 
+import StratusLight from "@/app/design/images/designs/Stratus_UI_Light.svg";
 import ProtonLight from "@/app/design/images/designs/Floorp_UI_Proton_Light.svg";
 import LeptonLight from "@/app/design/images/designs/Floorp_UI_Lepton_Light.svg";
 import PhotonLight from "@/app/design/images/designs/Floorp_UI_Photon_Light.svg";
 import ProtonFixLight from "@/app/design/images/designs/Floorp_UI_ProtonFix_Light.svg";
 import FluerialLight from "@/app/design/images/designs/Floorp_UI_Fluerial_Light.svg";
 
+import StratusDark from "@/app/design/images/designs/Stratus_UI_Dark.svg";
 import ProtonDark from "@/app/design/images/designs/Floorp_UI_Proton_Dark.svg";
 import LeptonDark from "@/app/design/images/designs/Floorp_UI_Lepton_Dark.svg";
 import PhotonDark from "@/app/design/images/designs/Floorp_UI_Photon_Dark.svg";
@@ -25,6 +27,11 @@ export const useInterfaceDesigns = (): {
   return useMemo(() => {
     const isDark = resolvedTheme === "dark";
     return [
+      {
+        value: "stratus",
+        title: t("design.stratus"),
+        image: isDark ? StratusDark : StratusLight,
+      },
       {
         value: "proton",
         title: t("design.proton"),

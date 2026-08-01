@@ -86,6 +86,7 @@
         "photon": "Photon",
         "protonfix": "Firefox UI Fix",
         "fluerial": "Fluerial",
+        "stratus": "Stratus",
         "interfaceDescription": "Choisissez le design de l'interface. L'interface par défaut est \"Lepton\".",
         "otherInterfaceSettings": "Autres réglages de l'interface",
         "useFaviconColorToBackgroundOfNavigationBar": "Utiliser la couleur de l'icône du site pour l'arrière-plan de la barre de navigation",

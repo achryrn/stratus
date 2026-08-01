@@ -181,6 +181,38 @@ function testStratusCoversFindbar(): void {
   );
 }
 
+function testStratusCoversTabStrip(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes(".tab-close-button:hover"),
+    "stratus should give tab close buttons an accent hover surface",
+  );
+  assert(
+    css.includes("--tab-loading-fill: var(--stratus-accent)"),
+    "stratus should tint the tab loading indicator with the accent",
+  );
+  assert(
+    css.includes(".tabbrowser-tab[visuallyselected] .tab-label"),
+    "stratus should tint the active tab label with the accent",
+  );
+  assert(
+    css.includes('[orient="vertical"]'),
+    "stratus should keep the pill geometry in vertical tab mode",
+  );
+}
+
+function testStratusCoversUrlbarFocus(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes("#urlbar[focused]"),
+    "stratus should give the focused urlbar an accent ring",
+  );
+  assert(
+    css.includes("#urlbar .urlbar-icon:hover"),
+    "stratus should give urlbar icons an accent hover surface",
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Tests — lepton theme
 // ---------------------------------------------------------------------------
@@ -527,6 +559,14 @@ export async function runAllTests(): Promise<void> {
     {
       name: "stratus covers findbar",
       fn: testStratusCoversFindbar,
+    },
+    {
+      name: "stratus covers tab strip details",
+      fn: testStratusCoversTabStrip,
+    },
+    {
+      name: "stratus covers urlbar focus",
+      fn: testStratusCoversUrlbarFocus,
     },
     // lepton
     { name: "lepton returns userjs", fn: testLeptonReturnsUserjs },

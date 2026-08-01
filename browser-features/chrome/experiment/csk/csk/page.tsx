@@ -26,10 +26,10 @@ export function CustomShortcutKeyPage() {
       >
         <h1>カスタムショートカットキー</h1>
         <xul:description class="indent tip-caption">
-          Floorp Daylight のキーボードショートカットをカスタマイズしましょう。
-          Floorp Daylight には、80
+          Stratus のキーボードショートカットをカスタマイズしましょう。
+          Stratus には、80
           以上のカスタマイズ可能なキーボードショートカットが用意されています！重複したキーボードショートカットは機能しません。これらの設定を適用するには、
-          Floorp Daylight を再起動してください。
+          Stratus を再起動してください。
         </xul:description>
         <xul:checkbox label="Firefox のキーボードショートカットを無効にする" />
         <For each={csk_category}>

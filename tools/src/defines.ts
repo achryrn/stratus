@@ -7,10 +7,36 @@ import * as path from "@std/path";
  * Modernized for ESNext + latest TypeScript while preserving Deno APIs.
  */
 
+/**
+ * Branding identity.
+ *
+ * `base_name` / `display_name` describe the *runtime artifact* (the prebuilt
+ * Floorp-Runtime we download and validate). They MUST stay `floorp`/`Floorp`
+ * for now: `assertRuntimeTree()` in the initializer validates `application.ini
+ * Name === display_name`, extraction strips the top-level dir named
+ * `base_name`, and every tool path (BIN_DIR/BIN_PATH_EXE) derives from them.
+ *
+ * `product` is the *user-visible* browser identity (Stratus). The overlay
+ * chrome UI, pages, i18n, and tooling metadata use `product.name`.
+ *
+ * Phase 2.5 (runtime rebuild) will align `base_name`/`display_name` with
+ * `product` once we build our own branded runtime artifact.
+ */
 export const BRANDING = {
   base_name: "floorp",
   display_name: "Floorp",
   dev_suffix: "noraneko-dev",
+  product: {
+    name: "Stratus",
+    vendor: "Stratus Browser Project",
+    version: "0.1.0",
+    releaseChannel: "alpha",
+    updateHost: "", // e.g. "https://updates.stratus-browser.org/"
+    website: "https://stratus-browser.org",
+    docs: "https://docs.stratus-browser.org",
+    blog: "https://blog.stratus-browser.org",
+    repository: "stratus-browser/stratus",
+  },
 } as const;
 
 export type Platform = "windows" | "darwin" | "linux";

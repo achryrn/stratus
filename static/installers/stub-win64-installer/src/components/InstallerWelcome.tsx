@@ -73,7 +73,7 @@ const InstallerWelcome: React.FC<InstallerWelcomeProps> = ({ onInstall }) => {
                 <div className="card-body flex flex-col items-center justify-center text-center">
                     <div className="avatar mb-4">
                         <div className="w-24 ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src={installer_png} alt="Floorp Installer" />
+                            <img src={installer_png} alt="Stratus Installer" />
                         </div>
                     </div>
                     <h1 className="text-3xl font-bold mb-4">

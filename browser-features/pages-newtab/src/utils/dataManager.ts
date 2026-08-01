@@ -83,8 +83,8 @@ const DEFAULT_SETTINGS: NewTabSettings = {
     pinned: [
       { url: "https://www.cube-soft.jp/", title: "Cubesoft (Sponsor)" },
       {
-        url: "https://docs.floorp.app/docs/features/",
-        title: "Floorp Support",
+        url: "https://docs.stratus-browser.org/",
+        title: "Stratus Support",
       },
     ],
     blocked: [],

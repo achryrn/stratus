@@ -1,6 +1,6 @@
 {
   "aboutDialog": {
-    "ariaLabel": "Floorp について",
+    "ariaLabel": "Stratus について",
     "version": "バージョン",
     "channel": {
       "nightly": "Nightly",
@@ -35,12 +35,12 @@
     },
     "links": {
       "releaseNotes": "リリースノート",
-      "help": "Floorp ヘルプ",
+      "help": "Stratus ヘルプ",
       "feedback": "フィードバックを送信",
       "licensing": "ライセンス",
       "terms": "利用規約",
       "privacy": "プライバシーポリシー"
     },
-    "trademark": "Floorp の名称は日本国内における商標です。"
+    "trademark": "Stratus の名称は日本国内における商標です。"
   }
 }

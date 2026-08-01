@@ -80,7 +80,7 @@ export default function Page() {
           </CardContent>
           <CardFooter>
             <a
-              href="https://docs.floorp.app/docs/features/"
+              href="https://docs.stratus-browser.org/"
               className="flex items-center gap-2"
             >
               <Button>
@@ -178,7 +178,7 @@ export default function Page() {
           </CardContent>
           <CardFooter>
             <a
-              href="https://docs.floorp.app/docs/features/"
+              href="https://docs.stratus-browser.org/"
               className="flex items-center gap-2"
             >
               <Button>

@@ -192,7 +192,7 @@ class LocalHttpServer implements nsIServerSocketListener {
 
         if (isPortError) {
           err(
-            `Please try: 1) Change 'floorp.os.server.port' in about:config to another port (e.g., 58262), 2) Restart Floorp, or 3) Check your firewall settings`,
+            `Please try: 1) Change 'floorp.os.server.port' in about:config to another port (e.g., 58262), 2) Restart Stratus, or 3) Check your firewall settings`,
           );
           return;
         }

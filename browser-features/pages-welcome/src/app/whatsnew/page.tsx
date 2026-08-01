@@ -58,7 +58,7 @@ export default function WhatsNewPage() {
     const previousTitle = globalThis.document.title;
     const nextTitle = t("whatsNew.documentTitle", {
       version,
-      defaultValue: `Floorp – What's New`,
+      defaultValue: `Stratus – What's New`,
     });
     globalThis.document.title = nextTitle;
 
@@ -534,7 +534,7 @@ export default function WhatsNewPage() {
               </h3>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/Floorp-Projects/Floorp"
+                  href="https://github.com/stratus-browser/stratus"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
@@ -543,7 +543,7 @@ export default function WhatsNewPage() {
                   <Github size={24} />
                 </a>
                 <a
-                  href="https://twitter.com/floorp_browser"
+                  href="https://stratus-browser.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
@@ -552,7 +552,7 @@ export default function WhatsNewPage() {
                   <Twitter size={24} />
                 </a>
                 <a
-                  href="https://floorp.app/discord"
+                  href="https://stratus-browser.org/discord"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
@@ -568,15 +568,15 @@ export default function WhatsNewPage() {
               <div className="flex items-center gap-2">
                 <img
                   src="chrome://branding/content/icon128.png"
-                  alt="Floorp"
+                  alt="Stratus"
                   className="w-6 h-6"
                 />
-                <span className="text-white font-medium">Floorp</span>
+                <span className="text-white font-medium">Stratus</span>
               </div>
 
               <div className="flex flex-wrap gap-6 text-sm">
                 <a
-                  href="https://floorp.app/privacy"
+                  href="https://stratus-browser.org/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
@@ -584,7 +584,7 @@ export default function WhatsNewPage() {
                   {t("whatsNew.footer.privacy")}
                 </a>
                 <a
-                  href="https://docs.floorp.app"
+                  href="https://docs.stratus-browser.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"

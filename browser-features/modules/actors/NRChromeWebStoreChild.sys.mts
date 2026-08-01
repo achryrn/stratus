@@ -56,7 +56,7 @@ let translationCacheInitialized = false;
  * Default translations (English) used when i18n is not yet initialized
  */
 const DEFAULT_TRANSLATIONS: Record<string, string> = {
-  [CWS_I18N_KEYS.button.addToFloorp]: "Add to Floorp",
+  [CWS_I18N_KEYS.button.addToFloorp]: "Add to Stratus",
   [CWS_I18N_KEYS.button.installing]: "Installing...",
   [CWS_I18N_KEYS.button.success]: "Added!",
   [CWS_I18N_KEYS.button.error]: "Error occurred",
@@ -64,7 +64,7 @@ const DEFAULT_TRANSLATIONS: Record<string, string> = {
   [CWS_I18N_KEYS.button.close]: "Close",
   [CWS_I18N_KEYS.error.title]: "Installation Error",
   [CWS_I18N_KEYS.error.compatibilityNote]:
-    "This extension may not be compatible with Firefox/Floorp.",
+    "This extension may not be compatible with Firefox/Stratus.",
   [CWS_I18N_KEYS.error.installFailed]: "Installation failed",
 };
 

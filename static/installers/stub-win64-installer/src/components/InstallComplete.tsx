@@ -29,7 +29,7 @@ export default function InstallComplete(
                 } catch (e) {
                     const errorMessage = e as string;
                     console.error(
-                        "Failed to launch Floorp browser:",
+                        "Failed to launch Stratus browser:",
                         errorMessage,
                     );
 

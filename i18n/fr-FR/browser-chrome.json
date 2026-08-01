@@ -4,12 +4,12 @@
     "tooltiptext": "Rouvrir le dernier onglet fermé {{shortcut}}"
   },
   "floorpHubWarning": {
-    "message": "Les réglages spécifiques à Floorp comme la barre latérale, les espaces de travail, et les gestes de souris sont gérés dans la Plateforme de Floorp.",
-    "openButton": "Ouvrir la Plateforme de Floorp"
+    "message": "Les réglages spécifiques à Stratus comme la barre latérale, les espaces de travail, et les gestes de souris sont gérés dans la Plateforme de Stratus.",
+    "openButton": "Ouvrir la Plateforme de Stratus"
   },
   "floorpStartWarning": {
-    "message": "Pour changer les réglages d'\"Accueil\", désactivez le démarrage de Floorp depuis la Plateforme de Floorp (about:hub#/features/design).",
-    "openButton": "Ouvrir la Plateforme de Floorp - Design"
+    "message": "Pour changer les réglages d'\"Accueil\", désactivez le démarrage de Stratus depuis la Plateforme de Stratus (about:hub#/features/design).",
+    "openButton": "Ouvrir la Plateforme de Stratus - Design"
   },
   "workspaces": {
     "modal": {
@@ -219,7 +219,7 @@
       "floorp-toggle-zen-mode": "Permuter le mode Zen",
       "floorp-toggle-command-palette": "Activer/désactiver la palette de commandes",
       "floorp-open-settings": "Ouvrir les paramètres",
-      "floorp-open-hub": "Ouvrir la Plateforme de Floorp",
+      "floorp-open-hub": "Ouvrir la Plateforme de Stratus",
       "floorp-toggle-share-mode": "Permuter le mode partage",
       "floorp-copy-page-url-as-markdown": "Copier l'URL de la page en tant que Markdown",
       "floorp-split-view-open-left": "Vue fractionnée à gauche",
@@ -248,8 +248,8 @@
       "gecko-restore-last-tab": "Rouvrir le dernier onglet fermé",
       "floorp-toggle-zen-mode": "Permuter le mode Zen masque tous les éléments de l'interface pour une navigation sans distraction",
       "floorp-toggle-command-palette": "Ouvrir ou fermer la palette de commandes pour rechercher et exécuter des commandes",
-      "floorp-open-settings": "Ouvre la page des paramètres de Floorp",
-      "floorp-open-hub": "Ouvre la page du Hub Floorp",
+      "floorp-open-settings": "Ouvre la page des paramètres de Stratus",
+      "floorp-open-hub": "Ouvre la page du Hub Stratus",
       "floorp-toggle-share-mode": "Basculer en mode partage en minimisant l'interface utilisateur pour le partage d'écran et les présentations",
       "floorp-copy-page-url-as-markdown": "Copier le titre de la page actuelle et URL au format de lien Markdown : [Titre](URL)",
       "floorp-split-view-open-left": "Ouvrez l'onglet actuel dans un affichage divisé sur le côté gauche",
@@ -368,7 +368,7 @@
   },
   "chromeWebStore": {
     "button": {
-      "addToFloorp": "Ajouter à Floorp",
+      "addToFloorp": "Ajouter à Stratus",
       "installing": "Installation...",
       "success": "Ajouté !",
       "error": "Une erreur s'est produite",
@@ -376,7 +376,7 @@
     },
     "error": {
       "title": "Erreur d'installation",
-      "compatibilityNote": "Cette extension peut ne pas être compatible avec Firefox/Floorp.",
+      "compatibilityNote": "Cette extension peut ne pas être compatible avec Firefox/Stratus.",
       "alreadyInstalled": "Cette extension est déjà installée ({{name}})",
       "downloadFailed": "Échec du téléchargement du fichier CRX",
       "conversionFailed": "Échec de conversion de l'extension : {{error}}",
@@ -398,7 +398,7 @@
       "downloadFailed": "Échec du téléchargement",
       "signatureVerifyFailed": "Échec de vérification de la signature de l'extension",
       "corruptOrIncompatible": "L'extension est corrompue ou incompatible",
-      "incompatible": "Cette extension n'est pas compatible avec Floorp",
+      "incompatible": "Cette extension n'est pas compatible avec Stratus",
       "blocked": "Cette extension est bloquée",
       "timeout": "Délai d'installation de l'extension dépassé",
       "installFailed": "Échec d'installation de l'extension",
@@ -418,7 +418,7 @@
   },
   "hub": {
     "menu": {
-      "title": "Floorp Hub"
+      "title": "Stratus Hub"
     }
   },
   "splitView": {
@@ -451,7 +451,7 @@
   "ipProtection": {
     "title": "Browser VPN",
     "toolbar": {
-      "activeTooltip": "Browser VPN is on for eligible web browsing traffic in Floorp",
+      "activeTooltip": "Browser VPN is on for eligible web browsing traffic in Stratus",
       "inactiveTooltip": "Browser VPN is off — web browsing traffic is not protected",
       "excludedTooltip": "Browser VPN is off for this site — this site is not protected",
       "pausedTooltip": "Browser VPN is paused — web browsing traffic is not protected",
@@ -459,15 +459,15 @@
       "helpTooltip": "Open Browser VPN support page"
     },
     "scope": {
-      "summary": "When active, Browser VPN can protect eligible web browsing traffic in Floorp. Its scope does not include your operating system or other apps.",
-      "fullDisclosure": "This feature uses a Mozilla account and Mozilla service infrastructure. Floorp is an independent project and is not affiliated with, endorsed by, or sponsored by Mozilla. Availability depends on your region, account status, and Mozilla’s service eligibility requirements."
+      "summary": "When active, Browser VPN can protect eligible web browsing traffic in Stratus. Its scope does not include your operating system or other apps.",
+      "fullDisclosure": "This feature uses a Mozilla account and Mozilla service infrastructure. Stratus is an independent project and is not affiliated with, endorsed by, or sponsored by Mozilla. Availability depends on your region, account status, and Mozilla’s service eligibility requirements."
     },
     "unauthenticated": {
       "title": "Try Browser VPN"
     },
     "settings": {
       "promoHeading": "Try Browser VPN",
-      "promoMessage": "Protect eligible web browsing traffic in Floorp after signing in and confirming service availability."
+      "promoMessage": "Protect eligible web browsing traffic in Stratus after signing in and confirming service availability."
     },
     "terms": {
       "prefix": "By continuing, you agree to ",
@@ -496,7 +496,7 @@
       "tools": "Outils",
       "downloads": "Téléchargements",
       "workspace": "Espaces de travail",
-      "floorp": "Floorp",
+      "floorp": "Stratus",
       "media": "Média",
       "open-tabs": "Onglets ouverts",
       "switcher": "Commuter",

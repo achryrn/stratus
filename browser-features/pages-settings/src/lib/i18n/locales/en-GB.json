@@ -16,7 +16,7 @@
     "sidebar": {
         "firefoxSettings": "Firefox Settings",
         "about": "About",
-        "aboutNoraneko": "About Noraneko",
+        "aboutNoraneko": "About Stratus",
         "debug": "Debug",
         "overview": "Overview",
         "features": "Features"
@@ -61,9 +61,9 @@
             "description": "{{productName}} protects your data and privacy by default, but you can also manage these settings manually."
         },
         "ablazeAccount": {
-            "title": "Ablaze Account (Coming Soon)",
-            "footerLinkText": "Ablaze Account",
-            "description": "Use a Mozilla Account to sync some data with other devices. Ablaze Account syncs data that can't be synced with a Mozilla Account."
+            "title": "Stratus Account (Coming Soon)",
+            "footerLinkText": "Stratus Account",
+            "description": "Use a Mozilla Account to sync some data with other devices. Stratus Account syncs data that can't be synced with a Mozilla Account."
         },
         "manageExtensions": {
             "title": "Manage Extensions",
@@ -294,7 +294,7 @@
         "releaseNotes": "Release Notes & More Information",
         "browserVersion": "{{productName}} version: {{browserVersion}} | Firefox version: {{firefoxVersion}}",
         "isOfficialBuild": "(Official Build)",
-        "browserDescription": "{{productName}} is a browser developed in Japan. It's built on Firefox under Ablaze to improve the web.",
+        "browserDescription": "{{productName}} is a browser developed in Japan. It's built on Firefox under Stratus to improve the web.",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project. All rights reserved.",
         "openSourceLicense": "{{productName}} is open-source software available under the Mozilla Public License 2.0, made possible by the Firefox open-source project and other open-source software.",
@@ -624,7 +624,7 @@
             "gecko-scroll-line-down": "Scroll Down",
             "floorp-toggle-command-palette": "Toggle Command Palette",
             "floorp-open-settings": "Open Settings",
-            "floorp-open-hub": "Open Floorp Hub",
+            "floorp-open-hub": "Open Stratus Hub",
             "floorp-toggle-share-mode": "Toggle Share Mode",
             "floorp-copy-page-url-as-markdown": "Copy Page URL as Markdown",
             "floorp-split-view-open-left": "Split View Left",

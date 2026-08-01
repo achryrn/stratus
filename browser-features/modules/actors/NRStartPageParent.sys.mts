@@ -47,7 +47,7 @@ export class NRStartPageParent extends JSWindowActorParent {
 
         folderPicker.init(
           this.browsingContext,
-          "Floorp",
+          "Stratus",
           mode,
         );
         folderPicker.appendFilters(Ci.nsIFilePicker.filterAll);

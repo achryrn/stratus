@@ -375,7 +375,7 @@ export function AboutDialog() {
             alt=""
             aria-hidden="true"
           />
-          <h1 class="ad-name">Floorp</h1>
+          <h1 class="ad-name">Stratus</h1>
           <div class="ad-version">
             {t("aboutDialog.version")} {version || "…"}
             {channelBadge && (
@@ -397,7 +397,7 @@ export function AboutDialog() {
                 class="ad-community-item"
                 onClick={(e) => {
                   e.preventDefault();
-                  openExternalUrl("https://github.com/Floorp-Projects/Floorp");
+                  openExternalUrl("https://github.com/stratus-browser/stratus");
                 }}
               >
                 <span class="ad-community-icon">
@@ -410,7 +410,7 @@ export function AboutDialog() {
                 class="ad-community-item"
                 onClick={(e) => {
                   e.preventDefault();
-                  openExternalUrl("https://floorp.app/discord");
+                  openExternalUrl("https://stratus-browser.org/discord");
                 }}
               >
                 <span class="ad-community-icon">
@@ -423,7 +423,7 @@ export function AboutDialog() {
                 class="ad-community-item"
                 onClick={(e) => {
                   e.preventDefault();
-                  openExternalUrl("https://x.com/Floorp_Browser");
+                  openExternalUrl("https://x.com/StratusBrowser");
                 }}
               >
                 <span class="ad-community-icon">
@@ -436,7 +436,7 @@ export function AboutDialog() {
                 class="ad-community-item"
                 onClick={(e) => {
                   e.preventDefault();
-                  openExternalUrl("https://www.reddit.com/r/floorp/");
+                  openExternalUrl("https://www.reddit.com/r/stratusbrowser/");
                 }}
               >
                 <span class="ad-community-icon">
@@ -468,7 +468,7 @@ export function AboutDialog() {
                 class="ad-help-link"
                 onClick={(e) => {
                   e.preventDefault();
-                  openExternalUrl("https://docs.floorp.app/docs/features/");
+                  openExternalUrl("https://docs.stratus-browser.org/");
                 }}
               >
                 {t("aboutDialog.help.support")}
@@ -483,7 +483,7 @@ export function AboutDialog() {
               class="ad-btn ad-btn-outline"
               onClick={(e) => {
                 e.preventDefault();
-                openExternalUrl("https://github.com/sponsors/Ryosuke-Asano");
+                openExternalUrl("https://github.com/sponsors/stratus-browser");
               }}
             >
               {t("aboutDialog.sponsor.button")}
@@ -527,7 +527,7 @@ export function AboutDialog() {
           href="#"
           onClick={(e) => {
             e.preventDefault();
-            openExternalUrl("https://ja.floorp.app/privacy");
+            openExternalUrl("https://stratus-browser.org/privacy");
           }}
           data-l10n-id="bottom-links-privacy"
         >
@@ -537,7 +537,7 @@ export function AboutDialog() {
           href="#"
           onClick={(e) => {
             e.preventDefault();
-            openExternalUrl("https://ja.floorp.app/terms");
+            openExternalUrl("https://stratus-browser.org/terms");
           }}
           data-l10n-id="bottom-links-terms"
         >

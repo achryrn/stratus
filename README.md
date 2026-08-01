@@ -1,59 +1,43 @@
-# Floorp Browser
+# Stratus Browser
 
-A browser built for keeping the Open, Private and Sustainable Web alive. Based on Mozilla Firefox.
+A fully branded, production-quality browser with its own identity — fast, private, and deeply customizable. Built on Mozilla Firefox's rendering engine via the Floorp overlay architecture.
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 [![License][license-shield]][license-url]
-[![Crowdin](https://badges.crowdin.net/floorp-browser/localized.svg)](https://crowdin.com/project/floorp-browser)
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Floorp-Projects/Floorp)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/Floorp-Projects/Floorp.svg?style=for-the-badge
-[contributors-url]: https://github.com/Floorp-Projects/Floorp/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Floorp-Projects/Floorp?style=for-the-badge
-[forks-url]: https://github.com/Floorp-Projects/Floorp/network/members
-[stars-shield]: https://img.shields.io/github/stars/Floorp-Projects/Floorp.svg?style=for-the-badge
-[stars-url]: https://github.com/Floorp-Projects/Floorp/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Floorp-Projects/Floorp.svg?style=for-the-badge
-[issues-url]: https://github.com/Floorp-Projects/Floorp/issues
-[license-shield]: https://img.shields.io/github/license/Floorp-Projects/Floorp.svg?style=for-the-badge
-[license-url]: https://github.com/Floorp-Projects/Floorp/blob/main/LICENSE
+[license-shield]: https://img.shields.io/github/license/stratus-browser/stratus.svg?style=for-the-badge
+[license-url]: https://github.com/stratus-browser/stratus/blob/main/LICENSE
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/Floorp-Projects/Floorp">
+  <a href="https://stratus-browser.org">
     <img src="https://avatars.githubusercontent.com/u/94953125?s=200&v=4" alt="Logo" width="150" height="150">
   </a>
 
-  <h3 align="center">Floorp Browser </h3>
+  <h3 align="center">Stratus Browser</h3>
 
   <p align="center">
-    A browser built for keeping the Open, Private and Sustainable Web alive. Based on Mozilla Firefox.
+    A fully branded browser with its own identity — fast, private, and deeply customizable. Built on Mozilla Firefox's rendering engine.
     <br />
     <br />
-    <a href="https://floorp.app">Official Site</a>
+    <a href="https://stratus-browser.org">Official Site</a>
     ・
     <a href="#-download--install">Download</a>
     ・
-    <a href="https://blog.floorp.app">Blog & Release Notes</a>
+    <a href="https://blog.stratus-browser.org">Blog & Release Notes</a>
     ・
-    <a href="https://discord.floorp.app">Official Discord</a>
-    ・
-    <a href="https://docs.floorp.app">Documentation</a>
+    <a href="https://docs.stratus-browser.org">Documentation</a>
   </p>
 </div>
 
 ## 📄 Sponsorship
 
-Floorp Browser is a free and open-source project. If you like Floorp Browser, please consider sponsoring us. Your sponsorship will help us to continue development and pay for the server costs. You may advertise if you continuously sponsor a minimum of $100 per month.
+Stratus Browser is a free and open-source project. If you like Stratus Browser, please consider sponsoring us. Your sponsorship will help us to continue development and pay for the server costs.
 
-- [GitHub Sponsors](https://github.com/sponsors/Ryosuke-Asano)
+- [GitHub Sponsors](https://github.com/sponsors)
 
 <h2> 💕 Special Sponsors </h2>
 <div align="left" style="display: flex; flex-wrap: wrap;">
@@ -71,11 +55,13 @@ Floorp Browser is a free and open-source project. If you like Floorp Browser, pl
   </a>
 </div>
 
+> Note: The sponsor list above is retained from the upstream Floorp project. It will be replaced as Stratus builds its own sponsorship program.
+
 ## ⚡ Get Started
 
 ### 💻 Supported Operating Systems & Requirements
 
-Floorp Browser is available for Windows, macOS, and Linux. You can install it by running the installer or by extracting the archive.
+Stratus Browser is available for Windows, macOS, and Linux. You can install it by running the installer or by extracting the archive.
 
 #### Windows
 
@@ -83,40 +69,17 @@ Floorp Browser is available for Windows, macOS, and Linux. You can install it by
 
 - x86_64 CPU architecture. AArch64 is not supported.
 
-- Floorp provides a `.exe` installer, `winget`, and `Scoop` installation options.
+- Stratus provides a `.exe` installer.
 
-Winget install command:
-
-```
-winget install Ablaze.Floorp
-```
-
-Winget repository provided by [@Hibi_10000](https://github.com/Hibi-10000)
-
-Scoop install command:
-
-```
-scoop bucket add extras
-scoop install extras/floorp
-```
-
-Scoop repository provided by [@SegoCode](https://github.com/SegoCode)
-
-**Floorp has obtained a Certum Open Source Code Signing Certificate. The official Floorp installer is signed by "Open Source Developer, Ryosuke Asano". However, the installer for the Daylight build is not signed.**
+**Note: Package-manager install options (winget, Scoop) are inherited from the upstream Floorp project until Stratus publishes its own packages.**
 
 #### macOS
 
 - macOS 10.15 or later.
 
-- x86_64 CPU & ARM64 CPU architecture. Floorp provides a Universal build for both architectures.
+- x86_64 CPU & ARM64 CPU architecture.
 
-Homebrew install command:
-
-```
-brew install --cask floorp
-```
-
-**After version 11.0.0, Floorp has obtained Apple Notarization & Certification. This means that you can install Floorp without any warning messages. Additionally, Floorp now includes an auto-update system.**
+**Note: Code signing and notarization for Stratus releases are part of the release pipeline.**
 
 #### Linux
 
@@ -124,54 +87,46 @@ brew install --cask floorp
 
 - x86_64 & AArch64 CPU architecture.
 
-- Floorp Browser Requirements: [Firefox system requirements](https://www.mozilla.org/firefox/system-requirements/)
+- Stratus Browser Requirements: [Firefox system requirements](https://www.mozilla.org/firefox/system-requirements/)
 
 Supported package managers:
 
-- PPA (Ubuntu, Linux Mint, etc.): https://ppa.floorp.app
-- Flatpak (most Linux distributions): https://flathub.org/apps/one.ablaze.floorp
-- Tarball (most Linux distributions): https://github.com/Floorp-Projects/Floorp/releases/latest
-- AUR bin (Arch-based distributions): https://aur.archlinux.org/packages/floorp-bin/ **Unofficial**
-- AUR (Arch-based distributions): https://aur.archlinux.org/packages/floorp/ **Unofficial**
-- SBo bin (Slackware-based distributions): https://slackbuilds.org/repository/15.0/network/floorp-bin/ **Unofficial**
+- Tarball (most Linux distributions): https://github.com/stratus-browser/stratus/releases/latest
+- AUR bin (Arch-based distributions): https://aur.archlinux.org/packages/floorp-bin/ **Unofficial (upstream)**
+- AUR (Arch-based distributions): https://aur.archlinux.org/packages/floorp/ **Unofficial (upstream)**
+- SBo bin (Slackware-based distributions): https://slackbuilds.org/repository/15.0/network/floorp-bin/ **Unofficial (upstream)**
 
 ### 📥 Download & 📦 Install
 
-You can download the latest version of Floorp Browser from the official website: [Floorp.app](https://floorp.app/download) or from the [GitHub Releases](https://github.com/Floorp-Projects/Floorp/releases) page.
+You can download the latest version of Stratus Browser from the official website: [Stratus Browser](https://stratus-browser.org/download) or from the [GitHub Releases](https://github.com/stratus-browser/stratus/releases) page.
 
 ---
 
 ## 📖 Documentation
 
-For more detailed information and guidance, check out our [Floorp Documentation Wiki](https://docs.floorp.app).
+For more detailed information and guidance, check out our [Stratus Documentation](https://docs.stratus-browser.org).
 
 ### 📝 License
 
 [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/)
 
-- Floorp's name is a registered trademark of Floorp's developer, and Floorp's logo is protected by copyright
+- Stratus Browser is based on Mozilla Firefox and the Floorp overlay architecture. Stratus Browser is not affiliated with Mozilla, Mozilla Firefox, or the Floorp project.
 
-- Floorp Browser is based on Mozilla Firefox. Floorp Browser is not affiliated with Mozilla & Mozilla Firefox.
-
-- Floorp uses Mozilla Firefox's source code and other open-source projects. See [Floorp License Notices](#-Floorp-License-Notices-)
+- Stratus uses Mozilla Firefox's source code and other open-source projects. See [Stratus License Notices](#-Stratus-License-Notices-)
 
 ### 📧 Contact
 
-- [Official Floorp Twitter](https://twitter.com/Floorp_Browser)
-
-- [Official Floorp Projects Discord](https://discord.floorp.app)
+- [Stratus Browser on X (Twitter)](https://twitter.com/)
 
 ### 📜 Privacy Policy
 
-- [Floorp Privacy Policy](https://floorp.app/privacy)
+- [Stratus Privacy Policy](https://stratus-browser.org/privacy)
 
 ### 📜 About Forks
 
-- Floorp is independent of Mozilla Firefox. Floorp is not affiliated with Mozilla & Mozilla Firefox.
+- Stratus Browser is independent of Mozilla Firefox. Stratus is not affiliated with Mozilla or Mozilla Firefox.
 
-- We are also unaffiliated with the browser that is forking Floorp and we are developing it on our own.
-
-- We are not affiliated with any organization other than Ablaze.
+- Stratus builds on the Floorp overlay architecture but is developed independently as its own browser project.
 
 ---
 
@@ -179,9 +134,9 @@ For more detailed information and guidance, check out our [Floorp Documentation 
 
 ### 🧰 How to Start Development
 
-Floorp's dev workflow is orchestrated by `feles-build` (a Deno task).
+Stratus's dev workflow is orchestrated by `feles-build` (a Deno task).
 
-To build and run Floorp, follow the [Building section of the documentation](https://docs.floorp.app/docs/building/).
+To build and run Stratus, follow the [Building section of the documentation](https://docs.stratus-browser.org/docs/building/).
 
 #### Useful commands
 
@@ -191,15 +146,15 @@ To build and run Floorp, follow the [Building section of the documentation](http
 
 ### 🐛 Reporting Bugs
 
-- If you find a bug, please report it to the [Issues](https://github.com/Floorp-Projects/Floorp/issues) page.
+- If you find a bug, please report it to the [Issues](https://github.com/stratus-browser/stratus/issues) page.
 
 ---
 
-## 📄 Floorp License Notices 📄
+## 📄 Stratus License Notices 📄
 
-Floorp utilizes various open-source projects. Below is a comprehensive list of the open-source projects used in Floorp.
+Stratus utilizes various open-source projects. Below is a comprehensive list of the open-source projects used in Stratus.
 
-Please note that while some of the software listed below is not included in Floorp itself, it is instead downloaded from the internet. Additionally, Floorp provides a list of recommended add-ons for users to install.
+Please note that while some of the software listed below is not included in Stratus itself, it is instead downloaded from the internet. Additionally, Stratus provides a list of recommended add-ons for users to install.
 
 ### 🦊 Mozilla Firefox
 

@@ -16,7 +16,7 @@
     "sidebar": {
         "firefoxSettings": "Firefox の設定",
         "about": "情報",
-        "aboutNoraneko": "Noraneko について",
+        "aboutNoraneko": "Stratus について",
         "debug": "デバッグ",
         "overview": "概要",
         "features": "機能"
@@ -61,9 +61,9 @@
             "description": "{{productName}} はデフォルトであなたのデータとプライバシーを保護しますが、これらの設定を手動で管理することもできます。"
         },
         "ablazeAccount": {
-            "title": "Ablaze アカウント (近日公開)",
-            "footerLinkText": "Ablaze アカウント",
-            "description": "Mozilla アカウントを使用すると、一部のデータを他のデバイスと同期できます。 Ablaze アカウントは、 Mozilla アカウントで同期できないデータを同期できます。"
+            "title": "Stratus アカウント (近日公開)",
+            "footerLinkText": "Stratus アカウント",
+            "description": "Mozilla アカウントを使用すると、一部のデータを他のデバイスと同期できます。 Stratus アカウントは、 Mozilla アカウントで同期できないデータを同期できます。"
         },
         "manageExtensions": {
             "title": "拡張機能を管理",
@@ -294,7 +294,7 @@
         "releaseNotes": "リリースノートとその他の情報",
         "browserVersion": "{{productName}} バージョン: {{browserVersion}} | Firefox バージョン: {{firefoxVersion}}",
         "isOfficialBuild": "(公式ビルド)",
-        "browserDescription": "{{productName}} は日本生まれのブラウザーです。ウェブをより良くするために、Firefox をベースに Ablaze の下で開発されています。",
+        "browserDescription": "{{productName}} は日本生まれのブラウザーです。ウェブをより良くするために、Firefox をベースに Stratus の下で開発されています。",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project. All rights reserved.",
         "openSourceLicense": "{{productName}} は、 Mozilla Public License 2.0 の下で使用可能なオープンソースソフトウェアです。 Firefox オープンソースプロジェクトやその他のオープンソースソフトウェアによって実現されています。",
@@ -624,7 +624,7 @@
             "gecko-scroll-line-down": "下にスクロール",
             "floorp-toggle-command-palette": "コマンドパレットの表示を切り替える",
             "floorp-open-settings": "設定",
-            "floorp-open-hub": "Floorp Hub を開く",
+            "floorp-open-hub": "Stratus Hub を開く",
             "floorp-toggle-share-mode": "共有モードの表示を切り替える",
             "floorp-copy-page-url-as-markdown": "ページの URL を Markdown 形式でコピー",
             "floorp-split-view-open-left": "分割ビューで左側に開く",

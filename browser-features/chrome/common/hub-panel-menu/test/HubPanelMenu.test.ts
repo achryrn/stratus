@@ -436,7 +436,7 @@ function testStaticRenderLabelWithDefaultTranslation(): void {
   const label = rendered!.getAttribute("label");
   assertEquals(
     label,
-    "Floorp Hub",
+    "Stratus Hub",
     "Render should use default translation when i18next returns default",
   );
 

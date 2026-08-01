@@ -164,7 +164,7 @@ function App() {
               サポートされていないデバイス
             </h2>
             <p className="text-sm mb-6">
-              FloorpはSSE4.1をサポートするプロセッサーが必要です。<br />
+              StratusはSSE4.1をサポートするプロセッサーが必要です。<br />
               このデバイスはサポート対象外です。
             </p>
             <button

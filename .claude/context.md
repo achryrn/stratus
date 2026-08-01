@@ -1,13 +1,13 @@
-# Floorp プロジェクトコンテキスト
+# Stratus プロジェクトコンテキスト
 
-このファイルは、Claude や他の AI アシスタントが Floorp プロジェクトを理解し、効果的に開発支援を行うためのコンテキスト情報を提供します。
+このファイルは、Claude や他の AI アシスタントが Stratus プロジェクトを理解し、効果的に開発支援を行うためのコンテキスト情報を提供します。
 
 ## プロジェクト概要
 
-**Floorp** は Mozilla Firefox をベースにした Web ブラウザで、「オープン、プライベート、サステナブルな Web を維持する」ことを目的としています。
+**Stratus** は Mozilla Firefox をベースにした Web ブラウザで（Floorp の "Noraneko" オーバーレイアーキテクチャ上に構築）、「オープン、プライベート、サステナブルな Web を維持する」ことを目的としています。ユーザー向け製品アイデンティティは Stratus。内部コードの Floorp/Noraneko 識別子は上流互換性のため維持されます。
 
 - **ライセンス**: Mozilla Public License 2.0 (MPL-2.0)
-- **ベース**: Mozilla Firefox (Gecko エンジン)
+- **ベース**: Mozilla Firefox (Gecko エンジン) / Floorp Noraneko オーバーレイ
 - **開発名**: 内部的に "Noraneko" としても参照される
 
 ## 重要なドキュメント
@@ -36,7 +36,7 @@
 ### ディレクトリ構造
 
 ```
-Floorp/
+Stratus/
 ├── browser-features/     # カスタムブラウザ機能
 │   ├── chrome/          # ブラウザ UI 機能 (SolidJS)
 │   ├── modules/         # Firefox ESM モジュール (.sys.mts)
@@ -326,10 +326,10 @@ A: `.sys.mts` ファイルから ChromeUtils.importESModule() を使用。
 
 ## 追加リソース
 
-- **公式サイト**: https://floorp.app
-- **ドキュメント**: https://docs.floorp.app
-- **Discord**: https://discord.floorp.app
-- **GitHub**: https://github.com/Floorp-Projects/Floorp
+- **公式サイト**: https://stratus-browser.org
+- **ドキュメント**: https://docs.stratus-browser.org
+- **GitHub**: https://github.com/stratus-browser/stratus
+- **上流プロジェクト (Floorp)**: https://github.com/Floorp-Projects/Floorp
 
 ## AI アシスタント向けの注意事項
 

@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Floorp is a Firefox-based web browser ("Noraneko") built on top of the Gecko engine. This repo contains the custom browser features that overlay Firefox — not the Firefox source itself.
+Stratus is a Firefox-based web browser (built on the Floorp "Noraneko" overlay architecture) atop the Gecko engine. This repo contains the custom browser features that overlay Firefox — not the Firefox source itself. The user-facing product identity is Stratus; the upstream Floorp/Noraneko identifiers remain in internal code for upstream compatibility.
 
 ## Commands
 
@@ -155,7 +155,7 @@ Colocated in `test/` directories next to source. The runner discovers them autom
 
 ## dev-tool — Browser Inspection CLI
 
-`deno task dev-tool` communicates with a running Floorp instance via the **Marionette protocol** (Firefox's TCP-based WebDriver). All browser commands require the browser to be running (started via `dev-tool start` or `feles-build dev`).
+`deno task dev-tool` communicates with a running Stratus instance via the **Marionette protocol** (Firefox's TCP-based WebDriver). All browser commands require the browser to be running (started via `dev-tool start` or `feles-build dev`).
 
 ### Process Management
 

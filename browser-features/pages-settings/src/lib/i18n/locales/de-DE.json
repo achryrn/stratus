@@ -16,7 +16,7 @@
     "sidebar": {
         "firefoxSettings": "Firefox-Einstellungen",
         "about": "Über",
-        "aboutNoraneko": "Über Noraneko",
+        "aboutNoraneko": "Über Stratus",
         "debug": "Debug",
         "overview": "Übersicht",
         "features": "Funktionen"
@@ -61,9 +61,9 @@
             "description": "{{productName}} schützt deine Daten und deine Privatsphäre standardmäßig. Du kannst diese Einstellungen aber auch selbst anpassen."
         },
         "ablazeAccount": {
-            "title": "Ablaze-Konto (demnächst)",
-            "footerLinkText": "Ablaze-Konto",
-            "description": "Verwende ein Mozilla-Konto, um bestimmte Daten mit anderen Geräten zu synchronisieren. Das Ablaze-Konto synchronisiert Daten, die sich mit einem Mozilla-Konto nicht synchronisieren lassen."
+            "title": "Stratus-Konto (demnächst)",
+            "footerLinkText": "Stratus-Konto",
+            "description": "Verwende ein Mozilla-Konto, um bestimmte Daten mit anderen Geräten zu synchronisieren. Das Stratus-Konto synchronisiert Daten, die sich mit einem Mozilla-Konto nicht synchronisieren lassen."
         },
         "manageExtensions": {
             "title": "Erweiterungen verwalten",
@@ -294,7 +294,7 @@
         "releaseNotes": "Versionshinweise und weitere Informationen",
         "browserVersion": "{{productName}}-Version: {{browserVersion}} | Firefox-Version: {{firefoxVersion}}",
         "isOfficialBuild": "(offizielle Build)",
-        "browserDescription": "{{productName}} ist ein in Japan entwickelter Browser. Er basiert auf Firefox und wird unter Ablaze weiterentwickelt, um das Web zu verbessern.",
+        "browserDescription": "{{productName}} ist ein in Japan entwickelter Browser. Er basiert auf Firefox und wird unter Stratus weiterentwickelt, um das Web zu verbessern.",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project. Alle Rechte vorbehalten.",
         "openSourceLicense": "{{productName}} ist Open-Source-Software unter der Mozilla Public License 2.0 und wird durch das Open-Source-Projekt Firefox sowie weitere Open-Source-Software ermöglicht.",
@@ -462,7 +462,7 @@
         "errorSettingContainer": "Fehler beim Festlegen des Containers"
     },
     "floorpOS": {
-        "title": "Floorp OS",
+        "title": "Stratus OS",
         "description": "Backend-Module und -Dienste von {{productName}} OS verwalten",
         "loading": "Wird geladen…",
         "statusCard": {
@@ -624,7 +624,7 @@
             "gecko-scroll-line-down": "Nach unten scrollen",
             "floorp-toggle-command-palette": "Befehlspalette ein-/ausblenden",
             "floorp-open-settings": "Einstellungen öffnen",
-            "floorp-open-hub": "Floorp-Hub öffnen",
+            "floorp-open-hub": "Stratus-Hub öffnen",
             "floorp-toggle-share-mode": "Freigabemodus umschalten",
             "floorp-copy-page-url-as-markdown": "Seiten-URL als Markdown kopieren",
             "floorp-split-view-open-left": "Geteilte Ansicht links",

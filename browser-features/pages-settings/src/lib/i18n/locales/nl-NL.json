@@ -16,7 +16,7 @@
     "sidebar": {
         "firefoxSettings": "Firefox-instellingen",
         "about": "Over",
-        "aboutNoraneko": "Over Noraneko",
+        "aboutNoraneko": "Over Stratus",
         "debug": "Debug",
         "overview": "Overzicht",
         "features": "Functies"
@@ -61,9 +61,9 @@
             "description": "{{productName}} beschermt standaard je gegevens en privacy, maar je kunt deze instellingen ook handmatig beheren."
         },
         "ablazeAccount": {
-            "title": "Ablaze Account (binnenkort beschikbaar)",
-            "footerLinkText": "Ablaze Account",
-            "description": "Gebruik een Mozilla-account om bepaalde gegevens met andere apparaten te synchroniseren. Ablaze Account synchroniseert gegevens die niet met een Mozilla-account gesynchroniseerd kunnen worden."
+            "title": "Stratus Account (binnenkort beschikbaar)",
+            "footerLinkText": "Stratus Account",
+            "description": "Gebruik een Mozilla-account om bepaalde gegevens met andere apparaten te synchroniseren. Stratus Account synchroniseert gegevens die niet met een Mozilla-account gesynchroniseerd kunnen worden."
         },
         "manageExtensions": {
             "title": "Extensies beheren",
@@ -227,7 +227,7 @@
             },
             "newtab": {
                 "title": "Nieuw tabblad",
-                "disableFloorpStart": "Disable Floorp Start"
+                "disableFloorpStart": "Disable Stratus Start"
             },
             "multirowTab": {
                 "title": "Multirow Tab",
@@ -255,7 +255,7 @@
         "closePopupWhenSelectingWorkspace": "Close workspace popup when selecting a workspace",
         "closePopupWhenSelectingWorkspaceDescription": "Choose whether to close the workspace popup when selecting a workspace.",
         "showWorkspaceNameOnToolbar": "Show workspace name next to the icon",
-        "exitOnLastTabClose": "Exit Floorp when last workspace tab is closed",
+        "exitOnLastTabClose": "Exit Stratus when last workspace tab is closed",
         "manageOnBms": "Manage workspaces on {{productName}} sidebar",
         "manageOnBmsDescription": "When this feature is enabled, you can only manage workspaces on the {{productName}} sidebar. You won't be able to manage workspaces using the toolbar button.",
         "backup": "Workspace Backup",
@@ -274,7 +274,7 @@
     },
     "accounts": {
         "profileAndAccount": "Profile and Account",
-        "profileDescription": "Profiles contain browsing-related information such as history, bookmarks, settings, and add-ons. Floorp uses this profile to save data.",
+        "profileDescription": "Profiles contain browsing-related information such as history, bookmarks, settings, and add-ons. Stratus uses this profile to save data.",
         "profileManagement": "Profile Management",
         "profileManagementDescription": "Profiles can be created and separated from each other, and their data is stored in the profile folder.",
         "currentProfileName": "Current Profile Name: {{name}}",
@@ -294,7 +294,7 @@
         "releaseNotes": "Release Notes & More Information",
         "browserVersion": "{{productName}} version: {{browserVersion}} | Firefox version: {{firefoxVersion}}",
         "isOfficialBuild": "(Official Build)",
-        "browserDescription": "{{productName}} is a browser developed in Japan. It's built on Firefox under Ablaze to improve the web.",
+        "browserDescription": "{{productName}} is a browser developed in Japan. It's built on Firefox under Stratus to improve the web.",
         "browser": "{{productName}}",
         "copyright": "© 2024 {{productName}} Project. All rights reserved.",
         "openSourceLicense": "{{productName}} is open-source software available under the Mozilla Public License 2.0, made possible by the Firefox open-source project and other open-source software.",
@@ -462,12 +462,12 @@
         "errorSettingContainer": "Failed to set container"
     },
     "floorpOS": {
-        "title": "Floorp OS",
-        "description": "Manage Floorp OS backend modules and services",
+        "title": "Stratus OS",
+        "description": "Manage Stratus OS backend modules and services",
         "loading": "Loading...",
         "statusCard": {
             "title": "Status",
-            "description": "Current status of Floorp OS",
+            "description": "Current status of Stratus OS",
             "platformSupport": "Platform Support",
             "platformSupported": "Your platform is supported",
             "platformUnsupported": "Your platform is not supported",
@@ -483,24 +483,24 @@
         },
         "controlsCard": {
             "title": "Controls",
-            "description": "Enable or disable Floorp OS",
-            "enable": "Enable Floorp OS",
-            "disable": "Disable Floorp OS",
+            "description": "Enable or disable Stratus OS",
+            "enable": "Enable Stratus OS",
+            "disable": "Disable Stratus OS",
             "refresh": "Refresh Status"
         },
         "messages": {
-            "enabling": "Enabling Floorp OS...",
-            "disabling": "Disabling Floorp OS...",
-            "enableSuccess": "Floorp OS enabled successfully!",
-            "disableSuccess": "Floorp OS disabled successfully!"
+            "enabling": "Enabling Stratus OS...",
+            "disabling": "Disabling Stratus OS...",
+            "enableSuccess": "Stratus OS enabled successfully!",
+            "disableSuccess": "Stratus OS disabled successfully!"
         },
         "errors": {
             "apiUnavailable": "OSAutomotor API is not available.",
             "loadStatus": "Failed to load status: {{reason}}",
-            "enable": "Failed to enable Floorp OS.",
-            "disable": "Failed to disable Floorp OS.",
-            "enableAction": "Error enabling Floorp OS: {{reason}}",
-            "disableAction": "Error disabling Floorp OS: {{reason}}"
+            "enable": "Failed to enable Stratus OS.",
+            "disable": "Failed to disable Stratus OS.",
+            "enableAction": "Error enabling Stratus OS: {{reason}}",
+            "disableAction": "Error disabling Stratus OS: {{reason}}"
         }
     },
     "mouseGesture": {
@@ -624,7 +624,7 @@
             "gecko-scroll-line-down": "Scroll Down",
             "floorp-toggle-command-palette": "Toggle Command Palette",
             "floorp-open-settings": "Open Settings",
-            "floorp-open-hub": "Open Floorp Hub",
+            "floorp-open-hub": "Open Stratus Hub",
             "floorp-toggle-share-mode": "Toggle Share Mode",
             "floorp-copy-page-url-as-markdown": "Copy Page URL as Markdown",
             "floorp-split-view-open-left": "Split View Left",

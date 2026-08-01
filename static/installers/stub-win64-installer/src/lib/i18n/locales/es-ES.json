@@ -5,8 +5,8 @@
             "installComplete": "Instalación completa"
         },
         "installer": {
-            "title": "Instalador de Floorp",
-            "description": "Instala el navegador Floorp y empieza a disfrutar de una experiencia de navegación centrada en la privacidad, rapidez y la personalización.",
+            "title": "Instalador de Stratus",
+            "description": "Instala el navegador Stratus y empieza a disfrutar de una experiencia de navegación centrada en la privacidad, rapidez y la personalización.",
             "adminRights": "Instalar con derechos de administrador",
             "adminRightsEnabled": "Instalar para todos los usuarios con derechos de administrador.",
             "adminRightsDisabled": "Instalar para el usuario actual.",
@@ -31,14 +31,14 @@
         },
         "exitConfirmation": {
             "title": "¿Cancelar la instalación?",
-            "message": "Cancelar el proceso de instalación impedirá que se instale Floorp.",
+            "message": "Cancelar el proceso de instalación impedirá que se instale Stratus.",
             "cancelButton": "Cancelar",
             "confirmButton": "Cancelar la instalación"
         },
         "complete": {
             "success": "Instalación exitosa",
             "error": "Instalación fallida",
-            "launchCheckbox": "Iniciar el navegador Floorp tras la instalación",
+            "launchCheckbox": "Iniciar el navegador Stratus tras la instalación",
             "closeButton": "Cerrar Instalador",
             "countdownMessage": "El instalador se cerrará en {{count}} segundos",
             "legacyDownloadMessage": "También puedes probar el instalador heredado.",
@@ -48,38 +48,38 @@
     "slides": {
         "slide1": {
             "title": "Bienvenido/a a Florp",
-            "description": "Bienvenido a la última versión de Floorp, un navegador web desarrollado con especial atención al desarrollo y la investigación en Japón. El contenido que se presenta a continuación es sólo una parte del proyecto."
+            "description": "Bienvenido a la última versión de Stratus, un navegador web desarrollado con especial atención al desarrollo y la investigación en Japón. El contenido que se presenta a continuación es sólo una parte del proyecto."
         },
         "slide2": {
             "title": "Actualizaciones regulares",
-            "description": "Floorp es mantenido y actualizado continuamente, incluso como un proyecto basado en la comunidad. Proporcionamos navegación segura alineada con el principio de que la web debe ser accesible libremente a todos."
+            "description": "Stratus es mantenido y actualizado continuamente, incluso como un proyecto basado en la comunidad. Proporcionamos navegación segura alineada con el principio de que la web debe ser accesible libremente a todos."
         },
         "slide3": {
             "title": "Últimas características",
-            "description": "La última versión de Floorp aprovecha las características web de vanguardia desarrolladas por Mozilla Firefox. También ha sido rediseñada para hacer que todas las herramientas deseadas sean fácilmente accesibles."
+            "description": "La última versión de Stratus aprovecha las características web de vanguardia desarrolladas por Mozilla Firefox. También ha sido rediseñada para hacer que todas las herramientas deseadas sean fácilmente accesibles."
         },
         "slide4": {
             "title": "Personalización avanzada",
-            "description": "Equipado con numerosas opciones de personalización para mantener la privacidad mejor que su navegador predeterminado. Floorp le permite realizar su configuración preferida."
+            "description": "Equipado con numerosas opciones de personalización para mantener la privacidad mejor que su navegador predeterminado. Stratus le permite realizar su configuración preferida."
         },
         "slide5": {
             "title": "Luchando por ti",
-            "description": "Floorp bloquea el seguimiento dañino. Equilibramos la operación del sitio web y los derechos del usuario, trabajando para mejorar la web tanto en funcionalidad como en privacidad."
+            "description": "Stratus bloquea el seguimiento dañino. Equilibramos la operación del sitio web y los derechos del usuario, trabajando para mejorar la web tanto en funcionalidad como en privacidad."
         }
     },
     "rust": {
         "success": {
-            "downloaded_dev_mode": "Se ha descargado el instalador de Floorp (modo de desarrollo)",
-            "installation_complete": "La instalación de Floorp ha finalizado correctamente."
+            "downloaded_dev_mode": "Se ha descargado el instalador de Stratus (modo de desarrollo)",
+            "installation_complete": "La instalación de Stratus ha finalizado correctamente."
         },
         "errors": {
-            "installer_not_found": "Error al recuperar el instalador de Floorp.",
+            "installer_not_found": "Error al recuperar el instalador de Stratus.",
             "download_failed": "Se ha producido un error durante la descarga: {{0}}",
             "signature_verification_failed": "Falló la verificación de firma del instalador. Ejecutación abortada por razones de seguridad.",
             "signature_verification_error": "Se ha producido un error durante la verificación de la firma: {{0}}",
             "installer_exit_code": "El instalador ha salido con el código {{0}}.",
             "installer_execution": "Se ha producido un error al ejecutar el instalador: {{0}}",
-            "browser_not_found": "Navegador Floorp no encontrado. La instalación se ha realizado correctamente, pero no se ha encontrado el ejecutable del navegador.",
+            "browser_not_found": "Navegador Stratus no encontrado. La instalación se ha realizado correctamente, pero no se ha encontrado el ejecutable del navegador.",
             "browser_launch_failed": "Error al iniciar el navegador: {{0}}",
             "file_not_found": "Archivo no encontrado: {{0}}",
             "not_a_file": "La ruta no es un archivo: {{0}}",
@@ -90,7 +90,7 @@
             "admin_install_failed": "Error de instalación con derechos de administrador. Código de salida: {{0}}",
             "user_installer_launch": "Error al iniciar el proceso de instalación con derechos de usuario: {{0}}",
             "user_installer_execution": "Se ha producido un problema al ejecutar el instalador con derechos de usuario: {{0}}",
-            "cpu_not_supported": "La CPU de este dispositivo no soporta SSE4.1. Floorp requiere un procesador compatible con SSE4.1.",
+            "cpu_not_supported": "La CPU de este dispositivo no soporta SSE4.1. Stratus requiere un procesador compatible con SSE4.1.",
             "cpu_check_failed": "Error al verificar los requisitos de CPU. Por favor, compruebe los requisitos del sistema."
         }
     }

@@ -52,6 +52,24 @@ export function createSymlink(link: string, target: string): void {
     Deno.symlinkSync(target, link);
   // deno-lint-ignore no-explicit-any
   } catch (e: any) {
+    // On Windows, creating a real symlink requires either an elevated shell or
+    // Developer Mode (SeCreateSymbolicLinkPrivilege, os error 1314). Directory
+    // junctions do not need any privilege, so fall back to them. Junctions are
+    // only valid for directory targets, which is true for all callers in this
+    // repo (link-features-chrome, link-i18n, link-modules, _dist mounts).
+    if (Deno.build.os === "windows") {
+      try {
+        Deno.symlinkSync(target, link, { type: "junction" });
+        return;
+      // deno-lint-ignore no-explicit-any
+      } catch (fallbackError: any) {
+        console.warn(
+          `Failed to create symlink ${link} -> ${target}: ${e?.message ?? e} ` +
+            `(junction fallback also failed: ${fallbackError?.message ?? fallbackError})`,
+        );
+        return;
+      }
+    }
     console.warn(
       `Failed to create symlink ${link} -> ${target}: ${e?.message ?? e}`,
     );

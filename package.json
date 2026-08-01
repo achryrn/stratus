@@ -1,11 +1,16 @@
 {
-  "name": "noraneko-bin",
-  "version": "12.16.4",
-  "description": "",
+  "name": "stratus",
+  "version": "0.1.0-alpha",
+  "description": "Stratus Browser — a fully branded, production-quality browser built on Mozilla Firefox's rendering engine via the Floorp overlay architecture.",
   "main": "index.js",
   "type": "module",
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "browser",
+    "stratus",
+    "firefox",
+    "floorp"
+  ],
+  "author": "Stratus Browser Project",
   "private": true,
   "license": "MPL-2.0",
   "devDependencies": {

@@ -4,12 +4,12 @@
     "tooltiptext": "Buka kembali tab yang baru saja ditutup {{shortcut}}"
   },
   "floorpHubWarning": {
-    "message": "Pengaturan spesifik Floorp seperti bilah sisi, Ruang Kerja, dan gestur tetikus dikelola di Floorp Hub.",
-    "openButton": "Buka Floorp Hub"
+    "message": "Pengaturan spesifik Stratus seperti bilah sisi, Ruang Kerja, dan gestur tetikus dikelola di Stratus Hub.",
+    "openButton": "Buka Stratus Hub"
   },
   "floorpStartWarning": {
-    "message": "Untuk mengubah pengaturan \"Home\", nonaktifkan Floorp Start dari Floorp Hub (about:hub#/features/design).",
-    "openButton": "Buka Floorp Hub — Desain"
+    "message": "Untuk mengubah pengaturan \"Home\", nonaktifkan Stratus Start dari Stratus Hub (about:hub#/features/design).",
+    "openButton": "Buka Stratus Hub — Desain"
   },
   "workspaces": {
     "modal": {
@@ -219,7 +219,7 @@
       "floorp-toggle-zen-mode": "Toggle Zen Mode",
       "floorp-toggle-command-palette": "Toggle Command Palette",
       "floorp-open-settings": "Buka Pengaturan",
-      "floorp-open-hub": "Buka Floorp Hub",
+      "floorp-open-hub": "Buka Stratus Hub",
       "floorp-toggle-share-mode": "Toggle Share Mode",
       "floorp-copy-page-url-as-markdown": "Salin URL Halaman sebagai Markdown",
       "floorp-split-view-open-left": "Split View Left",
@@ -248,8 +248,8 @@
       "gecko-restore-last-tab": "Buka kembali tab yang baru ditutup",
       "floorp-toggle-zen-mode": "Toggle Zen Mode to hide all UI elements for distraction-free browsing",
       "floorp-toggle-command-palette": "Open or close the command palette to search and execute commands",
-      "floorp-open-settings": "Membuka halaman pengaturan Floorp",
-      "floorp-open-hub": "Membuka halaman Floorp Hub",
+      "floorp-open-settings": "Membuka halaman pengaturan Stratus",
+      "floorp-open-hub": "Membuka halaman Stratus Hub",
       "floorp-toggle-share-mode": "Toggle Share Mode to minimize UI for screen sharing and presentations",
       "floorp-copy-page-url-as-markdown": "Menyalin judul dan URL halaman saat ini dengan format tautan Markdown: [Judul](URL)",
       "floorp-split-view-open-left": "Open the current tab in a split view on the left side",
@@ -368,7 +368,7 @@
   },
   "chromeWebStore": {
     "button": {
-      "addToFloorp": "Tambahkan ke Floorp",
+      "addToFloorp": "Tambahkan ke Stratus",
       "installing": "Memasang …",
       "success": "Ditambahkan!",
       "error": "Terjadi galat",
@@ -376,7 +376,7 @@
     },
     "error": {
       "title": "Galat pemasangan",
-      "compatibilityNote": "Ekstensi ini mungkin tidak kompatibel dengan Firefox/Floorp.",
+      "compatibilityNote": "Ekstensi ini mungkin tidak kompatibel dengan Firefox/Stratus.",
       "alreadyInstalled": "Ekstensi ini sudah terpasang ({{name}})",
       "downloadFailed": "Gagal mengunduh berkas CRX",
       "conversionFailed": "Gagal mengonversi ekstensi: {{error}}",
@@ -398,7 +398,7 @@
       "downloadFailed": "Unduhan gagal",
       "signatureVerifyFailed": "Gagal memverifikasi tanda tangan ekstensi",
       "corruptOrIncompatible": "Ekstensi rusak atau tak kompatibel",
-      "incompatible": "Ekstensi ini tidak kompatibel dengan Floorp",
+      "incompatible": "Ekstensi ini tidak kompatibel dengan Stratus",
       "blocked": "Ekstensi ini diblokir",
       "timeout": "Extension installation timed out",
       "installFailed": "Pemasangan ekstensi gagal",
@@ -418,7 +418,7 @@
   },
   "hub": {
     "menu": {
-      "title": "Floorp Hub"
+      "title": "Stratus Hub"
     }
   },
   "splitView": {
@@ -451,7 +451,7 @@
   "ipProtection": {
     "title": "Browser VPN",
     "toolbar": {
-      "activeTooltip": "Browser VPN is on for eligible web browsing traffic in Floorp",
+      "activeTooltip": "Browser VPN is on for eligible web browsing traffic in Stratus",
       "inactiveTooltip": "Browser VPN is off — web browsing traffic is not protected",
       "excludedTooltip": "Browser VPN is off for this site — this site is not protected",
       "pausedTooltip": "Browser VPN is paused — web browsing traffic is not protected",
@@ -459,15 +459,15 @@
       "helpTooltip": "Open Browser VPN support page"
     },
     "scope": {
-      "summary": "When active, Browser VPN can protect eligible web browsing traffic in Floorp. Its scope does not include your operating system or other apps.",
-      "fullDisclosure": "This feature uses a Mozilla account and Mozilla service infrastructure. Floorp is an independent project and is not affiliated with, endorsed by, or sponsored by Mozilla. Availability depends on your region, account status, and Mozilla’s service eligibility requirements."
+      "summary": "When active, Browser VPN can protect eligible web browsing traffic in Stratus. Its scope does not include your operating system or other apps.",
+      "fullDisclosure": "This feature uses a Mozilla account and Mozilla service infrastructure. Stratus is an independent project and is not affiliated with, endorsed by, or sponsored by Mozilla. Availability depends on your region, account status, and Mozilla’s service eligibility requirements."
     },
     "unauthenticated": {
       "title": "Try Browser VPN"
     },
     "settings": {
       "promoHeading": "Try Browser VPN",
-      "promoMessage": "Protect eligible web browsing traffic in Floorp after signing in and confirming service availability."
+      "promoMessage": "Protect eligible web browsing traffic in Stratus after signing in and confirming service availability."
     },
     "terms": {
       "prefix": "By continuing, you agree to ",
@@ -496,7 +496,7 @@
       "tools": "Alat",
       "downloads": "Unduhan",
       "workspace": "Ruang Kerja",
-      "floorp": "Floorp",
+      "floorp": "Stratus",
       "media": "Media",
       "open-tabs": "Tab Terbuka",
       "switcher": "Switcher",

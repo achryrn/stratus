@@ -43,7 +43,7 @@ export class NRWebContentModifierParent extends JSWindowActorParent {
               win.PopupNotifications.show(
                 this.browsingContext.topFrameElement,
                 "floorp-content-modified",
-                "Floorp.app content has been modified",
+                "stratus-browser.org content has been modified",
                 "tab",
                 null,
                 null,
@@ -330,9 +330,9 @@ export class NRWebContentModifierParent extends JSWindowActorParent {
 
       console.log("NRWebContentModifierParent: Current URL:", currentUrl);
 
-      if (currentUrl.includes("floorp.app")) {
+      if (currentUrl.includes("stratus-browser.org")) {
         console.log(
-          "NRWebContentModifierParent: Floorp website is opened:",
+          "NRWebContentModifierParent: Stratus website is opened:",
           currentUrl,
         );
         return actor.sendQuery("WebContentModifier:ModifyFloorpHeading");

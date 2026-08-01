@@ -35,9 +35,9 @@ export class NRWebContentModifierChild extends JSWindowActorChild {
       const url = this.document?.location?.href;
       console.log(`NRWebContentModifier: DOMContentLoaded fired for ${url}`);
 
-      if (url?.includes("floorp.app")) {
+      if (url?.includes("stratus-browser.org")) {
         console.log(
-          "NRWebContentModifier: floorp.app detected, attempting to modify heading",
+          "NRWebContentModifier: stratus-browser.org detected, attempting to modify heading",
         );
         setTimeout(() => this.modifyFloorpHeading(), 3000);
       }
@@ -482,7 +482,7 @@ export class NRWebContentModifierChild extends JSWindowActorChild {
           targetElement.removeChild(targetElement.firstChild);
         }
 
-        targetElement.textContent = "Floorp 12 is coming";
+        targetElement.textContent = "Stratus 12 is coming";
 
         targetElement.style.color = "#0078D4";
         targetElement.style.fontSize = "42px";

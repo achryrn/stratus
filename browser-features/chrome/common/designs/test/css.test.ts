@@ -213,6 +213,38 @@ function testStratusCoversUrlbarFocus(): void {
   );
 }
 
+function testStratusCoversWorkspaces(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes('.workspaceButton[data-selected="true"]'),
+    "stratus should style the selected workspace with the accent",
+  );
+  assert(
+    css.includes("#workspaces-toolbar-button"),
+    "stratus should give the workspaces toolbar button the tab radius",
+  );
+  assert(
+    css.includes(".workspaceRestoreItemButton"),
+    "stratus should style workspace restore items",
+  );
+}
+
+function testStratusCoversSplitView(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes(".floorp-split-handle:hover::after"),
+    "stratus should tint split view drag handles with the accent",
+  );
+  assert(
+    css.includes(".floorp-grid-handle:hover::after"),
+    "stratus should tint split view grid handles with the accent",
+  );
+  assert(
+    css.includes("#split-view-button"),
+    "stratus should give the split view button the tab radius",
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Tests — lepton theme
 // ---------------------------------------------------------------------------
@@ -567,6 +599,14 @@ export async function runAllTests(): Promise<void> {
     {
       name: "stratus covers urlbar focus",
       fn: testStratusCoversUrlbarFocus,
+    },
+    {
+      name: "stratus covers workspaces",
+      fn: testStratusCoversWorkspaces,
+    },
+    {
+      name: "stratus covers split view",
+      fn: testStratusCoversSplitView,
     },
     // lepton
     { name: "lepton returns userjs", fn: testLeptonReturnsUserjs },

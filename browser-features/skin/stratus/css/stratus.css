@@ -380,3 +380,64 @@ findbar .findbar-textbox {
     transparent
   ) !important;
 }
+
+/* ------------------------------------------------------------------ *
+ * Workspaces — accent selection in toolbar popup
+ * ------------------------------------------------------------------ */
+
+#workspaces-toolbar-button {
+  border-radius: var(--stratus-tab-radius) !important;
+}
+
+#workspaces-toolbar-button:hover {
+  background-color: var(--stratus-tab-hover-background) !important;
+}
+
+/* Selected workspace — accent pill */
+.workspaceButton[data-selected="true"] {
+  background-color: color-mix(
+    in srgb,
+    var(--stratus-accent) 18%,
+    transparent
+  ) !important;
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--stratus-accent) 35%, transparent) !important;
+}
+
+.workspaceButton:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--stratus-accent) 8%,
+    transparent
+  ) !important;
+}
+
+/* Restore items — rounded accent hover surface */
+.workspaceRestoreItemButton {
+  border-radius: var(--stratus-tab-radius) !important;
+}
+
+.workspaceRestoreItemButton:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--stratus-accent) 8%,
+    transparent
+  ) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Split view — accent drag handles
+ * ------------------------------------------------------------------ */
+
+.floorp-split-handle:hover::after,
+.floorp-grid-handle:hover::after {
+  background: var(--stratus-accent) !important;
+}
+
+#split-view-button {
+  border-radius: var(--stratus-tab-radius) !important;
+}
+
+#split-view-button:hover {
+  background-color: var(--stratus-tab-hover-background) !important;
+}

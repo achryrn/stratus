@@ -245,6 +245,42 @@ function testStratusCoversSplitView(): void {
   );
 }
 
+function testStratusCoversPaletteDetails(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes(".command-palette-match"),
+    "stratus should tint matched query text with the accent",
+  );
+  assert(
+    css.includes("#command-palette-search"),
+    "stratus should give the palette search input an accent caret",
+  );
+  assert(
+    css.includes(".command-palette-step-error"),
+    "stratus should round the palette error chip",
+  );
+  assert(
+    css.includes(".command-palette-empty-title"),
+    "stratus should tint the palette empty state title",
+  );
+}
+
+function testStratusCoversSidebarDetails(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes(".floating-splitter-side:hover"),
+    "stratus should tint floating sidebar splitters with the accent",
+  );
+  assert(
+    css.includes(".floating-splitter-corner:hover"),
+    "stratus should tint floating sidebar corners with the accent",
+  );
+  assert(
+    css.includes("#panel-sidebar-header"),
+    "stratus should give the sidebar header an accent separator",
+  );
+}
+
 // ---------------------------------------------------------------------------
 // Tests — lepton theme
 // ---------------------------------------------------------------------------
@@ -607,6 +643,14 @@ export async function runAllTests(): Promise<void> {
     {
       name: "stratus covers split view",
       fn: testStratusCoversSplitView,
+    },
+    {
+      name: "stratus covers palette details",
+      fn: testStratusCoversPaletteDetails,
+    },
+    {
+      name: "stratus covers sidebar details",
+      fn: testStratusCoversSidebarDetails,
     },
     // lepton
     { name: "lepton returns userjs", fn: testLeptonReturnsUserjs },

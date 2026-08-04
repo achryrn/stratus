@@ -441,3 +441,59 @@ findbar .findbar-textbox {
 #split-view-button:hover {
   background-color: var(--stratus-tab-hover-background) !important;
 }
+
+/* ------------------------------------------------------------------ *
+ * Command palette — query highlight, caret, step details, empty state
+ * ------------------------------------------------------------------ */
+
+/* Matched query text — accent signature */
+.command-palette-match {
+  color: var(--stratus-accent) !important;
+}
+
+/* Search caret — accent */
+#command-palette-search {
+  caret-color: var(--stratus-accent) !important;
+}
+
+.command-palette-back-button:hover {
+  background: color-mix(
+    in srgb,
+    var(--stratus-accent) 14%,
+    transparent
+  ) !important;
+}
+
+.command-palette-step-breadcrumb {
+  color: color-mix(in srgb, var(--stratus-accent) 70%, currentColor) !important;
+}
+
+/* Error chip — rounded, keeps its semantic red */
+.command-palette-step-error {
+  border-radius: var(--stratus-tab-radius) !important;
+  border: 1px solid color-mix(in srgb, #e22850 30%, transparent) !important;
+  margin: 4px 8px !important;
+}
+
+.command-palette-empty-title {
+  color: color-mix(in srgb, var(--stratus-accent) 70%, currentColor) !important;
+}
+
+/* ------------------------------------------------------------------ *
+ * Panel sidebar — accent floating-splitter hover, header separator
+ * ------------------------------------------------------------------ */
+
+.floating-splitter-side:hover,
+.floating-splitter-vertical:hover,
+.floating-splitter-corner:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--stratus-accent) 22%,
+    transparent
+  ) !important;
+}
+
+#panel-sidebar-header {
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--stratus-accent) 15%, transparent) !important;
+}

@@ -265,6 +265,26 @@ function testStratusCoversPaletteDetails(): void {
   );
 }
 
+function testStratusCoversPaletteStepChoices(): void {
+  const css = getStratusInlineCss();
+  assert(
+    css.includes(".command-palette-step-choices"),
+    "stratus should style the palette step-choices scroll region",
+  );
+  assert(
+    css.includes(".command-palette-step-choice-item[data-selected=\"true\"]"),
+    "stratus should style the selected step choice",
+  );
+  assert(
+    css.includes(".command-palette-step-choice-label"),
+    "stratus should tint the selected step choice label with the accent",
+  );
+  assert(
+    css.includes(".command-palette-step-choices-loading"),
+    "stratus should style the palette choices loading state",
+  );
+}
+
 function testStratusCoversSidebarDetails(): void {
   const css = getStratusInlineCss();
   assert(
@@ -651,6 +671,10 @@ export async function runAllTests(): Promise<void> {
     {
       name: "stratus covers sidebar details",
       fn: testStratusCoversSidebarDetails,
+    },
+    {
+      name: "stratus covers palette step choices",
+      fn: testStratusCoversPaletteStepChoices,
     },
     // lepton
     { name: "lepton returns userjs", fn: testLeptonReturnsUserjs },

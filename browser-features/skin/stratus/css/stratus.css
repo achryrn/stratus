@@ -479,6 +479,30 @@ findbar .findbar-textbox {
   color: color-mix(in srgb, var(--stratus-accent) 70%, currentColor) !important;
 }
 
+/* Step-choices scroll region — matched to the command list */
+.command-palette-step-choices,
+.command-palette-list {
+  scrollbar-width: thin !important;
+  scrollbar-color: color-mix(
+      in srgb,
+      var(--stratus-accent) 35%,
+      transparent
+    )
+    transparent !important;
+}
+
+/* Choice label inherits accent on selection */
+.command-palette-step-choice-item[data-selected="true"]
+  .command-palette-step-choice-label {
+  color: var(--stratus-accent) !important;
+}
+
+/* Loading state — accent-tinted pill */
+.command-palette-step-choices-loading {
+  color: color-mix(in srgb, var(--stratus-accent) 70%, currentColor) !important;
+  padding: 8px 16px !important;
+}
+
 /* ------------------------------------------------------------------ *
  * Panel sidebar — accent floating-splitter hover, header separator
  * ------------------------------------------------------------------ */

@@ -38,6 +38,7 @@ interface DragScenario {
   dispatchDropToContent: () => Event;
   draggedTab: TestTab;
   eventOrder: () => string[];
+  firstRecoverySignalAt: number;
   nativeFinalizerCalls: () => string[];
   tabpanels: HTMLElement;
 }
@@ -305,6 +306,10 @@ function setupDragScenario(options: DragScenarioOptions = {}): DragScenario {
       createTabDragEvent("dragover", 100, 50, draggedTab),
     );
   };
+  // The drop schedules the lost-terminal recovery, which fixes the 1s
+  // recovery deadline from the first signal. Record that moment so tests
+  // can wait for the wall-clock deadline without racing timer stalls.
+  const firstRecoverySignalAt = Date.now();
   const dispatchDropToContent = (): Event => {
     const drop = createTabDragEvent("drop", 100, 50, draggedTab);
     document.dispatchEvent(drop);
@@ -320,6 +325,7 @@ function setupDragScenario(options: DragScenarioOptions = {}): DragScenario {
     addTabSplitViewCalls: () => addTabSplitViewCalls,
     draggedTab,
     eventOrder: () => [...eventOrder],
+    firstRecoverySignalAt,
     nativeFinalizerCalls: () => [...nativeFinalizerCalls],
     tabpanels,
     dispatchDragEnd,
@@ -373,6 +379,34 @@ function waitForRecoveryRetry(): Promise<void> {
 
 function waitForRecoveryDeadline(): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, 1250));
+}
+
+/**
+ * Poll for an asynchronous recovery state with a bounded deadline. The
+ * browser event loop can stall under load (GC, startup work), delaying the
+ * watchdog and recovery timers; fixed sleeps then race the assertions.
+ */
+function waitUntil(
+  predicate: () => boolean,
+  message: string,
+  timeoutMs: number,
+  intervalMs = 50,
+): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const deadline = Date.now() + timeoutMs;
+    const poll = (): void => {
+      if (predicate()) {
+        resolve();
+        return;
+      }
+      if (Date.now() >= deadline) {
+        reject(new Error(`Timed out waiting for: ${message}`));
+        return;
+      }
+      setTimeout(poll, intervalMs);
+    };
+    poll();
+  });
 }
 
 async function withEnabledDragScenario(
@@ -645,8 +679,13 @@ async function testActiveSessionRetriesThenCreatesOneSplit(): Promise<void> {
     scenario.dispatchDragStartAndOver();
     scenario.dispatchDropToContent();
 
-    await waitForRecoveryRetry();
+    await waitUntil(
+      () => sessionReads >= 2,
+      "recovery to retry after the first active native session",
+      3000,
+    );
 
+    // Read 2 returns null and finalizes, so no third read can occur.
     assertEquals(
       sessionReads,
       2,
@@ -677,15 +716,24 @@ async function testActiveSessionDeadlineDiscardsWithoutResurrection(): Promise<
   const activeSession = {} as nsIDragSession;
   let sessionActive = true;
   let sessionReads = 0;
+  let lastReadAt = 0;
   await withEnabledDragScenario(async (scenario) => {
     scenario.dispatchDragStartAndOver();
     scenario.dispatchDropToContent();
 
-    await waitForRecoveryDeadline();
-
-    assert(
-      sessionReads > 1,
-      "an active session should be retried before the bounded deadline",
+    // The retry loop must run until the 1s bounded deadline expires and the
+    // transaction is discarded. That terminal state is observable as the
+    // reader going quiet (expiry cancels the retry timer) AND the wall-clock
+    // deadline having passed (a jitter stall can otherwise make reads go
+    // quiet before the deadline, with a stale timer still queued). Waiting
+    // for a read count alone resolves before the deadline.
+    await waitUntil(
+      () =>
+        sessionReads > 1 &&
+        Date.now() - lastReadAt >= 250 &&
+        Date.now() >= scenario.firstRecoverySignalAt + 1000,
+      "the active-session retry loop to settle through the bounded deadline",
+      5000,
     );
     assertEquals(
       scenario.nativeFinalizerCalls().length,
@@ -716,6 +764,7 @@ async function testActiveSessionDeadlineDiscardsWithoutResurrection(): Promise<
   }, {
     readNativeDragSession: () => {
       sessionReads += 1;
+      lastReadAt = Date.now();
       return sessionActive ? activeSession : null;
     },
   });
@@ -813,12 +862,30 @@ async function testStuckWatchdogRecoversWithoutCreatingSplit(): Promise<void> {
   await withEnabledDragScenario(async (scenario) => {
     scenario.dispatchDragStartAndOver();
 
-    await new Promise((resolve) => setTimeout(resolve, 2250));
-
+    // The stuck-drag watchdog is a 2s no-input timeout. Before it fires the
+    // drag must still look active; timers never run early, so this check is
+    // stall-proof (the 1s check always expires before the 2s watchdog).
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     assert(
-      !scenario.tabpanels.hasAttribute("data-floorp-tab-dragging"),
-      "the watchdog should restore content input before recovery settles",
+      scenario.tabpanels.hasAttribute("data-floorp-tab-dragging"),
+      "before the stuck-drag watchdog deadline the drag UI should remain active",
     );
+
+    // After the watchdog fires, content input is restored immediately and
+    // guarded native recovery settles within its 1s deadline. Poll instead of
+    // sleeping a fixed 2250ms: event-loop stalls delay the timers, and a
+    // fixed sleep races them.
+    await waitUntil(
+      () => !scenario.tabpanels.hasAttribute("data-floorp-tab-dragging"),
+      "the watchdog to restore content input",
+      4000,
+    );
+    await waitUntil(
+      () => scenario.nativeFinalizerCalls().length > 0,
+      "the guarded native recovery to settle",
+      4000,
+    );
+
     assertEquals(
       scenario.nativeFinalizerCalls().join(" > "),
       "finishMoveTogetherSelectedTabs > finishAnimateTabMove > " +

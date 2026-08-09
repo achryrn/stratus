@@ -191,21 +191,41 @@ python mach run
 
 ### 4.1 Toolchain Verification
 
-- [ ] `deno --version` → 2.9.4+
-- [ ] `git --version` → 2.55.0+
-- [ ] `python --version` → 3.8+
-- [ ] `clang --version` → 18+
-- [ ] `nasm --version` → 2.14+
-- [ ] `perl --version` → 5.30+
-- [ ] VS2022 Build Tools with C++ workload present
-- [ ] `deno task test:host` passes in this repo (209 tests)
+- [x] `deno --version` → 2.9.4+ ✅ (verified 2026-08-09)
+- [x] `git --version` → 2.55.0+
+- [x] `python --version` → 3.8+
+- [x] `clang --version` → 18+
+- [x] `nasm --version` → 2.14+
+- [x] `perl --version` → 5.30+
+- [x] VS2022 Build Tools with C++ workload present
+- [x] `deno task test:host` passes in this repo ✅ **209 passed, 0 failed (9s)** — verified 2026-08-09
 
 ### 4.2 Lock File Verification
 
-- [ ] `floorp-runtime.lock.json` present at repo root
-- [ ] `validate-lock` passes with `schemaVersion: 1`
-- [ ] Source ref = `daily-998`, commit = `2d38da4d`
-- [ ] Material count = 53, totalBytes = 220264
+- [x] `floorp-runtime.lock.json` present at repo root
+- [x] `validate-lock` passes with `schemaVersion: 1` ✅ (verified 2026-08-09)
+- [x] Source ref = `daily-998`, commit = `2d38da4d`
+- [x] Material count = 53, totalBytes = 220264
+- [x] Artifacts: 4 platforms (linux aarch64/x86_64, macos universal, windows x86_64)
+- [x] Windows artifact: `floorp-windows-x86_64-moz-artifact.zip` (assetId 489491165)
+- [x] Build ID: `20260725075208`, version `153.0`
+
+**Verified output (2026-08-09):**
+```json
+{
+  "repository": "Floorp-Projects/Floorp-Runtime",
+  "trackingRef": "nora-0.2.0",
+  "ref": "daily-998",
+  "commit": "2d38da4d11be1e0e615f4ddd785ad5e77c95e18d",
+  "tree": "e555a371e1a24f18c8085058461f92c06e0b997d",
+  "releaseId": 359773143,
+  "materials": 53,
+  "materialBytes": 220264,
+  "tests": 8,
+  "tasks": 15,
+  "artifacts": [4 platform artifacts]
+}
+```
 
 ### 4.3 Network Verification
 

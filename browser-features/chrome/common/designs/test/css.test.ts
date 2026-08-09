@@ -302,6 +302,54 @@ function testStratusCoversSidebarDetails(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Tests — Vertical Tabs Configuration
+// ---------------------------------------------------------------------------
+
+function testVerticalTabsConfigPersistence(): void {
+  // Test that the new string-based pref can be set and retrieved
+  try {
+    Services.prefs.setCharPref("floorp.tabbar.style.current", "vertical");
+    const value = Services.prefs.getCharPref("floorp.tabbar.style.current", "");
+    assertEquals(value, "vertical", "vertical tabs pref should persist");
+
+    // Reset to horizontal
+    Services.prefs.setCharPref("floorp.tabbar.style.current", "horizontal");
+    const resetValue = Services.prefs.getCharPref(
+      "floorp.tabbar.style.current",
+      "",
+    );
+    assertEquals(resetValue, "horizontal", "tabbar style should reset to horizontal");
+  } catch (e) {
+    throw new Error(`Failed to persist vertical tabs config: ${e}`);
+  }
+}
+
+function testVerticalTabsBackwardCompatibility(): void {
+  // Test that old int-based pref still works via migrator
+  const { getOldTabbarStyleConfig } = await import(
+    "../utils/old-config-migrator.ts"
+  );
+
+  try {
+    // Clear new pref
+    Services.prefs.clearUserPref("floorp.tabbar.style.current");
+
+    // Set old int-based pref to vertical (2)
+    Services.prefs.setIntPref("floorp.tabbar.style", 2);
+    assertEquals(
+      getOldTabbarStyleConfig(),
+      "vertical",
+      "old int-based pref (2) should map to vertical",
+    );
+
+    // Reset
+    Services.prefs.clearUserPref("floorp.tabbar.style");
+  } catch (e) {
+    throw new Error(`Failed backward compatibility test: ${e}`);
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Tests — lepton theme
 // ---------------------------------------------------------------------------
 
@@ -675,6 +723,15 @@ export async function runAllTests(): Promise<void> {
     {
       name: "stratus covers palette step choices",
       fn: testStratusCoversPaletteStepChoices,
+    },
+    // vertical tabs configuration
+    {
+      name: "vertical tabs config persistence",
+      fn: testVerticalTabsConfigPersistence,
+    },
+    {
+      name: "vertical tabs backward compatibility",
+      fn: testVerticalTabsBackwardCompatibility,
     },
     // lepton
     { name: "lepton returns userjs", fn: testLeptonReturnsUserjs },

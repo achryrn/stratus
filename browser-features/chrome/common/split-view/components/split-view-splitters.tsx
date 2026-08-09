@@ -9,6 +9,25 @@ import {
   resolvePaneSizesForPanelIds,
 } from "../patches/session-restore.js";
 import { forceCleanupDragState } from "../utils/force-cleanup.js";
+import {
+  formatResizeAnnouncement,
+  nextFlexRatio,
+  nextGridRatio,
+} from "../utils/keyboard-resize.js";
+
+/** Keys handled by divider keyboard resize (WCAG 2.1.1). */
+const RESIZE_KEYS = new Set([
+  "ArrowLeft",
+  "ArrowRight",
+  "ArrowUp",
+  "ArrowDown",
+  "Home",
+  "End",
+]);
+
+/** aria-valuenow percentage range exposed to screen readers. */
+const ARIA_VALUE_MIN = 10;
+const ARIA_VALUE_MAX = 90;
 
 const log = console.createInstance({ prefix: "nora@split-view-splitters" });
 
@@ -158,8 +177,33 @@ export function insertFlexHandles(
     handle.setAttribute("data-index", String(i));
     (handle as HTMLElement).style.setProperty("order", String(2 * i + 1));
 
+    // WCAG 4.1.2: expose as a focusable separator with value semantics.
+    handle.setAttribute("role", "separator");
+    handle.setAttribute(
+      "aria-label",
+      orientation === "horizontal"
+        ? `Resize divider ${i + 1}: left and right panels`
+        : `Resize divider ${i + 1}: top and bottom panels`,
+    );
+    handle.setAttribute("aria-orientation", orientation);
+    handle.setAttribute("aria-valuemin", String(ARIA_VALUE_MIN));
+    handle.setAttribute("aria-valuemax", String(ARIA_VALUE_MAX));
+    handle.setAttribute(
+      "aria-valuenow",
+      String(Math.round(ratios[i]! * 100)),
+    );
+    handle.setAttribute("tabindex", "0");
+
     handle.addEventListener("mousedown", (e: Event) => {
       onFlexHandleMouseDown(e as MouseEvent, i, orderedIds, orientation);
+    });
+    handle.addEventListener("keydown", (e: Event) => {
+      onFlexHandleKeyDown(
+        e as KeyboardEvent,
+        i,
+        orderedIds,
+        orientation,
+      );
     });
 
     panelEl.after(handle);
@@ -201,8 +245,12 @@ export function insertGridHandles(panelIds: string[]): void {
   if (colHandle) {
     colHandle.className = "floorp-grid-handle";
     colHandle.setAttribute("data-orientation", "grid-col");
+    setGridHandleAria(colHandle, "grid-col", sizes.gridColRatio);
     colHandle.addEventListener("mousedown", (e: Event) => {
       onGridColHandleMouseDown(e as MouseEvent);
+    });
+    colHandle.addEventListener("keydown", (e: Event) => {
+      onGridHandleKeyDown(e as KeyboardEvent, "grid-col");
     });
     tabpanels.appendChild(colHandle);
   }
@@ -211,8 +259,12 @@ export function insertGridHandles(panelIds: string[]): void {
   if (rowHandle) {
     rowHandle.className = "floorp-grid-handle";
     rowHandle.setAttribute("data-orientation", "grid-row");
+    setGridHandleAria(rowHandle, "grid-row", sizes.gridRowRatio);
     rowHandle.addEventListener("mousedown", (e: Event) => {
       onGridRowHandleMouseDown(e as MouseEvent);
+    });
+    rowHandle.addEventListener("keydown", (e: Event) => {
+      onGridHandleKeyDown(e as KeyboardEvent, "grid-row");
     });
     tabpanels.appendChild(rowHandle);
   }
@@ -221,8 +273,12 @@ export function insertGridHandles(panelIds: string[]): void {
   if (centerHandle) {
     centerHandle.className = "floorp-grid-handle";
     centerHandle.setAttribute("data-orientation", "grid-center");
+    setGridHandleAria(centerHandle, "grid-center", sizes.gridColRatio);
     centerHandle.addEventListener("mousedown", (e: Event) => {
       onGridCenterHandleMouseDown(e as MouseEvent);
+    });
+    centerHandle.addEventListener("keydown", (e: Event) => {
+      onGridHandleKeyDown(e as KeyboardEvent, "grid-center");
     });
     tabpanels.appendChild(centerHandle);
   }
@@ -265,8 +321,12 @@ export function insertThreePaneGridHandles(panelIds: string[]): void {
   if (colHandle) {
     colHandle.className = "floorp-grid-handle";
     colHandle.setAttribute("data-orientation", "grid-3pane-col");
+    setGridHandleAria(colHandle, "grid-3pane-col", sizes.gridColRatio);
     colHandle.addEventListener("mousedown", (e: Event) => {
       onGridColHandleMouseDown(e as MouseEvent);
+    });
+    colHandle.addEventListener("keydown", (e: Event) => {
+      onGridHandleKeyDown(e as KeyboardEvent, "grid-3pane-col");
     });
     tabpanels.appendChild(colHandle);
   }
@@ -275,8 +335,12 @@ export function insertThreePaneGridHandles(panelIds: string[]): void {
   if (rowHandle) {
     rowHandle.className = "floorp-grid-handle";
     rowHandle.setAttribute("data-orientation", "grid-3pane-row");
+    setGridHandleAria(rowHandle, "grid-3pane-row", sizes.gridRowRatio);
     rowHandle.addEventListener("mousedown", (e: Event) => {
       onGridRowHandleMouseDown(e as MouseEvent);
+    });
+    rowHandle.addEventListener("keydown", (e: Event) => {
+      onGridHandleKeyDown(e as KeyboardEvent, "grid-3pane-row");
     });
     tabpanels.appendChild(rowHandle);
   }
@@ -310,6 +374,203 @@ export function updateHandles(
   } else {
     insertFlexHandles(panelIds, "horizontal");
   }
+}
+
+// ===== Keyboard resize (WCAG 2.1.1, 2.4.7, 4.1.2) =====
+
+/** Set ARIA separator semantics + tabindex on a grid handle. */
+function setGridHandleAria(
+  handle: Element,
+  orientation: string,
+  initialRatio: number,
+): void {
+  handle.setAttribute("role", "separator");
+  handle.setAttribute("aria-orientation", "horizontal");
+  handle.setAttribute("aria-valuemin", String(ARIA_VALUE_MIN));
+  handle.setAttribute("aria-valuemax", String(ARIA_VALUE_MAX));
+  handle.setAttribute(
+    "aria-valuenow",
+    String(Math.round(initialRatio * 100)),
+  );
+  handle.setAttribute("tabindex", "0");
+  const labels: Record<string, string> = {
+    "grid-col": "Resize divider: column split",
+    "grid-row": "Resize divider: row split",
+    "grid-center": "Resize divider: column and row split",
+    "grid-3pane-col": "Resize divider: main column split",
+    "grid-3pane-row": "Resize divider: stacked rows split",
+  };
+  handle.setAttribute("aria-label", labels[orientation] ?? "Resize divider");
+}
+
+/** Create or reuse a visually-hidden live region for resize announcements. */
+function getResizeLiveRegion(): HTMLElement | null {
+  let region = document?.getElementById("floorp-split-resize-live") as
+    | HTMLElement
+    | null;
+  if (!region && document?.body) {
+    region = document?.createElement("div");
+    if (region) {
+      region.id = "floorp-split-resize-live";
+      region.setAttribute("role", "status");
+      region.setAttribute("aria-live", "polite");
+      region.style.position = "absolute";
+      region.style.width = "1px";
+      region.style.height = "1px";
+      region.style.overflow = "hidden";
+      region.style.clip = "rect(0 0 0 0)";
+      region.style.whiteSpace = "nowrap";
+      document?.body.appendChild(region);
+    }
+  }
+  return region;
+}
+
+function announceResize(message: string): void {
+  const region = getResizeLiveRegion();
+  if (!region) return;
+  region.textContent = "";
+  // Force reflow so repeated identical announcements still fire (NVDA/JAWS).
+  void region.offsetHeight;
+  region.textContent = message;
+}
+
+/** Recompute flex ratios from panel flex styles; persist to session. */
+function persistCurrentFlexRatios(panelIds: string[]): void {
+  const ratios: number[] = [];
+  for (const id of panelIds) {
+    const el = document?.getElementById(id) as HTMLElement | null;
+    if (el) {
+      const flex = parseFloat(el.style.getPropertyValue("flex") || "1");
+      ratios.push(Number.isFinite(flex) ? flex : 1);
+    } else {
+      ratios.push(1);
+    }
+  }
+  const normalizedRatios = normalizeRatios(ratios, panelIds.length);
+  persistPaneSizesForPanelIds(panelIds, {
+    ...resolvePaneSizesForPanelIds(panelIds),
+    flexRatios: normalizedRatios,
+  });
+}
+
+/** Apply a keyboard-driven flex ratio step to the divider at `handleIndex`. */
+function applyFlexKeyboardStep(
+  handle: XULElement,
+  handleIndex: number,
+  panelIds: string[],
+  orientation: "horizontal" | "vertical",
+  key: string,
+  fine: boolean,
+): void {
+  const panelBefore = document?.getElementById(panelIds[handleIndex]) as
+    | HTMLElement
+    | null;
+  const panelAfter = document?.getElementById(panelIds[handleIndex + 1]) as
+    | HTMLElement
+    | null;
+  if (!panelBefore || !panelAfter) return;
+
+  const beforeRect = panelBefore.getBoundingClientRect();
+  const afterRect = panelAfter.getBoundingClientRect();
+  const totalSize = (orientation === "horizontal"
+    ? beforeRect.width
+    : beforeRect.height) + (orientation === "horizontal"
+    ? afterRect.width
+    : afterRect.height);
+  if (!totalSize || totalSize <= 0) return;
+
+  const currentRatio = beforeRect.width / totalSize;
+  const nextRatio = nextFlexRatio(currentRatio, key, fine);
+  if (nextRatio === currentRatio) return;
+
+  panelBefore.style.setProperty("flex", `${nextRatio} 1 0%`);
+  panelAfter.style.setProperty("flex", `${1 - nextRatio} 1 0%`);
+  handle.setAttribute("aria-valuenow", String(Math.round(nextRatio * 100)));
+  announceResize(formatResizeAnnouncement(nextRatio, orientation));
+  persistCurrentFlexRatios(panelIds);
+  log.debug(
+    `[flexKey] handle=${handleIndex} key=${key} fine=${fine} ratio=${nextRatio.toFixed(3)}`,
+  );
+}
+
+function onFlexHandleKeyDown(
+  e: KeyboardEvent,
+  handleIndex: number,
+  panelIds: string[],
+  orientation: "horizontal" | "vertical",
+): void {
+  if (!RESIZE_KEYS.has(e.key)) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const handle = e.currentTarget as XULElement;
+  applyFlexKeyboardStep(
+    handle,
+    handleIndex,
+    panelIds,
+    orientation,
+    e.key,
+    e.shiftKey,
+  );
+}
+
+function onGridHandleKeyDown(
+  e: KeyboardEvent,
+  orientation: string,
+): void {
+  if (!RESIZE_KEYS.has(e.key)) return;
+  e.preventDefault();
+  e.stopPropagation();
+
+  const tabpanels = getTabpanels() as HTMLElement | null;
+  if (!tabpanels) return;
+  const panelIds = getCurrentGridPanelIds();
+  if (panelIds.length < 2) return;
+
+  const sizes = resolvePaneSizesForPanelIds(panelIds);
+  const handle = e.currentTarget as XULElement;
+  const fine = e.shiftKey;
+  const isColumn = orientation === "grid-col" ||
+    orientation === "grid-3pane-col" ||
+    orientation === "grid-center";
+  const isRow = orientation === "grid-row" ||
+    orientation === "grid-3pane-row" ||
+    orientation === "grid-center";
+
+  if (isColumn) {
+    const current = sizes.gridColRatio;
+    const next = nextGridRatio(current, e.key, fine);
+    if (next === current) return;
+    sizes.gridColRatio = next;
+    applyGridTemplate(tabpanels, next, sizes.gridRowRatio);
+    handle.setAttribute("aria-valuenow", String(Math.round(next * 100)));
+    announceResize(`Left column ${Math.round(next * 100)}%, right column ${
+      Math.round((1 - next) * 100)
+    }%`);
+  }
+  if (isRow) {
+    const current = sizes.gridRowRatio;
+    const next = nextGridRatio(current, e.key, fine);
+    if (next === current) return;
+    sizes.gridRowRatio = next;
+    applyGridTemplate(tabpanels, sizes.gridColRatio, next);
+    if (orientation === "grid-center") {
+      handle.setAttribute(
+        "aria-valuenow",
+        String(Math.round(next * 100)),
+      );
+      announceResize(
+        `Top row ${Math.round(next * 100)}%, bottom row ${
+          Math.round((1 - next) * 100)
+        }%`,
+      );
+    }
+  }
+
+  persistPaneSizesForPanelIds(panelIds, sizes);
+  log.debug(`[gridKey] orientation=${orientation} key=${e.key} col=${
+    sizes.gridColRatio.toFixed(3)
+  } row=${sizes.gridRowRatio.toFixed(3)}`);
 }
 
 // ===== Flex handle drag logic =====

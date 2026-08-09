@@ -98,6 +98,39 @@
   opacity: 1;
 }
 
+/* WCAG 2.4.7 Focus Visible: keyboard focus indicator on the divider.
+ * Uses :focus-visible so mouse clicks do not show the ring. */
+.floorp-split-handle:focus-visible::after,
+.floorp-grid-handle:focus-visible::after {
+  opacity: 1;
+}
+
+.floorp-split-handle:focus-visible,
+.floorp-grid-handle:focus-visible {
+  outline: 3px solid var(--focus-outline-color);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* Windows High Contrast mode: ensure the handle itself is visible. */
+@media (forced-colors: active) {
+  .floorp-split-handle,
+  .floorp-grid-handle {
+    background: ButtonFace;
+  }
+
+  .floorp-split-handle::after,
+  .floorp-grid-handle::after {
+    background: ButtonText;
+    opacity: 1;
+  }
+
+  .floorp-split-handle:focus-visible,
+  .floorp-grid-handle:focus-visible {
+    outline: 3px solid Highlight;
+  }
+}
+
 /* Horizontal drag handle (between columns) */
 .floorp-split-handle[data-orientation="horizontal"] {
   width: 8px;

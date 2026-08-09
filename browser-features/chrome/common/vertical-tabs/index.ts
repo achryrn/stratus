@@ -39,8 +39,13 @@ export default class VerticalTabsFeature extends NoraComponentBase {
       key.id = "key_toggleVerticalTabs";
       key.setAttribute("key", "V");
       key.setAttribute("modifiers", "control shift");
-      key.setAttribute("oncommand", "(globalThis as any).toggleVerticalTabs()");
-      
+      // Use addEventListener instead of an inline oncommand attribute:
+      // inline handlers violate the browser CSP (script-src-attr) and
+      // trigger a hard MOZ_CRASH in test mode.
+      key.addEventListener("command", () => {
+        (globalThis as any).toggleVerticalTabs();
+      });
+
       const mainKeyset = globalThis.document.getElementById("mainKeyset");
       if (mainKeyset) {
         mainKeyset.appendChild(key);

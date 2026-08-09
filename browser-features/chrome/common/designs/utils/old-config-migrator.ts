@@ -22,6 +22,20 @@ export const getOldInterfaceConfig = () => {
 };
 
 export const getOldTabbarStyleConfig = () => {
+  // First check new string-based pref (M4 vertical tabs feature)
+  try {
+    const newStylePref = Services.prefs.getCharPref(
+      "floorp.tabbar.style.current",
+      "",
+    );
+    if (newStylePref === "vertical" || newStylePref === "multirow" || newStylePref === "horizontal") {
+      return newStylePref;
+    }
+  } catch (e) {
+    // Pref doesn't exist yet, fall through to old int-based pref
+  }
+
+  // Fall back to old int-based pref for backward compatibility
   switch (Services.prefs.getIntPref("floorp.tabbar.style", 0)) {
     case 1:
       return "multirow";

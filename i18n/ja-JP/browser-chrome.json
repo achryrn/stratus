@@ -99,6 +99,24 @@
       "invalidWorkspaceID": "ワークスペースの ID が無効です (並べ替えが反映されていない可能性があります)"
     }
   },
+  "network-monitor": {
+    "button-label": "ネットワークモニター",
+    "button-tooltip": "ネットワークのアクティビティを表示",
+    "panel-title": "ネットワークアクティビティ",
+    "session-requests": "リクエスト",
+    "session-bytes": "データ",
+    "normal": "通常ウィンドウ",
+    "private": "プライベートウィンドウ",
+    "active-tab": "アクティブなタブ",
+    "top-hosts": "上位ホスト",
+    "extensions": "拡張機能",
+    "no-data": "このセッションではまだアクティビティがありません",
+    "column-host": "ホスト",
+    "column-reqs": "リクエスト",
+    "column-bytes": "バイト",
+    "reset": "セッションをリセット",
+    "resetting": "セッションをクリアしました"
+  },
   "profile-manager-button": {
     "label": "プロファイルマネージャー",
     "tooltiptext": "プロファイルマネージャーを開く"

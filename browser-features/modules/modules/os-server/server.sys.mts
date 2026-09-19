@@ -53,6 +53,7 @@ import type { HealthResponse } from "./_os-plugin/api-spec/types.ts";
 
 // Route handlers from separated modules
 import { registerBrowserRoutes } from "./browser/routes.sys.mts";
+import { registerNetworkRoutes } from "./network/routes.sys.mts";
 import { registerScraperRoutes } from "./scraper/routes.sys.mts";
 import { registerTabRoutes } from "./tabs/routes.sys.mts";
 import { registerWorkspaceRoutes } from "./workspaces/routes.sys.mts";
@@ -531,6 +532,7 @@ class LocalHttpServer implements nsIServerSocketListener {
 
     // Register routes from separated modules
     registerBrowserRoutes(api);
+    registerNetworkRoutes(api);
     registerScraperRoutes(api);
     registerTabRoutes(api);
     registerWorkspaceRoutes(api);

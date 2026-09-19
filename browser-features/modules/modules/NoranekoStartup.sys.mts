@@ -111,6 +111,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/os-server/server.sys.mjs",
   );
+  // Transparent traffic overview (M8.1): NetworkMonitor auto-starts on import.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/network-monitor/NetworkMonitor.sys.mjs",
+  );
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

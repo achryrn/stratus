@@ -1,0 +1,164 @@
+/* Container for the network monitor panel. */
+
+.network-monitor-panel {
+  width: 340px;
+  --nm-accent: #00c8ff;
+  --nm-ok: #2dd4bf;
+  --nm-warn: #ffb020;
+  --nm-text: #e8e8f0;
+  --nm-muted: #9a9ab0;
+  --nm-border: rgba(255, 255, 255, 0.10);
+  --nm-bg-1: rgba(255, 255, 255, 0.06);
+  --nm-bg-2: rgba(255, 255, 255, 0.03);
+  background: #131320;
+  color: var(--nm-text);
+}
+
+.network-monitor-inner {
+  padding: 12px;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.network-monitor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.network-monitor-title {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.network-monitor-reset {
+  background: var(--nm-bg-1);
+  border: 1px solid var(--nm-border);
+  border-radius: 4px;
+  color: var(--nm-text);
+  padding: 2px 8px;
+  cursor: pointer;
+}
+
+.network-monitor-reset:hover {
+  background: var(--nm-bg-2);
+  border-color: var(--nm-accent);
+}
+
+.network-monitor-flash {
+  color: var(--nm-ok);
+  font-size: 11px;
+}
+
+.network-monitor-totals {
+  display: flex;
+  gap: 8px;
+}
+
+.network-monitor-total {
+  flex: 1;
+  background: var(--nm-bg-1);
+  border: 1px solid var(--nm-border);
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.network-monitor-total-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--nm-accent);
+}
+
+.network-monitor-total-label {
+  color: var(--nm-muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.network-monitor-modes {
+  display: flex;
+  gap: 12px;
+  color: var(--nm-muted);
+  font-size: 11px;
+}
+
+.network-monitor-mode--private {
+  color: var(--nm-warn);
+}
+
+.network-monitor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.network-monitor-section-title {
+  color: var(--nm-muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.network-monitor-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.network-monitor-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--nm-bg-2);
+  border-radius: 4px;
+  padding: 4px 6px;
+}
+
+.network-monitor-row-host {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.network-monitor-row-reqs {
+  color: var(--nm-muted);
+  min-width: 46px;
+  text-align: right;
+}
+
+.network-monitor-row-bytes {
+  min-width: 64px;
+  text-align: right;
+  color: var(--nm-ok);
+}
+
+.network-monitor-empty {
+  color: var(--nm-muted);
+  font-size: 11px;
+  font-style: italic;
+}
+
+.network-monitor-button-icon {
+  list-style-image: none;
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+#network-monitor-button::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4 2v9h9v2H2V2h2zm5 3V2h5v5h-3V5.4L7.4 9l-1.4-1.4L10 4H9z'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4 2v9h9v2H2V2h2zm5 3V2h5v5h-3V5.4L7.4 9l-1.4-1.4L10 4H9z'/></svg>") center / contain no-repeat;
+}

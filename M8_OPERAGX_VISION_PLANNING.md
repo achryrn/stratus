@@ -522,3 +522,41 @@ Each slice: implement -> colocated tests -> dev-tool manual session
 - host tests 209/209; smoke 2 failing steps (deno check + deno lint,
   21 findings); console: 2 fluent errors x2 windows, Window.fullScreen
   deprecation, SearchService unreachable-code.
+
+---
+
+## Part 6 — Slice status log
+
+### M8.0 Gate repair — DONE (commit f8d2372da4af)
+- Green smoke suite (6/6), host tests 209/209, fluent l10n console errors removed.
+
+### M8.1 Traffic overview — DONE (this commit)
+- **Module** `modules/network-monitor/NetworkMonitor.sys.mts` + `NetworkMonitorCore.ts`:
+  parent-process HTTP observer (`http-on-modify-request` /
+  `http-on-examine-response` / `http-on-examine-merged-response`); per-host,
+  per-tab (browserId via `loadInfo.browsingContextId` -> `BrowsingContext`,
+  fallback host->tab match), per-extension (moz-extension principal ->
+  WebExtensionPolicy), normal/private split via originAttributes;
+  session-scoped ring buffer; throttled `stratus.network.updated` broadcast.
+- **Runtime notes (empirical, Gecko 153 dev runtime):** parent observers DO see
+  content-channel notifications for `http-on-modify-request` (verified with
+  content-initiated `location.href` navigations). `http-on-examine-response`
+  fires for browser-UI traffic only; content responses report
+  transferSize/contentLength as -1, so **byte accounting stays 0 for web
+  content in v1** — requests/tabs/hosts/extensions are exact.
+  Follow-up candidates: traceable-channel or content-process collector
+  (frame-actor messenger had IPC issues in dev and was dropped; revisit in
+  M8.5), or HTTP/2+size via a network-layer patch at M2.5).
+- **UI** `chrome/common/network-monitor`: navbar button (self-placement for
+  profiles with saved customization), arrow panel with session totals,
+  normal/private split, active-tab row, top hosts, extension activity,
+  session reset; i18n en-US + ja-JP.
+- **os-server** `os-server/network/routes.sys.mts`: GET /network/summary,
+  SSE /network/events (registered in server.sys.mts; dormant while
+  `floorp.os.enabled=false` in dev).
+- **Tests** `NetworkMonitorCore.test.ts` — 11 cases, executed in-browser
+  (1 file passed). Live verification: content nav to iana.org recorded
+  requests with correct tab attribution (browserId 3); private-mode bucket
+  covered by unit tests; panel screenshot captured; console audit clean of
+  overlay errors.
+

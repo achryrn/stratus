@@ -99,6 +99,24 @@
       "invalidWorkspaceID": "Not valid ID for Workspaces (maybe order is not updated)"
     }
   },
+  "network-monitor": {
+    "button-label": "Network Monitor",
+    "button-tooltip": "Show live network activity",
+    "panel-title": "Network Activity",
+    "session-requests": "Requests",
+    "session-bytes": "Data",
+    "normal": "Normal windows",
+    "private": "Private windows",
+    "active-tab": "Active tab",
+    "top-hosts": "Top hosts",
+    "extensions": "Extensions",
+    "no-data": "No activity yet in this session",
+    "column-host": "Host",
+    "column-reqs": "Reqs",
+    "column-bytes": "Bytes",
+    "reset": "Reset session",
+    "resetting": "Session cleared"
+  },
   "profile-manager-button": {
     "label": "Profile Manager",
     "tooltiptext": "Open Profile Manager"

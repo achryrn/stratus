@@ -146,6 +146,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/theme-gx/GxThemeManager.sys.mjs",
   ).initGxThemeManager();
+  // Memory saver (M8.8): optimized knob defaults + low-memory tab discarding.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/memory-saver/MemorySaver.sys.mjs",
+  ).initMemorySaver();
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

@@ -818,6 +818,12 @@
             "blocked": "Blocked today",
             "reset": "Reset counter"
         },
+        "memorySaver": {
+            "title": "Memory saver",
+            "description": "Lower the browser footprint: cap content processes and caches, expire idle page viewers, and unload inactive tabs when the system is low on memory. Tabs you excluded from tab sleep are always kept.",
+            "toggle": "Automatically reduce memory usage",
+            "discards": "Tabs auto-unloaded"
+        },
         "trackers": {
             "title": "Tracker activity",
             "description": "Classified tracker requests blocked this session, per category.",

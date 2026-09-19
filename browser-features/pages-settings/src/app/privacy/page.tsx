@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/common/button.tsx";
 import { Input } from "@/components/common/input.tsx";
 import { rpc } from "../../lib/rpc/rpc.ts";
-import { Ban, Palette } from "lucide-react";
+import { Ban, Gauge, Palette } from "lucide-react";
 
 const TIER_PREF = "stratus.privacy.tier";
 const DNS_PREF = "stratus.dns.config";
@@ -43,6 +43,8 @@ export default function PrivacyPage() {
   const [adOn, setAdOn] = useState(false);
   const [adCount, setAdCount] = useState(0);
   const [gxPreset, setGxPreset] = useState<string>("gx");
+  const [memOn, setMemOn] = useState(true);
+  const [memDiscards, setMemDiscards] = useState(0);
 
   const loadTrackers = useCallback(async () => {
     const raw = await rpc.getStringPref("stratus.privacy.trackers", "{}");
@@ -55,6 +57,17 @@ export default function PrivacyPage() {
       setGxPreset(v === "classic" ? "classic" : "gx");
     } catch {
       setGxPreset("gx");
+    }
+  }, []);
+
+  const loadMemorySaver = useCallback(async () => {
+    try {
+      const on = await rpc.getBoolPref("stratus.memory.saver", true);
+      const n = await rpc.getIntPref("stratus.memory.discards", 0);
+      setMemOn(on);
+      setMemDiscards(n);
+    } catch {
+      setMemOn(true);
     }
   }, []);
 
@@ -71,7 +84,8 @@ export default function PrivacyPage() {
     void loadTrackers();
     void loadAdBlocker();
     void loadGx();
-  }, [loadTrackers, loadAdBlocker, loadGx]);
+    void loadMemorySaver();
+  }, [loadTrackers, loadAdBlocker, loadGx, loadMemorySaver]);
 
   const persistTier = (next: Tier): void => {
     setTier(next);
@@ -202,6 +216,26 @@ export default function PrivacyPage() {
             <Ban className="size-4 opacity-60" />
             <span className="text-sm">{t("privacy.adblock.blocked")}: {adCount}</span>
             <Button variant="outline" size="sm" onClick={() => void rpc.setStringPref("stratus.adblock.clear", String(Date.now()))}>{t("privacy.adblock.reset")}</Button>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("privacy.memorySaver.title")}</CardTitle>
+          <CardDescription>{t("privacy.memorySaver.description")}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          <label className="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked={memOn} onChange={async (e) => {
+              await rpc.setBoolPref("stratus.memory.saver", e.target.checked);
+              void loadMemorySaver();
+            }} className="size-4" />
+            <span className="text-sm">{t("privacy.memorySaver.toggle")}</span>
+          </label>
+          <div className="flex items-center gap-3">
+            <Gauge className="size-4 opacity-60" />
+            <span className="text-sm">{t("privacy.memorySaver.discards")}: {memDiscards}</span>
           </div>
         </CardContent>
       </Card>

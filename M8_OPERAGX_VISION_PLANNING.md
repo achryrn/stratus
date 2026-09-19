@@ -863,3 +863,44 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   notice, zero Stratus-module errors. Screenshots _dist/m8-use-*.png.
 - Deferred (documented): compiled branding, installer/updater/signatures,
   newtab wallpaper slot, GX Corner widget (M8.6 note).
+
+### M8.8 Memory saver — DONE
+- **Module** `modules/memory-saver/MemorySaverCore.ts` + `MemorySaver.sys.mts`
+  (startup-hooked via NoranekoStartup). Prefs: `stratus.memory.saver` (default
+  ON for fresh profiles), `stratus.memory.savedDefaults`, `stratus.memory.discards`.
+- **Knobs table** (applied only while enabled): `browser.tabs.unloadOnLowMemory`
+  = true (native unloader), sessionhistory.max_entries 50→20,
+  contentViewerTimeout 180 s, sessionstore max_tabs_undo 25→10 /
+  max_windows_undo 5→3, cache memory 49152 KB / disk 153600 KB,
+  dom.ipc.processCount →4.
+- **Build-defaults snapshot**: the first boot captures the exact engine values
+  before the first apply (`stratus.memory.savedDefaults` JSON); disabling the
+  saver restores them precisely (incl. clearing prefs that were unset, e.g.
+  contentViewerTimeout). Self-healing taint guard: a snapshot whose values all
+  equal the saver values (captured post-apply) is treated as invalid and the
+  knobs are cleared to engine defaults instead.
+- **Low-memory watchdog**: `memory-pressure` observer (object-form; function-
+  form callbacks are unreliable on this runtime) ignores `heap-minimize`,
+  reacts only to `low-memory`/ongoing, and discards inactive tabs across ALL
+  navigator windows — never pinned/selected/audible/loading/already-pending
+  tabs, and never the `floorp-sleep-excluded` allowlist (platform tab-sleep
+  exclusions are honored). Discard uses the ENGINE path
+  `gBrowser.discardBrowser(tab, false)` — the ESR 153 contract takes the TAB,
+  not the browser (calling it with the browser throws `_mayDiscardBrowser`
+  "browser is undefined" internally).
+- **Settings card** on /features/privacy ("Memory saver"): toggle
+  (`stratus.memory.saver`) + "Tabs auto-unloaded" live counter; en-US + ja-JP.
+- **Tests** `MemorySaver.test.ts` — 5 cases (fresh profile applies knobs +
+  snapshots build defaults; disable restores engine defaults; watchdog discards
+  inactive, keeps the active tab connected; heap-minimize ignored; tainted
+  snapshot falls back to engine defaults). ESM layer 30/30 green.
+- **Live verification (clean restart, emptied knobs)**: boot applies knobs and
+  stores TRUE build defaults (unload false / 50 entries / 25 undo / -1 cache /
+  unset viewer); toggle OFF restores every knob incl. clearing viewer; toggle
+  ON re-applies. With 3 wikis + the active tab: memory-pressure round discarded
+  3/3 inactive tabs (marked pending, frames freed), active tab untouched,
+  WorkingSet 551→515 MB (Private 418→382 MB). Settings card renders the
+  counter (3 after the round); console audit clean (only upstream engine
+  notices). Screenshots `_dist/m8-use-memtabs.png`, `_dist/m8-memory-saver-card.png`.
+
+### Next: M8.9 agent-control API (remote drive + REAL native input for AI agents)

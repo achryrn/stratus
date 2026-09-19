@@ -142,6 +142,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/adblock/AdBlockManager.sys.mjs",
   ).initAdBlockManager();
+  // Opera GX-inspired theme pack (M8.6): design tokens preset.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/theme-gx/GxThemeManager.sys.mjs",
+  ).initGxThemeManager();
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

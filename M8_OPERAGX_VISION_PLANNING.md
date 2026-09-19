@@ -797,3 +797,34 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   detection, DOM markers). Cosmetic filtering is M8.7 follow-up.
 
 ### Next: M8.6 Opera GX theme pack, then M8.7 release hardening
+
+### M8.6 Opera GX-inspired theme pack — DONE
+- **Module** `modules/theme-gx/GxThemeManager.sys.mts` (startup-initialized,
+  default preset `gx` on fresh profiles via stratus.theme.preset):
+  - **LWT template**: GX_THEME lightweight theme (near-black warm frame
+    #120a0b, neon red #ff1e00 tab line + icons, cyan #00c8ff tab loading,
+    magenta-purple gradient toolbar separators) — visible in
+    about:themes/LightweightThemeManager.currentTheme.
+  - **Chrome tokens** (`GX_TOKENS` on :root via the gx-theme attribute): this
+    fork's lepton-compat layer neutralizes LWT CSS vars, so the pack drives
+    the real palette: `--stratus-accent #ff1e00`, `--tab-loading-fill
+    #00c8ff`, `--toolbar-bgcolor #0d0708` + color tokens. Classic preset
+    restores the purple accent.
+  - Robust application: 500ms repeating paint timer (module-held) +
+    toplevel-window-ready observer, so the FIRST window (which misses both
+    the initial apply and the ready event on dev builds) and later private/
+    popup windows all inherit the skin. Found empirically during live tests.
+- **Skin**: network-monitor panel GX layer (gradient header/title, neon
+  totals glow, red/cyan hover) gated on `:root[gx-theme="gx"]`.
+- **Settings**: GX/Classic radio card on /features/privacy; en-US + ja-JP.
+- **Tests** `GxTheme.test.ts` — 4 cases (token shape, preset normalization,
+  live LWT switching, window attribute skin hook). Module suite 24/24 clean.
+- **Live verification**: boot applies gx (attr + accent + loading + toolbar
+  tokens all live-computed), private window inherits, active-tab label is
+  accent-tinted red, settings card renders with 2 radios; console clean.
+  Screenshots `_dist/shot-gx-tabbar.png` / `_dist/shot-gx-panel2.png`.
+- Deferred (documented): newtab wallpaper slot (kept stock FF newtab; the
+  theme frame color carries through), GX Corner-style widget — panel-sidebar
+  + wallpaper are M8.7/follow-up territory.
+
+### Next: M8.7 release hardening

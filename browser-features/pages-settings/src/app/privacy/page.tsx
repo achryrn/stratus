@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/common/button.tsx";
 import { Input } from "@/components/common/input.tsx";
 import { rpc } from "../../lib/rpc/rpc.ts";
-import { Ban } from "lucide-react";
+import { Ban, Palette } from "lucide-react";
 
 const TIER_PREF = "stratus.privacy.tier";
 const DNS_PREF = "stratus.dns.config";
@@ -42,10 +42,20 @@ export default function PrivacyPage() {
   const [saved, setSaved] = useState(false);
   const [adOn, setAdOn] = useState(false);
   const [adCount, setAdCount] = useState(0);
+  const [gxPreset, setGxPreset] = useState<string>("gx");
 
   const loadTrackers = useCallback(async () => {
     const raw = await rpc.getStringPref("stratus.privacy.trackers", "{}");
     try { setTrackers(JSON.parse(raw)); } catch { setTrackers(null); }
+  }, []);
+
+  const loadGx = useCallback(async () => {
+    try {
+      const v = await rpc.getStringPref("stratus.theme.preset", "gx");
+      setGxPreset(v === "classic" ? "classic" : "gx");
+    } catch {
+      setGxPreset("gx");
+    }
   }, []);
 
   const loadAdBlocker = useCallback(async () => {
@@ -60,7 +70,8 @@ export default function PrivacyPage() {
     void rpc.getStringPref(DNS_PREF).then((v) => setDns(parseDns(v)));
     void loadTrackers();
     void loadAdBlocker();
-  }, [loadTrackers, loadAdBlocker]);
+    void loadGx();
+  }, [loadTrackers, loadAdBlocker, loadGx]);
 
   const persistTier = (next: Tier): void => {
     setTier(next);
@@ -145,6 +156,32 @@ export default function PrivacyPage() {
               {dns[m].mode > 0 && <span className="text-xs opacity-60">{t("privacy.dns.echNote")}</span>}
             </div>
           ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("privacy.gx.title")}</CardTitle>
+          <CardDescription>{t("privacy.gx.description")}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          <div className="flex items-center gap-3">
+            <Palette className="size-4 opacity-60" />
+            <label className="flex items-center gap-2 text-sm cursor-pointer">
+              <input type="radio" name="gx" checked={gxPreset === "gx"} onChange={async () => {
+                await rpc.setStringPref("stratus.theme.preset", "gx");
+                setGxPreset("gx");
+              }} />
+              {t("privacy.gx.gx")}
+            </label>
+            <label className="flex items-center gap-2 text-sm cursor-pointer">
+              <input type="radio" name="gx" checked={gxPreset === "classic"} onChange={async () => {
+                await rpc.setStringPref("stratus.theme.preset", "classic");
+                setGxPreset("classic");
+              }} />
+              {t("privacy.gx.classic")}
+            </label>
+          </div>
         </CardContent>
       </Card>
 

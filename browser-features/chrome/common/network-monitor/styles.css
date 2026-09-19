@@ -162,3 +162,33 @@
   -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4 2v9h9v2H2V2h2zm5 3V2h5v5h-3V5.4L7.4 9l-1.4-1.4L10 4H9z'/></svg>") center / contain no-repeat;
   mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path d='M4 2v9h9v2H2V2h2zm5 3V2h5v5h-3V5.4L7.4 9l-1.4-1.4L10 4H9z'/></svg>") center / contain no-repeat;
 }
+
+/* GX skin (applied by GxThemeManager setting gx-theme=gx on <root>). */
+:root[gx-theme="gx"] .network-monitor-panel {
+  background: #0d0708;
+  --nm-accent: #ff1e00;
+  --nm-ok: #00c8ff;
+  --nm-warn: #ff8a5c;
+  --nm-text: #f2f0f5;
+  --nm-muted: #a08f9a;
+  --nm-border: rgba(255, 30, 0, 0.28);
+  --nm-bg-1: rgba(255, 30, 0, 0.10);
+  --nm-bg-2: rgba(255, 30, 0, 0.05);
+}
+:root[gx-theme="gx"] .network-monitor-header {
+  border-bottom: 1px solid transparent;
+  border-image: linear-gradient(90deg, #ff1e00, #b04cff, #00c8ff) 1;
+  padding-bottom: 8px;
+}
+:root[gx-theme="gx"] .network-monitor-title {
+  background: linear-gradient(90deg, #ff5c47, #b04cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+:root[gx-theme="gx"] .network-monitor-total-value {
+  text-shadow: 0 0 8px rgba(255, 30, 0, 0.55);
+}
+:root[gx-theme="gx"] .network-monitor-row:hover {
+  border: 1px solid rgba(0, 200, 255, 0.45);
+}

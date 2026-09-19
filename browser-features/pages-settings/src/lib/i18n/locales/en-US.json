@@ -805,6 +805,12 @@
             "strict": "Strict (fail closed)",
             "echNote": "DoH active — ECH hides the destination inside TLS."
         },
+        "gx": {
+            "title": "GX theme",
+            "description": "Opera GX-inspired design tokens: near-black chrome, neon red tab line, cyan loading, magenta-purple gradient separators.",
+            "gx": "GX (dark neon)",
+            "classic": "Classic dark"
+        },
         "adblock": {
             "title": "Built-in ad blocker",
             "description": "Stub-based blocking: matched ad requests are answered with a 1x1 transparent response instead of an error, so anti-adblock probes cannot tell them apart from empty servers. No extension is involved.",

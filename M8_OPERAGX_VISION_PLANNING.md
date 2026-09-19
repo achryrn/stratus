@@ -767,3 +767,33 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   Screenshot `_dist/shot-privacy-settings.png`.
 
 ### Next: M8.5b (3.11 stub-based ad blocker) then M8.6 theme pack
+
+### M8.5b Built-in undetected ad blocker — DONE
+- **Module** `modules/adblock/AdBlockCore.ts` + `AdBlockManager.sys.mts`
+  (startup-initialized, default ON).
+- **Stub strategy (empirically proven)**: http-on-modify-request +
+  `channel.redirectTo(data:image/gif 1x1)` — the page sees a SUCCESSFUL load
+  (img naturalWidth=1, fetch resolves), so anti-adblock probes that treat
+  network errors or extensions as "blocked" find nothing. Runtime gotcha
+  found: parent-side `loadInfo.isTopLevelLoad` reads TRUE for every channel
+  on this build, so navigations are excluded by `externalContentPolicyType
+  === TYPE_DOCUMENT` instead.
+- **Built-in list**: EasyList/EasyPrivacy-style hosts (doubleclick,
+  googlesyndication, adnxs, taboola, outbrain, criteo, amazon-adsystem, …);
+  `setDevRules()` for local fixture tests.
+- **Settings card** on /features/privacy: on/off switch, "Blocked today"
+  counter (stratus.adblock.count), reset; en-US + ja-JP. No extension
+  involved → nothing exposes chrome.runtime.
+- **Tests** `AdBlock.test.ts` — 4 cases (rule parsing/normalization, host
+  matching semantics incl. port + suffix-collision guards, stub body shape,
+  manager surface). Module suite 23/23 clean.
+- **Live verification**: fixture page with a fake ad host (127.0.0.1:4999)
+  vs local control: blocker ON → ad img renders the 1x1 stub (naturalWidth 1,
+  complete, count+2), control renders 4x4; blocker OFF → the ad host loads
+  its real 2x2 payload and the counter is untouched; console clean.
+  Screenshot `_dist/shot-privacy-adblock.png`.
+- Honest limitation (documented in 3.11): perfect undetectability is not
+  achievable; this defeats common heuristics (hard-fail probes, extension
+  detection, DOM markers). Cosmetic filtering is M8.7 follow-up.
+
+### Next: M8.6 Opera GX theme pack, then M8.7 release hardening

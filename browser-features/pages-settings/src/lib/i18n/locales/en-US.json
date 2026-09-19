@@ -805,6 +805,13 @@
             "strict": "Strict (fail closed)",
             "echNote": "DoH active — ECH hides the destination inside TLS."
         },
+        "adblock": {
+            "title": "Built-in ad blocker",
+            "description": "Stub-based blocking: matched ad requests are answered with a 1x1 transparent response instead of an error, so anti-adblock probes cannot tell them apart from empty servers. No extension is involved.",
+            "toggle": "Block ads in all windows",
+            "blocked": "Blocked today",
+            "reset": "Reset counter"
+        },
         "trackers": {
             "title": "Tracker activity",
             "description": "Classified tracker requests blocked this session, per category.",

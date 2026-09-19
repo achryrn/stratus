@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/common/button.tsx";
 import { Input } from "@/components/common/input.tsx";
 import { rpc } from "../../lib/rpc/rpc.ts";
+import { Ban } from "lucide-react";
 
 const TIER_PREF = "stratus.privacy.tier";
 const DNS_PREF = "stratus.dns.config";
@@ -39,17 +40,27 @@ export default function PrivacyPage() {
   const [dns, setDns] = useState<DnsCfg | null>(null);
   const [trackers, setTrackers] = useState<Record<string, number> | null>(null);
   const [saved, setSaved] = useState(false);
+  const [adOn, setAdOn] = useState(false);
+  const [adCount, setAdCount] = useState(0);
 
   const loadTrackers = useCallback(async () => {
     const raw = await rpc.getStringPref("stratus.privacy.trackers", "{}");
     try { setTrackers(JSON.parse(raw)); } catch { setTrackers(null); }
   }, []);
 
+  const loadAdBlocker = useCallback(async () => {
+    const on = await rpc.getBoolPref("stratus.adblock.enabled", false);
+    const n = await rpc.getIntPref("stratus.adblock.count", 0);
+    setAdOn(on);
+    setAdCount(n);
+  }, []);
+
   useEffect(() => {
     void rpc.getStringPref(TIER_PREF).then((v) => setTier(v === "strict" || v === "maximum" ? v : "default"));
     void rpc.getStringPref(DNS_PREF).then((v) => setDns(parseDns(v)));
     void loadTrackers();
-  }, [loadTrackers]);
+    void loadAdBlocker();
+  }, [loadTrackers, loadAdBlocker]);
 
   const persistTier = (next: Tier): void => {
     setTier(next);
@@ -134,6 +145,27 @@ export default function PrivacyPage() {
               {dns[m].mode > 0 && <span className="text-xs opacity-60">{t("privacy.dns.echNote")}</span>}
             </div>
           ))}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("privacy.adblock.title")}</CardTitle>
+          <CardDescription>{t("privacy.adblock.description")}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          <label className="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked={adOn} onChange={async (e) => {
+              await rpc.setBoolPref("stratus.adblock.enabled", e.target.checked);
+              void loadAdBlocker();
+            }} className="size-4" />
+            <span className="text-sm">{t("privacy.adblock.toggle")}</span>
+          </label>
+          <div className="flex items-center gap-3">
+            <Ban className="size-4 opacity-60" />
+            <span className="text-sm">{t("privacy.adblock.blocked")}: {adCount}</span>
+            <Button variant="outline" size="sm" onClick={() => void rpc.setStringPref("stratus.adblock.clear", String(Date.now()))}>{t("privacy.adblock.reset")}</Button>
+          </div>
         </CardContent>
       </Card>
 

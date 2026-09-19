@@ -138,6 +138,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/privacy/PrivacyManager.sys.mjs",
   ).initPrivacyManager();
+  // Built-in undetected ad blocker (M8.5b): stub-based subresource blocking.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/adblock/AdBlockManager.sys.mjs",
+  ).initAdBlockManager();
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

@@ -492,6 +492,13 @@
             "title": "Proxy server",
             "description": "Host, port and protocol for the VPN endpoint (HTTP or SOCKS5). Loopback, local network and update hosts always bypass it."
         },
+        "status": {
+            "label": "Active in",
+            "normal": "Normal window",
+            "private": "Private window",
+            "off": "Off",
+            "note": "Routing follows the focused window; background windows keep the last applied mode."
+        },
         "regionLabel": "Region",
         "regionAuto": "Auto (closest)",
         "saved": "Saved ✓",
@@ -837,6 +844,28 @@
             "hideToken": "Hide token",
             "localOnly": "Binding: 127.0.0.1 only — agents on this machine can control the browser.",
             "originNote": "The token is generated automatically on first boot, and requests from web pages are rejected (origin policy) — only local agents can drive the browser."
+        },
+        "network": {
+            "title": "Network activity",
+            "description": "Live session traffic, split by normal and private mode, with per-site and per-extension visibility. Recorded locally and kept for this session only.",
+            "requests": "Requests",
+            "transferred": "Transferred",
+            "private": "Private",
+            "topHosts": "Top sites this session",
+            "extensionActivity": "Extension activity",
+            "offline": "Network monitor unavailable (os-server not running).",
+            "localNote": "Data stays on this computer and clears when the browser closes."
+        },
+        "network": {
+            "title": "Network activity",
+            "description": "Live session traffic, split by normal and private mode, with per-site and per-extension visibility. Recorded locally and kept for this session only.",
+            "requests": "Requests",
+            "transferred": "Transferred",
+            "private": "Private",
+            "topHosts": "Top sites this session",
+            "extensionActivity": "Extension activity",
+            "offline": "Network monitor unavailable (os-server not running).",
+            "localNote": "Data stays on this computer and clears when the browser closes."
         },
         "trackers": {
             "title": "Tracker activity",

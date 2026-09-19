@@ -56,9 +56,11 @@ export default function VpnSettingsPage() {
   const { t } = useTranslation();
   const [cfg, setCfg] = useState<VpnConfig | null>(null);
   const [saved, setSaved] = useState(false);
+  const [activeMode, setActiveMode] = useState<string>("");
 
   useEffect(() => {
     void loadConfig().then(setCfg);
+    void rpc.getStringPref("stratus.vpn.activeMode").then((m) => setActiveMode(m ?? ""));
   }, []);
 
   const persist = useCallback(async (next: VpnConfig) => {
@@ -77,6 +79,7 @@ export default function VpnSettingsPage() {
       ...cfg,
       enabled: { ...cfg.enabled, [mode]: on },
     });
+    void rpc.getStringPref("stratus.vpn.activeMode").then((m) => setActiveMode(m ?? ""));
   };
 
   return (
@@ -86,6 +89,18 @@ export default function VpnSettingsPage() {
         <h1 className="text-xl font-bold">{t("vpn.title")}</h1>
       </div>
       <p className="text-sm opacity-70">{t("vpn.description")}</p>
+
+      <div className="flex flex-wrap items-center gap-2 text-sm">
+        <span className="opacity-70">{t("vpn.status.label")}:</span>
+        <span className="rounded bg-muted px-2 py-1">
+          {activeMode === "normal"
+            ? t("vpn.status.normal")
+            : activeMode === "private"
+              ? t("vpn.status.private")
+              : t("vpn.status.off")}
+        </span>
+        <span className="text-xs opacity-50">{t("vpn.status.note")}</span>
+      </div>
 
       <Card>
         <CardHeader>

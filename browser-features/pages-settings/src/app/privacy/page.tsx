@@ -16,6 +16,26 @@ type DnsProvider = "off" | "mozilla" | "cloudflare" | "custom";
 interface DnsMode { provider: DnsProvider; mode: 0 | 2 | 3; customUri: string; }
 interface DnsCfg { normal: DnsMode; private: DnsMode; }
 
+interface NetHost { host: string; requests: number; bytes: number; lastActive: number; }
+interface NetExt { extensionId: string; requests: number; bytes: number; hosts: string[]; lastActive: number; }
+interface NetSnapshot {
+  summary: { requests: number; bytes: number; privateRequests: number; privateBytes: number };
+  hosts: NetHost[];
+  extensions: NetExt[];
+}
+
+const NET_SNAPSHOT_PREF = "stratus.network.snapshot";
+
+function fmtBytes(n: number): string {
+  if (n >= 1048576) return (n / 1048576).toFixed(1) + " MB";
+  if (n >= 1024) return (n / 1024).toFixed(0) + " KB";
+  return n + " B";
+}
+
+function shortExt(id: string): string {
+  return id.length > 14 ? id.slice(0, 8) + "…" + id.slice(-4) : id;
+}
+
 const DEFAULT_DNS: DnsCfg = { normal: { provider: "off", mode: 0, customUri: "" }, private: { provider: "off", mode: 0, customUri: "" } };
 
 function parseDns(raw: string | null): DnsCfg {
@@ -50,6 +70,8 @@ export default function PrivacyPage() {
   const [rcTokenSet, setRcTokenSet] = useState(false);
   const [rcToken, setRcToken] = useState("");
   const [rcShowToken, setRcShowToken] = useState(false);
+  const [net, setNet] = useState<NetSnapshot | null>(null);
+  const [netOnline, setNetOnline] = useState(false);
 
   const loadTrackers = useCallback(async () => {
     const raw = await rpc.getStringPref("stratus.privacy.trackers", "{}");
@@ -92,6 +114,18 @@ export default function PrivacyPage() {
     }
   }, []);
 
+  const loadNetwork = useCallback(async () => {
+    try {
+      const raw = (await rpc.getStringPref(NET_SNAPSHOT_PREF)) ?? "";
+      if (!raw) { setNetOnline(false); return; }
+      const snap = JSON.parse(raw) as NetSnapshot;
+      setNet(snap);
+      setNetOnline(true);
+    } catch {
+      setNetOnline(false);
+    }
+  }, []);
+
   const loadAdBlocker = useCallback(async () => {
     const on = await rpc.getBoolPref("stratus.adblock.enabled", false);
     const n = await rpc.getIntPref("stratus.adblock.count", 0);
@@ -107,7 +141,10 @@ export default function PrivacyPage() {
     void loadGx();
     void loadMemorySaver();
     void loadRemoteControl();
-  }, [loadTrackers, loadAdBlocker, loadGx, loadMemorySaver, loadRemoteControl]);
+    void loadNetwork();
+    const netTimer = setInterval(() => { void loadNetwork(); }, 2000);
+    return () => clearInterval(netTimer);
+  }, [loadTrackers, loadAdBlocker, loadGx, loadMemorySaver, loadRemoteControl, loadNetwork]);
 
   const persistTier = (next: Tier): void => {
     setTier(next);
@@ -310,6 +347,53 @@ export default function PrivacyPage() {
           )}
           <p className="text-xs opacity-60">{t("privacy.remoteControl.localOnly")}</p>
           <p className="text-xs opacity-60">{t("privacy.remoteControl.originNote")}</p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("privacy.network.title")}</CardTitle>
+          <CardDescription>{t("privacy.network.description")}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          {netOnline && net ? (
+            <>
+              <div className="flex flex-wrap gap-2 text-sm">
+                <span className="rounded bg-muted px-2 py-1">{t("privacy.network.requests")}: {net.summary.requests}</span>
+                <span className="rounded bg-muted px-2 py-1">{t("privacy.network.transferred")}: {fmtBytes(net.summary.bytes)}</span>
+                <span className="rounded bg-muted px-2 py-1">{t("privacy.network.private")}: {net.summary.privateRequests} ({fmtBytes(net.summary.privateBytes)})</span>
+              </div>
+              {net.hosts.length > 0 && (
+                <div className="text-sm">
+                  <p className="opacity-70">{t("privacy.network.topHosts")}</p>
+                  <ul className="list-inside list-none">
+                    {net.hosts.slice(0, 3).map((h) => (
+                      <li key={h.host} className="flex justify-between">
+                        <span className="truncate">{h.host}</span>
+                        <span>{h.requests} req · {fmtBytes(h.bytes)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {net.extensions.length > 0 && (
+                <div className="text-sm">
+                  <p className="opacity-70">{t("privacy.network.extensionActivity")}</p>
+                  <ul className="list-none">
+                    {net.extensions.slice(0, 3).map((e) => (
+                      <li key={e.extensionId} className="flex justify-between">
+                        <span className="truncate">{shortExt(e.extensionId)}</span>
+                        <span>{e.requests} req · {fmtBytes(e.bytes)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </>
+          ) : (
+            <span className="text-sm opacity-60">{t("privacy.network.offline")}</span>
+          )}
+          <p className="text-xs opacity-60">{t("privacy.network.localNote")}</p>
         </CardContent>
       </Card>
 

@@ -72,3 +72,5 @@ export const NETWORK_MONITOR_ENABLED_PREF = "stratus.networkMonitor.enabled";
 export const NETWORK_MONITOR_MAX_EVENTS_PREF = "stratus.networkMonitor.maxEvents";
 /** Pref: verbose debugging of which path recorded a request. */
 export const NETWORK_MONITOR_DEBUG_PREF = "stratus.networkMonitor.debug";
+/** Pref: compact snapshot mirrored so privileged pages (Settings) can show live traffic via the pref bridge. */
+export const NETWORK_SNAPSHOT_PREF = "stratus.network.snapshot";

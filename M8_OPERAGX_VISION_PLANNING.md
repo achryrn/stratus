@@ -1003,4 +1003,21 @@ Production distribution infrastructure per RELEASE_PLANNING.md R-1.1/1.2/1.3 + R
 - **Regression tests**: host-layer `tools/src/release_pipeline.test.ts` (NSIS contract, script artifacts, SHA256/SHA512 digests, cert-secret support, workflow triggers) — 3/3 green; branding colocated test extended with the auto-update prefs (channel/enabled/auto + URL) — 1/1 green; fixed a pre-existing broken host test that pointed at the removed about/noraneko.tsx (now validates the Stratus about page localization) — full `deno task test:host` 212 passed / 0 failed.
 - **Live verification**: scripts executed against the real `_dist/bin/floorp` bundle (checksums.txt with real hashes; update.xml/update.json generated; installer driver emits NSIS instructions when makensis is absent — this machine has no NSIS/signtool, so the exe is produced in CI or after installing NSIS; the .nsi contract is test-guarded).
 
-### Next: M8.13 (deferred/documented)
+### M8.13 Vision features completion — traffic overview, extension activity, per-mode VPN, wallpaper slot — DONE
+
+Transparent traffic overview (3.1), transparent extension activity (3.2), built-in per-mode VPN (3.3) and the newtab wallpaper slot are complete and live-verified. Core modules existed from earlier M8.x work; this milestone closed the gaps and proved everything end-to-end.
+
+- **Traffic overview (3.1)** — `network-monitor/NetworkMonitor.sys.mts` (parent-process http observers, per-host / per-tab / per-mode session data, ring buffer) + os-server `/network/summary` + `/network/events` (SSE) + **new**: `stratus.network.snapshot` pref mirrored on the throttled broadcast so privileged pages can render live traffic without HTTP loopback (renderer fetch to 127.0.0.1 hangs on this build; external clients work). Bytes: contentLength + Content-Length-header fallback; HTTP/2/chunked transfers report 0 bytes (Gecko limitation, documented).
+- **Extension activity (3.2)** — attribution via loadInfo.triggeringPrincipal (moz-extension host = addon id) fed into the same snapshot; extensions bucket in /network/summary; surfaces in the settings card.
+- **Per-mode VPN (3.3)** — `vpn/VpnManager.sys.mts`: config pref `stratus.vpn.config` (enabled.normal/private + relay), re-routes network.proxy.* per the FOCUSED window's mode (private vs normal independently toggled; direct bypass for loopback/intranet/update hosts), `stratus.vpn.activeMode` reflects applied mode; os-server `/vpn/config` GET+POST. Research notes in-file: nsIProtocolProxyFilter/registerChannelFilter and webRequest proxy listeners dead ends on this revision — active-window routing is the working mechanism (v1, documented on the settings page).
+- **Settings cards (this milestone's main deltas)**:
+  - Privacy → `privacy.network.*`: live "Network activity" card — session requests/bytes, private split, top sites, extension activity — polls the pref bridge every 2 s (no CSP/CORS).
+  - VPN page: "Active in: Normal / Private / Off" status line + the two independent per-mode cards (Normal windows / Private windows) + relay host/port/type — already present, now with live status.
+  - Locale keys added to en-US + ja-JP symmetrically (parity host test green).
+- **Newtab wallpaper slot (minimal)** — `pages-newtab` Background component (types: none/random/custom/folderPath/floorp, slideshow) serves as the slot; default is `none` keeping the minimalist mandate. Live-verified: clean start page, no wallpaper.
+- **Wiring**: NoranekoStartup imports NetworkMonitor (auto-start) and calls initVpnManager(); both guarded/observed; console clean of own errors.
+- **Live verification**: /network/summary returned 755+ real requests split by host+mode (Wikipedia fresh load, cache cleared); VPN POST on → network.proxy.type=1 + relay host/port + activeMode=normal + no_proxies_on bypass; POST off → type=0; settings privacy card rendered "Requests: 911" + Top sites; VPN page showed both mode cards + status; production settings build (feles-build before-mach) SUCCESS.
+- **Tests**: NetworkMonitorCore colocated 1/1 green; VpnManager colocated 1/1 green; deno task test:host 212/212 green (incl. new locale parity + release-pipeline regression from M8.12).
+- **Fix**: settings CSP gained `connect-src chrome: http://127.0.0.1:58261 …` (loopback telemetry if needed later).
+
+### Next: M8.14 (deferred/documented)

@@ -23,6 +23,7 @@ import {
   NETWORK_MONITOR_DEBUG_PREF,
   NETWORK_MONITOR_ENABLED_PREF,
   NETWORK_MONITOR_MAX_EVENTS_PREF,
+  NETWORK_SNAPSHOT_PREF,
   NETWORK_UPDATED_TOPIC,
 } from "./types.ts";
 import type { NetworkEvent, TrafficBucket } from "./types.ts";
@@ -50,6 +51,7 @@ type HttpChannelLike = {
   URI?: { scheme?: string; host?: string } | null;
   transferSize?: number;
   contentLength?: number;
+  getResponseHeader?(name: string): string | null;
   loadInfo?: LoadInfoLike | null;
 };
 type BrowsingContextLike = {
@@ -172,7 +174,28 @@ class NetworkMonitorService {
     const contentLength = typeof channel?.contentLength === "number"
       ? channel.contentLength
       : -1;
-    const bytes = transferSize >= 0 ? transferSize : contentLength > 0 ? contentLength : 0;
+    // transferSize is not exposed on Gecko channels and contentLength is -1
+    // for chunked (gzip) responses; fall back to the Content-Length response
+    // header so non-chunked transfers contribute real byte totals.
+    let headerLength = -1;
+    try {
+      const raw = (channel as HttpChannelLike)?.getResponseHeader?.(
+        "Content-Length",
+      );
+      if (typeof raw === "string" && raw.trim() !== "") {
+        const n = parseInt(raw, 10);
+        if (Number.isFinite(n) && n > 0) headerLength = n;
+      }
+    } catch {
+      // no header on this response
+    }
+    const bytes = transferSize >= 0
+      ? transferSize
+      : contentLength > 0
+        ? contentLength
+        : headerLength > 0
+          ? headerLength
+          : 0;
     const browserId = this.resolveBrowserId(loadInfo, host);
     this.core.record({
       host,
@@ -321,6 +344,29 @@ class NetworkMonitorService {
       );
     } catch {
       // ignore notification failures during shutdown
+    }
+    this.publishPrefSnapshot();
+  }
+
+  /**
+   * Mirror a compact snapshot into a pref so privileged pages (Settings)
+   * can consume live traffic through the standard pref bridge without
+   * depending on HTTP loopback from renderer content.
+   */
+  private publishPrefSnapshot(): void {
+    try {
+      const snap = this.core.snapshot();
+      Services.prefs.setStringPref(
+        NETWORK_SNAPSHOT_PREF,
+        JSON.stringify({
+          summary: snap.summary,
+          hosts: snap.hosts.slice(0, 8),
+          extensions: snap.extensions.slice(0, 8),
+          updatedAt: Date.now(),
+        }),
+      );
+    } catch {
+      // keep telemetry collection unaffected by pref failures
     }
   }
 

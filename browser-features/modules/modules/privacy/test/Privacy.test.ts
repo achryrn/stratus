@@ -9,6 +9,7 @@ import {
   parseDnsConfig,
   recordTracker,
   serializeDnsConfig,
+  type DnsConfig,
 } from "../PrivacyCore.ts";
 import {
   applyDnsForMode,
@@ -16,9 +17,7 @@ import {
   getPrivacyTier,
   initPrivacyManager,
   PRIVACY_TIER_PREF,
-  removeTrackerData,
   setDnsConfig,
-  syncDnsForFocusedWindow,
 } from "../PrivacyManager.sys.mts";
 
 function testDnsMapping(): void {
@@ -36,7 +35,7 @@ function testDnsMapping(): void {
 }
 
 function testDnsRoundTrip(): void {
-  const cfg = {
+  const cfg: DnsConfig = {
     normal: { provider: "mozilla", mode: 2, customUri: "" },
     private: { provider: "custom", mode: 3, customUri: "https://d.example/q" },
   };

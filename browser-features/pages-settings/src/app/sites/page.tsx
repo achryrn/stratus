@@ -52,7 +52,7 @@ export default function TrustedSitesPage() {
     await rpc.setStringPref(TRUSTED_SITES_PREF, JSON.stringify(next));
     setSites(next);
     setSaved(true);
-    window.setTimeout(() => setSaved(false), 2500);
+    globalThis.setTimeout(() => setSaved(false), 2500);
   }, []);
 
   const add = (): void => {

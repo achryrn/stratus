@@ -183,7 +183,7 @@ const CLEAR_FLAGS = ((Number(Ci.nsIClearDataService.CLEAR_COOKIES) |
   Number(Ci.nsIClearDataService.CLEAR_DOM_STORAGES) |
   Number(Ci.nsIClearDataService.CLEAR_HSTS))) >>> 0;
 
-async function clearData(flags: number, principal: unknown | null): Promise<void> {
+function clearData(flags: number, principal: unknown | null): void {
   const cds = Cc["@mozilla.org/clear-data-service;1"].getService(Ci.nsIClearDataService) as unknown as {
     deleteData(flags: number, cb: { onDataDeleted(failed: number): void }): void;
     deleteDataFromPrincipal(p: unknown, userData: boolean, flags: number, cb: { onDataDeleted(failed: number): void }): void;
@@ -196,14 +196,14 @@ async function clearData(flags: number, principal: unknown | null): Promise<void
   }
 }
 
-export async function removeTrackerData(host: string | null): Promise<string> {
+export function removeTrackerData(host: string | null): string {
   try {
     let principal: unknown = null;
     if (host) {
       const uri = Services.io.newURI("https://" + host + "/");
       principal = Services.scriptSecurityManager.createContentPrincipal(uri, {});
     }
-    await clearData(CLEAR_FLAGS, principal);
+    clearData(CLEAR_FLAGS, principal);
     trackerState = emptyTrackerState();
     lastBroadcast = 0;
     notifyUpdated();

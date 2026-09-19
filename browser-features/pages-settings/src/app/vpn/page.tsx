@@ -65,7 +65,7 @@ export default function VpnSettingsPage() {
     await rpc.setStringPref(VPN_CONFIG_PREF, JSON.stringify(next));
     setCfg(next);
     setSaved(true);
-    window.setTimeout(() => setSaved(false), 2500);
+    globalThis.setTimeout(() => setSaved(false), 2500);
   }, []);
 
   if (!cfg) {

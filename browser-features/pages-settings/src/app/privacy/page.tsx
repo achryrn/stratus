@@ -76,13 +76,13 @@ export default function PrivacyPage() {
   const persistTier = (next: Tier): void => {
     setTier(next);
     void rpc.setStringPref(TIER_PREF, next);
-    setSaved(true); window.setTimeout(() => setSaved(false), 2200);
+    setSaved(true); globalThis.setTimeout(() => setSaved(false), 2200);
   };
 
   const persistDns = (next: DnsCfg): void => {
     setDns(next);
     void rpc.setStringPref(DNS_PREF, JSON.stringify(next));
-    setSaved(true); window.setTimeout(() => setSaved(false), 2200);
+    setSaved(true); globalThis.setTimeout(() => setSaved(false), 2200);
   };
 
   const setModeDns = (mode: "normal" | "private", patch: Partial<DnsMode>): void => {

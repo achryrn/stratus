@@ -828,3 +828,38 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   + wallpaper are M8.7/follow-up territory.
 
 ### Next: M8.7 release hardening
+
+### M8.7 release hardening — DONE
+- **Smoke gate GREEN** (was red since the M8.0 snapshot; 6 steps pass now).
+  Fixed the pre-existing runtime-check + lint errors that kept it red:
+  - extension-activity: RegistryLike lost `getExtensionInfo`; the arrow-panel
+    mount passed a props-taking component where render() wants `() => Element`
+    → typed the method + render(() => createComponent(...)).
+  - network-monitor panel: `timer`/`flashTimer` typed `number` while DOM
+    setTimeout/Interval return `Timeout` → ReturnType-typed.
+  - activity-probe fixture background.js: WebExtensions-only `browser` global
+    → @ts-nocheck with reason (directive carries justification).
+  - Privacy tests: DnsConfig round-trip annotation; removeTrackerData/
+    clearData are fire-and-forget → dropped needless async (require-await).
+  - lint --fix: window.* timeout refs → globalThis.* in 3 settings pages.
+- **Release-perimeter gate (Gate 9 codified)** `modules/release/test/
+  ReleasePerimeter.test.ts` — new browser-integrated suite (5 cases) locking
+  the release defaults: telemetry + data-policy off and un-accepted, VPN
+  disabled for normal AND private on fresh profiles, site-actions allowlist
+  empty, ad blocker ON, GX preset default, DoH off, full-screen requires
+  trusted gesture gates on. Suite now 25/25.
+- **About-page rebrand**: route file renamed to stratus.tsx (crumb now
+  'About'); About strings (description/communityCredit/repository) already
+  Stratus; window-title 'Floorp Daylight' + appinfo.name remain compiled-
+  branding work → moved to RELEASE_PLANNING (mach branding + signed
+  installer + .ico + updater; signing-artifact pipeline is a build-ops step).
+- **Manual use pass (Gate 10, fresh session)**: Stratus Hub boots;
+  en.wikipedia.org/wiki/Web_browser renders fully (12 imgs, ad count
+  unchanged — blocker only fires on matched hosts); private window opens
+  with the GX skin (attr gx, accent #ff1e00, loading #00c8ff, toolbar
+  #0d0708 — inherited via the 500ms paint poll); settings renders all 5
+  cards (tier/DNS/trackers/adblock/GX radios); console clean — only
+  upstream wiki cookie-partitioning + one Gecko fullScreen deprecation
+  notice, zero Stratus-module errors. Screenshots _dist/m8-use-*.png.
+- Deferred (documented): compiled branding, installer/updater/signatures,
+  newtab wallpaper slot, GX Corner widget (M8.6 note).

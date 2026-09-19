@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { render, createRootHMR } from "@nora/solid-xul";
+import { createComponent, createRootHMR, render } from "@nora/solid-xul";
 import { createSignal } from "solid-js";
 import { noraComponent, NoraComponentBase } from "#features-chrome/utils/base";
 import { BrowserActionUtils } from "#features-chrome/utils/browser-action.tsx";
@@ -57,10 +57,14 @@ export default class ExtensionActivityFeature extends NoraComponentBase {
     if (!popupSet) {
       return;
     }
-    render(MountedExtensionPanel, popupSet, {
-      marker: popupSet.lastChild as Element | null ?? undefined,
-      hotCtx: import.meta.hot,
-    });
+    render(
+      () =>
+        createComponent(MountedExtensionPanel, {
+          marker: popupSet.lastChild as Element | null ?? undefined,
+          hotCtx: import.meta.hot,
+        }),
+      popupSet,
+    );
   }
 
   private ensureButtonPlaced(): void {

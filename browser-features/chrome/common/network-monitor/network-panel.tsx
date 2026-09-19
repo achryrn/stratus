@@ -76,8 +76,8 @@ export function NetworkPanel(props: { id: string }): JSX.Element {
   const [extensions, setExtensions] = createSignal<ExtensionLike[]>([]);
   const [activeTabId, setActiveTabId] = createSignal(0);
   const [resetFlash, setResetFlash] = createSignal(false);
-  let timer: number | undefined;
-  let flashTimer: number | undefined;
+  let timer: ReturnType<typeof setInterval> | undefined;
+  let flashTimer: ReturnType<typeof setTimeout> | undefined;
 
   const refresh = (): void => {
     const mon = loadMonitor();

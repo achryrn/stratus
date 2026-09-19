@@ -27,7 +27,7 @@ import ProgressiveWebApp from "@/app/pwa/page.tsx";
 import ProfileAndAccount from "@/app/accounts/page.tsx";
 import MouseGesture from "@/app/gesture/page.tsx";
 import KeyboardShortcut from "@/app/keyboard-shortcut/page.tsx";
-import About from "@/app/about/noraneko.tsx";
+import About from "@/app/about/stratus.tsx";
 
 const PREVIEW_LENGTH = 180;
 

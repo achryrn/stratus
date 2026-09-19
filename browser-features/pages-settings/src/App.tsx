@@ -12,7 +12,7 @@ import FloorpOS from "@/app/floorp-os/page.tsx";
 import VpnSettings from "@/app/vpn/page.tsx";
 import TrustedSites from "@/app/sites/page.tsx";
 import PrivacyPage from "@/app/privacy/page.tsx";
-import About from "./app/about/noraneko.tsx";
+import About from "./app/about/stratus.tsx";
 import ProfileAndAccount from "@/app/accounts/page.tsx";
 import MouseGesture from "@/app/gesture/page.tsx";
 import KeyboardShortcut from "@/app/keyboard-shortcut/page.tsx";

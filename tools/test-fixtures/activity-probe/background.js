@@ -1,3 +1,4 @@
+// @ts-nocheck: WebExtensions fixture globals (`browser`) are only available at runtime
 // Dev-only probe: emits steady network traffic so the extension-activity
 // panel has observable per-extension activity to display.
 function ping() {

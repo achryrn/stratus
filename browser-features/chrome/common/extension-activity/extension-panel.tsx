@@ -29,6 +29,7 @@ type AddonLike = {
 };
 type RegistryLike = {
   listExtensions(): AddonLike[];
+  getExtensionInfo(id: string): AddonLike | null;
   setExtensionEnabled(id: string, enabled: boolean): Promise<boolean>;
 };
 

@@ -806,8 +806,9 @@
             "echNote": "DoH active — ECH hides the destination inside TLS."
         },
         "gx": {
-            "title": "GX theme",
-            "description": "Opera GX-inspired design tokens: near-black chrome, neon red tab line, cyan loading, magenta-purple gradient separators.",
+            "title": "Theme",
+            "description": "Choose the chrome look. Minimal is the default: flat, compact, one clean bar with no visual noise. GX adds the Opera GX-inspired neon tokens.",
+            "minimal": "Minimal (default)",
             "gx": "GX (dark neon)",
             "classic": "Classic dark"
         },

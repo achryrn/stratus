@@ -1,0 +1,127 @@
+/* -*- indent-tabs-mode: nil; js-indent-level: 2 -*-
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/**
+ * Minimal design overlay — default Stratus visual identity.
+ * Applied ONLY when :root has gx-theme="minimal" (GxThemeManager sets the
+ * attribute from stratus.theme.preset). Flattens and compacts the chrome:
+ * single visual row (tabs + urlbar), flat tabs with a 2px accent line,
+ * hidden bookmarks bar by default, small surfaces, no pill/blob chrome.
+ */
+
+:root[gx-theme="minimal"] {
+  --tab-min-height: 28px !important;
+  --stratus-tab-radius: 6px;
+  --stratus-tab-gap: 2px;
+  --stratus-tab-block-margin: 2px;
+
+  /* Flat surfaces — no pill urlbar, no blob tabs */
+  --stratus-urlbar-radius: 6px;
+  --stratus-urlbar-shadow: none;
+
+  /* Tabs + urlbar share ONE visual row: the tab strip overlays the
+     nav-bar row; both surfaces stay transparent so the row reads as a
+     single flat bar. The 1px separators come from the theme tokens.
+     Skips vertical-tab mode (orient=vertical keeps its own layout). */
+  &:not(:has(#tabbrowser-tabs[orient="vertical"])) #TabsToolbar {
+    margin-bottom: calc(0px - var(--tab-min-height) - 1px) !important;
+    min-height: 0 !important;
+    background-color: transparent !important;
+    z-index: 2 !important;
+    border-bottom: none !important;
+  }
+  &[sizemode="normal"] #TabsToolbar {
+    padding-top: 3px !important;
+  }
+}
+
+:root[gx-theme="minimal"] #TabsToolbar {
+  padding-block: 2px !important;
+
+  .tabbrowser-tab {
+    padding-inline: 0 !important;
+  }
+
+  /* Flat active tab — 2px accent bottom line instead of a pill */
+  .tabbrowser-tab > .tab-stack > .tab-background {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .tabbrowser-tab[visuallyselected] > .tab-stack > .tab-background {
+    background-color: color-mix(in srgb, var(--stratus-surface-1) 55%, transparent) !important;
+    box-shadow: inset 0 -2px 0 var(--stratus-accent) !important;
+  }
+
+  .tabbrowser-tab[visuallyselected] > .tab-stack > .tab-background::before,
+  .tabbrowser-tab[visuallyselected] .tab-label {
+    background: none !important;
+    color: inherit !important;
+  }
+
+  .tabbrowser-tab:not([visuallyselected]):hover > .tab-stack > .tab-background {
+    border-radius: 4px !important;
+    background-color: var(--stratus-tab-hover-background) !important;
+  }
+}
+
+:root[gx-theme="minimal"] #nav-bar {
+  padding: 1px 6px 3px !important;
+
+  /* One-row contract: the urlbar row sits under the tab strip (cleared by
+     its own margin in the TabsToolbar rule above); nav surface is flat. */
+  background-color: transparent !important;
+  border-top: none !important;
+
+  /* Flat toolbar buttons — 4px hover chips, no pills */
+  .toolbarbutton-1,
+  #unified-extensions-button,
+  #PanelUI-menu-button,
+  #tabs-newtab-button,
+  #alltabs-button,
+  #workspaces-toolbar-button {
+    border-radius: 4px !important;
+  }
+}
+
+:root[gx-theme="minimal"] #urlbar:not([open]) > #urlbar-background {
+  border-radius: var(--stratus-urlbar-radius) !important;
+  box-shadow: none !important;
+  background-color: color-mix(in srgb, var(--stratus-surface-1) 92%, transparent) !important;
+  border: 1px solid color-mix(in srgb, var(--stratus-accent) 18%, transparent) !important;
+}
+
+:root[gx-theme="minimal"] #urlbar[focused] > #urlbar-background {
+  box-shadow: 0 0 0 1px var(--stratus-accent) !important;
+}
+
+:root[gx-theme="minimal"] #PersonalToolbar {
+  display: none !important;
+}
+
+:root[gx-theme="minimal"] #firefox-view-button {
+  display: none !important;
+}
+
+:root[gx-theme="minimal"] panel:is(#appMenu-popup, #widget-overflow, #unified-extensions-popup),
+:root[gx-theme="minimal"] menupopup {
+  border-radius: 8px !important;
+}
+
+:root[gx-theme="minimal"] #nora-statusbar {
+  border-top: 1px solid var(--stratus-surface-2, var(--stratus-surface-1)) !important;
+}
+
+:root[gx-theme="minimal"] findbar {
+  border-radius: 6px !important;
+  border: 1px solid var(--stratus-line, var(--stratus-surface-2, var(--stratus-surface-1) 60%)) !important;
+  margin: 4px !important;
+  box-shadow: none !important;
+}
+
+:root[gx-theme="minimal"] :is(#panel-sidebar-box, #command-palette-container) {
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.14) !important;
+}

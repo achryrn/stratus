@@ -974,4 +974,20 @@ Closing every gap called out in the M8.9 review so the agent-control API can shi
   - content eval round-trip (1+1 → ok).
   Note: the raw-socket probe used nsISocketTransportService.createTransport([], host, port, null, null) — the 5-arg form is required on this ESR.
 - **Live re-verification (hardened build)**: 401 no-auth / 401 wrong-token / 200 correct-token / 403 evil-origin / 200 self-origin / 200 CLI-no-origin / audit listing / 413 5MiB / settings→prefs round-trip / REAL native click (__clicked → 1, cursor physically moved 577,480 → 404,239) + typing `sec-chk` via the API. Settings page renders the card with masked token + copy + origin note (#/features/privacy). Console audit clean.
-### Next: M8.11 (deferred/documented)
+### M8.11 Minimalist UI — DEFAULT design mandate — DONE
+
+User mandate for the whole production-readiness effort: **the UI must be minimalist**. This slice makes minimal the default visual identity of the browser.
+
+- **New "minimal" theme preset (now DEFAULT)** — `GxThemeManager` (`stratus.theme.preset`): flat neutral dark chrome, no gradients — separators are 1px flat lines (`#2c2c31`), quiet steel accent `#8a94a6`, adaptive tab-line/loading/focus. Unknown/missing preset values now normalize to `minimal` (previously `gx`). GX (neon) and Classic remain selectable.
+- **Minimal chrome geometry** — new `browser-features/skin/stratus/css/minimal.css`, gated on `:root[gx-theme="minimal"]` (loaded with the stratus design, dev + prod):
+  - compact `--tab-min-height: 28px` (was 32px);
+  - **single visual row**: tab strip overlays the nav-bar row (transparent surfaces, verified overlap \-29px band) — tabs + urlbar share one flat bar;
+  - flat active tab: no pill/blob — 2px accent bottom line;
+  - flat urlbar (radius 6px, no shadow, 1px hairline border, accent focus ring);
+  - bookmarks toolbar hidden by default (PersonalToolbar display:none);
+  - Firefox View button hidden; toolbar buttons become small 4px hover chips; panels flat 8px radius; flatter statusbar/findbar.
+- **Settings** — Theme picker on /features/privacy now offers Minimal (default) / GX / Classic; loadTheme reads the new default; en-US + ja-JP locale updates (title "Theme", minimal label).
+- **Colocated tests (ESM, all green 1/1)** — GxTheme.test.ts extended: minimal token shape (flat non-gradient separator == line token, accent feeds the chrome contract), default normalization (junk/null → minimal), live LWT switch to `stratus-minimal-dark`, window attribute flip.
+- **Live verification** (agent API + dev-tool): preset flip minimal→gx→minimal round-trip (28px/32px tab heights, #8a94a6/#ff1e00 accents, gx-theme attr); single-row overlap 29px; PersonalToolbar display:none; 16 gx-theme CSS rules live; default-preset pref read is `minimal` for fresh profiles; screenshot evidence `_dist/m811-minimal-ui.png`.
+
+### Next: M8.12 (deferred/documented)

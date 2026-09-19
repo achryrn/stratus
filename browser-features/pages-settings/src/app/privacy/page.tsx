@@ -42,7 +42,7 @@ export default function PrivacyPage() {
   const [saved, setSaved] = useState(false);
   const [adOn, setAdOn] = useState(false);
   const [adCount, setAdCount] = useState(0);
-  const [gxPreset, setGxPreset] = useState<string>("gx");
+  const [gxPreset, setGxPreset] = useState<string>("minimal");
   const [memOn, setMemOn] = useState(true);
   const [memDiscards, setMemDiscards] = useState(0);
   const [rcOn, setRcOn] = useState(true);
@@ -58,8 +58,8 @@ export default function PrivacyPage() {
 
   const loadGx = useCallback(async () => {
     try {
-      const v = await rpc.getStringPref("stratus.theme.preset", "gx");
-      setGxPreset(v === "classic" ? "classic" : "gx");
+      const v = await rpc.getStringPref("stratus.theme.preset", "minimal");
+      setGxPreset(v === "classic" ? "classic" : v === "gx" ? "gx" : "minimal");
     } catch {
       setGxPreset("gx");
     }
@@ -203,6 +203,13 @@ export default function PrivacyPage() {
         <CardContent className="flex flex-col gap-2">
           <div className="flex items-center gap-3">
             <Palette className="size-4 opacity-60" />
+            <label className="flex items-center gap-2 text-sm cursor-pointer">
+              <input type="radio" name="gx" checked={gxPreset === "minimal"} onChange={async () => {
+                await rpc.setStringPref("stratus.theme.preset", "minimal");
+                setGxPreset("minimal");
+              }} />
+              {t("privacy.gx.minimal")}
+            </label>
             <label className="flex items-center gap-2 text-sm cursor-pointer">
               <input type="radio" name="gx" checked={gxPreset === "gx"} onChange={async () => {
                 await rpc.setStringPref("stratus.theme.preset", "gx");

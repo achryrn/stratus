@@ -16,6 +16,7 @@ import leptonChromeStylesRaw from "@nora/skin/lepton/css/leptonChrome.css?raw";
 import leptonContentStylesRaw from "@nora/skin/lepton/css/leptonContent.css?raw";
 import fluerialStylesRaw from "@nora/skin/fluerial/css/fluerial.css?raw";
 import stratusStylesRaw from "@nora/skin/stratus/css/stratus.css?raw";
+import minimalStylesRaw from "@nora/skin/stratus/css/minimal.css?raw";
 import {
   FLUERIAL_TAB_CORNER_CSS,
   TAB_COLOR_LIKE_TOOLBAR_CSS,
@@ -172,6 +173,7 @@ export function getCSSFromConfig(
         return {
           chromeStylesRaw: [
             stratusStylesRaw,
+            minimalStylesRaw,
             TAB_COLOR_LIKE_TOOLBAR_CSS,
             GECKO_152_COLOR_FIX_CSS,
           ],
@@ -183,6 +185,7 @@ export function getCSSFromConfig(
       return {
         chromeStylesRaw: [
           stratusStylesRaw,
+          minimalStylesRaw,
           TAB_COLOR_LIKE_TOOLBAR_CSS,
           GECKO_152_COLOR_FIX_CSS,
         ],

@@ -7,10 +7,10 @@
  * frame, neon red #FF1E00 tab line and icons, cyan #00C8FF tab loading,
  * magenta-purple gradient separators.
  *
- * Navigable via stratus.theme.preset ("gx" | "classic").
+ * Navigable via stratus.theme.preset ("gx" | "classic" | "minimal", minimal default).
  */
 
-export type ThemePreset = "gx" | "classic";
+export type ThemePreset = "gx" | "classic" | "minimal";
 export const THEME_PRESET_PREF = "stratus.theme.preset";
 export const THEME_UPDATED_TOPIC = "stratus.theme.updated";
 
@@ -45,13 +45,13 @@ export const GX_THEME: Record<string, unknown> = {
 };
 
 export function normalizePreset(raw: unknown): ThemePreset {
-  return raw === "gx" || raw === "classic" ? raw : "gx";
+  return raw === "gx" || raw === "classic" || raw === "minimal" ? raw : "minimal";
 }
 
 let pollTimer: nsITimer | null = null;
 
 export function readPreset(): ThemePreset {
-  return normalizePreset(Services.prefs.getStringPref(THEME_PRESET_PREF, "gx"));
+  return normalizePreset(Services.prefs.getStringPref(THEME_PRESET_PREF, "minimal"));
 }
 
 export function setThemePreset(preset: ThemePreset): void {
@@ -65,6 +65,8 @@ export function applyPreset(preset: ThemePreset): void {
     ) as { LightweightThemeManager: { currentTheme: unknown } };
     if (preset === "gx") {
       lwt.LightweightThemeManager.currentTheme = GX_THEME;
+    } else if (preset === "minimal") {
+      lwt.LightweightThemeManager.currentTheme = MINIMAL_THEME;
     } else {
       try {
         lwt.LightweightThemeManager.currentTheme =
@@ -107,6 +109,46 @@ export const GX_TOKENS: Record<string, string> = {
   "--lwt-text-color": GX_TEXT,
 };
 
+export const MINIMAL_FRAME = "#151517";
+export const MINIMAL_TOOLBAR = "#1b1b1e";
+export const MINIMAL_TEXT = "#e8e8ea";
+export const MINIMAL_ACCENT = "#8a94a6";
+export const MINIMAL_LINE = "#2c2c31";
+
+/**
+ * Minimal preset — flat neutral dark chrome, 1px flat separators, no
+ * gradients; a quiet steel accent. This is the DEFAULT theme.
+ */
+export const MINIMAL_THEME: Record<string, unknown> = {
+  id: "stratus-minimal-dark",
+  name: "Stratus Minimal",
+  colors: {
+    frame: MINIMAL_FRAME,
+    tab_background_text: MINIMAL_TEXT,
+    toolbar: MINIMAL_TOOLBAR,
+    toolbar_field: "#232327",
+    toolbar_field_text: MINIMAL_TEXT,
+    toolbar_field_border: "transparent",
+    icons: "#cfcfd4",
+    tab_line: MINIMAL_ACCENT,
+    tab_loading: MINIMAL_ACCENT,
+    toolbar_top_separator: MINIMAL_LINE,
+    toolbar_bottom_separator: MINIMAL_LINE,
+    tab_selected: "#232327",
+  },
+};
+
+export const MINIMAL_TOKENS: Record<string, string> = {
+  "--stratus-accent": MINIMAL_ACCENT,
+  "--tab-loading-fill": MINIMAL_ACCENT,
+  "--toolbar-bgcolor": MINIMAL_TOOLBAR,
+  "--toolbar-color": MINIMAL_TEXT,
+  "--toolbar-non-lwt-bgcolor": MINIMAL_TOOLBAR,
+  "--toolbar-non-lwt-textcolor": MINIMAL_TEXT,
+  "--lwt-accent-color": MINIMAL_ACCENT,
+  "--lwt-text-color": MINIMAL_TEXT,
+};
+
 export const CLASSIC_TOKENS: Record<string, string> = {
   "--stratus-accent": "#6c5ce7",
 };
@@ -115,7 +157,7 @@ function paintWindow(win: nsIDOMWindow, preset: ThemePreset): void {
   const root = win.document?.documentElement;
   if (!root) return;
   root.setAttribute("gx-theme", preset);
-  const tokens = preset === "gx" ? GX_TOKENS : CLASSIC_TOKENS;
+  const tokens = preset === "gx" ? GX_TOKENS : preset === "minimal" ? MINIMAL_TOKENS : CLASSIC_TOKENS;
   for (const name of Object.keys(GX_TOKENS)) {
     root.style.setProperty(name, tokens[name] ?? "");
   }

@@ -57,6 +57,7 @@ import { registerLegalRoutes } from "./legal/routes.sys.mts";
 import { registerNetworkRoutes } from "./network/routes.sys.mts";
 import { registerScraperRoutes } from "./scraper/routes.sys.mts";
 import { registerTabRoutes } from "./tabs/routes.sys.mts";
+import { registerVpnRoutes } from "./vpn/routes.sys.mts";
 import { registerWorkspaceRoutes } from "./workspaces/routes.sys.mts";
 
 // -- Timer import -------------------------------------------------------------
@@ -540,6 +541,7 @@ class LocalHttpServer implements nsIServerSocketListener {
     registerNetworkRoutes(api);
     registerScraperRoutes(api);
     registerTabRoutes(api);
+    registerVpnRoutes(api);
     registerWorkspaceRoutes(api);
 
     return router;

@@ -117,6 +117,15 @@
     "reset": "セッションをリセット",
     "resetting": "セッションをクリアしました"
   },
+  "vpn-toggle": {
+    "on-short": "VPN オン",
+    "off-short": "VPN オフ",
+    "on": "オン",
+    "off": "オフ",
+    "mode-normal": "通常ウィンドウ",
+    "mode-private": "プライベートウィンドウ",
+    "tooltip": "VPN {{state}} ({{mode}}) — {{other}}: {{otherState}}。クリックで{{mode}}のみ切り替え。"
+  },
   "extension-activity": {
     "button-label": "拡張機能",
     "button-tooltip": "拡張機能のアクティビティを表示",

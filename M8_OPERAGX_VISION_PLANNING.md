@@ -650,3 +650,57 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   covered by unit tests; panel screenshot captured; console audit clean of
   overlay errors.
 
+
+### M8.2 Extension transparency — DONE (commit e76fb7c55805)
+- **Module** `modules/extension-activity/ExtensionRegistry.sys.mts`: live registry of
+  installed extensions (temporary + permanent), last-activity map (host -> count via
+  the M8.1 network monitor), `stratus.extension-activity.updated` broadcast.
+- **UI** `chrome/common/extension-activity`: navbar button + arrow panel listing
+  extensions with per-extension request attribution and host counts; i18n en-US +
+  ja-JP (`extension-activity` namespace in browser-chrome.json).
+- **Tests** `ExtensionRegistry.test.ts` with an activity-probe fixture extension
+  (in-browser: 8 cases, 1 file passed). Live verification: probe extension installed
+  while running, its example.com requests attributed to the extension in the panel;
+  console audit clean. Screenshot `_dist/shot-extension-activity.png`.
+
+### M8.3 Per-mode VPN — DONE
+- **Module** `modules/vpn/VpnManager.sys.mts` (+ pure decision core `VpnCore.ts`):
+  two INDEPENDENT toggles (normal vs private). The active browser window's mode
+  determines which toggle is applied to the engine's proxy prefs (re-applied on
+  config change, window open, window activation, and a 1.5 s focus poll; the poll
+  timer is held in a module ref because unreferenced nsITimers get GC'd and stop on
+  this runtime). Bypass list (loopback, RFC1918, .local, update endpoints, local dev
+  servers) via `network.proxy.no_proxies_on`; kill switches per mode.
+- **Empirical mechanism findings (must not be re-derived):** JS proxy filters are
+  dead on this runtime — `nsIProtocolProxyService.registerFilter/registerChannelFilter`
+  accept listeners but NEVER consult them; `browser.proxy.onRequest` (WebExtension)
+  never fires; assigning `channel.proxyInfo` from `http-on-modify-request` is ignored
+  by the connection layer. The ONLY routing that works is the `network.proxy.*`
+  prefs. Also: `newProxyInfo` REQUIRES the 8-arg form (…, 0, 0, null); the contract
+  id is `@mozilla.org/network/protocol-proxy-service;1`.
+- **v1 limitation (documented in the settings page):** routing is applied per ACTIVE
+  window, so background windows' traffic follows the focused window's mode. True
+  per-request separation needs a working filter path (upstream regression) — Phase 2
+  candidate alongside a real SOCKS5/HTTP tunnel helper.
+- **UI** `chrome/common/vpn-toggle`: navbar button "VPN ON/OFF" with per-mode
+  tooltip; forces navbar placement on customized profiles (the shared util skips
+  placement when `browser.uiCustomization.state` exists — every real profile).
+- **Settings page** `pages-settings/src/app/vpn/`: normal/private switches (direct
+  pref writes -> VpnManager syncs via a `stratus.vpn.config` pref observer), proxy
+  host/port/type (HTTP/SOCKS5), region (auto), reload. Route `/features/vpn`,
+  sidebar entry, en-US + ja-JP namespaces added (both files JSON-valid).
+- **os-server** `os-server/vpn/routes.sys.mts`: GET/POST /vpn/config (registered in
+  server.sys.mts; unauthorized without the os token — dormant in dev like the network
+  routes).
+- **Tests** `VpnManager.test.ts` — 9 cases, in-browser 1 file passed (mode decision
+  isolation, bypass hosts, no_proxies_on coverage, loadInfo mode, config round-trip
+  isolation, pref apply + active-mode tracking).
+- **Live verification (clean rebuild):** proxy prefs flip with the focused window;
+  normal window: ON -> `network.proxy.type=1` + requests observed at the local proxy
+  (59123); OFF -> `type=0` + direct. Private window: OFF -> direct (private DOES NOT
+  inherit normal's VPN); ON -> proxied. Toolbar toggle flips the current window's
+  mode (label + state sync). Settings page renders with per-mode switches. Console
+  audit clean. Screenshots `_dist/shot-vpn-normal-on.png`,
+  `_dist/shot-vpn-normal-on-page.png`, `_dist/shot-vpn-settings.png`.
+
+### Next: M8.4 (see Part 1/3.4)

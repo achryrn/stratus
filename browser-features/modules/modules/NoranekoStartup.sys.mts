@@ -126,6 +126,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/extension-activity/ExtensionRegistry.sys.mjs",
   ).initExtensionRegistry();
+  // Per-mode VPN (M8.3): per-mode routing driven by the active window.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/vpn/VpnManager.sys.mjs",
+  ).initVpnManager();
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

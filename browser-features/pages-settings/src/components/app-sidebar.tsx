@@ -11,6 +11,7 @@ import {
   PanelLeft,
   PencilRuler,
   RefreshCw,
+  ShieldCheck,
   Settings,
   UserRoundPen,
 } from "lucide-react";
@@ -85,6 +86,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       icon: Option,
     },
     { title: t("pages.webApps"), url: "/features/webapps", icon: Grip },
+    { title: t("pages.vpn"), url: "/features/vpn", icon: ShieldCheck },
     // Floorp OS entry is conditional based on pref floorp.os.hidden
     ...(isFloorpOSVisible
       ? [

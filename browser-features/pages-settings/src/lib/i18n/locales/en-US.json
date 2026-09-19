@@ -33,6 +33,7 @@
         "updates": "Updates & Experiments",
         "debug": "Debug",
         "mouseGesture": "Mouse Gestures",
+        "vpn": "VPN",
         "keyboardShortcut": "Keyboard Shortcuts",
         "search": {
             "title": "Search Settings",
@@ -470,6 +471,29 @@
         "resetContainer": "Reset",
         "save": "Save",
         "errorSettingContainer": "Failed to set container"
+    },
+    "vpn": {
+        "title": "Built-in VPN",
+        "description": "Route your browsing through a proxy. Normal windows and private windows are switched independently — the VPN never crosses between modes.",
+        "loading": "Loading…",
+        "on": "ON",
+        "off": "OFF",
+        "normalCard": {
+            "title": "Normal windows: VPN OFF",
+            "description": "Applies only to normal browser windows"
+        },
+        "privateCard": {
+            "title": "Private windows: VPN OFF",
+            "description": "Applies only to private windows"
+        },
+        "proxyCard": {
+            "title": "Proxy server",
+            "description": "Host, port and protocol for the VPN endpoint (HTTP or SOCKS5). Loopback, local network and update hosts always bypass it."
+        },
+        "regionLabel": "Region",
+        "regionAuto": "Auto (closest)",
+        "saved": "Saved ✓",
+        "reload": "Reload"
     },
     "floorpOS": {
         "title": "{{productName}} OS",

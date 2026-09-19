@@ -38,6 +38,7 @@ export class NetworkMonitorCore {
   record(input: NetworkRecordInput): void {
     const isRequest = input.kind === "request";
     const bytes = isRequest ? 0 : toBytes(input);
+    const ts = Date.now();
     if (isRequest) {
       this.summary.requests++;
       if (input.bucket === "private") {
@@ -49,14 +50,14 @@ export class NetworkMonitorCore {
         this.summary.privateBytes += bytes;
       }
     }
-    this.bumpHost(input.host, bytes, isRequest);
+    this.bumpHost(input.host, bytes, isRequest, ts);
     if (input.browserId > 0) {
-      this.bumpTab(input.browserId, bytes, isRequest);
+      this.bumpTab(input.browserId, bytes, isRequest, ts);
     }
     if (input.extensionId) {
-      this.bumpExtension(input.extensionId, input.host, bytes, isRequest);
+      this.bumpExtension(input.extensionId, input.host, bytes, isRequest, ts);
     }
-    this.pushEvent(input);
+    this.pushEvent(input, ts);
   }
 
   snapshot(): NetworkSnapshot {
@@ -85,28 +86,40 @@ export class NetworkMonitorCore {
     return this.events.slice(-limit);
   }
 
-  private bumpHost(host: string, bytes: number, isRequest: boolean): void {
+  private bumpHost(
+    host: string,
+    bytes: number,
+    isRequest: boolean,
+    ts: number,
+  ): void {
     let stat = this.hostMap.get(host);
     if (!stat) {
-      stat = { host, requests: 0, bytes: 0 };
+      stat = { host, requests: 0, bytes: 0, lastActive: ts };
       this.hostMap.set(host, stat);
     }
     if (isRequest) {
       stat.requests++;
     }
     stat.bytes += bytes;
+    stat.lastActive = ts;
   }
 
-  private bumpTab(browserId: number, bytes: number, isRequest: boolean): void {
+  private bumpTab(
+    browserId: number,
+    bytes: number,
+    isRequest: boolean,
+    ts: number,
+  ): void {
     let stat = this.tabMap.get(browserId);
     if (!stat) {
-      stat = { browserId, requests: 0, bytes: 0 };
+      stat = { browserId, requests: 0, bytes: 0, lastActive: ts };
       this.tabMap.set(browserId, stat);
     }
     if (isRequest) {
       stat.requests++;
     }
     stat.bytes += bytes;
+    stat.lastActive = ts;
   }
 
   private bumpExtension(
@@ -114,26 +127,28 @@ export class NetworkMonitorCore {
     host: string,
     bytes: number,
     isRequest: boolean,
+    ts: number,
   ): void {
     let stat = this.extMap.get(extensionId);
     if (!stat) {
-      stat = { extensionId, requests: 0, bytes: 0, hosts: [] };
+      stat = { extensionId, requests: 0, bytes: 0, hosts: [], lastActive: ts };
       this.extMap.set(extensionId, stat);
     }
     if (isRequest) {
       stat.requests++;
     }
     stat.bytes += bytes;
+    stat.lastActive = ts;
     if (!stat.hosts.includes(host) && stat.hosts.length < MAX_EXTENSION_HOSTS) {
       stat.hosts.push(host);
     }
   }
 
-  private pushEvent(input: NetworkRecordInput): void {
+  private pushEvent(input: NetworkRecordInput, ts: number): void {
     this.seq++;
     const ev: NetworkEvent = {
       id: this.seq,
-      timestamp: Date.now(),
+      timestamp: ts,
       host: input.host,
       kind: input.kind,
       browserId: input.browserId,

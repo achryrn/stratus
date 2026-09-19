@@ -122,6 +122,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/network-monitor/NetworkMonitor.sys.mjs",
   );
+  // Transparent extension activity (M8.2): live add-on registry.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/extension-activity/ExtensionRegistry.sys.mjs",
+  ).initExtensionRegistry();
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

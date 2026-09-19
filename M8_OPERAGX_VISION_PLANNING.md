@@ -566,6 +566,53 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   floorp.mcp.enabled); prod packaging of static/legal into the runtime
   lands with M2.5/system bundle.
 
+### M8.2 Transparent extension activity — DONE (this commit)
+- **Registry** `modules/extension-activity/ExtensionRegistry.sys.mts`: live
+  add-on set via AddonManager.getAllAddons + addAddonListener
+  (install/enable/disable/uninstall); per-addon name/version/enabled/icon;
+  `stratus.extensions.updated` topic; enable/disable via `addon.disable()` /
+  `addon.enable()` (hard-won: `AddonManager.disableAddon` and
+  `addon.setEnabled` DO NOT exist on this runtime; the object methods are
+  not enumerable through Xray proxies). Singleton object export mirrors the
+  NetworkMonitor shape; auto-initialized from NoranekoStartup.
+- **Attribution fix (M8.1 follow-up):** live moz-extension requests CRASHED
+  the monitor — `WebExtensionPolicy.getByHost` is NOT a function on this
+  runtime. Resolver now prefers getByHost when present, else matches
+  `mozExtensionHostname` over `getActiveExtensions()`; never throws
+  (degrades to the UUID host). Verified live: background-page fetches
+  attributed to activity-probe@stratus.test with host + requests +
+  lastActive. Unit core also gained per-host/per-tab/per-extension
+  lastActive timestamps.
+- **Panel** `chrome/common/extension-activity/`: navbar button + arrow panel;
+  rows = installed extensions (icon/fallback, name, version) merged with
+  live NetworkMonitor stats (requests, bytes, up to 5 recently-accessed
+  origins as chips, relative last-active time), uninstalled-but-tracked
+  rows flagged, enable/disable buttons; 1.5 s auto-refresh; i18n en-US +
+  ja-JP (`extension-activity` namespace).
+  - Learned the hard way: @nora/solid-xul stringifies boolean props via
+    setAttribute, so `disabled={false}` renders a DISABLED button; bind as
+    `{cond || undefined}` so the renderer removes the attribute. Also the
+    root panel element must be `<xul:panel>` (renderer only XUL-ifies
+    `xul:`-prefixed tags; `mainPopupSet` needs real XUL popups), and row
+    snapshots must flow through createMemo (For + plain const never
+    re-renders).
+- **Tests**: `extension-activity/test/ExtensionRegistry.test.ts` incl. a
+  REAL enable/disable cycle against an installed fixture add-on
+  (`tools/test-fixtures/activity-probe/`, MV2, host permission on
+  example.com) — installs via installTemporaryAddon, disables, verifies
+  registry + addon state, re-enables, uninstalls. NetworkMonitor core
+  tests extended for lastActive. Full module suite 19/19, host 209/209.
+- **Live verification**: probe installed (temp + permanent), panel opened
+  via toolbar button, row showed probes name/stats/hosts/relative time,
+  Disable click flipped addon to inactive and panel to "Enable" + dimmed,
+  Enable restored traffic; screenshots captured; console audit clean of
+  feature errors (only upstream fullScreen deprecation / SearchService
+  noise).
+- Follow-up (prod, not in this slice): prod packaging of the fixture
+  (dev-only); byte accounting for extension traffic (M8.5); panel idle
+  refresh is interval-based — fine for v1; addon icons for unpacked
+  addons show the fallback badge (iconUrl null).
+
 ---
 
 ## Part 6 — Slice status log

@@ -1,0 +1,71 @@
+/* Extension Activity panel (M8.2). */
+
+.stratus-extension-panel {
+  width: 360px;
+  --ea-accent: #00c8ff;
+  --ea-ok: #2dd4bf;
+  --ea-off: #9a9ab0;
+  --ea-text: #e8e8f0;
+  --ea-muted: #9a9ab0;
+  --ea-border: rgba(255, 255, 255, 0.10);
+  --ea-bg-1: rgba(255, 255, 255, 0.06);
+  --ea-bg-2: rgba(255, 255, 255, 0.03);
+  background: #131320;
+  color: var(--ea-text);
+  padding: 0;
+}
+
+.stratus-extension-panel .exp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid var(--ea-border);
+}
+.exp-title { font-weight: 700; letter-spacing: 0.02em; }
+.exp-count { color: var(--ea-muted); font-size: 11px; }
+
+.exp-list {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 8px 12px;
+  max-height: 420px; overflow-y: auto;
+}
+.exp-row {
+  display: flex; align-items: flex-start; gap: 8px;
+  background: var(--ea-bg-2); border-radius: 6px;
+  padding: 6px 8px; border: 1px solid transparent;
+}
+.exp-row-disabled { opacity: 0.55; }
+.exp-icon {
+  width: 20px; height: 20px; flex: none;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.exp-icon img { border-radius: 4px; }
+.exp-icon-fallback {
+  width: 20px; height: 20px; border-radius: 4px;
+  background: var(--ea-bg-1); border: 1px solid var(--ea-border);
+  font-size: 12px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ea-muted);
+}
+.exp-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.exp-name { font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.exp-version { color: var(--ea-muted); font-weight: 400; }
+.exp-stat { color: var(--ea-muted); font-size: 11px; }
+.exp-hosts { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 3px; }
+.exp-host {
+  background: var(--ea-bg-1); border: 1px solid var(--ea-border);
+  border-radius: 3px; padding: 1px 5px; font-size: 10px;
+  color: var(--ea-ok); font-family: monospace;
+}
+.exp-removed { color: var(--ea-off); font-size: 10px; font-style: italic; margin-top: 2px; }
+.exp-toggle {
+  flex: none; background: var(--ea-bg-1); border: 1px solid var(--ea-border);
+  border-radius: 4px; color: var(--ea-text); font-size: 11px;
+  padding: 3px 8px; cursor: pointer;
+}
+.exp-toggle:hover { border-color: var(--ea-accent); }
+.exp-toggle-off { color: var(--ea-ok); border-color: var(--ea-ok); }
+.exp-footer { padding: 6px 12px 10px; color: var(--ea-muted); font-size: 10px; font-style: italic; }

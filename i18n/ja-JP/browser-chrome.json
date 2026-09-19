@@ -117,6 +117,20 @@
     "reset": "セッションをリセット",
     "resetting": "セッションをクリアしました"
   },
+  "extension-activity": {
+    "button-label": "拡張機能",
+    "button-tooltip": "拡張機能のアクティビティを表示",
+    "panel-title": "拡張機能のアクティビティ",
+    "extensions-count": "個の拡張機能",
+    "requests-label": "リクエスト",
+    "last-active": "アクティブ",
+    "disable": "無効化",
+    "enable": "有効化",
+    "disable-tooltip": "この拡張機能を無効化",
+    "enable-tooltip": "この拡張機能を有効化",
+    "removed-hint": "アンインストール済み — このセッションのアクティビティ",
+    "footer-hint": "表示はこのブラウジングセッションのリクエストです"
+  },
   "profile-manager-button": {
     "label": "プロファイルマネージャー",
     "tooltiptext": "プロファイルマネージャーを開く"

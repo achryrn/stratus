@@ -117,6 +117,20 @@
     "reset": "Reset session",
     "resetting": "Session cleared"
   },
+  "extension-activity": {
+    "button-label": "Extensions",
+    "button-tooltip": "Show live extension activity",
+    "panel-title": "Extension Activity",
+    "extensions-count": "extensions",
+    "requests-label": "reqs",
+    "last-active": "active",
+    "disable": "Disable",
+    "enable": "Enable",
+    "disable-tooltip": "Disable this extension",
+    "enable-tooltip": "Enable this extension",
+    "removed-hint": "Uninstalled — activity from this session",
+    "footer-hint": "Requests shown are from this browsing session"
+  },
   "profile-manager-button": {
     "label": "Profile Manager",
     "tooltiptext": "Open Profile Manager"

@@ -270,8 +270,29 @@ class NetworkMonitorService {
     if (!extHost) {
       return null;
     }
-    const policy = webExtensionPolicyGlobal?.getByHost(extHost);
-    return policy?.id ?? extHost;
+    // Resolve the moz-extension host UUID to the add-on id. This dev runtime
+    // lacks WebExtensionPolicy.getByHost; prefer it when present (newer
+    // Gecko) and fall back to matching mozExtensionHostname over active
+    // policies. Never throw: a resolution failure degrades to the UUID.
+    try {
+      const policyType = webExtensionPolicyGlobal as {
+        getByHost?(host: string): { id?: string } | null;
+        getActiveExtensions?(): Array<{ id?: string; mozExtensionHostname?: string }>;
+      } | undefined;
+      if (typeof policyType?.getByHost === "function") {
+        return policyType.getByHost(extHost)?.id ?? extHost;
+      }
+      if (typeof policyType?.getActiveExtensions === "function") {
+        for (const policy of policyType.getActiveExtensions()) {
+          if (String(policy.mozExtensionHostname ?? "") === extHost) {
+            return policy.id ?? extHost;
+          }
+        }
+      }
+    } catch {
+      // fall back to the UUID below
+    }
+    return extHost;
   }
 
   private get isDebug(): boolean {

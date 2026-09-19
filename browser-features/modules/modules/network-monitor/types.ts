@@ -19,12 +19,16 @@ export interface HostStat {
   host: string;
   requests: number;
   bytes: number;
+  /** Unix ms of the most recent recorded event for this host. */
+  lastActive: number;
 }
 
 export interface TabStat {
   browserId: number;
   requests: number;
   bytes: number;
+  /** Unix ms of the most recent recorded event for this tab. */
+  lastActive: number;
 }
 
 export interface ExtensionStat {
@@ -32,6 +36,8 @@ export interface ExtensionStat {
   requests: number;
   bytes: number;
   hosts: string[];
+  /** Unix ms of the most recent recorded event from this extension. */
+  lastActive: number;
 }
 
 export interface NetworkSummary {

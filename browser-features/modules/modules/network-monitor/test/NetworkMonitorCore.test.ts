@@ -106,6 +106,17 @@ function testUnattributedChannelNotInTabs(): void {
   assertEquals(core.snapshot().tabs.length, 0, "browserId 0 should not create a tab entry");
 }
 
+function testLastActiveTracked(): void {
+  const core = new NetworkMonitorCore();
+  core.record(req("api.com", { extensionId: "ext-1" }));
+  const before = core.snapshot();
+  assert(before.hosts[0].lastActive > 0, "host lastActive timestamp set");
+  assert(before.extensions[0].lastActive > 0, "extension lastActive timestamp set");
+  const a = before.hosts[0].lastActive;
+  const b = before.extensions[0].lastActive;
+  assert(Math.abs(a - b) < 2000, "timestamps share the same record time");
+}
+
 function testEventRingCapped(): void {
   const core = new NetworkMonitorCore(3);
   core.record(req("a.com"));
@@ -166,6 +177,7 @@ function testSingletonExposesRuntimeApi(): void {
 export function runAllTests(): void {
   runTests("network-monitor.test", [
     { name: "request increments counts", fn: testRequestIncrementsCounts },
+    { name: "host and extension lastActive tracked", fn: testLastActiveTracked },
     { name: "response bytes accumulate", fn: testResponseBytesAccumulate },
     { name: "private bucket separated", fn: testPrivateBucketSeparated },
     { name: "extension attribution", fn: testExtensionAttribution },

@@ -12,6 +12,7 @@ import {
   PencilRuler,
   RefreshCw,
   ShieldCheck,
+  MonitorUp,
   Settings,
   UserRoundPen,
 } from "lucide-react";
@@ -87,6 +88,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     },
     { title: t("pages.webApps"), url: "/features/webapps", icon: Grip },
     { title: t("pages.vpn"), url: "/features/vpn", icon: ShieldCheck },
+    { title: t("pages.sites"), url: "/features/sites", icon: MonitorUp },
     // Floorp OS entry is conditional based on pref floorp.os.hidden
     ...(isFloorpOSVisible
       ? [

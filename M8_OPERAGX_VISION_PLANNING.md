@@ -704,3 +704,35 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   `_dist/shot-vpn-normal-on-page.png`, `_dist/shot-vpn-settings.png`.
 
 ### Next: M8.4 (see Part 1/3.4)
+
+### M8.4 Trusted-site actions allowlist — DONE
+- **Module** `modules/trusted-sites/TrustedSitesManager.sys.mts` (+ pure core
+  `TrustedSitesCore.ts`): pref `stratus.permissions.trustedSites` (JSON list of
+  {pattern, actions}); patterns match host with optional port and `*.` wildcard;
+  per-entry actions: fullscreen / window-management / notifications / autoplay.
+  Grants are applied via Services.perms for notifications/autoplay/window-
+  management at init + on every change. Empty by default.
+- **Fullscreen no-gesture (empirical):** no per-origin gate exists on Gecko 153 —
+  granting the "fullscreen" permission does NOT unlock it; the ONLY switch is the
+  global `full-screen-api.allow-trusted-requests-only`. A 1 s watchdog holds that
+  pref FALSE only while an allowlisted fullscreen site is the focused normal-mode
+  tab (background tabs are already rejected by Gecko for fullscreen; private
+  windows always keep the strict pref). True per-origin gating = Gecko patch,
+  queued with the M2.5/M8.7 patch train.
+- **window-management:** `window.screenDetails` is not exposed on this build even
+  with `dom.window-management.enabled` + the grant; classic moveTo/resizeTo still
+  power "window hopping". Grant is issued for future builds.
+- **Settings page** `/features/sites` ("Sites that can control the window"): add/
+  remove patterns, per-action toggles, visible amber warning about the global
+  fullscreen caveat; en-US + ja-JP namespaces; sidebar entry (MonitorUp).
+- **Tests** `TrustedSites.test.ts` — 5 cases (pattern validation/normalization,
+  parse round trip, host match semantics incl. wildcard + port + negative cases,
+  manager add/remove/toggle, watchdog pref sync). Module suite 21/21 clean.
+- **Live verification (clean rebuild):** watchdog flips the pref with the
+  focused tab (127.0.0.1:5999 allowlisted -> false; 127.0.0.1:3999 -> true;
+  private window focused -> true); no-gesture requestFullscreen ENTERS on the
+  allowlisted origin and REJECTS (TypeError) on the non-allowlisted one; grants
+  present in the permission manager. Settings page renders (screenshot
+  `_dist/shot-trusted-sites-settings.png`), console audit clean.
+
+### Next: M8.5 (see Part 1/3.5)

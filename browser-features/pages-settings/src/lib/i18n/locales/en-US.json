@@ -34,6 +34,7 @@
         "debug": "Debug",
         "mouseGesture": "Mouse Gestures",
         "vpn": "VPN",
+        "sites": "Trusted Sites",
         "keyboardShortcut": "Keyboard Shortcuts",
         "search": {
             "title": "Search Settings",
@@ -743,5 +744,30 @@
             "cancel": "Cancel",
             "cancelDescription": "Cancel editing"
         }
+    },
+    "sites": {
+        "loading": "Loading…",
+        "title": "Sites that can control the window",
+        "description": "Allowlisted sites may trigger window behaviors that normal sites cannot: moving or resizing the browser window, notifications, autoplay, and — while such a site is the focused tab — entering fullscreen without a click. Private windows never grant these. Empty by default.",
+        "addCard": {
+            "title": "Add a trusted site",
+            "description": "Enter a host pattern, e.g. example.com or *.example.com (port supported: example.com:8080)." 
+        },
+        "add": "Add",
+        "list": {
+            "title": "Allowlist",
+            "description": "Each entry can enable any combination of actions."
+        },
+        "empty": "No trusted sites yet — the browser behaves strictly everywhere.",
+        "remove": "Remove",
+        "actions": {
+            "fullscreen": "Fullscreen (no click needed while focused)",
+            "window-management": "Move / resize the window",
+            "notifications": "Notifications",
+            "autoplay": "Autoplay audio"
+        },
+        "fullscreenWarning": "Note: Firefox has no per-site way to allow gesture-free fullscreen yet. While a trusted site with Fullscreen enabled is focused, the engine-wide gesture requirement is relaxed — any site you are actively viewing could also enter fullscreen. Exit is always one Esc. A per-origin patch is scheduled.",
+        "saved": "Saved",
+        "reload": "Reload"
     }
 }

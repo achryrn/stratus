@@ -130,6 +130,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/vpn/VpnManager.sys.mjs",
   ).initVpnManager();
+  // Trusted-site actions allowlist (M8.4): grants + fullscreen-gesture watchdog.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/trusted-sites/TrustedSitesManager.sys.mjs",
+  ).initTrustedSitesManager();
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

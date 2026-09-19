@@ -98,7 +98,15 @@ Supported package managers:
 
 ### 📥 Download & 📦 Install
 
-You can download the latest version of Stratus Browser from the official website: [Stratus Browser](https://stratus-browser.org/download) or from the [GitHub Releases](https://github.com/stratus-browser/stratus/releases) page.
+You can download the latest version of Stratus Browser from the official website: [Stratus Browser](https://stratus-browser.org/download) or from the [GitHub Releases](https://github.com/stratus-browser/stratus/releases) page. Windows users get a signed-capable NSIS installer (`stratus-browser-installer.exe`) built by the release pipeline (`tools/release/make-installer.ps1`).
+
+**Windows installer (QA-verified flow):**
+
+- Default install is **per-user** (no admin/UAC): `%LOCALAPPDATA%\Programs\Stratus`.
+- Silent install: `stratus-browser-installer.exe /S /D=<dir>` (the `/D` target must be the last argument and unquoted).
+- Silent uninstall: `"<install dir>\Uninstall.exe" /S` — removes the install directory, the Start-Menu/Desktop shortcuts and the HKCU (and best-effort HKLM) uninstall registration.
+- The installed browser binary is `stratus.exe` with `updater.exe` alongside; auto-update is wired through `app.update.url` (beta channel) and enabled by default.
+- Pre-release QA checklist: `tools/release/RELEASE_CHECKLIST.md`; per-version notes: `RELEASE_NOTES.md`.
 
 ---
 

@@ -442,7 +442,7 @@ function assertOneSurface(label: string, reading: SurfaceReadings): void {
         describeColor(surface.color)
       }) does not match ${present[0]!.label} (${
         describeColor(reference)
-      }) — chrome surfaces diverged (regression: bars no longer share one color)`,
+      }) — chrome surfaces diverged (regression: bars no longer share one color) | readings: ${present.map((s) => `${s.label}=${describeColor(s.color)}`).join(" | ")}`,
     );
   }
 }

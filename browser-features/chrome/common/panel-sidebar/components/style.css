@@ -57,6 +57,9 @@
 
 /* Panel Sidebar Box */
 #panel-sidebar-box {
+  /* One-surface invariant (Gecko 152): unless a design or LWT explicitly
+     sets a distinct panel color, the webpanel surface follows the toolbar
+     token so all chrome bars stay unified. */
   background: var(--panel-sidebar-background-color);
   min-width: 225px;
 }

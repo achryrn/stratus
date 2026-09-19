@@ -1,7 +1,7 @@
 // Host-layer regression tests for the M8.12 release pipeline.
 // @no-browser — pure file-contract checks (deno task test:host).
 
-import { assertEquals, assert } from "@std/assert";
+import { assert } from "@std/assert";
 
 const ROOT = new URL("../../", import.meta.url);
 const read = (p: string): string => Deno.readTextFileSync(new URL(p, ROOT));
@@ -13,12 +13,18 @@ Deno.test("installer script is a complete NSIS contract", () => {
     "OutFile \"stratus-browser-installer.exe\"",
     "WriteUninstaller",
     "SectionEnd",
-    "application.ini",
-    "updater.exe",
+    "File /oname=stratus.exe",
+    "File /r",
+    "RequestExecutionLevel user",
+    "UninstallString",
   ]) {
     assert(nsi.includes(token), "stratus.nsi must contain: " + token);
   }
   assert(!nsi.includes("Floorp") || nsi.includes("Stratus"), "no Floorp placeholder branding");
+  if (exists("_dist/bin/floorp/updater.exe")) {
+    const dist = read("_dist/bin/floorp/updater.exe");
+    assert(dist.length > 0, "dist updater.exe present for packaging");
+  }
 });
 
 Deno.test("release scripts exist and share the artifact contract", () => {

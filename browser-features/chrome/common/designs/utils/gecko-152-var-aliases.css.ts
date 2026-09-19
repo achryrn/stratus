@@ -124,6 +124,9 @@ export const GECKO_152_SYNTHESIZED_VARS: ReadonlyArray<
 > = [
   // Prefer an LWT-provided text color, then the surviving toolbar token.
   ["--toolbar-text-color", "var(--lwt-text-color, var(--toolbar-color))"],
+  // One-surface invariant: the webpanel/statusbar surfaces follow the toolbar
+  // token unless a design overrides the panel var explicitly.
+  ["--panel-sidebar-background-color", "var(--toolbar-background-color)"],
 ];
 
 function buildAliasDeclarations(): string {

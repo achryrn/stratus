@@ -1,5 +1,6 @@
 /dist/
 **/_dist/
+installer/*.exe
 **/node_modules/
 **/.turbo
 **/.vite/

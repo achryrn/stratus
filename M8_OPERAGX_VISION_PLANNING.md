@@ -1020,4 +1020,15 @@ Transparent traffic overview (3.1), transparent extension activity (3.2), built-
 - **Tests**: NetworkMonitorCore colocated 1/1 green; VpnManager colocated 1/1 green; deno task test:host 212/212 green (incl. new locale parity + release-pipeline regression from M8.12).
 - **Fix**: settings CSP gained `connect-src chrome: http://127.0.0.1:58261 …` (loopback telemetry if needed later).
 
-### Next: M8.14 (deferred/documented)
+### M8.14 Pre-release QA — smoke gate, release checklist, clean-profile screening, bare installer install/uninstall, release notes + README install docs — DONE
+
+- **Smoke gate**: `deno task test:smoke` (6 steps incl. runtime lint) is green. Opening the gate caught and fixed a real lint break in the M8.12 release-pipeline host test (unused import) + the nsi contract test now pins the per-user installer contract.
+- **Release checklist**: `tools/release/RELEASE_CHECKLIST.md` — sections A-F (build/bundle, installer, clean-profile prefs audit, feature verification, tests, docs) all green with the evidence from this pass.
+- **First-run clean-profile screening**: audited a purged-profile test browser — default prefs all production-correct: theme preset minimal (absent → fallback minimal), privacy tier 'default', per-mode DNS (mozilla/off), app.update.url/channel/enabled configured, remote agent token generated (32 hex), network monitor + ad block on, VPN default off (both modes), memory saver ON when unset, blank start page.
+- **Bare installer install/uninstall**: built the real 124MB installer from the dist bundle with portable NSIS (no system install), silent-installed to a clean dir (per-user, NO UAC), verified 7721 files + stratus.exe rename + updater.exe + HKCU registration (DisplayVersion 153.0.3) + Start-Menu/Desktop shortcuts, then silent-uninstalled — directory, registry key and shortcuts fully removed. `tools/release/make-installer.ps1` now drives the whole flow (icon generation, /oname rename, out-path, checksums).
+- **Renderer loopback discovered earlier**: settings cards use the pref bridge.
+- **Regression fixed during QA (color-consistency)**: the minimalist theme painted the palette via inline `--lwt-*` styles, which made the engine's LWT machinery rewrite the NEW 152 toolbar tokens — chrome surfaces oscillated between the fork palette and stock light-dark() and the design x theme color matrix flaked (fleurial/proton). Fixed by (a) painting tokens through an author-origin `!important` <style> (deterministic, matches the documented LWT-neutralization policy), (b) adding the modern `--toolbar-background-color`/non-lwt tokens to the palette, and (c) a synthesized one-surface alias `--panel-sidebar-background-color -> var(--toolbar-background-color)`. The matrix is now green twice in a row; the test also emits per-surface readings for future debuggability.
+- **Release notes + README**: `RELEASE_NOTES.md` (153.0.3-beta incl. known limitations) and the README Windows install section (per-user default, silent install/uninstall flags, update wiring, links to the checklist/notes).
+- **Tests**: host suite 212/212; smoke green; browser sweep green: designs 9/9, ipprotection 3/3, theme-gx/network-monitor/vpn/extension-activity/release 1/1 each (all rerun against the final code).
+
+

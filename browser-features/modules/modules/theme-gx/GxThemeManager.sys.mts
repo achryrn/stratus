@@ -102,6 +102,8 @@ export const GX_TOKENS: Record<string, string> = {
   "--stratus-accent": GX_NEON_RED,
   "--tab-loading-fill": GX_CYAN,
   "--toolbar-bgcolor": GX_TOOLBAR,
+  "--toolbar-background-color": GX_TOOLBAR,
+  "--toolbar-non-lwt-background-color": GX_TOOLBAR,
   "--toolbar-color": GX_TEXT,
   "--toolbar-non-lwt-bgcolor": GX_TOOLBAR,
   "--toolbar-non-lwt-textcolor": GX_TEXT,
@@ -142,6 +144,8 @@ export const MINIMAL_TOKENS: Record<string, string> = {
   "--stratus-accent": MINIMAL_ACCENT,
   "--tab-loading-fill": MINIMAL_ACCENT,
   "--toolbar-bgcolor": MINIMAL_TOOLBAR,
+  "--toolbar-background-color": MINIMAL_TOOLBAR,
+  "--toolbar-non-lwt-background-color": MINIMAL_TOOLBAR,
   "--toolbar-color": MINIMAL_TEXT,
   "--toolbar-non-lwt-bgcolor": MINIMAL_TOOLBAR,
   "--toolbar-non-lwt-textcolor": MINIMAL_TEXT,
@@ -154,13 +158,30 @@ export const CLASSIC_TOKENS: Record<string, string> = {
 };
 
 function paintWindow(win: nsIDOMWindow, preset: ThemePreset): void {
-  const root = win.document?.documentElement;
+  const doc = win.document;
+  const root = doc?.documentElement;
   if (!root) return;
   root.setAttribute("gx-theme", preset);
   const tokens = preset === "gx" ? GX_TOKENS : preset === "minimal" ? MINIMAL_TOKENS : CLASSIC_TOKENS;
-  for (const name of Object.keys(GX_TOKENS)) {
-    root.style.setProperty(name, tokens[name] ?? "");
+  // Paint the palette via an author-origin <style> with !important instead of
+  // inline styles: setting --lwt-* inline makes the engine's LWT machinery
+  // rewrite the NEW 152 toolbar tokens from its own defaults, so the chrome
+  // surfaces oscillated between the fork palette and stock light-dark()
+  // (color-consistency matrix flaked). Author !important beats the engine's
+  // inline LWT writes; custom themes stay neutralized by design (LWT CSS vars
+  // are not consumed on this build).
+  let el = doc.getElementById("stratus-theme-tokens") as HTMLStyleElement | null;
+  if (!el) {
+    el = doc.createElement("style") as HTMLStyleElement;
+    el.id = "stratus-theme-tokens";
+    (doc.head ?? root).appendChild(el);
   }
+  const rules: string[] = [];
+  for (const name of Object.keys(GX_TOKENS)) {
+    const value = tokens[name];
+    if (value) rules.push(`${name}: ${value} !important;`);
+  }
+  el.textContent = `:root { ${rules.join(" ")} }`;
 }
 
 

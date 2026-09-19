@@ -903,4 +903,55 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   counter (3 after the round); console audit clean (only upstream engine
   notices). Screenshots `_dist/m8-use-memtabs.png`, `_dist/m8-memory-saver-card.png`.
 
-### Next: M8.9 agent-control API (remote drive + REAL native input for AI agents)
+### M8.9 Agent-control API (remote drive + REAL native input) — DONE
+- **Server** `modules/remote-control/RemoteControlServer.sys.mts`
+  (startup-hooked via NoranekoStartup, default ON). Loopback-only JSON HTTP
+  server on `stratus.remote.port` (default 58263). Prefs: `stratus.remote.enabled`
+  (default true), `stratus.remote.token` ("" = no auth; when set, agents must
+  send `Authorization: Bearer <token>`). Works in the RELEASE browser — no dev
+  mode, no Marionette, no devtools.
+- **Endpoints**: `GET /status` (windows + per-tab private flags),
+  `GET /tabs`, `POST /tabs {action: open|close|activate, url?, index?}`,
+  `POST /navigate {url}`, `GET /page` (title/text/anchors/buttons/inputs
+  snapshot), `POST /eval {expression, context: chrome|content}`,
+  `POST /input` (see below), `GET /screenshot` (PNG data-url),
+  `POST /settings {name, type: bool|int|string, value}`, `GET /prefs?name=`,
+  `POST /private/open {url?}` (separate private window; private browsing is
+  never mixed with the normal profile).
+- **REAL native input** (`RemoteControlInput.sys.mts`) via
+  `nsIDOMWindowUtils.sendNativeMouseEvent/sendNativeKeyEvent/`
+  `sendNativeMouseScrollEvent` on the live window widget — the OS cursor
+  physically moves (`GetCursorPos` verified), buttons really press, keys really
+  type. Types: `move/down/up/click/dblclick/key/type/wheel` with optional
+  `selector` (element rect → screen coords, zoom-aware) or raw `x/y`, `button`,
+  `key` (Enter/Tab/Backspace/Delete/Escape/Arrows/Home/End/PgUp/PgDn/Space/F5),
+  `text`, `modifiers`, `windowIndex`. Wheel = native synthesis + content-side
+  dispatch fallback so pages always scroll.
+- **Chrome/content eval safety**: chrome eval runs in a system-principal
+  `Cu.Sandbox` (`Cu.evalInSandbox` — plain chrome `eval()` MOZ_CRASHes on this
+  runtime); content eval goes through the `RemoteControl` JSWindowActor
+  (`this.contentWindow.eval`, page principal) — never a chrome-process eval of
+  page code.
+- **Security posture**: binds 127.0.0.1 only, single connection at a time,
+  optional bearer token, no remote origin exposure; navigation uses
+  `fixupAndLoadURIString` with an explicit triggering principal.
+- **Settings card** on /features/privacy ("Agent control API"): enable/disable
+  toggle, port + token status, loopback note; en-US + ja-JP.
+- **Tests** `remote-control/test/RemoteControl.test.ts` (geometry math + wire
+  contract; ESM layer green, 1/1).
+- **Live verification** (RELEASE browser, no dev mode): /status full window +
+  tab tree; /navigate to the RC fixture; REAL click — OS cursor moved
+  173,620→419,238 and `window.__clicked` incremented to 1 (page onclick fired);
+  REAL typing "hello world" into the input; wheel scrolled #scrollbox to
+  scrollTop 400; Tab/Enter key events; /tabs open → 2 tabs → activate idx1 →
+  close → 1 tab; /private/open opened a second window whose tab reports
+  `private: true`; /screenshot saved `_dist/m8-rc-screenshot.png` (30 KB
+  valid PNG); /settings set + /prefs read + chrome eval (tabs/appinfo) all OK;
+  /page snapshot lists buttons+inputs; console audit clean.   
+- **Windows foreground note**: `sendNativeMouseEvent` posts to the topmost
+  window under the cursor (real OS semantics) — if another app covers the
+  browser, bring the browser forward (or `SetWindowPos HWND_TOPMOST`); a
+  covered window swallows the first click as OS activation (verified with the
+  harness GUI fullscreen over the test browser).
+
+### Next: M8.10 (deferred/documented)

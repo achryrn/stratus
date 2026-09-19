@@ -824,6 +824,15 @@
             "toggle": "Automatically reduce memory usage",
             "discards": "Tabs auto-unloaded"
         },
+        "remoteControl": {
+            "title": "Agent control API",
+            "description": "Local JSON HTTP API that lets AI agents (Claude Code and friends) drive this browser with full features outside dev mode: navigate, open/close/switch tabs, private windows, page snapshots, screenshots, settings prefs, content+chrome eval, and REAL native mouse/keyboard/scroll input. The server only listens on 127.0.0.1.",
+            "enabled": "Allow remote agent control on this computer",
+            "port": "Port",
+            "tokenSet": "Access token: SET (send it as an Authorization: Bearer header)",
+            "tokenUnset": "Access token: not set (no authentication)",
+            "localOnly": "Binding: 127.0.0.1 only — agents on this machine can control the browser."
+        },
         "trackers": {
             "title": "Tracker activity",
             "description": "Classified tracker requests blocked this session, per category.",

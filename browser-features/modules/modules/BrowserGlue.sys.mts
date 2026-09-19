@@ -393,6 +393,25 @@ const JS_WINDOW_ACTORS: {
     matches: ["http://*/*", "https://*/*", "file:///*", "about:*"],
     allFrames: true,
   },
+  // Remote-control (M8.9): content eval/rect/snapshot for the agent API.
+  RemoteControl: {
+    parent: {
+      esModuleURI: localPathToResourceURI(
+        "../actors/RemoteControlParent.sys.mts",
+      ),
+    },
+    child: {
+      esModuleURI: localPathToResourceURI(
+        "../actors/RemoteControlChild.sys.mts",
+      ),
+      events: {
+        DOMContentLoaded: {},
+        DOMDocElementInserted: {},
+      },
+    },
+    matches: ["http://*/*", "https://*/*", "file:///*", "about:*"],
+    allFrames: false,
+  },
 };
 
 ActorManagerParent.addJSWindowActors(JS_WINDOW_ACTORS);

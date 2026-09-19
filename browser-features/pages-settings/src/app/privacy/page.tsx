@@ -45,6 +45,9 @@ export default function PrivacyPage() {
   const [gxPreset, setGxPreset] = useState<string>("gx");
   const [memOn, setMemOn] = useState(true);
   const [memDiscards, setMemDiscards] = useState(0);
+  const [rcOn, setRcOn] = useState(true);
+  const [rcPort, setRcPort] = useState(58263);
+  const [rcTokenSet, setRcTokenSet] = useState(false);
 
   const loadTrackers = useCallback(async () => {
     const raw = await rpc.getStringPref("stratus.privacy.trackers", "{}");
@@ -71,6 +74,21 @@ export default function PrivacyPage() {
     }
   }, []);
 
+  const loadRemoteControl = useCallback(async () => {
+    try {
+      const on = await rpc.getBoolPref("stratus.remote.enabled", true);
+      const port = await rpc.getIntPref("stratus.remote.port", 58263);
+      const token = await rpc.getStringPref("stratus.remote.token", "");
+      setRcOn(on);
+      setRcPort(port);
+      setRcTokenSet(token !== "");
+    } catch {
+      setRcOn(true);
+      setRcPort(58263);
+      setRcTokenSet(false);
+    }
+  }, []);
+
   const loadAdBlocker = useCallback(async () => {
     const on = await rpc.getBoolPref("stratus.adblock.enabled", false);
     const n = await rpc.getIntPref("stratus.adblock.count", 0);
@@ -85,7 +103,8 @@ export default function PrivacyPage() {
     void loadAdBlocker();
     void loadGx();
     void loadMemorySaver();
-  }, [loadTrackers, loadAdBlocker, loadGx, loadMemorySaver]);
+    void loadRemoteControl();
+  }, [loadTrackers, loadAdBlocker, loadGx, loadMemorySaver, loadRemoteControl]);
 
   const persistTier = (next: Tier): void => {
     setTier(next);
@@ -237,6 +256,29 @@ export default function PrivacyPage() {
             <Gauge className="size-4 opacity-60" />
             <span className="text-sm">{t("privacy.memorySaver.discards")}: {memDiscards}</span>
           </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("privacy.remoteControl.title")}</CardTitle>
+          <CardDescription>{t("privacy.remoteControl.description")}</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-2">
+          <label className="flex items-center gap-3 cursor-pointer">
+            <input type="checkbox" checked={rcOn} onChange={async (e) => {
+              await rpc.setBoolPref("stratus.remote.enabled", e.target.checked);
+              void loadRemoteControl();
+            }} className="size-4" />
+            <span className="text-sm">{t("privacy.remoteControl.enabled")}</span>
+          </label>
+          <div className="flex items-center gap-3">
+            <span className="text-sm">{t("privacy.remoteControl.port")}: {rcPort}</span>
+            <span className="text-sm">{rcTokenSet
+              ? t("privacy.remoteControl.tokenSet")
+              : t("privacy.remoteControl.tokenUnset")}</span>
+          </div>
+          <p className="text-xs opacity-60">{t("privacy.remoteControl.localOnly")}</p>
         </CardContent>
       </Card>
 

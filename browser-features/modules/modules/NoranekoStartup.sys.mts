@@ -150,6 +150,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/memory-saver/MemorySaver.sys.mjs",
   ).initMemorySaver();
+  // Agent-control API (M8.9): localhost JSON control server for AI agents.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/remote-control/RemoteControlServer.sys.mjs",
+  ).initRemoteControl();
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

@@ -134,6 +134,10 @@ export function onFinalUIStartup(): void {
   ChromeUtils.importESModule(
     "resource://noraneko/modules/trusted-sites/TrustedSitesManager.sys.mjs",
   ).initTrustedSitesManager();
+  // Privacy & network toolkit (M8.5): tiers, per-mode DNS, tracker counts.
+  ChromeUtils.importESModule(
+    "resource://noraneko/modules/privacy/PrivacyManager.sys.mjs",
+  ).initPrivacyManager();
   // init i18n
   ChromeUtils.importESModule(
     "resource://noraneko/modules/i18n/I18n-Utils.sys.mjs",

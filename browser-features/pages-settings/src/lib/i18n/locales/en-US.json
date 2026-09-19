@@ -35,6 +35,7 @@
         "mouseGesture": "Mouse Gestures",
         "vpn": "VPN",
         "sites": "Trusted Sites",
+        "privacy": "Privacy",
         "keyboardShortcut": "Keyboard Shortcuts",
         "search": {
             "title": "Search Settings",
@@ -769,5 +770,53 @@
         "fullscreenWarning": "Note: Firefox has no per-site way to allow gesture-free fullscreen yet. While a trusted site with Fullscreen enabled is focused, the engine-wide gesture requirement is relaxed — any site you are actively viewing could also enter fullscreen. Exit is always one Esc. A per-origin patch is scheduled.",
         "saved": "Saved",
         "reload": "Reload"
+    },
+    "privacy": {
+        "loading": "Loading…",
+        "title": "Privacy & network",
+        "description": "Fingerprint protection tiers, per-mode DNS resolvers (DoH with ECH support) and live tracker activity. Tiers change engine hardening; the maximum tier may break unusual sites — exceptions are managed per site.",
+        "tiers": {
+            "title": "Protection tier",
+            "description": "How aggressively the engine hides device fingerprints and blocks trackers.",
+            "default": {
+                "label": "Default — strong and invisible",
+                "desc": "ETP Strict, Total Cookie Protection, fingerprinting protection, per-mode DNS as configured. No site breakage expected."
+            },
+            "strict": {
+                "label": "Strict",
+                "desc": "Default plus the full fingerprinting-protection category set; timer precision jitter."
+            },
+            "maximum": {
+                "label": "Maximum",
+                "desc": "Strict plus resistFingerprinting: canvas/WebGL/audio noise, spoofed timezone & locale."
+            }
+        },
+        "maximumWarning": "Maximum enables resistFingerprinting engine-wide. It offers the strongest anonymity but can break login flows, media players and anti-bot walls; use per-site exceptions or drop to Strict for a site that breaks.",
+        "dns": {
+            "title": "DNS resolvers (per mode)",
+            "description": "Normal and private windows resolve independently, like the VPN. DoH hides lookups from the ISP; ECH is automatically active when a resolver is set.",
+            "normal": "Normal windows",
+            "private": "Private windows",
+            "off": "System resolver",
+            "mozilla": "Mozilla (Cloudflare)",
+            "cloudflare": "Cloudflare",
+            "custom": "Custom DoH",
+            "fallback": "Fallback to system",
+            "strict": "Strict (fail closed)",
+            "echNote": "DoH active — ECH hides the destination inside TLS."
+        },
+        "trackers": {
+            "title": "Tracker activity",
+            "description": "Classified tracker requests blocked this session, per category.",
+            "tracking": "Tracking",
+            "fingerprinting": "Fingerprinting",
+            "cryptomining": "Cryptomining",
+            "email": "Email",
+            "social": "Social",
+            "empty": "No tracker requests recorded this session.",
+            "removeAll": "Remove all tracker data",
+            "refresh": "Refresh"
+        },
+        "saved": "Saved"
     }
 }

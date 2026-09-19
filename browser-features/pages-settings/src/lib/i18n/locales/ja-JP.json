@@ -35,6 +35,7 @@
         "mouseGesture": "マウスジェスチャー",
         "vpn": "VPN",
         "sites": "信頼済みサイト",
+        "privacy": "プライバシー",
         "keyboardShortcut": "キーボードショートカット",
         "search": {
             "title": "検索の設定",
@@ -769,5 +770,53 @@
         "fullscreenWarning": "注意: Firefox にはサイト単位でクリック不要の全画面を許可する仕組みがまだありません。全画面を有効にした信頼済みサイトをフォーカスしている間、エンジン全体のジェスチャー要件が緩和されます。閲覧中のサイトなら全画面に入れる可能性があります。終了は常に Esc キーです。サイト単位のパッチは予定されています。",
         "saved": "保存しました",
         "reload": "再読み込み"
+    },
+    "privacy": {
+        "loading": "読み込み中…",
+        "title": "プライバシーとネットワーク",
+        "description": "フィンガープリント保護の段階、モード別の DNS リゾルバー（ECH 対応 DoH）、トラッカー活動の記録。最大段階は通常と異なるサイトを壊す可能性があります。",
+        "tiers": {
+            "title": "保護レベル",
+            "description": "デバイスのフィンガープリントをどの程度隠し、トラッカーをブロックするかを選択します。",
+            "default": {
+                "label": "既定 — 強力で見えない",
+                "desc": "ETP Strict、Total Cookie Protection、フィンガープリント保護、モード別 DNS。サイト破損の心配はほぼありません。"
+            },
+            "strict": {
+                "label": "厳格",
+                "desc": "既定に加えてフィンガープリント保護の全カテゴリ、タイマー精度のジッター付き。"
+            },
+            "maximum": {
+                "label": "最大",
+                "desc": "厳格に加え resistFingerprinting：canvas/WebGL/音声のノイズ、タイムゾーン・ロケールの偽装。"
+            }
+        },
+        "maximumWarning": "最大はエンジン全体で resistFingerprinting を有効化します。匿名性は最強ですが、ログインやメディア再生・アンチボットの壁を壊す可能性があります。サイト単位の例外を使用するか、壊れるサイトでは厳格に戻してください。",
+        "dns": {
+            "title": "DNS リゾルバー（モード別）",
+            "description": "通常とプライベートは VPN と同様に独立して解決します。DoH は ISP から参照を隠し、リゾルバー設定時は ECH が自動で有効になります。",
+            "normal": "通常のウィンドウ",
+            "private": "プライベートウィンドウ",
+            "off": "システムのリゾルバー",
+            "mozilla": "Mozilla（Cloudflare）",
+            "cloudflare": "Cloudflare",
+            "custom": "カスタム DoH",
+            "fallback": "システムにフォールバック",
+            "strict": "厳格（失敗時は遮断）",
+            "echNote": "DoH 有効 — ECH が TLS 内で宛先を隠します。"
+        },
+        "trackers": {
+            "title": "トラッカー活動",
+            "description": "このセッションでブロックされた分類済みトラッカー要求（カテゴリ別）。",
+            "tracking": "トラッキング",
+            "fingerprinting": "フィンガープリント",
+            "cryptomining": "クリプトマイニング",
+            "email": "メール",
+            "social": "ソーシャル",
+            "empty": "このセッションではトラッカー要求は記録されていません。",
+            "removeAll": "トラッカーデータをすべて削除",
+            "refresh": "更新"
+        },
+        "saved": "保存しました"
     }
 }

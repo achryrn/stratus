@@ -736,3 +736,34 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   `_dist/shot-trusted-sites-settings.png`), console audit clean.
 
 ### Next: M8.5 (see Part 1/3.5)
+
+### M8.5a Privacy & network toolkit — DONE
+- **Module** `modules/privacy/PrivacyManager.sys.mts` (+ `PrivacyCore.ts`):
+  - **Protection tiers** (`stratus.privacy.tier`): default (ETP Strict + Total
+    Cookie Protection + fingerprintingProtection + per-mode DNS), strict (+ full
+    FPP category set), maximum (+ resistFingerprinting; RFP off at default/
+    strict). Tier changes re-apply the pref group (direct settings-page writes
+    included via pref observer).
+  - **Per-mode DNS** (`stratus.dns.config` JSON mirror, normal vs private):
+    provider (off / mozilla / cloudflare / custom DoH URI) + strictness (fallback
+    mode 2 / strict mode 3); focus watchdog applies the active window mode
+    (1.5 s poll, module-held timer like the VPN router). ECH prefs were already
+    enabled on this runtime — DoH activation is all the ECH stack needs.
+  - **Tracker activity**: http-on-modify-request observer reads
+    nsIClassifiedChannel.matchedLists, classifies (tracking/fingerprinting/
+    cryptomining/email/social), counts + top domains, throttled broadcast +
+    `stratus.privacy.trackers` JSON mirror for the settings page. `Remove all`
+    (`stratus.privacy.trackersClear` trigger pref) clears cookies, DOM storages
+    and HSTS via nsIClearDataService.
+- **Settings page** `/features/privacy`: tier radios with honest descriptions,
+  amber Maximum warning, per-mode DNS cards, live tracker counts + remove-all;
+  en-US + ja-JP; sidebar entry (ShieldHalf).
+- **Tests** `Privacy.test.ts` — 5 cases (dns mapping, dns round trip, tracker
+  accounting, tier application, dns pref apply). Module suite 22/22 clean.
+- **Live verification (clean rebuild):** applyTier default/maximum flips rfp +
+  FPP prefs; per-mode DNS applies trr.mode 3 (normal)/2 (private) and the
+  focus watchdog flips mode with the focused window (private -> private cfg);
+  remove-all returns ok; settings page renders; console audit clean.
+  Screenshot `_dist/shot-privacy-settings.png`.
+
+### Next: M8.5b (3.11 stub-based ad blocker) then M8.6 theme pack

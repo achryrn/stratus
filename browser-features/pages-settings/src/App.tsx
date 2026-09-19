@@ -11,6 +11,7 @@ import ProgressiveWebApp from "@/app/pwa/page.tsx";
 import FloorpOS from "@/app/floorp-os/page.tsx";
 import VpnSettings from "@/app/vpn/page.tsx";
 import TrustedSites from "@/app/sites/page.tsx";
+import PrivacyPage from "@/app/privacy/page.tsx";
 import About from "./app/about/noraneko.tsx";
 import ProfileAndAccount from "@/app/accounts/page.tsx";
 import MouseGesture from "@/app/gesture/page.tsx";
@@ -54,6 +55,7 @@ export default function App() {
               <Route path="/features/floorp-os" element={<FloorpOS />} />
               <Route path="/features/vpn" element={<VpnSettings />} />
               <Route path="/features/sites" element={<TrustedSites />} />
+              <Route path="/features/privacy" element={<PrivacyPage />} />
               <Route
                 path="/features/accounts"
                 element={<ProfileAndAccount />}

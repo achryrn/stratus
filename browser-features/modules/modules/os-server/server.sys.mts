@@ -53,6 +53,7 @@ import type { HealthResponse } from "./_os-plugin/api-spec/types.ts";
 
 // Route handlers from separated modules
 import { registerBrowserRoutes } from "./browser/routes.sys.mts";
+import { registerLegalRoutes } from "./legal/routes.sys.mts";
 import { registerNetworkRoutes } from "./network/routes.sys.mts";
 import { registerScraperRoutes } from "./scraper/routes.sys.mts";
 import { registerTabRoutes } from "./tabs/routes.sys.mts";
@@ -468,8 +469,11 @@ class LocalHttpServer implements nsIServerSocketListener {
           binaryStringToByteArray(fullBody).slice(0, contentLength),
         );
 
-        // Auth (optional)
-        if (this._token) {
+        // Auth (optional). The bundled legal pages (/legal/*) are read-only
+        // localhost content opened by the browser UI itself, so they are
+        // exempt — otherwise auth blocks the settings link and the
+        // update-triggered release-notes tab.
+        if (this._token && !(req.path.startsWith("/legal/"))) {
           const auth = req.headers["authorization"] || "";
           const expect = `Bearer ${this._token}`;
           if (auth !== expect) {
@@ -532,6 +536,7 @@ class LocalHttpServer implements nsIServerSocketListener {
 
     // Register routes from separated modules
     registerBrowserRoutes(api);
+    registerLegalRoutes(api);
     registerNetworkRoutes(api);
     registerScraperRoutes(api);
     registerTabRoutes(api);
@@ -622,8 +627,25 @@ class LocalHttpServer implements nsIServerSocketListener {
       }
 
       // Normal JSON response
-      const httpResult = result as { status?: number; body?: unknown };
+      const httpResult = result as {
+        status?: number;
+        body?: unknown;
+        contentType?: string;
+      };
       const status = httpResult.status ?? 200;
+
+      // Text/HTML page responses (e.g. bundled legal pages).
+      if (typeof httpResult.contentType === "string" &&
+          typeof httpResult.body === "string") {
+        writeUtf8(output,
+          `HTTP/1.1 ${status} OK\r\nContent-Type: ${httpResult.contentType}\r\nCache-Control: no-cache\r\n\r\n`,
+        );
+        writeUtf8(output, httpResult.body);
+        output.close();
+        input.close();
+        return;
+      }
+
       const response = jsonResponse(status, httpResult.body ?? {});
       writeUtf8(output, response);
       output.close();

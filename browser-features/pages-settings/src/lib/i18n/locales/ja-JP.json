@@ -302,6 +302,9 @@
         "openSourceLicenseNotice": "オープンソースライセンス",
         "versionInfo": "バージョン",
         "license": "ライセンス",
+        "privacy": "プライバシー",
+        "privacyDescription": "Stratus Browser はローカルファーストです。閲覧データは収集・共有されません。詳細はポリシーをご覧ください。",
+        "viewPrivacyPolicy": "プライバシーポリシーを表示",
         "noraneko": {
             "logoAlt": "ブラウザーロゴ",
             "description": "{{productName}} は Firefox と Stratus プロジェクトをベースにした、フル機能のブラウザーです。",

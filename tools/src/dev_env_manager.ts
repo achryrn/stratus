@@ -33,6 +33,16 @@ user_pref("remote.active-protocols", 1);
 user_pref("browser.newtabpage.enabled", true);
 user_pref("floorp.mcp.enabled", true);
 user_pref("browser.sessionstore.resume_from_crash", false);
+// M8.1b: no Floorp welcome/override tabs at boot; branded internal URLs.
+user_pref("startup.homepage_welcome_url", "about:blank");
+user_pref("startup.homepage_welcome_url.additional", "");
+user_pref("browser.startup.homepage_override.mstone", "ignore");
+user_pref("browser.aboutwelcome.enabled", false);
+user_pref("app.releaseNotesURL", "http://127.0.0.1:58261/legal/release-notes");
+user_pref("app.releaseNotesURL.aboutDialog", "http://127.0.0.1:58261/legal/release-notes");
+user_pref("app.update.url.manual", "https://stratus-browser.org");
+user_pref("app.update.url.details", "https://stratus-browser.org/docs/release-notes");
+user_pref("app.feedback.baseURL", "https://stratus-browser.org/docs/");
 user_pref("nora.dev.allow_http_loader", ${allowBrowserHttpLoader});
 ${allowBrowserHttpLoader ? `${CHROME_BASELINE_CSP_PREF}\n` : ""}`;
 }

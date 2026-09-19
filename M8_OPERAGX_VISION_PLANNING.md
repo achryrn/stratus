@@ -522,6 +522,49 @@ Each slice: implement -> colocated tests -> dev-tool manual session
 - host tests 209/209; smoke 2 failing steps (deno check + deno lint,
   21 findings); console: 2 fluent errors x2 windows, Window.fullScreen
   deprecation, SearchService unreachable-code.
+### M8.1b Floorp placeholder cleanup — DONE (this commit)
+- Removed Floorp boot placeholders: the runtime welcome flow opened
+  `https://blog.floorp.app` (release notes) + `https://floorp.app/privacy`
+  tabs via `startup.homepage_welcome_url` / `.additional`, and our own
+  `openReleaseNotesInRecentWindow()` spawned `about:welcome?upgrade=12`,
+  which re-triggered the Floorp flow. Now: welcome_url -> about:blank,
+  .additional -> "", `browser.startup.homepage_override.mstone=ignore`,
+  `browser.aboutwelcome.enabled=false` at boot (user.js for dev +
+  `StratusBranding.applyStratusBrandPrefs()` module for the prod overlay).
+- Bundled Stratus legal pages: `static/legal/privacy-policy.html` +
+  `release-notes.html` (canonical source) symlinked by the injector into
+  `<app>/noraneko-devdir/legal/` and served by the local OS server at
+  `http://127.0.0.1:58261/legal/privacy-policy` and `/legal/release-notes`
+  (`os-server/legal/routes.sys.mts` + text/html support in server.sys.mts;
+  `/legal/*` is exempt from the optional bearer-token auth).
+  - Why HTTP, not chrome://: this dev runtime HARD-CRASHES on chrome://
+    documents without a custom CSP delivered before load
+    (`nsContentSecurityUtils::AssertChromePageHasCSP` — meta CSP is not
+    honored on the chrome:// channel path; the baseline-CSP opt-out makes
+    the expected policy count 1). `static/legal` pages carry a strict CSP
+    meta for their HTTP serving context.
+- Branded internal URLs: app.releaseNotesURL(.aboutDialog) -> bundled
+  page, app.update.url.manual/details + app.feedback.baseURL ->
+  stratus-browser.org.
+- Settings > About (route /about/browser, page title About Stratus) gained
+  a Privacy card linking our bundled policy (i18n en-US + ja-JP:
+  about.privacy / privacyDescription / viewPrivacyPolicy).
+- Tests: `branding/test/StratusBranding.test.ts` (2 cases, in-browser pass).
+  Live verification: clean boot (no Floorp tabs), both /legal pages 200
+  with correct content-type, privacy + release-notes tabs captured in
+  screenshots, settings About page shows the policy link; console audit
+  free of overlay errors.
+- Follow-up (prod, not in this slice): (a) fresh-profile first-run needs
+  runtime default prefs (M2.5) or a browser.js patch (M4) so the overlay's
+  final-ui-startup pref application happens before the first window's
+  welcome tab; (b) runtime about:preferences still shows "Floorp Labs" /
+  "About Floorp Daylight" strings -> rebrand backlog (M8.7);
+  (c) settings feature links still point at Floorp infra (Stratus Account
+  -> accounts.ablaze.one, Privacy help -> support.mozilla, docs ->
+  docs.stratus-browser.org) -> product decisions, backlog;
+  (d) legal pages depend on the local OS server running (dev: on via
+  floorp.mcp.enabled); prod packaging of static/legal into the runtime
+  lands with M2.5/system bundle.
 
 ---
 

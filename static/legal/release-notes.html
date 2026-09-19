@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'none'; style-src 'unsafe-inline'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'">
+<title>Stratus Browser — Release Notes</title>
+<style>:root { color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #0b0e14; color: #e8ecf4; font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.65; }
+header { background: linear-gradient(135deg, #241b3f 0%, #10131f 100%); border-bottom: 1px solid #2b2f3d; padding: 28px 40px; }
+header .brand { font-size: 26px; font-weight: 700; letter-spacing: 0.5px; }
+header .brand span { color: #8ab4ff; }
+header .sub { color: #9aa3b5; font-size: 14px; margin-top: 4px; }
+main { max-width: 860px; margin: 0 auto; padding: 36px 28px 72px; }
+h1 { font-size: 28px; margin-bottom: 6px; }
+h2 { font-size: 19px; margin-top: 32px; color: #c9d4ff; border-bottom: 1px solid #24293a; padding-bottom: 6px; }
+p, li { font-size: 15px; color: #c6cdda; }
+a { color: #8ab4ff; }
+ul { padding-left: 22px; }
+footer { border-top: 1px solid #24293a; padding: 18px 40px; color: #7c869a; font-size: 13px; }
+footer a { color: #7c869a; text-decoration: underline; }
+code { background: #171c2b; padding: 1px 6px; border-radius: 4px; font-size: 13px; }
+.meta { color: #7c869a; font-size: 13px; }</style>
+</head>
+<body>
+<header><div class="brand">Stratus <span>Browser</span></div><div class="sub">Release Notes</div></header>
+<main>
+<h1>Stratus Browser 0.1.0-alpha</h1>
+<p class="meta">Built on Gecko 153 (Firefox ESR) · Stratus overlay layer 0.1</p>
+<p>Welcome to the first milestone release of Stratus. This build is the developer-preview milestone and 
+establishes the foundation for a user-ready browser.</p>
+<h2>What's new</h2>
+<ul>
+<li><strong>Transparent traffic overview:</strong> a network monitor panel reports which sites, tabs, and 
+extensions are making requests, split between normal and private mode.</li>
+<li><strong>Complete settings, new-tab, welcome, and notes pages</strong> as native Stratus pages.</li>
+<li><strong>Workspaces, split-view, panel sidebar, mouse gestures, and command palette</strong> integrated 
+into the Stratus tool set.</li>
+<li><strong>Stratus-branded legal pages:</strong> this page and the <a href="privacy-policy.html">privacy policy</a> 
+now ship inside the browser — no third-party placeholder content.</li>
+</ul>
+<h2>Known limitations</h2>
+<ul>
+<li>Response-byte accounting for web content is pending (content-side instrumentation); the traffic overview 
+reports exact request counts today.</li>
+<li>Runtime-level rebranding (window title, about dialog branding, installer) lands in a later milestone.</li>
+<li>Private-mode VPN separation and trusted-site action allowlists are in active development.</li>
+</ul>
+<h2>Feedback</h2>
+<p>Report issues at <a href="https://github.com/stratus-browser/stratus">github.com/stratus-browser/stratus</a>.</p>
+</main>
+<footer>© 2026 Stratus Browser Project · MPL-2.0 open source · 
+<a href="privacy-policy.html">Privacy policy</a> · 
+<a href="https://stratus-browser.org">stratus-browser.org</a></footer>
+</body>
+</html>

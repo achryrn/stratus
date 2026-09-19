@@ -302,6 +302,9 @@
         "openSourceLicenseNotice": "Open Source License",
         "versionInfo": "Version",
         "license": "License",
+        "privacy": "Privacy",
+        "privacyDescription": "Stratus Browser is local-first: no browsing data is collected or shared. Read the full policy.",
+        "viewPrivacyPolicy": "View Privacy Policy",
         "noraneko": {
             "logoAlt": "Browser Logo",
             "description": "{{productName}} is a fully-featured browser built on Firefox and the Stratus project.",

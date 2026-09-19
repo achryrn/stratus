@@ -8,12 +8,12 @@ const { AppConstants } = ChromeUtils.importESModule(
   "resource://gre/modules/AppConstants.sys.mjs",
 );
 
-const { NoranekoConstants } = ChromeUtils.importESModule(
-  "resource://noraneko/modules/NoranekoConstants.sys.mjs",
-);
-
 const { setTimeout } = ChromeUtils.importESModule(
   "resource://gre/modules/Timer.sys.mjs",
+);
+
+const { RELEASE_NOTES_URL } = ChromeUtils.importESModule(
+  "resource://noraneko/modules/branding/StratusBranding.sys.mjs",
 );
 
 function installFloorpIPProtectionUIEarly(): boolean {
@@ -62,7 +62,6 @@ function getComponentRegistrar(): nsIComponentRegistrar | null {
 }
 
 const executedFunctions = new Set<string>();
-const RELEASE_NOTES_URL = `https://blog.stratus-browser.org/release/${NoranekoConstants.version2}`;
 
 export function executeOnce(id: string, callback: () => void): boolean {
   if (executedFunctions.has(id)) {
@@ -97,20 +96,28 @@ function initializeVersionInfo(): void {
 export function onFinalUIStartup(): void {
   Services.obs.removeObserver(onFinalUIStartup, "final-ui-startup");
 
+  // M8.1b: apply Stratus-branded prefs before any release-notes / welcome tab
+  // logic runs, so boot never opens Floorp placeholder tabs.
+  const { applyStratusBrandPrefs } = ChromeUtils.importESModule(
+    "resource://noraneko/modules/branding/StratusBranding.sys.mjs",
+  );
+  applyStratusBrandPrefs();
+
   createDefaultUserChromeFiles().catch((error) => {
     console.error("Failed to create default userChrome files:", error);
   });
-
-  openReleaseNotesInRecentWindow();
 
   // int OS Modules
   ChromeUtils.importESModule(
     "resource://noraneko/modules/os-apis/OSGlue.sys.mjs",
   );
-  // Localhost OS server (self-controlled by prefs)
+  // Localhost OS server (self-controlled by prefs). Imported BEFORE the
+  // release-notes tab below so the update tab can load /legal/* pages.
   ChromeUtils.importESModule(
     "resource://noraneko/modules/os-server/server.sys.mjs",
   );
+
+  openReleaseNotesInRecentWindow();
   // Transparent traffic overview (M8.1): NetworkMonitor auto-starts on import.
   ChromeUtils.importESModule(
     "resource://noraneko/modules/network-monitor/NetworkMonitor.sys.mjs",
@@ -187,21 +194,6 @@ async function openReleaseNotesInRecentWindow(): Promise<void> {
     console.warn(
       "[NoranekoStartup] Workspaces service not ready or no ID found, tab may open in default workspace.",
     );
-  }
-
-  try {
-    const welcomeTab = tabBrowser.addTab("about:welcome?upgrade=12", {
-      relatedToCurrent: false,
-      inBackground: true,
-      skipAnimation: false,
-      triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal(),
-    });
-
-    if (currentWorkspaceID) {
-      welcomeTab.setAttribute(WORKSPACE_TAB_ATTRIBUTION_ID, currentWorkspaceID);
-    }
-  } catch (e) {
-    console.error("[NoranekoStartup] Failed to open welcome tab", e);
   }
 
   recentWindow.addEventListener(

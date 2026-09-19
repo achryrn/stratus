@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/common/card.tsx";
 import { SiGithub } from "@icons-pack/react-simple-icons";
-import { ExternalLink, Scale } from "lucide-react";
+import { ExternalLink, Scale, Shield } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useConstantsData } from "./dataManager";
 import { useTranslation } from "react-i18next";
@@ -103,6 +103,29 @@ export default function Page() {
               >
                 <SiGithub className="size-4" />
                 {t("about.noraneko.repositoryLabel")}
+                <ExternalLink className="size-4" />
+              </a>
+            </Button>
+          </CardFooter>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>{t("about.privacy")}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-base-content/90">
+              {t("about.privacyDescription")}
+            </p>
+          </CardContent>
+          <CardFooter>
+            <Button asChild className="w-full">
+              <a
+                href="http://127.0.0.1:58261/legal/privacy-policy"
+                className="flex items-center gap-2"
+              >
+                <Shield className="size-4" />
+                {t("about.viewPrivacyPolicy")}
                 <ExternalLink className="size-4" />
               </a>
             </Button>

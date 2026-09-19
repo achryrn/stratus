@@ -48,6 +48,8 @@ export default function PrivacyPage() {
   const [rcOn, setRcOn] = useState(true);
   const [rcPort, setRcPort] = useState(58263);
   const [rcTokenSet, setRcTokenSet] = useState(false);
+  const [rcToken, setRcToken] = useState("");
+  const [rcShowToken, setRcShowToken] = useState(false);
 
   const loadTrackers = useCallback(async () => {
     const raw = await rpc.getStringPref("stratus.privacy.trackers", "{}");
@@ -81,6 +83,7 @@ export default function PrivacyPage() {
       const token = await rpc.getStringPref("stratus.remote.token", "");
       setRcOn(on);
       setRcPort(port);
+      setRcToken(token);
       setRcTokenSet(token !== "");
     } catch {
       setRcOn(true);
@@ -278,7 +281,28 @@ export default function PrivacyPage() {
               ? t("privacy.remoteControl.tokenSet")
               : t("privacy.remoteControl.tokenUnset")}</span>
           </div>
+          {rcTokenSet && rcToken !== "" && (
+            <div className="flex items-center gap-2">
+              <code className="rounded bg-muted px-2 py-0.5 text-xs select-all">
+                {rcShowToken ? rcToken : rcToken.slice(0, 6) + "…" + rcToken.slice(-4)}
+              </code>
+              <button
+                type="button"
+                onClick={() => {
+                  if (!rcShowToken) {
+                    const txt = rcToken;
+                    try { void navigator.clipboard?.writeText(txt); } catch { /* clipboard unavailable */ }
+                  }
+                  setRcShowToken((v) => !v);
+                }}
+                className="rounded border px-2 py-0.5 text-xs hover:opacity-70"
+              >
+                {t(rcShowToken ? "privacy.remoteControl.hideToken" : "privacy.remoteControl.showToken")}
+              </button>
+            </div>
+          )}
           <p className="text-xs opacity-60">{t("privacy.remoteControl.localOnly")}</p>
+          <p className="text-xs opacity-60">{t("privacy.remoteControl.originNote")}</p>
         </CardContent>
       </Card>
 

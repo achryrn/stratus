@@ -831,7 +831,11 @@
             "port": "Port",
             "tokenSet": "Access token: SET (send it as an Authorization: Bearer header)",
             "tokenUnset": "Access token: not set (no authentication)",
-            "localOnly": "Binding: 127.0.0.1 only — agents on this machine can control the browser."
+            "tokenSet": "Access token: SET (send it as an Authorization: Bearer header)",
+            "showToken": "Show / copy token",
+            "hideToken": "Hide token",
+            "localOnly": "Binding: 127.0.0.1 only — agents on this machine can control the browser.",
+            "originNote": "The token is generated automatically on first boot, and requests from web pages are rejected (origin policy) — only local agents can drive the browser."
         },
         "trackers": {
             "title": "Tracker activity",

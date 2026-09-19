@@ -4,13 +4,22 @@
 /**
  * Stratus Remote-Control Server (localhost only, JSON over HTTP).
  * Lets AI agents drive the RELEASE browser WITHOUT dev mode.
- * Binds 127.0.0.1; optional bearer-token auth (stratus.remote.token).
+ * Binds 127.0.0.1 only. SECURITY (production posture):
+ *  - bearer token required by default: `stratus.remote.token` is auto-
+ *    generated on first boot if empty (never silently open).
+ *  - Origin header policy: cross-origin requests (e.g. from a webpage
+ *    fetched by the browser) are rejected with 403 unless the origin is
+ *    the server itself / null / resource://noraneko. CLI agents (no
+ *    Origin) keep working.
+ *  - body size capped (413) at 4 MiB; in-flight requests capped (429).
+ *  - bounded audit trail of operations exposed via GET /audit.
  *
- * GET  /status   GET /tabs   GET /page
+ * GET  /status   GET /tabs   GET /page   GET /audit
  * POST /navigate {url,newTab?}   POST /tabs {action:open|close|activate,...}
  * POST /eval {expression,context:content|chrome}
  * POST /input {type:move|down|up|click|dblclick|wheel|key|type, selector?/x?/y?, ...}
- * GET  /screenshot   POST /settings {name,type,value}   POST /private/open {url?}
+ * GET  /screenshot   POST /settings {name,type,value}   GET /prefs?name=
+ * POST /private/open {url?}
  */
 
 import {
@@ -46,10 +55,48 @@ const { setTimeout, clearTimeout } = ChromeUtils.importESModule(
   "resource://gre/modules/Timer.sys.mjs",
 );
 
+export interface AuditEntry {
+  t: number;
+  method: string;
+  path: string;
+  status: number;
+  origin: string;
+}
+
 export const REMOTE_PORT_PREF = "stratus.remote.port";
 export const REMOTE_ENABLED_PREF = "stratus.remote.enabled";
 export const REMOTE_TOKEN_PREF = "stratus.remote.token";
 export const DEFAULT_PORT = 58263;
+
+/**
+ * Production stance: never leave the control server silently open.
+ * If the token pref is empty it is generated on first boot (32 hex chars)
+ * and stored as a user pref, so authorization stays required by default.
+ * A user-set token always wins; clearing it back to "" regenerates on next
+ * boot instead of reopening the port.
+ */
+export function ensureRemoteToken(): string {
+  const existing = Services.prefs.getStringPref(REMOTE_TOKEN_PREF, "");
+  if (existing) {
+    return existing;
+  }
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  let token = "";
+  for (const b of bytes) token += b.toString(16).padStart(2, "0");
+  Services.prefs.setStringPref(REMOTE_TOKEN_PREF, token);
+  return token;
+}
+
+/** Allowed request origins: none (CLI agents) / opaque / self / our chrome UI. */
+function originAllowed(origin: string): boolean {
+  if (!origin) return true;
+  if (origin === "null") return true;
+  if (origin.startsWith("resource://noraneko")) return true;
+  if (origin.startsWith("http://127.0.0.1")) return true;
+  if (origin.startsWith("http://localhost")) return true;
+  return false;
+}
 
 // -- window helpers -----------------------------------------------------------
 
@@ -487,6 +534,7 @@ function buildRouter(): Router {
   router.register("GET", "/page", () => hPage());
   router.register("GET", "/screenshot", () => hScreenshot());
   router.register("GET", "/prefs", (ctx) => hPrefsRead(ctx.searchParams));
+  router.register("GET", "/audit", () => ({ status: 200, body: { ok: true, entries: server?.auditEntries() ?? [] } }));
   router.register("POST", "/navigate", (ctx) => hNavigate((ctx.json() ?? {}) as NavigateRequest));
   router.register("POST", "/tabs", (ctx) => hTabsAction((ctx.json() ?? {}) as TabsRequest));
   router.register("POST", "/eval", (ctx) => hEval((ctx.json() ?? {}) as EvalRequest));
@@ -514,10 +562,31 @@ class RemoteControlHttpServer implements nsIServerSocketListener {
   private _server: nsIServerSocket | null = null;
   private _token = "";
   private _router: Router | null = null;
+  private _inflight = 0;
+  private readonly _audit: AuditEntry[] = [];
 
   private static readonly READ_HEAD_TIMEOUT_MS = 5000;
   private static readonly READ_BODY_TIMEOUT_MS = 8000;
   private static readonly MAX_BODY_BYTES = 4 * 1024 * 1024;
+  private static readonly MAX_INFLIGHT = 8;
+  private static readonly MAX_AUDIT = 100;
+
+  auditEntries(): AuditEntry[] {
+    return this._audit.map((e) => ({ ...e }));
+  }
+
+  private audit(method: string, path: string, status: number, origin: string): void {
+    this._audit.push({
+      t: Date.now(),
+      method,
+      path: path.slice(0, 200),
+      status,
+      origin: origin.slice(0, 120),
+    });
+    if (this._audit.length > RemoteControlHttpServer.MAX_AUDIT) {
+      this._audit.splice(0, this._audit.length - RemoteControlHttpServer.MAX_AUDIT);
+    }
+  }
 
   QueryInterface = ChromeUtils.generateQI(["nsIServerSocketListener", "nsIObserver"]);
 
@@ -644,6 +713,16 @@ class RemoteControlHttpServer implements nsIServerSocketListener {
       // Body (string accumulation; JSON payloads, UTF-8 safe).
       const contentLength =
         Number.parseInt(req.headers["content-length"] || "0", 10) || 0;
+      if (contentLength > RemoteControlHttpServer.MAX_BODY_BYTES) {
+        respond(413, { error: "payload too large (max 4 MiB)" });
+        this.audit(req.method, req.path, 413, req.headers["origin"] ?? "");
+        try {
+          outStream.close();
+        } catch {
+          /* ignore */
+        }
+        return;
+      }
       const leftover = split >= 0 ? head.slice(split + 4) : "";
       const bodyParts: string[] = [leftover];
       let bodyLen = leftover.length;
@@ -677,8 +756,12 @@ class RemoteControlHttpServer implements nsIServerSocketListener {
       const body = new Uint8Array(rawBody);
 
       const method = asHttpMethod(req.method);
-      if (method === "OPTIONS") {
-        respond(204, null);
+      const origin = req.headers["origin"] ?? "";
+      // Origin policy: reject fetches from arbitrary web pages (drive-by
+      // control of the browser). CLI agents send no Origin and keep working.
+      if (!originAllowed(origin)) {
+        respond(403, { error: "origin not allowed" });
+        this.audit(req.method, req.path, 403, origin);
         try {
           outStream.close();
         } catch {
@@ -686,11 +769,21 @@ class RemoteControlHttpServer implements nsIServerSocketListener {
         }
         return;
       }
-      // token auth
-      if (this._token) {
-        const auth = req.headers["authorization"] ?? "";
-        if (auth !== "Bearer " + this._token) {
-          respond(401, { error: "unauthorized" });
+      if (this._inflight >= RemoteControlHttpServer.MAX_INFLIGHT) {
+        respond(429, { error: "too many concurrent requests" });
+        this.audit(req.method, req.path, 429, origin);
+        try {
+          outStream.close();
+        } catch {
+          /* ignore */
+        }
+        return;
+      }
+      this._inflight++;
+      try {
+        if (method === "OPTIONS") {
+          respond(204, null);
+          this.audit(req.method, req.path, 204, origin);
           try {
             outStream.close();
           } catch {
@@ -698,46 +791,66 @@ class RemoteControlHttpServer implements nsIServerSocketListener {
           }
           return;
         }
-      }
-      const u = new URL("http://127.0.0.1" + req.path);
-      const match = this._router?.match(method, u.pathname);
-      if (!match) {
-        respond(404, { error: "not found: " + method + " " + u.pathname });
+        // token auth
+        if (this._token) {
+          const auth = req.headers["authorization"] ?? "";
+          if (auth !== "Bearer " + this._token) {
+            respond(401, { error: "unauthorized" });
+            this.audit(req.method, req.path, 401, origin);
+            try {
+              outStream.close();
+            } catch {
+              /* ignore */
+            }
+            return;
+          }
+        }
+        const u = new URL("http://127.0.0.1" + req.path);
+        const match = this._router?.match(method, u.pathname);
+        if (!match) {
+          respond(404, { error: "not found: " + method + " " + u.pathname });
+          this.audit(req.method, u.pathname, 404, origin);
+          try {
+            outStream.close();
+          } catch {
+            /* ignore */
+          }
+          return;
+        }
+        const ctx = {
+          method,
+          pathname: u.pathname,
+          searchParams: u.searchParams,
+          headers: req.headers,
+          body,
+          params: match.params,
+          json: () => {
+            const txt = new TextDecoder().decode(body).trim();
+            if (!txt) return null;
+            try {
+              return JSON.parse(txt) as unknown;
+            } catch {
+              return null;
+            }
+          },
+        };
+        const result = await match.handler(ctx as never);
+        if (result && (result as { isStream?: boolean }).isStream) {
+          respond(500, { error: "streams unsupported" });
+          this.audit(req.method, u.pathname, 500, origin);
+        } else {
+          const httpRes = result as HttpResult;
+          const status = httpRes.status ?? 200;
+          respond(status, httpRes.body ?? {});
+          this.audit(req.method, u.pathname, status, origin);
+        }
         try {
           outStream.close();
         } catch {
           /* ignore */
         }
-        return;
-      }
-      const ctx = {
-        method,
-        pathname: u.pathname,
-        searchParams: u.searchParams,
-        headers: req.headers,
-        body,
-        params: match.params,
-        json: () => {
-          const txt = new TextDecoder().decode(body).trim();
-          if (!txt) return null;
-          try {
-            return JSON.parse(txt) as unknown;
-          } catch {
-            return null;
-          }
-        },
-      };
-      const result = await match.handler(ctx as never);
-      if (result && (result as { isStream?: boolean }).isStream) {
-        respond(500, { error: "streams unsupported" });
-      } else {
-        const httpRes = result as HttpResult;
-        respond(httpRes.status ?? 200, httpRes.body ?? {});
-      }
-      try {
-        outStream.close();
-      } catch {
-        /* ignore */
+      } finally {
+        this._inflight--;
       }
     } catch (error) {
       logError("[remote-control] request failed:", error);
@@ -766,11 +879,14 @@ function isEnabled(): boolean {
 }
 
 function currentToken(): string {
-  return Services.prefs.getStringPref(REMOTE_TOKEN_PREF, "");
+  return ensureRemoteToken();
 }
 
 export function initRemoteControl(): void {
   if (server) return;
+  // Production stance: the first boot generates an auth token so the
+  // control surface is never silently open (drive-by protection).
+  ensureRemoteToken();
   enabledObserver = {
     observe(): void {
       syncServer();

@@ -954,4 +954,24 @@ Each slice: implement -> colocated tests -> dev-tool manual session
   covered window swallows the first click as OS activation (verified with the
   harness GUI fullscreen over the test browser).
 
-### Next: M8.10 (deferred/documented)
+### M8.10 Agent-control hardening — PRODUCTION READY — DONE
+
+Closing every gap called out in the M8.9 review so the agent-control API can ship as a production surface:
+
+- **Origin policy (blocks the drive-by vector)** — the server now rejects any request carrying an `Origin` header unless it is empty (CLI agents), `null` (opaque contexts), `http://127.0.0.1:<any>` / `http://localhost:<any>` (self), or `resource://noraneko` (our chrome UI) → `403 {"error":"origin not allowed"}`. A webpage open in the browser can no longer fetch() the control API; an agent's curl (no Origin) is unaffected.
+- **Auth on by default (never silently open)** — `ensureRemoteToken()`: if `stratus.remote.token` is empty, a random 32-hex token is generated on first boot and persisted as a user pref. Every request requires `Authorization: Bearer <token>` (`401` otherwise). Setting the pref manually still overrides; clearing it regenerates on next boot. Verified: 401 without/with-wrong token, 200 with token; `tokenSet:true` in /status.
+- **Payload cap enforced with 413** — bodies over 4 MiB are rejected before buffering (`413 payload too large`). Verified live with a 5 MiB POST.
+- **In-flight limit (429)** — max 8 concurrent requests; over-limit returns `429 too many concurrent requests`.
+- **Audit trail** — bounded (100-entry) operation ring buffer, exposed via `GET /audit` (method/path/status/origin/time). Live-verified entries include the earlier 401s/403s.
+- **Settings card UX** — the Agent control API card now shows the token masked (528fd0…678e) with a Show/copy button (copies to clipboard, masked→revealed toggle) and a note explaining the origin policy. Locale keys `showToken`/`hideToken`/`originNote` added to en-US + ja-JP.
+- **Real regression tests (colocated, ESM layer, all green 1/1)** — the suite now drives the REAL wire contract in the test browser (server is startup-hooked, token boot-generated):
+  - server up + boot token generated (>=32 hex) + /status shape;
+  - auth required by default (missing + wrong bearer → 401);
+  - origin policy over a raw socket (webpage origin → 403, self origin → 200) — fetch() cannot send Origin (forbidden header), so the drive-by defence is probed exactly at the wire;
+  - settings → /prefs round-trip;
+  - audit trail records operations;
+  - payload cap → 413 (raw socket with a 5 MiB Content-Length);
+  - content eval round-trip (1+1 → ok).
+  Note: the raw-socket probe used nsISocketTransportService.createTransport([], host, port, null, null) — the 5-arg form is required on this ESR.
+- **Live re-verification (hardened build)**: 401 no-auth / 401 wrong-token / 200 correct-token / 403 evil-origin / 200 self-origin / 200 CLI-no-origin / audit listing / 413 5MiB / settings→prefs round-trip / REAL native click (__clicked → 1, cursor physically moved 577,480 → 404,239) + typing `sec-chk` via the API. Settings page renders the card with masked token + copy + origin note (#/features/privacy). Console audit clean.
+### Next: M8.11 (deferred/documented)

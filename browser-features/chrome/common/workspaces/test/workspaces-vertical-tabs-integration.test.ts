@@ -26,7 +26,6 @@ import {
   assert,
   assertEquals,
   runTests,
-  type TestCase,
 } from "../../../test/utils/test_harness.ts";
 
 // Mock functions to simulate workspace and vertical tabs interactions
@@ -61,7 +60,7 @@ function getTabbarStyleConfig(workspaceId?: string): "horizontal" | "vertical" |
     if (globalPref && ["horizontal", "vertical", "multirow"].includes(globalPref)) {
       return globalPref as "horizontal" | "vertical" | "multirow";
     }
-  } catch (e) {
+  } catch {
     // Fallback
   }
   
@@ -421,7 +420,7 @@ function testTabStyleChangeDoesntLeakMemory(): void {
 
   for (let i = 0; i < styleChanges; i++) {
     // Apply new style
-    const style = i % 2 === 0 ? "vertical" : "horizontal";
+    const _style = i % 2 === 0 ? "vertical" : "horizontal";
     
     // Simulate memory usage
     currentMemory += 2; // Small increase for CSS application

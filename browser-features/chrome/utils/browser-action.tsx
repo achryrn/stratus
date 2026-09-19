@@ -39,8 +39,13 @@ export namespace BrowserActionUtils {
       CustomizableUI.createWidget({
         id: widgetId,
         type: "button",
-        tooltiptext: l10nId ? await document.l10n?.formatValue(l10nId) : null,
-        label: l10nId ? await document.l10n?.formatValue(l10nId) : null,
+        // NOTE: the overlay repo ships NO Fluent (.ftl) resources, so
+        // document.l10n.formatValue() would log "[fluent] Missing message"
+        // for every overlay widget on every window open. Features set real
+        // labels/tooltips in onCreated (i18next or XUL tooltip elements).
+        // The raw l10nId here only serves as a transient fallback text.
+        tooltiptext: l10nId ?? null,
+        label: l10nId ?? null,
         removable: true,
         onCommand: () => {
           onCommandFunc?.();
@@ -116,8 +121,11 @@ export namespace BrowserActionUtils {
         id: widgetId,
         type: "view",
         viewId: targetViewId,
-        tooltiptext: document?.l10n?.formatValue(l10nId) ?? "",
-        label: document?.l10n?.formatValue(l10nId) ?? "",
+        // See note above the toolbar-click helper: no .ftl resources exist
+        // for overlay ids; fall back to the raw id text (same visible result
+        // Fluent produced for a missing message) without the console errors.
+        tooltiptext: l10nId,
+        label: l10nId,
         removable: true,
         onCreated: (aNode: XULElement) => {
           createRoot(() => onCreatedFunc?.(aNode), owner);

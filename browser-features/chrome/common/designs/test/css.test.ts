@@ -324,7 +324,7 @@ function testVerticalTabsConfigPersistence(): void {
   }
 }
 
-function testVerticalTabsBackwardCompatibility(): void {
+async function testVerticalTabsBackwardCompatibility(): Promise<void> {
   // Test that old int-based pref still works via migrator
   const { getOldTabbarStyleConfig } = await import(
     "../utils/old-config-migrator.ts"

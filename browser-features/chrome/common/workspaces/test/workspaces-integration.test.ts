@@ -27,9 +27,7 @@ import {
   assert,
   assertEquals,
   assertNotEquals,
-  assertThrows,
   runTests,
-  type TestCase,
 } from "../../../test/utils/test_harness.ts";
 import {
   WORKSPACE_DATA_PREF_NAME,
@@ -241,7 +239,9 @@ function testWorkspaceSwitchPreservesTabState(): void {
     { tabId: 2, url: "https://test.com" },
   ];
 
-  const workspace2Tabs = [
+  // Fixture kept for parity with workspace1Tabs; the test only asserts
+  // preservation of workspace 1 state, so this one stays intentionally unused.
+  const _workspace2Tabs = [
     { tabId: 3, url: "https://other.com" },
   ];
 

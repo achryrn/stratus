@@ -56,7 +56,7 @@
  * ```tsx
  * <div role="region" aria-label="Left panel" aria-labelledby="panel-a-heading">
  *   <h2 id="panel-a-heading" className="sr-only">Left Panel</h2>
- *   {/* panel content */}
+ *   ...panel content children...
  * </div>
  * ```
  */
@@ -312,7 +312,7 @@ function auditResizeFeedback(): { status: string; findings: string[] } {
  *     aria-label="Left panel"
  *     className="split-view-panel left"
  *   >
- *     {/* panel A content */}
+ *     ...panel A content children...
  *   </div>
  *
  *   <div
@@ -331,7 +331,7 @@ function auditResizeFeedback(): { status: string; findings: string[] } {
  *     aria-label="Right panel"
  *     className="split-view-panel right"
  *   >
- *     {/* panel B content */}
+ *     ...panel B content children...
  *   </div>
  * </div>
  * ```

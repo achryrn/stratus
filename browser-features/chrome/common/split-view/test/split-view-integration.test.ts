@@ -31,7 +31,6 @@ import {
   assertEquals,
   assertNotEquals,
   runTests,
-  type TestCase,
 } from "../../../test/utils/test_harness.ts";
 
 // Mock split-view configuration
@@ -86,7 +85,7 @@ function testSplitViewCanBeCreated(): void {
 
 function testSplitViewOrientationToggle(): void {
   // Verify split-view can toggle between orientations
-  let splitView: SplitViewConfig = {
+  const splitView: SplitViewConfig = {
     enabled: true,
     orientation: "horizontal",
     panelA: { id: "a", position: "left", width: 50, tabs: [], isActive: true },
@@ -107,7 +106,7 @@ function testSplitViewOrientationToggle(): void {
 
 function testSplitViewCanBeDisabled(): void {
   // Verify split-view can be disabled to return to single-pane
-  let splitView: SplitViewConfig = {
+  const splitView: SplitViewConfig = {
     enabled: true,
     orientation: "horizontal",
     panelA: { id: "a", position: "left", width: 50, tabs: [], isActive: true },
@@ -146,7 +145,7 @@ function testSplitViewDividerPosition(): void {
 
 function testSplitViewDividerBounds(): void {
   // Verify divider position stays within valid bounds
-  const splitView: SplitViewConfig = {
+  const _splitView: SplitViewConfig = {
     enabled: true,
     orientation: "horizontal",
     panelA: { id: "a", position: "left", width: 50, tabs: [], isActive: true },
@@ -376,7 +375,7 @@ function testPanelResizePreservesContent(): void {
 function testSplitViewReflowOnViewportChange(): void {
   // Verify split-view reflows correctly when viewport changes
   const viewportWidths = [1920, 1024, 768, 375]; // Various breakpoints
-  let splitView: SplitViewConfig = {
+  const splitView: SplitViewConfig = {
     enabled: true,
     orientation: "horizontal",
     panelA: { id: "a", position: "left", width: 50, tabs: [], isActive: true },
@@ -399,8 +398,8 @@ function testSplitViewReflowOnViewportChange(): void {
 
 function testMinimumPanelSize(): void {
   // Verify panels don't shrink below minimum size
-  const minPanelWidth = 200; // pixels
-  let dividerPos = 50;
+  const _minPanelWidth = 200; // pixels (kept as documentation; clamp uses 20%)
+  const dividerPos = 50;
 
   const calculatePanelWidth = (containerWidth: number, dividerPercent: number) => {
     return (containerWidth * dividerPercent) / 100;
@@ -408,7 +407,7 @@ function testMinimumPanelSize(): void {
 
   const containerWidth = 1000;
   const panelAWidth = calculatePanelWidth(containerWidth, dividerPos);
-  const panelBWidth = containerWidth - panelAWidth;
+  const _panelBWidth = containerWidth - panelAWidth;
 
   // Try to move divider too far
   const newDividerPos = 5; // Only 5% = 50px (below minimum)
@@ -547,7 +546,7 @@ function testNoMemoryLeaksOnPanelCleanup(): void {
     { id: "b", position: "right", tabs: Array.from({ length: 20 }, (_, i) => ({ id: 100 + i, url: "test", title: "test" })), isActive: false },
   ];
 
-  const initialCount = panels.reduce((sum, p) => sum + p.tabs.length, 0);
+  const _initialCount = panels.reduce((sum, p) => sum + p.tabs.length, 0);
 
   // Disable split-view (cleanup)
   panels = [];

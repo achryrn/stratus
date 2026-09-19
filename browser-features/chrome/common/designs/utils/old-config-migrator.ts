@@ -31,7 +31,7 @@ export const getOldTabbarStyleConfig = () => {
     if (newStylePref === "vertical" || newStylePref === "multirow" || newStylePref === "horizontal") {
       return newStylePref;
     }
-  } catch (e) {
+  } catch {
     // Pref doesn't exist yet, fall through to old int-based pref
   }
 

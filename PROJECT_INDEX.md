@@ -88,6 +88,14 @@ This index catalogs all project documentation, planning documents, test suites, 
 
 ---
 
+## 🎮 M8 — Opera GX Vision & Production Readiness
+
+| Document | Purpose |
+|----------|---------|
+| [`M8_OPERAGX_VISION_PLANNING.md`](M8_OPERAGX_VISION_PLANNING.md) | Live assessment + research + specs: Opera GX look, traffic overview, extension activity, per-mode VPN, trusted-site actions, release gates |
+
+---
+
 ## 📈 Project Status
 
 ```
@@ -105,4 +113,4 @@ Release         📋 Planned   Week 29-30        80h
 Beta            📋 Planned   Week 31-36        —
 ```
 
-**Next milestone:** M2.5.1 — fork `floorp-runtime` repository (see `M2_5_TASK_BREAKDOWN.md`)
+**Next milestone:** M8.0 — repair smoke gate (lint + audit docs), then M2.5.1 / M8 slices (see `M8_OPERAGX_VISION_PLANNING.md`)

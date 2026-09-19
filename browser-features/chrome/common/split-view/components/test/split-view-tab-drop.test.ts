@@ -377,7 +377,7 @@ function waitForRecoveryRetry(): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, 350));
 }
 
-function waitForRecoveryDeadline(): Promise<void> {
+function _waitForRecoveryDeadline(): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, 1250));
 }
 

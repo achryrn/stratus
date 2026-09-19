@@ -5,6 +5,10 @@
 
 import { noraComponent, NoraComponentBase } from "#features-chrome/utils/base";
 
+type ToggleCommandHost = typeof globalThis & {
+  toggleVerticalTabs?: () => void;
+};
+
 @noraComponent(import.meta.hot)
 export default class VerticalTabsFeature extends NoraComponentBase {
   init(): void {
@@ -14,7 +18,7 @@ export default class VerticalTabsFeature extends NoraComponentBase {
 
   private registerToggleCommand(): void {
     // Register the vertical tabs toggle command as a global action
-    (globalThis as any).toggleVerticalTabs = () => {
+    (globalThis as ToggleCommandHost).toggleVerticalTabs = () => {
       try {
         const config = require("#features-chrome/designs/configs").config;
         const currentStyle = config().tabbar.tabbarStyle;
@@ -43,7 +47,7 @@ export default class VerticalTabsFeature extends NoraComponentBase {
       // inline handlers violate the browser CSP (script-src-attr) and
       // trigger a hard MOZ_CRASH in test mode.
       key.addEventListener("command", () => {
-        (globalThis as any).toggleVerticalTabs();
+        (globalThis as ToggleCommandHost).toggleVerticalTabs?.();
       });
 
       const mainKeyset = globalThis.document.getElementById("mainKeyset");

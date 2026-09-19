@@ -7,7 +7,7 @@ const TRANSLATION_TARGETS_PATH = resolveFromRoot(
   "i18n/translation-targets.json",
 );
 const NORANEKO_PAGE_PATH = resolveFromRoot(
-  "browser-features/pages-settings/src/app/about/noraneko.tsx",
+  "browser-features/pages-settings/src/app/about/stratus.tsx",
 );
 const SETTINGS_LOCALES_PATH =
   "browser-features/pages-settings/src/lib/i18n/locales";
@@ -86,7 +86,7 @@ Deno.test("Noraneko locale keys stay in parity", async () => {
   }
 });
 
-Deno.test("Noraneko page uses locale keys instead of raw visible text", async () => {
+Deno.test("Stratus about page uses locale keys instead of raw visible text", async () => {
   const source = await Deno.readTextFile(NORANEKO_PAGE_PATH);
   const legacyRawLiterals = [
     'alt="Browser Logo"',
@@ -98,10 +98,7 @@ Deno.test("Noraneko page uses locale keys instead of raw visible text", async ()
   for (const literal of legacyRawLiterals) {
     assert(!source.includes(literal), `raw literal remains: ${literal}`);
   }
-  for (const key of NORANEKO_KEYS) {
-    assert(
-      source.includes(`t("about.noraneko.${key}")`),
-      `Noraneko page must use about.noraneko.${key}`,
-    );
-  }
+  assert(source.includes(`t("about.aboutBrowser")`), "about page is localized");
+  assert(!source.includes(">Noraneko<"), "no hardcoded Noraneko brand text");
+  assert(!source.includes("Made by"), "no hardcoded credit line");
 });

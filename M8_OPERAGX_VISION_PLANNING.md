@@ -990,4 +990,17 @@ User mandate for the whole production-readiness effort: **the UI must be minimal
 - **Colocated tests (ESM, all green 1/1)** — GxTheme.test.ts extended: minimal token shape (flat non-gradient separator == line token, accent feeds the chrome contract), default normalization (junk/null → minimal), live LWT switch to `stratus-minimal-dark`, window attribute flip.
 - **Live verification** (agent API + dev-tool): preset flip minimal→gx→minimal round-trip (28px/32px tab heights, #8a94a6/#ff1e00 accents, gx-theme attr); single-row overlap 29px; PersonalToolbar display:none; 16 gx-theme CSS rules live; default-preset pref read is `minimal` for fresh profiles; screenshot evidence `_dist/m811-minimal-ui.png`.
 
-### Next: M8.12 (deferred/documented)
+### M8.12 Release pipeline — installer, updater, signing, CI — DONE
+
+Production distribution infrastructure per RELEASE_PLANNING.md R-1.1/1.2/1.3 + R-2.1:
+
+- **NSIS installer (R-1.3)** — `installer/stratus.nsi`: Stratus-branded Windows installer (stratus-browser-installer.exe), per-machine install w/ uninstaller, registry uninstall keys, Start Menu + Desktop shortcuts; packages the release bundle (application.ini, stratus/floorp.exe, updater.exe, browser/, dictionaries/, fonts/, distribution/…); silent-install compatible.
+- **Installer driver** — `tools/release/make-installer.ps1`: builds the installer with makensis when present (CI), degrades gracefully locally with explicit setup instructions; always refreshes checksums.
+- **Code signing (R-1.2)** — `tools/signing/sign.ps1` + `verify.ps1`: Authenticode /fd SHA256 + RFC3161 timestamping; certificate from -CertificatePath or CI secrets CERTIFICATE_BASE64/CERTIFICATE_PASSWORD; verify via signtool /pa.
+- **Updater wiring (R-1.1)**: `StratusBranding` now sets `app.update.url` = https://stratus-browser.org/updates/beta/update.xml, channel `beta`, `app.update.enabled/auto` = true (live-verified via dev-tool: u/ch/en/auto all correct; updater.exe present in the shipped bundle, 2.3 MB). `tools/release/make-update-manifest.ps1` publishes the balrog-style update.xml (complete patch, SHA512) + update.json sidecar from the built installer.
+- **Checksums (R-1.1)** — `tools/release/make-checksums.ps1`: SHA256 for every release artifact + pinned bundle binaries; live-verified (7 entries incl. floorp.exe/updater.exe/application.ini).
+- **CI/CD (R-1.1/2.1)** — `.github/workflows/release.yml`: tag v* + manual trigger; Windows runner: feles-build build → test:smoke → NSIS install → checksums+manifest → sign (cert secret) or unsigned fallback → re-checksums → artifact upload + GitHub release. (tools/act runner can also execute it locally.)
+- **Regression tests**: host-layer `tools/src/release_pipeline.test.ts` (NSIS contract, script artifacts, SHA256/SHA512 digests, cert-secret support, workflow triggers) — 3/3 green; branding colocated test extended with the auto-update prefs (channel/enabled/auto + URL) — 1/1 green; fixed a pre-existing broken host test that pointed at the removed about/noraneko.tsx (now validates the Stratus about page localization) — full `deno task test:host` 212 passed / 0 failed.
+- **Live verification**: scripts executed against the real `_dist/bin/floorp` bundle (checksums.txt with real hashes; update.xml/update.json generated; installer driver emits NSIS instructions when makensis is absent — this machine has no NSIS/signtool, so the exe is produced in CI or after installing NSIS; the .nsi contract is test-guarded).
+
+### Next: M8.13 (deferred/documented)

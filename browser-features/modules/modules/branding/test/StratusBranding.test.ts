@@ -47,6 +47,18 @@ function testBrandPrefsPointAtOwnLegalPages(): void {
   );
 }
 
+function testBrandPrefsWireAutoUpdate(): void {
+  applyStratusBrandPrefs();
+  assertEquals(
+    Services.prefs.getStringPref("app.update.url", ""),
+    "https://stratus-browser.org/updates/beta/update.xml",
+    "auto-update polls the release manifest endpoint (app.update.url)",
+  );
+  assertEquals(Services.prefs.getStringPref("app.update.channel", ""), "beta", "update channel is beta");
+  assert(Services.prefs.getBoolPref("app.update.enabled", false), "auto-update enabled by default");
+  assert(Services.prefs.getBoolPref("app.update.auto", false), "auto-download enabled by default");
+}
+
 export function runAllTests(): void {
   runTests("stratus-branding.test", [
       {
@@ -56,6 +68,10 @@ export function runAllTests(): void {
       {
         name: "brand prefs point at our own legal pages",
         fn: testBrandPrefsPointAtOwnLegalPages,
+      },
+      {
+        name: "brand prefs wire the auto-update pipeline",
+        fn: testBrandPrefsWireAutoUpdate,
       },
   ]);
 }

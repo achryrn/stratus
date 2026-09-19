@@ -10,6 +10,11 @@ export const PRIVACY_POLICY_URL = `${LEGAL_BASE_URL}privacy-policy`;
 export const RELEASE_NOTES_URL = `${LEGAL_BASE_URL}release-notes`;
 export const BRAND_HOME_URL = "https://stratus-browser.org";
 export const BRAND_DOCS_BASE_URL = "https://stratus-browser.org/docs/";
+// Auto-update endpoint. The release pipeline (tools/release/make-update-manifest.ps1)
+// publishes an updater-compatible update.xml here; swap the domain when a real
+// update host is provisioned. The channel is mirrored in the manifest.
+export const UPDATE_BASE_URL = "https://stratus-browser.org/updates/beta/";
+export const UPDATE_CHANNEL = "beta";
 
 const BRAND_PREFS: Record<string, string | boolean> = {
   // The runtime's welcome/override flow (startup.homepage_welcome_url =
@@ -25,6 +30,13 @@ const BRAND_PREFS: Record<string, string | boolean> = {
   "app.releaseNotesURL.aboutDialog": RELEASE_NOTES_URL,
   "app.update.url.manual": BRAND_HOME_URL,
   "app.update.url.details": `${BRAND_DOCS_BASE_URL}release-notes`,
+  // Auto-update wiring (M8.12 release pipeline): the updater polls this
+  // manifest; make-update-manifest.ps1 publishes it at build time.
+  "app.update.url": `${UPDATE_BASE_URL}update.xml`,
+  "app.update.channel": UPDATE_CHANNEL,
+  "app.update.enabled": true,
+  "app.update.auto": true,
+  "app.update.log": false,
   "app.feedback.baseURL": BRAND_DOCS_BASE_URL,
 };
 

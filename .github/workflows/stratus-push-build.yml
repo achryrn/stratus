@@ -54,3 +54,38 @@ jobs:
           git push origin stratus-runtime-build-output --force 2>&1 | tail -3
       - name: Print artifact manifest
         run: find _artifacts -maxdepth 2 | head -60
+
+  logs:
+    name: Publish failure logs
+    needs: build
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Fetch job logs and publish
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set +e
+          RUN_ID=${{ github.run_id }}
+          JOB_IDS=$(gh api repos/${{ github.repository }}/actions/runs/$RUN_ID/jobs --paginate -q '.jobs[] | select(.conclusion == "failure") | .id' 2>/dev/null)
+          [ -z "$JOB_IDS" ] && { echo 'no failed jobs (or API blocked)'; exit 0; }
+          mkdir -p logs
+          for id in $JOB_IDS; do
+            gh api repos/${{ github.repository }}/actions/jobs/$id/logs -H 'Accept: application/vnd.github.v3+json' 2>/dev/null | tail -c 400000 > logs/$RUN_ID-$id.log
+            echo "log $RUN_ID-$id.log: $(wc -c < logs/$RUN_ID-$id.log) bytes"
+          done
+          git init -q
+          git -c user.name=Stratus -c user.email=stratus@localhost config user.name Stratus
+          git -c user.name=Stratus -c user.email=stratus@localhost config user.email stratus@localhost
+          git remote add origin https://x-access-token:$GH_TOKEN@github.com/${{ github.repository }}.git
+          git fetch -q --depth=1 origin refs/heads/stratus-ci-logs:refs/heads/stratus-ci-logs || true
+          git checkout -q stratus-ci-logs 2>/dev/null || git checkout -q --orphan stratus-ci-logs
+          mkdir -p logs
+          git add logs
+          git -c user.name=Stratus -c user.email=stratus@localhost commit -q -m "logs: run $RUN_ID" || true
+          git branch -M stratus-ci-logs
+          git push -q origin HEAD:stratus-ci-logs --force
+          echo pushed

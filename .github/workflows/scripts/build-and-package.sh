@@ -140,7 +140,12 @@ esac
 rm -rf -- "$BUNDLE_DIR"
 shopt -s nullglob
 if [[ "$PLATFORM" == "windows" ]]; then
-  PACKAGE_MATCHES=("${OBJDIR}"/dist/*-*win64.zip)
+  PACKAGE_MATCHES=()
+  while IFS= read -r -d '' candidate; do
+    if [[ "$(basename "$candidate")" != jsshell-* ]]; then
+      PACKAGE_MATCHES+=("$candidate")
+    fi
+  done < <(find "${OBJDIR}/dist" -maxdepth 1 -type f -name '*-*win64.zip' -print0)
   if (( ${#PACKAGE_MATCHES[@]} != 1 )); then
     echo "Expected exactly one Windows package, found ${#PACKAGE_MATCHES[@]}." >&2
     printf '  %s\n' "${PACKAGE_MATCHES[@]}" >&2

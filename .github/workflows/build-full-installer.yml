@@ -1,0 +1,64 @@
+name: Build Full Installer
+
+'on':
+  push:
+    branches:
+      - stratus-installer-input
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: stratus-installer-input
+          fetch-depth: 1
+      - name: Reassemble staged bundle
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path _dist/bin | Out-Null
+          cmd /c "copy /b _installer-in\stratus-stage.zip.000+_installer-in\stratus-stage.zip.001 _dist\bin\stratus-stage.zip >nul"
+          Get-Item _dist/bin/stratus-stage.zip | Select-Object Length
+          Expand-Archive -Path _dist/bin/stratus-stage.zip -DestinationPath _dist/bin -Force
+          Test-Path _dist/bin/floorp/floorp.exe
+          Test-Path _dist/bin/floorp/noraneko/content/core.js
+      - name: Build installer
+        shell: pwsh
+        run: |
+          $nsis = 'C:\Program Files (x86)\NSIS'
+          if (-not $env:Path.Contains($nsis)) { $env:Path = $nsis + ';' + $env:Path }
+          Get-Command makensis -ErrorAction SilentlyContinue | Select-Object Source
+          powershell -ExecutionPolicy Bypass -File tools/release/make-installer.ps1 -StageDir _dist/bin/floorp -OutDir _dist/release -SkipNsis
+          Get-ChildItem _dist/release | Select-Object Name,Length
+          mkdir _installer-out | Out-Null
+          $exe = Get-Item _dist/release/stratus-browser-installer.exe
+          $sha = (Get-FileHash $exe.FullName -Algorithm SHA256).Hash.ToLower()
+          "sha256=$sha", "size=$($exe.Length)" | Set-Content _installer-out/manifest.txt
+          $bytes = [System.IO.File]::ReadAllBytes($exe.FullName)
+          $chunk = 90MB
+          $i = 0
+          $offset = 0
+          while ($offset -lt $bytes.Length) {
+            $len = [Math]::Min($chunk, $bytes.Length - $offset)
+            $part = [byte[]]::new($len)
+            [Array]::Copy($bytes, $offset, $part, 0, $len)
+            [System.IO.File]::WriteAllBytes((Join-Path _installer-out ('installer.exe.' + $i.ToString('000'))), $part)
+            $i++
+            $offset += $len
+          }
+          Get-ChildItem _installer-out | Select-Object Name,Length
+      - name: Publish installer
+        shell: pwsh
+        run: |
+          git config user.name Stratus
+          git config user.email stratus@localhost
+          git switch --orphan stratus-installer-output 2>$null
+          git rm -rqf --cached . 2>$null
+          git add _installer-out
+          git commit -m "installer: stratus-browser-installer (build ${{ github.run_id }})" --allow-empty
+          git branch -M stratus-installer-output
+          git push origin stratus-installer-output --force 2>&1 | Select-Object -Last 2
+          git show --stat --oneline HEAD | Select-Object -First 8

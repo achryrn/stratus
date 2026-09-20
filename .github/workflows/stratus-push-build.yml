@@ -33,6 +33,15 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: _artifacts
+      - name: Split large files below 100MB
+        run: |
+          find _artifacts -type f -size +90M -print0 | while IFS= read -r -d '' f; do
+            d=$(dirname "$f")
+            b=$(basename "$f")
+            cd "$d"
+            split -d -a 3 -b 90m "$b" "$b."
+            rm "$b"
+          done
       - name: Commit artifact
         run: |
           git switch --orphan stratus-runtime-build-output 2>/dev/null || git switch stratus-runtime-build-output
@@ -40,6 +49,6 @@ jobs:
           git add _artifacts
           git -c user.name=Stratus -c user.email=stratus@localhost commit -m "build: windows x64 artifacts (stratus)" --allow-empty
           git branch -M stratus-runtime-build-output
-          git push origin stratus-runtime-build-output --force
-      - name: Print artifact names
-        run: find _artifacts -maxdepth 2 -type f | head -50
+          git push origin stratus-runtime-build-output --force 2>&1 | tail -3
+      - name: Print artifact manifest
+        run: find _artifacts -maxdepth 2 | head -60

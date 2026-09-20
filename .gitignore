@@ -6,6 +6,7 @@ installer/*.exe
 /.secrets
 /AGENTS.md
 /CLAUDE.md
+/nimbalyst-local/
 /*.md
 **/node_modules/
 **/.turbo

@@ -135,11 +135,19 @@ I assembled the full Windows Gecko toolchain locally:
 
 I applied the upstream Noraneko patches, set the implied runtime values to
 Stratus (vendor, profile, application name, remoting name), and the runtime
-now configures cleanly. A full optimized Gecko build is in progress with 4
-parallel jobs so clang-cl stays within the available memory. Once the build
-finishes, the produced nightly binaries replace the staged runtime, the
-installer is rebuilt and signed, and update manifests and checksums are
-regenerated.
+now configures cleanly.
+
+The full optimized Gecko build needs more virtual memory than this machine can
+provide: the gkrust Rust core alone peaks near the system commit ceiling, so a
+local Windows build cannot complete the link. I moved the runtime build to the
+upstream CI pipeline on GitHub Actions, which cross-compiles the Windows build
+on hosted Linux runners with adequate virtual memory. I pushed the runtime
+source snapshot (daily-998 with the Stratus patches applied) to the
+stratus-runtime-0.2.0 branch of the repository and dispatch the Windows build
+workflow from it. The finished artifact is pushed back to the
+stratus-runtime-build-output branch. Once that branch appears, the produced
+binaries replace the staged runtime, the installer is rebuilt and signed, and
+update manifests and checksums are regenerated.
 
 ## Known limitations (documented)
 

@@ -310,8 +310,13 @@ with the Stratus identity:
    migrate `floorp.*` prefs to `stratus.*` with aliases, update installer
    paths and GitHub API asset names, and update the runtime-matching
    identifiers listed in 10.2.
-4. Toolchain: full Gecko build (mozconfig, clang-cl, Rust, MSVC). This is
-   a heavy lift and is scheduled as its own milestone.
+4. Toolchain: full Gecko build (mozconfig, clang-cl, Rust, MSVC). The
+   local machine cannot complete the gkrust link (the Rust core peaks near
+   the Windows commit ceiling), so the build runs on the upstream GitHub
+   Actions pipeline: the runtime snapshot lives on the
+   `stratus-runtime-0.2.0` branch, the Windows Build workflow
+   cross-compiles it on hosted runners, and the finished artifact is
+   pushed to the `stratus-runtime-build-output` branch.
 5. Verification: the same gate as every milestone (host tests, smoke
    tests, staged build + launch, one browser-integrated subset).
 

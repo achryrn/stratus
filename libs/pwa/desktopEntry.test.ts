@@ -21,3 +21,4 @@ Deno.test("sanitizeDesktopEntryValue escapes backslashes", () => {
     String.raw`C:\\Users\\Name`,
   );
 });
+

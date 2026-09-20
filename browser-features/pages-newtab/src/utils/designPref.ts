@@ -1,28 +1,28 @@
 import { rpc } from "@/lib/rpc/rpc.ts";
 
-// Helper to get current disableFloorpStart flag from floorp.design.configs
-export async function getDisableFloorpStart(): Promise<boolean> {
+// Helper to get current disableStratusStart flag from stratus.design.configs
+export async function getDisableStratusStart(): Promise<boolean> {
   try {
-    const result = await rpc.getStringPref("floorp.design.configs");
+    const result = await rpc.getStringPref("stratus.design.configs");
     if (!result) return false;
     const data = JSON.parse(result);
-    return !!data?.uiCustomization?.disableFloorpStart;
+    return !!data?.uiCustomization?.disableStratusStart;
   } catch (e) {
-    console.error("Failed to get disableFloorpStart:", e);
+    console.error("Failed to get disableStratusStart:", e);
     return false;
   }
 }
 
-// Update only the disableFloorpStart flag while preserving other configs
-export async function setDisableFloorpStart(disabled: boolean): Promise<void> {
+// Update only the disableStratusStart flag while preserving other configs
+export async function setDisableStratusStart(disabled: boolean): Promise<void> {
   try {
-    const result = await rpc.getStringPref("floorp.design.configs");
+    const result = await rpc.getStringPref("stratus.design.configs");
     if (!result) return; // can't update if base config missing
     const data = JSON.parse(result);
     if (!data.uiCustomization) data.uiCustomization = {};
-    data.uiCustomization.disableFloorpStart = disabled;
-    await rpc.setStringPref("floorp.design.configs", JSON.stringify(data));
+    data.uiCustomization.disableStratusStart = disabled;
+    await rpc.setStringPref("stratus.design.configs", JSON.stringify(data));
   } catch (e) {
-    console.error("Failed to set disableFloorpStart:", e);
+    console.error("Failed to set disableStratusStart:", e);
   }
 }

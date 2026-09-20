@@ -10,8 +10,8 @@ import {
   saveNewTabSettings,
 } from "@/utils/dataManager.ts";
 import {
-  getDisableFloorpStart,
-  setDisableFloorpStart,
+  getDisableStratusStart,
+  setDisableStratusStart,
 } from "@/utils/designPref.ts";
 import { prepareImageForStorage } from "@/utils/imageCompression.ts";
 
@@ -38,11 +38,11 @@ export function Settings({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentFileName, setCurrentFileName] = useState<string>("");
   const [currentFolderPath, setCurrentFolderPath] = useState<string>("");
-  const [stratusImages, setFloorpImages] = useState<
+  const [stratusImages, setStratusImages] = useState<
     { name: string; url: string }[]
   >([]);
   const [blockedSites, setBlockedSites] = useState<string[]>([]);
-  const [disableFloorpStart, setDisableFloorpStartState] = useState(false);
+  const [disableStratusStart, setDisableStratusStartState] = useState(false);
 
   useEffect(() => {
     if (backgroundType === "custom" && fileName) {
@@ -57,7 +57,7 @@ export function Settings({
       setCurrentFolderPath("");
     }
 
-    setFloorpImages(getStratusImages());
+    setStratusImages(getStratusImages());
   }, [backgroundType, fileName, folderPath]);
 
   useEffect(() => {
@@ -66,8 +66,8 @@ export function Settings({
       setBlockedSites(settings.topSites.blocked);
     };
     const loadDisableFloorpStart = async () => {
-      const value = await getDisableFloorpStart();
-      setDisableFloorpStartState(value);
+      const value = await getDisableStratusStart();
+      setDisableStratusStartState(value);
     };
 
     if (isOpen) {
@@ -111,7 +111,7 @@ export function Settings({
     try {
       await setSelectedStratus(imageName);
     } catch (error) {
-      console.error("Failed to select Floorp image:", error);
+      console.error("Failed to select Stratus image:", error);
     } finally {
       setIsSubmitting(false);
     }
@@ -225,13 +225,13 @@ export function Settings({
             <label className="flex items-start space-x-3">
               <input
                 type="checkbox"
-                checked={disableFloorpStart}
+                checked={disableStratusStart}
                 onChange={async (e) => {
                   const v = e.target.checked;
                   setIsSubmitting(true);
                   try {
-                    setDisableFloorpStartState(v);
-                    await setDisableFloorpStart(v);
+                    setDisableStratusStartState(v);
+                    await setDisableStratusStart(v);
                   } finally {
                     setIsSubmitting(false);
                   }
@@ -241,10 +241,10 @@ export function Settings({
               />
               <span className="text-gray-700 dark:text-gray-200">
                 <span className="block font-medium">
-                  {t("settings.disableFloorpStart")}
+                  {t("settings.disableStratusStart")}
                 </span>
                 <span className="block text-sm text-gray-500 dark:text-gray-400">
-                  {t("settings.disableFloorpStartDescription")}
+                  {t("settings.disableStratusStartDescription")}
                 </span>
                 <span className="block text-xs text-warning dark:text-yellow-400 mt-1">
                   {t("settings.restartRequired")}

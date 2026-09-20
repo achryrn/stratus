@@ -138,17 +138,54 @@ case "$BUNDLE_DIR" in
     ;;
 esac
 rm -rf -- "$BUNDLE_DIR"
-mkdir -p "$DIST_HOST_DEST"
-
 shopt -s nullglob
 if [[ "$PLATFORM" == "windows" ]]; then
-  PACKAGE_MATCHES=("${OBJDIR}"/dist/floorp-*win64.zip)
+  PACKAGE_MATCHES=("${OBJDIR}"/dist/*-*win64.zip)
   if (( ${#PACKAGE_MATCHES[@]} != 1 )); then
     echo "Expected exactly one Windows package, found ${#PACKAGE_MATCHES[@]}." >&2
     printf '  %s\n' "${PACKAGE_MATCHES[@]}" >&2
     exit 1
   fi
   mv -- "${PACKAGE_MATCHES[0]}" "$PACKAGE_DEST"
+  python3 - "$PACKAGE_DEST" <<'PY'
+import re, shutil, sys, zipfile
+zip_path = sys.argv[1]
+ROOT = "floorp"
+with zipfile.ZipFile(zip_path) as zin:
+    names = zin.namelist()
+    root = next((n.split('/')[0] for n in names if n.split('/')[0]), None)
+    if root == ROOT or root is None:
+        sys.exit(0)
+    tmp_path = zip_path + ".tmp"
+    with zipfile.ZipFile(tmp_path, "w", zipfile.ZIP_DEFLATED) as zout:
+        for info in zin.infolist():
+            name = info.filename
+            data = zin.read(name)
+            if name == root:
+                new_name = ROOT
+            elif name.startswith(root + '/'):
+                new_name = ROOT + name[len(root):]
+            else:
+                new_name = name
+            ln = new_name.rfind('/')
+            base = new_name[ln + 1:] if ln >= 0 else new_name
+            if base == "stratus.exe":
+                new_name = ROOT + "/floorp.exe"
+            elif base == "application.ini":
+                text = data.decode('utf-8', errors='replace')
+                text = re.sub(r'^Name=.*$', 'Name=' + ROOT, text, count=1, flags=re.M)
+                data = text.encode('utf-8')
+            elif base == "updater.ini":
+                text = data.decode('utf-8', errors='replace')
+                text = re.sub(r'^Name=.*$', 'Name=' + ROOT, text, count=1, flags=re.M)
+                data = text.encode('utf-8')
+            new_info = zipfile.ZipInfo(new_name, date_time=info.date_time)
+            new_info.compress_type = info.compress_type
+            new_info.external_attr = info.external_attr
+            zout.writestr(new_info, data)
+    shutil.move(tmp_path, zip_path)
+    print("Normalized package root to {0} (was {1})".format(ROOT, root))
+PY
 elif [[ "$PLATFORM" == "linux" ]]; then
   PACKAGE_MATCHES=("${OBJDIR}"/dist/floorp-*.tar.xz)
   if (( ${#PACKAGE_MATCHES[@]} != 1 )); then

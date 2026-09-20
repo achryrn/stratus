@@ -32,16 +32,14 @@ jobs:
           fetch-depth: 0
       - uses: actions/download-artifact@v4
         with:
-          path: artifacts
+          path: _artifacts
       - name: Commit artifact
         run: |
-          git switch -c stratus-runtime-build-output 2>/dev/null || git switch stratus-runtime-build-output
-          git rm -rq --cached --ignore-unmatch artifacts 2>/dev/null || true
-          mkdir -p artifacts
-          shopt -s nullglob
-          for f in artifacts/*/{*.zip,*.tar,*.tar.gz}; do
-            [ -f "$f" ] && cp "$f" artifacts/ 2>/dev/null || true
-          done
-          git add artifacts
+          git switch --orphan stratus-runtime-build-output 2>/dev/null || git switch stratus-runtime-build-output
+          git rm -rq --cached --ignore-unmatch _artifacts 2>/dev/null || true
+          git add _artifacts
           git -c user.name=Stratus -c user.email=stratus@localhost commit -m "build: windows x64 artifacts (stratus)" --allow-empty
-          git push origin stratus-runtime-build-output
+          git branch -M stratus-runtime-build-output
+          git push origin stratus-runtime-build-output --force
+      - name: Print artifact names
+        run: find _artifacts -maxdepth 2 -type f | head -50

@@ -31,7 +31,7 @@ jobs:
           $nsis = 'C:\Program Files (x86)\NSIS'
           if (-not $env:Path.Contains($nsis)) { $env:Path = $nsis + ';' + $env:Path }
           Get-Command makensis -ErrorAction SilentlyContinue | Select-Object Source
-          powershell -ExecutionPolicy Bypass -File tools/release/make-installer.ps1 -StageDir _dist/bin/floorp -OutDir _dist/release -SkipNsis
+          powershell -ExecutionPolicy Bypass -File tools/release/make-installer.ps1 -StageDir _dist/bin/floorp -OutDir _dist/release
           Get-ChildItem _dist/release | Select-Object Name,Length
           mkdir _installer-out | Out-Null
           $exe = Get-Item _dist/release/stratus-browser-installer.exe

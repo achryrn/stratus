@@ -59,6 +59,44 @@ went into each milestone.
   network monitor, VPN, extension activity, and release module suites
   1/1 each; the host suite passes 212/212.
 
+## M9 - Production overlay assembly and rebrand phase (in progress)
+
+### 9.1 The packaged product now ships the Stratus chrome (root-cause fix)
+
+I found that the release stage and installer carried the Stratus overlay only
+as a symlink farm (noraneko-devdir) pointing into the repository, and the
+installer explicitly excluded that directory. The installed and copied
+product therefore ran the stock Firefox chrome with no Stratus features at
+all, while the development build showed them. That is now fixed:
+
+- Injector.run(production) copies the compiled overlay (content, startup,
+  skin, legal, resource, all pages) as real files into noraneko/ with no
+  symlinks, and rewrites chrome.manifest so the production wiring is the
+  only nora registration (setChromeManifestEntry).
+- New command: deno task feles-build assemble (production assets plus a
+  portable overlay copy).
+- Verified: the production tree boots with all nora components,
+  StratusBranding prefs applied, memory saver, remote control, OS API,
+  VPN toggle, network monitor, extension activity, designs, workspaces,
+  and the rest of the feature set loaded from the compiled bundle.
+- Release artifacts rebuilt from the assembled tree: installer 137.6 MB,
+  re-signed (Authenticode Valid), updater manifest and checksums refreshed.
+- Host suite 213/213 green; smoke gate 6/6 green.
+
+### 9.2 Upcoming: Opera GX-inspired visual rebrand
+
+Design direction requested by the maintainer: move the chrome away from the
+Firefox look toward an Opera GX-inspired dark gaming aesthetic (matte black
+chrome, luminous accent palette, high-contrast surfaces). This is a new
+design tier in the themes engine, applied as the default, and will be
+tracked with the same gate per slice.
+
+### 9.3 Known limitation carried forward
+
+The prebuilt runtime binary is still Floorp-branded at the binary level
+(application.ini, version resources, floorp.exe name, updater URLs). Full
+removal requires the Phase 2.5 runtime rebuild against the Gecko toolchain,
+which is out of scope for the local environment.
 ## Known limitations (documented)
 
 - Byte counts remain zero for HTTP/2 and chunked transfers because

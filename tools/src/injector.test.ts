@@ -3,6 +3,7 @@
 import { assertEquals, assertStringIncludes } from "@std/assert";
 import {
   buildXhtmlInjectionArgs,
+  setChromeManifestEntry,
   type XhtmlInjectionOptions,
 } from "./injector.ts";
 
@@ -58,6 +59,30 @@ Deno.test("stage and production options keep the browser HTTP loader denied", ()
     { isCI: true, allowBrowserHttpLoader: false },
     false,
   );
+});
+
+Deno.test("setChromeManifestEntry swaps dev and production overlay wiring", () => {
+  const baseManifest =
+    "manifest chrome/chrome.manifest\nmanifest components/components.manifest\n";
+  const dev = setChromeManifestEntry(
+    baseManifest,
+    "manifest noraneko-devdir/noraneko.manifest",
+  );
+  assertEquals(
+    (dev.match(/manifest noraneko-devdir\/noraneko.manifest/g) ?? []).length,
+    1,
+  );
+  assertEquals(dev.includes("manifest noraneko/noraneko.manifest"), false);
+
+  const prod = setChromeManifestEntry(
+    dev,
+    "manifest noraneko/noraneko.manifest",
+  );
+  assertEquals(
+    (prod.match(/manifest noraneko\/noraneko.manifest/g) ?? []).length,
+    1,
+  );
+  assertEquals(prod.includes("noraneko-devdir"), false);
 });
 
 Deno.test("feles-build and dev-tool use the explicit CSP option matrix", async () => {

@@ -10,7 +10,7 @@ import * as DevServer from "./src/dev_server.ts";
 import * as Injector from "./src/injector.ts";
 import * as BrowserLauncher from "./src/browser_launcher.ts";
 import * as DevEnvManager from "./src/dev_env_manager.ts";
-import { DEV_SERVER } from "./src/defines.ts";
+import { BIN_DIR, DEV_SERVER } from "./src/defines.ts";
 import { Logger } from "./src/utils.ts";
 
 const logger = new Logger("feles-build");
@@ -207,6 +207,18 @@ async function runTest(): Promise<void> {
   });
 }
 
+async function runAssemble(): Promise<void> {
+  logger.info("Assembling the production overlay into the runtime tree...");
+  if (!(await Deno.stat(BIN_DIR).then(() => true).catch(() => false))) {
+    logger.error(`Runtime tree not found at ${BIN_DIR}. Run the initializer first.`);
+    Deno.exit(1);
+  }
+  const buildid2 = Update.generateUuidV7();
+  await Builder.run("production", buildid2);
+  Injector.run("production");
+  logger.success("Production overlay assembled: noraneko/ is a real, portable copy.");
+}
+
 async function runBuild(phase?: string): Promise<void> {
   const optionsPhase = phase ?? null;
   if (!optionsPhase) {
@@ -246,6 +258,7 @@ function printHelp(): void {
     "  stage      Build production assets and run browser in dev mode",
   );
   console.log("  build      Run the production build workflow (--phase)");
+  console.log("  assemble   Build production assets and copy the portable production overlay into the runtime");
   console.log("  misc       Misc commands (e.g. 'misc patch')");
   console.log("");
   console.log("Run 'feles-build <command> --help' for command-specific help.");
@@ -256,6 +269,10 @@ async function main(): Promise<void> {
   const command = argv.shift();
 
   switch (command) {
+    case "assemble": {
+      await runAssemble();
+      break;
+    }
     case "dev": {
       // simple help support
       if (argv.includes("--help") || argv.includes("-h")) {

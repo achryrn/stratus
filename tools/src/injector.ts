@@ -12,6 +12,28 @@ import { BIN_DIR, PROD_BIN_DIR, PROJECT_ROOT } from "./defines.ts";
 
 const logger = new Logger("injector");
 
+const DEV_DIR_NAME = "noraneko-devdir";
+const PROD_DIR_NAME = "noraneko";
+
+/**
+ * Rewrites chrome.manifest so the active overlay wiring (dev symlink farm or
+ * production copy) is the only nora/noraneko registration present.
+ */
+export function setChromeManifestEntry(
+  manifest: string,
+  entry: string,
+): string {
+  const kept = manifest.split("\n").filter((line) => {
+    const t = line.trim();
+    return !t.startsWith("manifest noraneko");
+  });
+  while (kept.length > 0 && kept[kept.length - 1].trim() === "") kept.pop();
+  if (kept.length > 0 && kept[kept.length - 1] !== entry) {
+    kept.push(entry);
+  }
+  return kept.length === 0 ? `${entry}\n` : `${kept.join("\n")}\n`;
+}
+
 export interface XhtmlInjectionOptions {
   devPages?: boolean;
   isCI?: boolean;
@@ -137,21 +159,54 @@ export function createManifest(mode: string, dirPath: string) {
  * @param mode
  * @param dirName
  */
-export function run(mode: string, dirName = "noraneko-devdir"): void {
-  const manifestPath = path.join(BIN_DIR, "chrome.manifest");
-
-  if (mode === "dev" || mode === "stage") {
-    let manifest = "";
-    if (exists(manifestPath)) {
-      manifest = Deno.readTextFileSync(manifestPath);
-    }
-    const entry = `manifest ${dirName}/noraneko.manifest`;
-    if (!manifest.includes(entry)) {
-      Deno.writeTextFileSync(manifestPath, `${manifest}\n${entry}`);
+/**
+ * Copies a mount target into the overlay directory as real files (no
+ * symlinks), skipping tooling-only directories such as node_modules.
+ */
+function copyMount(targetPath: string, destPath: string): void {
+  function walk(from: string, to: string): void {
+    Deno.mkdirSync(to, { recursive: true });
+    for (const entry of Deno.readDirSync(from)) {
+      if (entry.isDirectory && entry.name === "node_modules") continue;
+      const src = path.join(from, entry.name);
+      const dst = path.join(to, entry.name);
+      if (entry.isDirectory) {
+        walk(src, dst);
+      } else if (entry.isSymlink) {
+        Deno.copyFileSync(path.resolve(Deno.readLinkSync(src)), dst);
+      } else {
+        Deno.copyFileSync(src, dst);
+      }
     }
   }
+  walk(targetPath, destPath);
+}
 
-  const dirPath = path.join(BIN_DIR, dirName);
+/**
+ * Wires the overlay into the runtime tree.
+ *
+ * - "dev" | "stage" | "test": registers the symlink farm (noraneko-devdir)
+ *   pointing at the built package outputs, so HMR servers can serve them.
+ * - "production": copies the built package outputs as real files into
+ *   noraneko/, producing a portable tree with no dev server and no symlinks.
+ *
+ * Only the active wiring is referenced from chrome.manifest; the inactive
+ * overlay directory is removed.
+ */
+export function run(mode: string, dirName?: string): void {
+  const isProduction = mode === "production";
+  const activeDir = dirName ?? (isProduction ? PROD_DIR_NAME : DEV_DIR_NAME);
+  const inactiveDir = isProduction ? DEV_DIR_NAME : PROD_DIR_NAME;
+
+  // Rewrite chrome.manifest so the active wiring is the only registration.
+  const manifestPath = path.join(BIN_DIR, "chrome.manifest");
+  if (exists(manifestPath)) {
+    const manifest = Deno.readTextFileSync(manifestPath);
+    const entry = `manifest ${activeDir}/noraneko.manifest`;
+    Deno.writeTextFileSync(manifestPath, setChromeManifestEntry(manifest, entry));
+  }
+
+  const dirPath = path.join(BIN_DIR, activeDir);
   try {
     if (exists(dirPath)) {
       safeRemove(dirPath);
@@ -181,25 +236,36 @@ export function run(mode: string, dirName = "noraneko-devdir"): void {
   ];
 
   for (const [subdir, target] of mounts) {
-    const linkPath = path.resolve(dirPath, subdir);
+    const destPath = path.resolve(dirPath, subdir);
     const targetPath = path.resolve(target);
     try {
-      if (exists(linkPath)) {
-        safeRemove(linkPath);
+      if (exists(destPath)) {
+        safeRemove(destPath);
       }
     } catch {
       // ignore
     }
 
-    try {
-      createSymlink(linkPath, targetPath);
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : String(e);
-      logger.warn(
-        `Failed to create symlink ${linkPath} -> ${targetPath}: ${msg}`,
-      );
+    if (isProduction) {
+      copyMount(targetPath, destPath);
+      logger.success(`Copied ${subdir} into production overlay.`);
+    } else {
+      try {
+        createSymlink(destPath, targetPath);
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e);
+        logger.warn(
+          `Failed to create symlink ${destPath} -> ${targetPath}: ${msg}`,
+        );
+      }
     }
   }
 
-  logger.success("Manifest injected successfully.");
+  // Keep only the active overlay directory in the tree.
+  const inactivePath = path.join(BIN_DIR, inactiveDir);
+  if (exists(inactivePath)) {
+    safeRemove(inactivePath);
+  }
+
+  logger.success(`Manifest injected successfully (${mode}, ${activeDir}).`);
 }

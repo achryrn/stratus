@@ -63,6 +63,8 @@ Development is orchestrated through Deno tasks:
 - deno task feles-build build --phase before-mach - build overlay assets
 - deno task feles-build build --phase after-mach - post-build injection
   (requires the upstream Firefox object output)
+- deno task feles-build assemble - build production assets and copy the
+  portable production overlay (noraneko/) into the runtime
 - deno task test - browser-integrated colocated tests
 - deno task test:host - host test suite
 - deno task test:smoke - smoke gate

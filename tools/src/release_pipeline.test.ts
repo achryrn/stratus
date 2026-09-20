@@ -45,7 +45,9 @@ Deno.test("release scripts exist and share the artifact contract", () => {
   assert(manifest.includes("SHA512"), "updater manifest uses SHA512 (balrog contract)");
   assert(manifest.includes("<patch type=\"complete\""), "manifest emits complete patches");
   const sign = read("tools/signing/sign.ps1");
-  assert(sign.includes("/fd SHA256"), "signing uses SHA256 digest");
+  assert(sign.includes("/fd"), "signing flags the digest algorithm");
+  assert(sign.includes("SHA256"), "signing uses SHA256 digest");
+  assert(sign.includes("/tr"), "signing uses RFC3161 timestamps");
   assert(sign.includes("CERTIFICATE_BASE64"), "signing supports CI cert secret");
   const wf = read("tools/release/release-workflow.yml");
   assert(wf.includes("tags: [\"v*\"]"), "workflow triggers on version tags");

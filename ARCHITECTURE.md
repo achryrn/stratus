@@ -186,6 +186,7 @@ CLI: `tools/feles-build.ts`, 5 commands (`dev`, `test`, `stage`, `build`,
 | Phase | Steps |
 |---|---|
 | `build --phase before-mach` | Symlinker, then Builder (production assets) |
+| `assemble` | Builder (production assets), then Injector.run(production): copies the overlay into noraneko/ as real files and wires chrome.manifest (no symlinks, portable) |
 | `build --phase after-mach` | injectXhtmlFromTs with `isCI:true`, `allowBrowserHttpLoader:false` |
 | `dev` / `stage` / `test` | Initializer, Patcher (12 patches), Pref, Symlinker, Builder (parallel: startup tsdown, loader-features vite, 7 pages vite, loader-modules tsdown), Injector, injectXhtmlFromTs, DevEnvManager, DevServer (9 vite servers), BrowserLauncher |
 

@@ -4,6 +4,8 @@ name: Stratus Windows Build
   push:
     branches:
       - stratus-runtime-0.2.0
+    paths-ignore:
+      - '.github/**'
 
 permissions:
   contents: write
@@ -45,7 +47,7 @@ jobs:
       - name: Commit artifact
         run: |
           git switch --orphan stratus-runtime-build-output 2>/dev/null || git switch stratus-runtime-build-output
-          git rm -rq --cached --ignore-unmatch _artifacts 2>/dev/null || true
+          git rm -rqf --cached . 2>/dev/null || true
           git add _artifacts
           git -c user.name=Stratus -c user.email=stratus@localhost commit -m "build: windows x64 artifacts (stratus)" --allow-empty
           git branch -M stratus-runtime-build-output

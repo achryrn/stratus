@@ -28,7 +28,7 @@ export interface NewTabSettings {
     customImage: string | null;
     fileName: string | null;
     folderPath?: string | null;
-    selectedFloorp?: string | null;
+    selectedStratus?: string | null;
     slideshowEnabled?: boolean;
     slideshowInterval?: number;
   };
@@ -72,7 +72,7 @@ const DEFAULT_SETTINGS: NewTabSettings = {
     customImage: null,
     fileName: null,
     folderPath: null,
-    selectedFloorp: null,
+    selectedStratus: null,
     slideshowEnabled: false,
     slideshowInterval: 30,
   },

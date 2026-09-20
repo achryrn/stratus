@@ -4,7 +4,7 @@ const backgroundImages = import.meta.glob("../assets/background/*.avif", {
   query: "?url",
 });
 
-const floorpImages = import.meta.glob("../assets/floorp/*.png", {
+const stratusImages = import.meta.glob("../assets/floorp/*.png", {
   eager: true,
   import: "default",
   query: "?url",
@@ -47,8 +47,8 @@ export function getRandomBackgroundImage(): string | null {
   return selected;
 }
 
-export function getFloorpImages(): { name: string; url: string }[] {
-  return Object.entries(floorpImages)
+export function getStratusImages(): { name: string; url: string }[] {
+  return Object.entries(stratusImages)
     .map(([path, mod]) => {
       const fileName = path.split("/").pop() || "";
       const url = extractUrlFromModule(mod);
@@ -57,12 +57,12 @@ export function getFloorpImages(): { name: string; url: string }[] {
     .filter((x): x is { name: string; url: string } => x !== null);
 }
 
-export function getSelectedFloorpImage(
+export function getSelectedStratusImage(
   imageName: string | null,
 ): string | null {
   if (!imageName) return null;
 
-  const foundImage = Object.entries(floorpImages)
+  const foundImage = Object.entries(stratusImages)
     .map(([path, mod]) => ({ path, url: extractUrlFromModule(mod) }))
     .find((entry) => entry.path.includes(imageName) && entry.url);
 

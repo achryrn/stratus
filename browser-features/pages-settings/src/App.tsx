@@ -8,7 +8,7 @@ import Design from "@/app/design/page.tsx";
 import PanelSidebar from "@/app/sidebar/page.tsx";
 import Workspaces from "@/app/workspaces/page.tsx";
 import ProgressiveWebApp from "@/app/pwa/page.tsx";
-import FloorpOS from "@/app/floorp-os/page.tsx";
+import StratusOS from "@/app/floorp-os/page.tsx";
 import VpnSettings from "@/app/vpn/page.tsx";
 import TrustedSites from "@/app/sites/page.tsx";
 import PrivacyPage from "@/app/privacy/page.tsx";
@@ -52,7 +52,7 @@ export default function App() {
               <Route path="/features/sidebar" element={<PanelSidebar />} />
               <Route path="/features/workspaces" element={<Workspaces />} />
               <Route path="/features/webapps" element={<ProgressiveWebApp />} />
-              <Route path="/features/floorp-os" element={<FloorpOS />} />
+              <Route path="/features/stratus-os" element={<StratusOS />} />
               <Route path="/features/vpn" element={<VpnSettings />} />
               <Route path="/features/sites" element={<TrustedSites />} />
               <Route path="/features/privacy" element={<PrivacyPage />} />

@@ -31,15 +31,15 @@ const tests: TestCase[] = [
     },
   },
   {
-    name: "getFloorpImages should return array with valid entries",
+    name: "getStratusImages should return array with valid entries",
     fn: async () => {
-      const { getFloorpImages } = await loadBackgroundImagesModule();
-      const floorpImages = getFloorpImages();
+      const { getStratusImages } = await loadBackgroundImagesModule();
+      const stratusImages = getStratusImages();
       assert(
-        Array.isArray(floorpImages),
-        "getFloorpImages should return array",
+        Array.isArray(stratusImages),
+        "getStratusImages should return array",
       );
-      for (const image of floorpImages) {
+      for (const image of stratusImages) {
         assert(
           typeof image.name === "string" && image.name.length > 0,
           "image name should be non-empty",
@@ -54,12 +54,12 @@ const tests: TestCase[] = [
   {
     name: "selected image should match name lookup",
     fn: async () => {
-      const { getFloorpImages, getSelectedFloorpImage } =
+      const { getStratusImages, getSelectedStratusImage } =
         await loadBackgroundImagesModule();
-      const floorpImages = getFloorpImages();
-      if (floorpImages.length > 0) {
-        const first = floorpImages[0];
-        const selected = getSelectedFloorpImage(first.name);
+      const stratusImages = getStratusImages();
+      if (stratusImages.length > 0) {
+        const first = stratusImages[0];
+        const selected = getSelectedStratusImage(first.name);
         assertEquals(
           selected,
           first.url,
@@ -71,9 +71,9 @@ const tests: TestCase[] = [
   {
     name: "null name should return null",
     fn: async () => {
-      const { getSelectedFloorpImage } = await loadBackgroundImagesModule();
+      const { getSelectedStratusImage } = await loadBackgroundImagesModule();
       assertEquals(
-        getSelectedFloorpImage(null),
+        getSelectedStratusImage(null),
         null,
         "null name should return null",
       );
@@ -82,9 +82,9 @@ const tests: TestCase[] = [
   {
     name: "unknown image should return null",
     fn: async () => {
-      const { getSelectedFloorpImage } = await loadBackgroundImagesModule();
+      const { getSelectedStratusImage } = await loadBackgroundImagesModule();
       assertEquals(
-        getSelectedFloorpImage("__missing__"),
+        getSelectedStratusImage("__missing__"),
         null,
         "unknown image should return null",
       );

@@ -2,7 +2,7 @@ import { useBackground } from "@/contexts/BackgroundContext.tsx";
 import { useEffect, useRef, useState } from "react";
 import {
   getRandomBackgroundImage,
-  getSelectedFloorpImage,
+  getSelectedStratusImage,
 } from "../../utils/backgroundImages.ts";
 import { getRandomImageFromFolder } from "../../utils/dataManager.ts";
 
@@ -11,7 +11,7 @@ export function Background() {
     type,
     customImage,
     folderPath,
-    selectedFloorp,
+    selectedStratus,
     slideshowEnabled,
     slideshowInterval,
   } = useBackground();
@@ -60,14 +60,14 @@ export function Background() {
         }
       } else if (type === "custom" && customImage) {
         setCurrentImage(customImage);
-      } else if (type === "floorp" && selectedFloorp) {
-        setCurrentImage(getSelectedFloorpImage(selectedFloorp));
+      } else if (type === "stratus" && selectedStratus) {
+        setCurrentImage(getSelectedStratusImage(selectedStratus));
       } else {
         setCurrentImage(null);
       }
     };
     initialize();
-  }, [type, folderPath, customImage, selectedFloorp, slideshowEnabled]);
+  }, [type, folderPath, customImage, selectedStratus, slideshowEnabled]);
 
   useEffect(() => {
     // no debug logs here

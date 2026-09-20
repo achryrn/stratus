@@ -108,7 +108,7 @@ function App() {
       }
 
       console.info(
-        `[Floorp Notes] Detected external change to pref "${prefName}", running three-way merge…`,
+        `[Stratus Notes] Detected external change to pref "${prefName}", running three-way merge…`,
       );
 
       try {
@@ -156,21 +156,21 @@ function App() {
 
         if (result.hadConflicts) {
           console.warn(
-            `[Floorp Notes] Sync merge completed with ${result.conflictCount} conflict(s). Conflict copies created.`,
+            `[Stratus Notes] Sync merge completed with ${result.conflictCount} conflict(s). Conflict copies created.`,
           );
         } else {
-          console.info("[Floorp Notes] Sync merge completed — no conflicts.");
+          console.info("[Stratus Notes] Sync merge completed — no conflicts.");
         }
       } catch (err) {
-        console.error("[Floorp Notes] Failed to apply sync merge:", err);
+        console.error("[Stratus Notes] Failed to apply sync merge:", err);
       }
     };
 
-    console.debug("[Floorp Notes] Registering sync pref observer…");
+    console.debug("[Stratus Notes] Registering sync pref observer…");
     addPrefObserver(NOTES_PREF_NAME, onPrefChanged);
 
     return () => {
-      console.debug("[Floorp Notes] Removing sync pref observer.");
+      console.debug("[Stratus Notes] Removing sync pref observer.");
       removePrefObserver(onPrefChanged);
     };
   }, [isLoading]);
@@ -214,7 +214,7 @@ function App() {
       } catch (syncErr) {
         // Non-critical: sync state update failure shouldn't block the UI
         console.warn(
-          "[Floorp Notes] Failed to update sync state after save:",
+          "[Stratus Notes] Failed to update sync state after save:",
           syncErr,
         );
       }

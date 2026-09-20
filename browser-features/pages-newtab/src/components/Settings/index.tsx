@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Modal } from "../Modal/index.tsx";
 import { useBackground } from "@/contexts/BackgroundContext.tsx";
 import { useComponents } from "@/contexts/ComponentsContext.tsx";
-import { getFloorpImages } from "@/utils/backgroundImages.ts";
+import { getStratusImages } from "@/utils/backgroundImages.ts";
 import {
   getFolderPathFromDialog,
   getNewTabSettings,
@@ -24,11 +24,11 @@ export function Settings({
     type: backgroundType,
     fileName,
     folderPath,
-    selectedFloorp,
+    selectedStratus,
     setType: setBackgroundType,
     setCustomImage,
     setFolderPath,
-    setSelectedFloorp,
+    setSelectedStratus,
     slideshowEnabled,
     slideshowInterval,
     setSlideshowEnabled,
@@ -38,7 +38,7 @@ export function Settings({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [currentFileName, setCurrentFileName] = useState<string>("");
   const [currentFolderPath, setCurrentFolderPath] = useState<string>("");
-  const [floorpImages, setFloorpImages] = useState<
+  const [stratusImages, setFloorpImages] = useState<
     { name: string; url: string }[]
   >([]);
   const [blockedSites, setBlockedSites] = useState<string[]>([]);
@@ -57,7 +57,7 @@ export function Settings({
       setCurrentFolderPath("");
     }
 
-    setFloorpImages(getFloorpImages());
+    setFloorpImages(getStratusImages());
   }, [backgroundType, fileName, folderPath]);
 
   useEffect(() => {
@@ -106,10 +106,10 @@ export function Settings({
     }
   };
 
-  const handleFloorpImageSelect = async (imageName: string) => {
+  const handleStratusImageSelect = async (imageName: string) => {
     setIsSubmitting(true);
     try {
-      await setSelectedFloorp(imageName);
+      await setSelectedStratus(imageName);
     } catch (error) {
       console.error("Failed to select Floorp image:", error);
     } finally {
@@ -365,7 +365,7 @@ export function Settings({
                 className="form-radio h-5 w-5 text-primary border-gray-300 dark:border-gray-600 focus:ring-primary"
               />
               <span className="text-gray-700 dark:text-gray-200">
-                {t("settings.floorpImages")}
+                {t("settings.stratusImages")}
               </span>
             </label>
 
@@ -450,25 +450,25 @@ export function Settings({
             {backgroundType === "floorp" && (
               <div className="mt-4 pl-8">
                 <div className="grid grid-cols-3 gap-4">
-                  {floorpImages.map((image) => (
+                  {stratusImages.map((image) => (
                     <div
                       key={image.name}
                       className={`
                         relative cursor-pointer rounded-lg overflow-hidden border-2
                         ${
-                        selectedFloorp === image.name
+                        selectedStratus === image.name
                           ? "border-primary"
                           : "border-transparent"
                       }
                       `}
-                      onClick={() => handleFloorpImageSelect(image.name)}
+                      onClick={() => handleStratusImageSelect(image.name)}
                     >
                       <img
                         src={image.url}
                         alt={image.name}
                         className="w-full h-auto aspect-video object-cover"
                       />
-                      {selectedFloorp === image.name && (
+                      {selectedStratus === image.name && (
                         <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
                           <span className="bg-primary text-white px-2 py-1 rounded text-xs">
                             {t("settings.selected")}

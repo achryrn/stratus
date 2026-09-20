@@ -19,7 +19,7 @@ interface BackgroundContextType {
   customImage: string | null;
   fileName: string | null;
   folderPath: string | null;
-  selectedFloorp: string | null;
+  selectedStratus: string | null;
   slideshowEnabled: boolean;
   slideshowInterval: number;
   setType: (type: BackgroundType) => Promise<void>;
@@ -28,7 +28,7 @@ interface BackgroundContextType {
     fileName: string | null,
   ) => Promise<void>;
   setFolderPath: (path: string | null) => Promise<void>;
-  setSelectedFloorp: (imageName: string | null) => Promise<void>;
+  setSelectedStratus: (imageName: string | null) => Promise<void>;
   setSlideshowEnabled: (enabled: boolean) => Promise<void>;
   setSlideshowInterval: (interval: number) => Promise<void>;
 }
@@ -42,7 +42,7 @@ export function BackgroundProvider(
   const [customImage, setCustomImage] = useState<string | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [folderPath, setFolderPath] = useState<string | null>(null);
-  const [selectedFloorp, setSelectedFloorp] = useState<string | null>(null);
+  const [selectedStratus, setSelectedStratus] = useState<string | null>(null);
   const [slideshowEnabled, setSlideshowEnabled] = useState(false);
   const [slideshowInterval, setSlideshowInterval] = useState(30);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -55,7 +55,7 @@ export function BackgroundProvider(
         setCustomImage(settings.background.customImage);
         setFileName(settings.background.fileName);
         setFolderPath(settings.background.folderPath || null);
-        setSelectedFloorp(settings.background.selectedFloorp || null);
+        setSelectedStratus(settings.background.selectedStratus || null);
         setSlideshowEnabled(settings.background.slideshowEnabled ?? false);
         setSlideshowInterval(settings.background.slideshowInterval ?? 30);
       } catch (e) {
@@ -127,7 +127,7 @@ export function BackgroundProvider(
     }
   }, []);
 
-  const handleSetSelectedFloorp = useCallback(
+  const handleSetSelectedStratus = useCallback(
     async (imageName: string | null) => {
       try {
         const settings = await getNewTabSettings();
@@ -136,11 +136,11 @@ export function BackgroundProvider(
           background: {
             ...settings.background,
             type: "floorp",
-            selectedFloorp: imageName,
+            selectedStratus: imageName,
           },
         });
         setType("floorp");
-        setSelectedFloorp(imageName);
+        setSelectedStratus(imageName);
       } catch (e) {
         console.error("Failed to save selected Floorp image:", e);
         throw e;
@@ -194,13 +194,13 @@ export function BackgroundProvider(
         customImage,
         fileName,
         folderPath,
-        selectedFloorp,
+        selectedStratus,
         slideshowEnabled,
         slideshowInterval,
         setType: handleSetType,
         setCustomImage: handleSetCustomImage,
         setFolderPath: handleSetFolderPath,
-        setSelectedFloorp: handleSetSelectedFloorp,
+        setSelectedStratus: handleSetSelectedStratus,
         setSlideshowEnabled: handleSetSlideshowEnabled,
         setSlideshowInterval: handleSetSlideshowInterval,
       }}

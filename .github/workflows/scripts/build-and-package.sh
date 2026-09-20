@@ -138,6 +138,7 @@ case "$BUNDLE_DIR" in
     ;;
 esac
 rm -rf -- "$BUNDLE_DIR"
+mkdir -p "$DIST_HOST_DEST"
 shopt -s nullglob
 if [[ "$PLATFORM" == "windows" ]]; then
   PACKAGE_MATCHES=()

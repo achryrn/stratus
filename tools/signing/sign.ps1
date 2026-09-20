@@ -21,6 +21,9 @@ if (-not $pfx -and $env:CERTIFICATE_BASE64) {
 }
 if (-not $pfx) { throw "no certificate - set CERTIFICATE_PATH or CERTIFICATE_BASE64 + CERTIFICATE_PASSWORD" }
 
-& $signtool.Source sign /fd SHA256 /tr $TimestampUrl /td SHA256 /f $pfx (if ($CertificatePassword) { "/p $CertificatePassword" }) $Binary
+$argv = @("sign", "/fd", "SHA256", "/tr", $TimestampUrl, "/td", "SHA256", "/f", $pfx)
+if ($CertificatePassword) { $argv += @("/p", $CertificatePassword) }
+$argv += $Binary
+& $signtool.Source @argv
 if ($LASTEXITCODE -ne 0) { throw "signtool sign failed (exit $LASTEXITCODE)" }
 Write-Host "[signing] signed: $Binary"

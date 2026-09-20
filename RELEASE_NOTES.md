@@ -117,6 +117,10 @@ Evidence for this slice:
 - Production overlay was reassembled and the installer was rebuilt, signed,
   and hash-verified after the change.
 
+## M10 Runtime branding source recovered
+
+I recovered the pinned Floorp Runtime source at daily-998 (commit 2d38da4d11be1e0e615f4ddd785ad5e77c95e18d) from the upstream repository. I updated the runtime unofficial branding inputs to Stratus, including the application name, vendor, profile, remoting name, user agent name, locale brand strings, and debug build branding selector. A full Gecko binary build is still required before these source changes can appear in the installer.
+
 ## Known limitations (documented)
 
 - Byte counts remain zero for HTTP/2 and chunked transfers because

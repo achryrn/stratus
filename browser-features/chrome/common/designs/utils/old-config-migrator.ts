@@ -18,7 +18,10 @@ export const getOldInterfaceConfig = () => {
       return "fluerial";
   }
 
-  return "lepton";
+  // Stratus is the default design tier: the chrome renders through the
+  // Stratus skin (stratus.css + minimal.css), never stock Firefox (proton)
+  // or the Lepton family.
+  return "stratus";
 };
 
 export const getOldTabbarStyleConfig = () => {

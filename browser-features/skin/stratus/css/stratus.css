@@ -159,6 +159,59 @@ menupopup {
 }
 
 /* ------------------------------------------------------------------ *
+ * GX tier (default) - Opera GX-inspired: matte chome, luminous accent.
+ * Only active under [gx-theme="gx"]; minimal and classic keep their own
+ * quieter identity. The one-surface invariant is preserved: every bar
+ * still reads the shared --toolbar-background-color token.
+ * ------------------------------------------------------------------ */
+
+:root[gx-theme="gx"] {
+  --stratus-tab-hover-background: color-mix(
+    in srgb,
+    var(--stratus-accent) 12%,
+    transparent
+  );
+
+  /* Neon glow behind the strip */
+  #TabsToolbar {
+    background-image: radial-gradient(
+      120% 140% at 50% 0%,
+      color-mix(in srgb, var(--stratus-accent) 10%, transparent),
+      transparent 70%
+    ) !important;
+  }
+
+  /* Active tab: keep the pill, add the luminous GX underline */
+  .tabbrowser-tab[visuallyselected] > .tab-stack > .tab-background::after {
+    content: "";
+    position: absolute;
+    bottom: 2px;
+    left: 28%;
+    right: 28%;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--stratus-accent),
+      color-mix(
+        in srgb,
+        var(--stratus-accent) 55%,
+        var(--tab-loading-fill, #00c8ff)
+      )
+    );
+    box-shadow: 0 0 10px color-mix(in srgb, var(--stratus-accent) 55%, transparent);
+    pointer-events: none;
+  }
+
+  /* Focused urlbar: neon ring */
+  #urlbar[focused] > #urlbar-background {
+    box-shadow:
+      0 0 0 1px var(--stratus-accent),
+      0 8px 24px rgb(0 0 0 / 0.18) !important;
+  }
+}
+
+/* ------------------------------------------------------------------ *
  * Bookmark items — rounded hover
  * ------------------------------------------------------------------ */
 

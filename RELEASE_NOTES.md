@@ -97,6 +97,26 @@ The prebuilt runtime binary is still Floorp-branded at the binary level
 (application.ini, version resources, floorp.exe name, updater URLs). Full
 removal requires the Phase 2.5 runtime rebuild against the Gecko toolchain,
 which is out of scope for the local environment.
+## M9.4 - GX default design and Stratus chrome
+
+I changed the fresh-profile defaults so the browser now selects the Stratus
+visual design instead of the stock Proton or legacy Lepton designs. The GX
+tier is the default theme: matte black surfaces, neon red accent, cyan loading
+state, purple gradient separators, rounded tabs, and a luminous active-tab
+underline. I also added a focused-urlbar accent ring and GX tab-strip glow.
+
+Evidence for this slice:
+
+- Live browser probe: design is stratus, theme is gx, accent is #ff1e00,
+  navigation background is rgb(13, 7, 8), tab radius is 9px, and the active
+  tab underline is a linear gradient.
+- Design browser suite: 9/9 passed.
+- Theme-gx suite: passed.
+- Host suite: 213/213 passed.
+- Smoke gate: 6/6 passed before this default-design slice.
+- Production overlay was reassembled and the installer was rebuilt, signed,
+  and hash-verified after the change.
+
 ## Known limitations (documented)
 
 - Byte counts remain zero for HTTP/2 and chunked transfers because

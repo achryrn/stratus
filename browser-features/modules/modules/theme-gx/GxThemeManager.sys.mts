@@ -7,7 +7,9 @@
  * frame, neon red #FF1E00 tab line and icons, cyan #00C8FF tab loading,
  * magenta-purple gradient separators.
  *
- * Navigable via stratus.theme.preset ("gx" | "classic" | "minimal", minimal default).
+ * Navigable via stratus.theme.preset ("gx" | "classic" | "minimal", "gx" default).
+ * The GX tier is the DEFAULT design: matte-black chrome with the neon
+ * red/cyan/purple triad and a single shared toolbar surface.
  */
 
 export type ThemePreset = "gx" | "classic" | "minimal";
@@ -48,10 +50,18 @@ export function normalizePreset(raw: unknown): ThemePreset {
   return raw === "gx" || raw === "classic" || raw === "minimal" ? raw : "minimal";
 }
 
+/**
+ * Fresh profiles get the GX tier. normalizePreset still maps unknown values
+ * to minimal (defensive), so junk or null pref values never crash the theme.
+ */
+export function readPresetDefault(): "gx" {
+  return "gx";
+}
+
 let pollTimer: nsITimer | null = null;
 
 export function readPreset(): ThemePreset {
-  return normalizePreset(Services.prefs.getStringPref(THEME_PRESET_PREF, "minimal"));
+  return normalizePreset(Services.prefs.getStringPref(THEME_PRESET_PREF, readPresetDefault()));
 }
 
 export function setThemePreset(preset: ThemePreset): void {

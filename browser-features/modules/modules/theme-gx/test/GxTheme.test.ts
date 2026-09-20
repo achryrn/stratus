@@ -7,12 +7,15 @@ import {
   GX_NEON_RED,
   GX_PURPLE,
   GX_THEME,
+  GX_TOKENS,
   initGxThemeManager,
   MINIMAL_ACCENT,
   MINIMAL_LINE,
   MINIMAL_THEME,
   MINIMAL_TOKENS,
   normalizePreset,
+  readPreset,
+  readPresetDefault,
   THEME_PRESET_PREF,
 } from "../GxThemeManager.sys.mts";
 
@@ -67,6 +70,37 @@ function testApplySwitchesLwtTheme(): void {
   }
 }
 
+function testFreshProfileDefaultsToGx(): void {
+  const old = Services.prefs.getStringPref(THEME_PRESET_PREF, readPresetDefault());
+  try {
+    Services.prefs.clearUserPref(THEME_PRESET_PREF);
+    assertEquals(readPreset(), "gx", "fresh profile defaults to the GX tier");
+  } finally {
+    Services.prefs.setStringPref(THEME_PRESET_PREF, old);
+  }
+}
+
+function testGxTokensCoverChromeSurfaces(): void {
+  for (const token of [
+    "--stratus-accent",
+    "--tab-loading-fill",
+    "--toolbar-bgcolor",
+    "--toolbar-background-color",
+    "--toolbar-non-lwt-background-color",
+    "--toolbar-color",
+    "--lwt-accent-color",
+  ]) {
+    assert(GX_TOKENS[token] !== undefined, "gx token missing: " + token);
+  }
+  assertEquals(GX_TOKENS["--stratus-accent"], GX_NEON_RED, "gx accent is the neon red");
+  assertEquals(GX_TOKENS["--tab-loading-fill"], GX_CYAN, "gx loading uses cyan");
+  assertEquals(
+    GX_TOKENS["--toolbar-background-color"],
+    GX_TOKENS["--toolbar-bgcolor"],
+    "152 toolbar token and legacy token agree (one-surface invariant)",
+  );
+}
+
 function testWindowAttribute(): void {
   applyPreset("minimal");
   const docEl = document.documentElement;
@@ -82,6 +116,8 @@ export function runAllTests(): void {
     { name: "design token shape", fn: testTokenShape },
     { name: "minimal design token shape", fn: testMinimalTokenShape },
     { name: "preset normalization", fn: testPresetNormalize },
+    { name: "fresh profile defaults to gx", fn: testFreshProfileDefaultsToGx },
+    { name: "gx tokens cover chrome surfaces", fn: testGxTokensCoverChromeSurfaces },
     { name: "lwt theme switching", fn: testApplySwitchesLwtTheme },
     { name: "window attribute skin hook", fn: testWindowAttribute },
   ]);

@@ -373,6 +373,7 @@ rebuild.
 | M6 AI & privacy platforms | AI assistant platform (privacy-first, local-first), privacy center, telemetry audit | security/privacy review |
 | M7 Customization engine + dashboard | Theme studio, mods, dashboard landing | final release readiness |
 | M8 Production readiness (DONE) | Minimalist UI + theme consistency (4d662e03), release pipeline + tests (5f2e32ad), vision features (1fbf17f2), pre-release QA (0f9df51d): smoke gate, clean-profile audit, bare installer verified, cross-cut suites green | full gate green; signed installer + checksums + update manifests produced; release notes and checklist documented |
+| M9 GX rebrand, overlay tier (IN PROGRESS) | Production overlay assembly shipped, GX theme made default, Stratus design made the fresh-profile default, GX skin accents verified live | design suite 9/9, host 213/213, smoke 6/6; runtime binary rebrand remains Phase 2.5 |
 
 Every milestone ends with: build verification, host tests, smoke tests,
 one browser-integrated subset run, upstream merge, and a docs update.

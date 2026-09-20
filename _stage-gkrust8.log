@@ -1,0 +1,1214 @@
+make: Entering directory 'C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc'
+make[1]: Entering directory 'C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/toolkit/library/rust'
+C:/Users/Zachary/.rustup/toolchains/stable-x86_64-pc-windows-msvc/bin/cargo.exe rustc  --release --frozen --manifest-path C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/toolkit/library/rust/Cargo.toml -vv    --lib  --target=x86_64-pc-windows-msvc --features 'gkrust-shared/for_xul,gkrust-shared/simd-accel,gkrust-shared/cubeb-remoting,gkrust-shared/moz_memory,gkrust-shared/moz_places,gkrust-shared/bitsdownload,gkrust-shared/webrtc,gkrust-shared/glean_with_gecko,gkrust-shared/glean_disable_upload,gkrust-shared/webmidi_midir_impl,gkrust-shared/icu4x,gkrust-shared/libz-rs-sys,gkrust-shared/jxl_decoder,gkrust-shared/shell_windows,mozilla-central-workspace-hack' --  -Clto
+warning: Cargo.toml: unused manifest key: patch.crates-io.ohttp.revision
+warning: workspace (manifest) generated 1 warning
+       Fresh proc-macro2 v1.0.101
+       Fresh quote v1.0.40
+       Fresh syn v2.0.106
+       Fresh serde_derive v1.0.228
+       Fresh windows-link v0.2.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\windows-link)
+       Fresh version_check v0.9.4
+       Fresh serde_core v1.0.228
+       Fresh thiserror-impl v2.0.12
+       Fresh autocfg v1.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\autocfg)
+       Fresh cfg-if v1.0.0
+       Fresh synstructure v0.13.1
+       Fresh shlex v1.3.0
+       Fresh serde v1.0.228
+       Fresh stable_deref_trait v1.2.0
+       Fresh memchr v2.7.4
+       Fresh zerofrom-derive v0.1.3
+       Fresh zerofrom v0.1.4
+       Fresh yoke-derive v0.8.0
+       Fresh yoke v0.8.0
+       Fresh allocator-api2 v0.2.21 (https://github.com/glandium/allocator-api2?rev=ad5f3d56a5a4519eff52af4ff85293431466ef5c#ad5f3d56)
+       Fresh foldhash v0.2.0
+       Fresh zerovec-derive v0.11.1
+       Fresh displaydoc v0.2.4
+       Fresh zerovec v0.11.4
+       Fresh rustversion v1.0.19
+       Fresh minimal-lexical v0.2.1
+       Fresh nom v7.1.3
+       Fresh tinystr v0.8.1
+       Fresh winnow v0.7.13
+       Fresh glob v0.3.1
+       Fresh toml_parser v1.0.4
+       Fresh toml_datetime v0.7.3
+       Fresh serde_spanned v1.0.3
+       Fresh toml_writer v1.0.4
+       Fresh toml v0.9.8
+       Fresh any_all_workaround v0.1.0 (https://github.com/hsivonen/any_all_workaround?rev=7fb1b7034c9f172aade21ee1c8554e8d8a48af80#7fb1b703)
+       Fresh encoding_rs v0.8.35 (https://github.com/hsivonen/encoding_rs?rev=1236d1bc423e6ba35a06485f74a6304db2d703b5#1236d1bc)
+       Fresh writeable v0.6.2
+       Fresh getrandom v0.3.3
+       Fresh jobserver v0.1.33
+       Fresh mozbuild v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\mozbuild)
+       Fresh potential_utf v0.1.4
+       Fresh icu_collections v2.1.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\icu_collections)
+       Fresh cc v1.2.30
+       Fresh litemap v0.8.0
+       Fresh icu_locale_core v2.1.1
+       Fresh zerotrie v0.2.2
+       Fresh icu_provider v2.1.1
+       Fresh libm v0.2.6
+       Fresh nsstring v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\nsstring)
+       Fresh hashbrown v0.17.1
+       Fresh hashbrown v0.16.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\hashbrown)
+       Fresh equivalent v1.0.1
+       Fresh indexmap v2.11.4
+       Fresh thin-vec v0.2.16
+       Fresh once_cell v1.21.3
+       Fresh num-traits v0.2.19
+       Fresh uniffi_internal_macros v0.31.0
+       Fresh windows-sys v0.61.2
+       Fresh harfbuzz-traits v0.6.0 (https://github.com/hsivonen/rust-harfbuzz?rev=9d58a23a98772a197291d04af93f7041b7093d95#9d58a23a)
+       Fresh utf8_iter v1.0.4 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\utf8_iter)
+       Fresh uniffi_meta v0.31.0
+       Fresh icu_properties_data v2.1.2 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\icu_properties_data)
+       Fresh unicode-bidi v0.3.15 (https://github.com/servo/unicode-bidi?rev=ca612daf1c08c53abe07327cb3e6ef6e0a760f0c#ca612daf)
+       Fresh bitflags v2.10.0
+       Fresh lazy_static v1.4.0
+       Fresh icu_properties v2.1.2 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\icu_properties)
+       Fresh fs-err v2.9.0
+       Fresh icu_normalizer_data v2.1.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\icu_normalizer_data)
+       Fresh utf16_iter v1.0.5 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\utf16_iter)
+       Fresh write16 v1.0.0
+       Fresh icu_normalizer v2.1.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\icu_normalizer)
+       Fresh getrandom v0.2.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\getrandom)
+       Fresh uniffi_macros v0.31.0
+       Fresh log v0.4.29
+       Fresh libc v0.2.183
+       Fresh clang-sys v1.7.0
+       Fresh cexpr v0.6.0
+       Fresh scroll_derive v0.12.0
+       Fresh bindgen v0.72.0 (https://github.com/rust-lang/rust-bindgen?rev=9366e0af8da529c958b4cd4fcbe492d951c86f5c#9366e0af)
+       Fresh nserror v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\nserror)
+       Fresh scopeguard v1.1.0
+       Fresh fastrand v2.1.1
+       Fresh percent-encoding v2.3.2
+       Fresh tempfile v3.27.0
+       Fresh idna_adapter v1.2.1
+       Fresh idna v1.1.0
+       Fresh pkg-config v0.3.26
+       Fresh anyhow v1.0.69
+       Fresh form_urlencoded v1.2.2
+       Fresh cstr v0.2.11
+       Fresh itoa v1.0.15
+       Fresh semver v1.0.16
+       Fresh url v2.5.7
+       Fresh xpcom_macros v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\xpcom\xpcom_macros)
+       Fresh askama_parser v0.14.0
+       Fresh basic-toml v0.1.2
+       Fresh smawk v0.3.2
+       Fresh threadbound v0.1.5
+       Fresh xpcom v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\xpcom)
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/NotXPCOMTest.rs:261:88
+    |
+261 |     pub Method2: unsafe extern "system" fn (this: *const nsIScriptableWithNotXPCOM) -> libc::c_void,
+    |                                                                                    ----^^^^^^^^^^^^
+    |                                                                                    |
+    |                                                                                    help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+    = note: `#[warn(c_void_returns)]` on by default
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/NotXPCOMTest.rs:272:39
+    |
+272 |     pub unsafe fn Method2(&self, ) -> libc::c_void {
+    |                                   ----^^^^^^^^^^^^
+    |                                   |
+    |                                   help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/imgICache.rs:154:122
+    |
+154 |     pub ClearCacheForControlledDocument: unsafe extern "system" fn (this: *const imgICache, doc: *const libc::c_void) -> libc::c_void,
+    |                                                                                                                      ----^^^^^^^^^^^^
+    |                                                                                                                      |
+    |                                                                                                                      help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/imgICache.rs:286:87
+    |
+286 |     pub unsafe fn ClearCacheForControlledDocument(&self, doc: *const libc::c_void) -> libc::c_void {
+    |                                                                                   ----^^^^^^^^^^^^
+    |                                                                                   |
+    |                                                                                   help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/imgIContainer.rs:258:132
+    |
+258 | ...cument: *const libc::c_void) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/imgIContainer.rs:1024:93
+     |
+1024 |     pub unsafe fn PropagateUseCounters(&self, aReferencingDocument: *const libc::c_void) -> libc::c_void {
+     |                                                                                         ----^^^^^^^^^^^^
+     |                                                                                         |
+     |                                                                                         help: remove the return type to implicitly return `()`
+     |
+     = help: returning `()` in Rust is equivalent to returning `void` in C
+     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocShell.rs:339:89
+    |
+339 |     pub DetachEditorFromWindow: unsafe extern "system" fn (this: *const nsIDocShell) -> libc::c_void,
+    |                                                                                     ----^^^^^^^^^^^^
+    |                                                                                     |
+    |                                                                                     help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocShell.rs:428:107
+    |
+428 |     pub SetInvisible: unsafe extern "system" fn (this: *const nsIDocShell, aIsInvisibleDocshell: bool) -> libc::c_void,
+    |                                                                                                       ----^^^^^^^^^^^^
+    |                                                                                                       |
+    |                                                                                                       help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocShell.rs:1421:54
+     |
+1421 |     pub unsafe fn DetachEditorFromWindow(&self, ) -> libc::c_void {
+     |                                                  ----^^^^^^^^^^^^
+     |                                                  |
+     |                                                  help: remove the return type to implicitly return `()`
+     |
+     = help: returning `()` in Rust is equivalent to returning `void` in C
+     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocShell.rs:1801:70
+     |
+1801 |     pub unsafe fn SetInvisible(&self, aIsInvisibleDocshell: bool) -> libc::c_void {
+     |                                                                  ----^^^^^^^^^^^^
+     |                                                                  |
+     |                                                                  help: remove the return type to implicitly return `()`
+     |
+     = help: returning `()` in Rust is equivalent to returning `void` in C
+     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocumentViewer.rs:281:93
+    |
+281 |     pub ForgetReloadEncoding: unsafe extern "system" fn (this: *const nsIDocumentViewer) -> libc::c_void,
+    |                                                                                         ----^^^^^^^^^^^^
+    |                                                                                         |
+    |                                                                                         help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocumentViewer.rs:798:52
+    |
+798 |     pub unsafe fn ForgetReloadEncoding(&self, ) -> libc::c_void {
+    |                                                ----^^^^^^^^^^^^
+    |                                                |
+    |                                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:245:116
+    |
+245 |     pub LogFailure: unsafe extern "system" fn (this: *const nsIGfxInfo, failure: *const ::nsstring::nsACString) -> libc::c_void,
+    |                                                                                                                ----^^^^^^^^^^^^
+    |                                                                                                                |
+    |                                                                                                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:248:129
+    |
+248 | ...onst ::nsstring::nsACString) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:263:73
+    |
+263 |     pub GetData: unsafe extern "system" fn (this: *const nsIGfxInfo) -> libc::c_void,
+    |                                                                     ----^^^^^^^^^^^^
+    |                                                                     |
+    |                                                                     help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:703:80
+    |
+703 |     pub unsafe fn LogFailure(&self, failure: *const ::nsstring::nsACString) -> libc::c_void {
+    |                                                                            ----^^^^^^^^^^^^
+    |                                                                            |
+    |                                                                            help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:711:93
+    |
+711 |     pub unsafe fn SetCodecSupportInfo(&self, supportInfo: *const ::nsstring::nsACString) -> libc::c_void {
+    |                                                                                         ----^^^^^^^^^^^^
+    |                                                                                         |
+    |                                                                                         help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:759:39
+    |
+759 |     pub unsafe fn GetData(&self, ) -> libc::c_void {
+    |                                   ----^^^^^^^^^^^^
+    |                                   |
+    |                                   help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIObjectInputStream.rs:141:127
+    |
+141 | ... libc::c_char, aLength: u32) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIObjectInputStream.rs:190:81
+    |
+190 |     pub unsafe fn PutBuffer(&self, aBuffer: *mut libc::c_char, aLength: u32) -> libc::c_void {
+    |                                                                             ----^^^^^^^^^^^^
+    |                                                                             |
+    |                                                                             help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIObjectOutputStream.rs:146:128
+    |
+146 | ... libc::c_char, aLength: u32) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIObjectOutputStream.rs:239:81
+    |
+239 |     pub unsafe fn PutBuffer(&self, aBuffer: *mut libc::c_char, aLength: u32) -> libc::c_void {
+    |                                                                             ----^^^^^^^^^^^^
+    |                                                                             |
+    |                                                                             help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:388:160
+    |
+388 | ...ild: *mut *const nsISHEntry) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:394:76
+    |
+394 |     pub ClearEntry: unsafe extern "system" fn (this: *const nsISHEntry) -> libc::c_void,
+    |                                                                        ----^^^^^^^^^^^^
+    |                                                                        |
+    |                                                                        help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:404:184
+    |
+404 | ...noreBC: *const libc::c_void) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:1732:124
+     |
+1732 | ...ild: *mut *const nsISHEntry) -> libc::c_void {
+     |                                ----^^^^^^^^^^^^
+     |                                |
+     |                                help: remove the return type to implicitly return `()`
+     |
+     = help: returning `()` in Rust is equivalent to returning `void` in C
+     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:1762:42
+     |
+1762 |     pub unsafe fn ClearEntry(&self, ) -> libc::c_void {
+     |                                      ----^^^^^^^^^^^^
+     |                                      |
+     |                                      help: remove the return type to implicitly return `()`
+     |
+     = help: returning `()` in Rust is equivalent to returning `void` in C
+     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:1803:148
+     |
+1803 | ...noreBC: *const libc::c_void) -> libc::c_void {
+     |                                ----^^^^^^^^^^^^
+     |                                |
+     |                                help: remove the return type to implicitly return `()`
+     |
+     = help: returning `()` in Rust is equivalent to returning `void` in C
+     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:149:114
+    |
+149 |     pub InternalSetRequestedIndex: unsafe extern "system" fn (this: *const nsISHistory, aRequestedIndex: i32) -> libc::c_void,
+    |                                                                                                              ----^^^^^^^^^^^^
+    |                                                                                                              |
+    |                                                                                                              help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:212:123
+    |
+212 | ..., aEntry: *const nsISHEntry) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:219:112
+    |
+219 |     pub RemoveFrameEntries: unsafe extern "system" fn (this: *const nsISHistory, aEntry: *const nsISHEntry) -> libc::c_void,
+    |                                                                                                            ----^^^^^^^^^^^^
+    |                                                                                                            |
+    |                                                                                                            help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:225:123
+    |
+225 | ..., aEntry: *const nsISHEntry) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:228:149
+    |
+228 | ... nsISHEntry, aReplace: bool) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:329:77
+    |
+329 |     pub unsafe fn InternalSetRequestedIndex(&self, aRequestedIndex: i32) -> libc::c_void {
+    |                                                                         ----^^^^^^^^^^^^
+    |                                                                         |
+    |                                                                         help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:666:86
+    |
+666 |     pub unsafe fn RemoveDynEntries(&self, aIndex: i32, aEntry: *const nsISHEntry) -> libc::c_void {
+    |                                                                                  ----^^^^^^^^^^^^
+    |                                                                                  |
+    |                                                                                  help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:695:75
+    |
+695 |     pub unsafe fn RemoveFrameEntries(&self, aEntry: *const nsISHEntry) -> libc::c_void {
+    |                                                                       ----^^^^^^^^^^^^
+    |                                                                       |
+    |                                                                       help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:711:86
+    |
+711 |     pub unsafe fn EnsureCorrectEntryAtCurrIndex(&self, aEntry: *const nsISHEntry) -> libc::c_void {
+    |                                                                                  ----^^^^^^^^^^^^
+    |                                                                                  |
+    |                                                                                  help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:719:112
+    |
+719 |     pub unsafe fn EvictDocumentViewersOrReplaceEntry(&self, aNewSHEntry: *const nsISHEntry, aReplace: bool) -> libc::c_void {
+    |                                                                                                            ----^^^^^^^^^^^^
+    |                                                                                                            |
+    |                                                                                                            help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIStreamBufferAccess.rs:139:128
+    |
+139 | ... libc::c_char, aLength: u32) -> libc::c_void,
+    |                                ----^^^^^^^^^^^^
+    |                                |
+    |                                help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIStreamBufferAccess.rs:213:81
+    |
+213 |     pub unsafe fn PutBuffer(&self, aBuffer: *mut libc::c_char, aLength: u32) -> libc::c_void {
+    |                                                                             ----^^^^^^^^^^^^
+    |                                                                             |
+    |                                                                             help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsITaskbarTabPreview.rs:142:94
+    |
+142 |     pub EnsureRegistration: unsafe extern "system" fn (this: *const nsITaskbarTabPreview) -> libc::c_void,
+    |                                                                                          ----^^^^^^^^^^^^
+    |                                                                                          |
+    |                                                                                          help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsITaskbarTabPreview.rs:257:50
+    |
+257 |     pub unsafe fn EnsureRegistration(&self, ) -> libc::c_void {
+    |                                              ----^^^^^^^^^^^^
+    |                                              |
+    |                                              help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:205:83
+    |
+205 |     pub EnableWritePoll: unsafe extern "system" fn (this: *const nsIUDPSocket) -> libc::c_void,
+    |                                                                               ----^^^^^^^^^^^^
+    |                                                                               |
+    |                                                                               help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:211:95
+    |
+211 |     pub AddOutputBytes: unsafe extern "system" fn (this: *const nsIUDPSocket, aBytes: u32) -> libc::c_void,
+    |                                                                                           ----^^^^^^^^^^^^
+    |                                                                                           |
+    |                                                                                           help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:214:94
+    |
+214 |     pub AddInputBytes: unsafe extern "system" fn (this: *const nsIUDPSocket, aBytes: u32) -> libc::c_void,
+    |                                                                                          ----^^^^^^^^^^^^
+    |                                                                                          |
+    |                                                                                          help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:217:91
+    |
+217 |     pub MarkAsTRRServiceChannel: unsafe extern "system" fn (this: *const nsIUDPSocket) -> libc::c_void,
+    |                                                                                       ----^^^^^^^^^^^^
+    |                                                                                       |
+    |                                                                                       help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:637:47
+    |
+637 |     pub unsafe fn EnableWritePoll(&self, ) -> libc::c_void {
+    |                                           ----^^^^^^^^^^^^
+    |                                           |
+    |                                           help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:674:57
+    |
+674 |     pub unsafe fn AddOutputBytes(&self, aBytes: u32) -> libc::c_void {
+    |                                                     ----^^^^^^^^^^^^
+    |                                                     |
+    |                                                     help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:695:56
+    |
+695 |     pub unsafe fn AddInputBytes(&self, aBytes: u32) -> libc::c_void {
+    |                                                    ----^^^^^^^^^^^^
+    |                                                    |
+    |                                                    help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: declarations returning `c_void` are not compatible with C functions returning `void`
+   --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:712:55
+    |
+712 |     pub unsafe fn MarkAsTRRServiceChannel(&self, ) -> libc::c_void {
+    |                                                   ----^^^^^^^^^^^^
+    |                                                   |
+    |                                                   help: remove the return type to implicitly return `()`
+    |
+    = help: returning `()` in Rust is equivalent to returning `void` in C
+    = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+
+warning: `xpcom` (lib) generated 50 warnings
+       Fresh textwrap v0.16.1
+       Fresh askama_derive v0.14.0
+       Fresh camino v1.1.2
+       Fresh weedle2 v5.0.0
+       Fresh heck v0.5.0
+       Fresh uniffi_pipeline v0.31.0
+       Fresh uniffi_udl v0.31.0
+       Fresh zmij v1.0.20
+       Fresh askama v0.14.0
+       Fresh thiserror v2.0.12
+       Fresh uniffi_bindgen v0.31.0
+       Fresh serde_json v1.0.149
+       Fresh cargo-platform v0.1.2
+       Fresh windows-targets v0.52.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\windows-targets)
+       Fresh static_assertions v1.1.0
+       Fresh pin-project-lite v0.2.14
+       Fresh bytes v1.11.1
+       Fresh uniffi_core v0.31.0
+       Fresh cargo_metadata v0.19.2
+       Fresh uniffi_build v0.31.0
+       Fresh uniffi v0.31.0
+       Fresh ident_case v1.0.1
+       Fresh darling_core v0.20.10
+       Fresh termcolor v1.4.1
+       Fresh rustc-hash v2.1.1
+       Fresh env_logger v0.10.0
+       Fresh lock_api v0.4.9
+       Fresh parking_lot_core v0.9.10
+       Fresh darling_macro v0.20.10
+       Fresh darling v0.20.10
+       Fresh parking_lot v0.12.3
+       Fresh euclid v0.22.13
+       Fresh vcpkg v0.2.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\vcpkg)
+       Fresh bincode v1.3.3
+       Fresh windows-result v0.4.1
+       Fresh windows-strings v0.5.1
+       Fresh windows-implement v0.60.2
+       Fresh windows-interface v0.59.3
+       Fresh windows-core v0.62.2
+       Fresh libsqlite3-sys v0.35.0
+       Fresh app_units v0.7.8
+       Fresh windows-threading v0.2.1
+       Fresh windows-future v0.3.2
+       Fresh windows-numerics v0.3.1
+       Fresh windows-collections v0.3.2
+       Fresh uuid v1.3.0
+       Fresh windows v0.62.2 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\windows)
+       Fresh tracing-core v0.1.33
+       Fresh cfg_aliases v0.2.1
+       Fresh sharded-slab v0.1.7
+       Fresh thread_local v1.1.8
+       Fresh hashlink v0.11.0
+       Fresh aho-corasick v1.1.0
+       Fresh tracing-attributes v0.1.28
+       Fresh regex-syntax v0.8.5
+       Fresh regex-automata v0.4.14
+       Fresh tracing v0.1.41
+       Fresh tracing-subscriber v0.3.20
+       Fresh rand_core v0.6.4
+       Fresh malloc_size_of_derive v0.1.3 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\malloc_size_of_derive)
+       Fresh tracing-support v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\tracing)
+       Fresh regex v1.12.3
+       Fresh hashlink v0.10.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\hashlink)
+       Fresh bindgen v0.69.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\bindgen)
+       Fresh ordered-float v3.4.0
+       Fresh error-support-macros v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\error\macros)
+       Fresh fallible-iterator v0.3.0
+       Fresh fallible-streaming-iterator v0.1.9
+       Fresh rusqlite v0.37.0
+       Fresh error-support v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\error)
+       Fresh chrono v0.4.42
+       Fresh either v1.8.1
+       Fresh wr_malloc_size_of v0.2.2 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\wr_malloc_size_of)
+       Fresh arrayref v0.3.6
+       Fresh hex v0.4.3
+       Fresh zeroize_derive v1.4.2
+       Fresh id-arena v2.2.1
+       Fresh ppv-lite86 v0.2.17
+       Fresh rand_chacha v0.3.1
+       Fresh rkv v0.20.0
+       Fresh zeroize v1.8.1
+       Fresh slab v0.4.8
+       Fresh base64 v0.21.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\base64)
+       Fresh thiserror v1.999.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\thiserror)
+       Fresh serde_bytes v0.11.9
+       Fresh futures-sink v0.3.31
+       Fresh futures-core v0.3.31
+       Fresh futures-channel v0.3.31
+       Fresh rand v0.8.6
+       Fresh strum_macros v0.27.1
+       Fresh async-trait v0.1.89
+       Fresh adler2 v2.0.1
+       Fresh strum v0.27.1
+       Fresh phf_generator v0.13.1
+       Fresh pkcs11-bindings v0.1.7
+       Fresh async-task v4.3.0
+       Fresh simd-adler32 v0.3.7
+       Fresh miniz_oxide v0.8.9
+       Fresh moz_task v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\moz_task)
+       Fresh itertools v0.14.0
+       Fresh crc32fast v1.4.2
+       Fresh arrayvec v0.7.6
+       Fresh enum-map-derive v0.17.0
+       Fresh profiler-macros v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\tools\profiler\rust-api\macros)
+       Fresh futures-macro v0.3.31
+       Fresh futures-task v0.3.31
+       Fresh pin-utils v0.1.0
+       Fresh futures-io v0.3.31
+       Fresh futures-util v0.3.31
+       Fresh gecko-profiler v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\tools\profiler\rust-api)
+warning: unused import: `marker::options::*`
+  --> tools\profiler\rust-api\src\lib.rs:20:9
+   |
+20 | pub use marker::options::*;
+   |         ^^^^^^^^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: `gecko-profiler` (lib) generated 1 warning (run `cargo fix --lib -p gecko-profiler` to apply 1 suggestion)
+       Fresh enum-map v2.7.3
+       Fresh flate2 v1.1.4
+       Fresh icu_locale_data v2.1.1
+       Fresh crossbeam-channel v0.5.15
+       Fresh zeitstempel v0.2.1
+       Fresh unic-langid-impl v0.9.6
+       Fresh unic-langid v0.9.6
+       Fresh icu_locale v2.1.1
+       Fresh memoffset v0.9.0
+       Fresh futures-executor v0.3.28
+       Fresh siphasher v1.0.1
+       Fresh phf_shared v0.13.1
+       Fresh memoffset v0.8.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\memoffset)
+       Fresh glean-core v67.3.2
+       Fresh whatsys v0.3.2
+       Fresh phf_macros v0.13.1
+       Fresh static_prefs v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\modules\libpref\init\static_prefs)
+       Fresh inherent v1.0.7
+       Fresh glean v67.3.2
+       Fresh phf v0.13.1
+       Fresh interrupt-support v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\interrupt)
+       Fresh nss-rs v0.13.2 (https://github.com/mozilla/nss-rs#a77e4287)
+       Fresh futures v0.3.28
+       Fresh rustc-hash v1.999.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\rustc-hash)
+       Fresh prost-derive v0.13.5
+       Fresh derive_more-impl v2.0.1
+       Fresh dtoa v0.4.8
+       Fresh smallbitvec v2.5.1
+       Fresh dtoa-short v0.3.3
+       Fresh derive_more v2.0.1
+       Fresh prost v0.13.5
+       Fresh firefox-on-glean v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\glean\api)
+       Fresh phf_codegen v0.13.1
+       Fresh mls-rs-codec-derive v0.2.0
+       Fresh ffi-support v0.4.4
+       Fresh cssparser-macros v0.7.0
+       Fresh precomputed-hash v0.1.1
+       Fresh cmake v0.1.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\cmake)
+       Fresh cssparser v0.37.0
+       Fresh mls-rs-codec v0.7.0
+       Fresh crossbeam-epoch v0.9.14
+       Fresh sql-support v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\sql)
+       Fresh fluent-langneg v0.13.0
+       Fresh type-map v0.5.1
+       Fresh half v2.5.0
+       Fresh rustc_version v0.4.0
+       Fresh hashbrown v0.15.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\hashbrown-0.15)
+       Fresh servo_arc v0.4.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\components\servo_arc)
+       Fresh maybe-async v0.2.10
+       Fresh pollster v0.3.0
+       Fresh unicode-ident v1.0.6
+       Fresh nss_build_common v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\rc_crypto\nss\nss_build_common)
+       Fresh viaduct v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\viaduct)
+       Fresh mls-rs-core v0.26.0
+       Fresh to_shmem v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\components\to_shmem)
+       Fresh typenum v1.16.0
+       Fresh intl-memoizer v0.5.3
+       Fresh crossbeam-deque v0.8.2
+       Fresh intl_pluralrules v7.0.2
+       Fresh to_shmem_derive v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\components\to_shmem_derive)
+       Fresh serde_with_macros v3.12.0
+       Fresh core_maths v0.1.0
+       Fresh fluent-syntax v0.12.0
+       Fresh bitflags v1.999.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\bitflags)
+       Fresh byteorder v1.5.0
+       Fresh self_cell v1.2.0
+       Fresh new_debug_unreachable v1.0.4
+       Fresh selectors v0.26.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\components\selectors)
+       Fresh fluent-bundle v0.16.0
+       Fresh generic-array v0.14.6
+       Fresh serde_with v3.12.0
+       Fresh rayon-core v1.12.1
+       Fresh winapi v0.3.9
+       Fresh khronos_api v3.1.0
+       Fresh lalrpop-util v0.19.12
+       Fresh bytemuck_derive v1.9.3
+       Fresh void v1.0.2
+       Fresh bit-vec v0.9.1
+       Fresh base64 v0.22.1
+       Fresh unicode-width v0.2.0
+       Fresh codespan-reporting v0.13.1
+       Fresh trust-anchor-build-util v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\trust-anchor-build-util)
+       Fresh bit-set v0.10.0
+       Fresh malloc_size_of v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\components\malloc_size_of)
+       Fresh gl_generator v0.14.0
+       Fresh bytemuck v1.22.0
+       Fresh jexl-parser v0.4.0
+       Fresh nss_sys v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\rc_crypto\nss\nss_sys)
+       Fresh winapi-util v0.1.5
+       Fresh rayon v1.10.0
+       Fresh qlog v0.16.0
+       Fresh cubeb-sys v0.32.0
+       Fresh libloading v0.8.6
+       Fresh storage_variant v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\storage\variant)
+       Fresh glsl v6.0.2
+       Fresh spirv v0.4.0+sdk-1.4.341.0
+       Fresh serde_path_to_error v0.1.11
+       Fresh atomic_refcell v0.1.9
+       Fresh raw-window-handle v0.6.2
+       Fresh wgpu-types v29.0.0 (https://github.com/gfx-rs/wgpu?rev=1ff557ddf68731c825bcc9f74a30fe519e968089#1ff557dd)
+       Fresh naga v29.0.0 (https://github.com/gfx-rs/wgpu?rev=1ff557ddf68731c825bcc9f74a30fe519e968089#1ff557dd)
+       Fresh glsl-to-cxx v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\glsl-to-cxx)
+warning: glslopt@0.1.14:   214 |         } else if ((e > 0x1d) || (0x8000 <= m)) {
+warning: glslopt@0.1.14:       |                                   ~~~~~~ ^  ~
+warning: glslopt@0.1.14: 1 warning generated.
+warning: glslopt@0.1.14: 1 warning generated.
+warning: glslopt@0.1.14: C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\glslopt\glsl-optimizer\src\compiler\glsl\ast_to_hir.cpp(3905,30): warning: implicit truncation from 'ir_depth_layout' to bit-field changes value from 4 to -4 [-Wbitfield-constant-conversion]
+warning: glslopt@0.1.14:  3905 |       var->data.depth_layout = ir_depth_layout_unchanged;
+warning: glslopt@0.1.14:       |                              ^ ~~~~~~~~~~~~~~~~~~~~~~~~~
+warning: glslopt@0.1.14: 1 warning generated.
+warning: glslopt@0.1.14: 1 warning generated.
+warning: glslopt@0.1.14: C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\glslopt\glsl-optimizer\src\compiler\glsl\ir_print_glsl_visitor.cpp(374,8): warning: cast to smaller integer type 'long' from 'void *' [-Wvoid-pointer-to-int-cast]
+warning: glslopt@0.1.14:   374 |                 id = (long)entry->data;
+warning: glslopt@0.1.14:       |                      ^~~~~~~~~~~~~~~~~
+warning: glslopt@0.1.14: C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\glslopt\glsl-optimizer\src\compiler\glsl\ir_print_glsl_visitor.cpp(379,56): warning: cast to 'void *' from smaller integer type 'long' [-Wint-to-void-pointer-cast]
+warning: glslopt@0.1.14:   379 |         _mesa_hash_table_insert (globals->var_hash, v, (void*)id);
+warning: glslopt@0.1.14:       |                                                        ^~~~~~~~~
+warning: glslopt@0.1.14: C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\glslopt\glsl-optimizer\src\compiler\glsl\ir_print_glsl_visitor.cpp(529,52): warning: cast to 'void *' from smaller integer type 'long' [-Wint-to-void-pointer-cast]
+warning: glslopt@0.1.14:   529 |                         _mesa_hash_table_insert (globals->var_hash, ir, (void*)id);
+warning: glslopt@0.1.14:       |                                                                         ^~~~~~~~~
+warning: glslopt@0.1.14: 3 warnings generated.
+warning: glslopt@0.1.14: 3 warnings generated.
+       Fresh crossbeam-utils v0.8.21
+       Fresh ash v0.38.0+1.3.281
+       Fresh cubeb-core v0.32.0
+       Fresh neqo-common v0.29.0 (https://github.com/mozilla/neqo?tag=v0.29.0#18832752)
+       Fresh same-file v1.0.6
+       Fresh nss-as v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\rc_crypto\nss)
+       Fresh jexl-eval v0.4.0
+       Fresh typeid v1.0.3
+       Fresh icu_casemap_data v2.1.1
+       Fresh crypto-common v0.1.6
+       Fresh block-buffer v0.10.3
+       Fresh sync-guid v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\guid)
+       Fresh fluent-pseudo v0.3.3
+       Fresh enumset_derive v0.8.1
+       Fresh scroll v0.12.0
+       Fresh comedy v0.2.0
+       Fresh payload-support v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\payload)
+       Fresh firefox-versioning v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\firefox-versioning)
+       Fresh peek-poke-derive v0.3.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\peek-poke\peek-poke-derive)
+       Fresh ref-cast-impl v1.0.24
+       Fresh presser v0.3.1
+       Fresh num_cpus v1.16.0
+       Fresh icu_segmenter_data v2.1.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\icu_segmenter_data)
+       Fresh subtle v2.6.1
+       Fresh icu_segmenter v2.1.2
+       Fresh build-parallel v0.1.2
+       Fresh gpu-allocator v0.28.0
+       Fresh ref-cast v1.0.24
+       Fresh peek-poke v0.3.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\peek-poke)
+       Fresh remote_settings v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\remote_settings)
+       Fresh sync15 v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\sync15)
+       Fresh enumset v1.1.2
+       Fresh fluent v0.17.0
+       Fresh digest v0.10.7
+       Fresh icu_casemap v2.1.1
+       Fresh ron v0.12.0
+       Fresh walkdir v2.3.2
+       Fresh mtu v0.4.1 (https://github.com/mozilla/neqo?tag=v0.29.0#18832752)
+       Fresh glslopt v0.1.14
+       Fresh wgpu-naga-bridge v29.0.0 (https://github.com/gfx-rs/wgpu?rev=1ff557ddf68731c825bcc9f74a30fe519e968089#1ff557dd)
+       Fresh icu_collator_data v2.1.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\icu_collator_data)
+       Fresh icu_calendar_data v2.1.1
+       Fresh calendrical_calculations v0.2.3
+       Fresh mls-rs-crypto-traits v0.21.0
+       Fresh hashbrown v0.13.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\hashbrown-0.13)
+       Fresh md-5 v0.10.5
+       Fresh socket2 v0.6.3
+       Fresh wio v0.2.2
+       Fresh toml v0.5.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\toml)
+       Fresh num-derive v0.4.2
+       Fresh proc-macro-error-attr2 v2.0.0
+       Fresh strck v1.0.0
+       Fresh smallvec v1.15.2
+       Fresh powerfmt v0.2.0
+       Fresh pin-cell v0.2.0
+       Fresh cpufeatures v0.2.8
+       Fresh ixdtf v0.6.4
+       Fresh range-alloc v0.1.3
+       Fresh chunky-vec v0.1.0
+       Fresh profiling v1.0.7
+       Fresh plain v0.2.3
+       Fresh goblin v0.9.2
+       Fresh wgpu-hal v29.0.0 (https://github.com/gfx-rs/wgpu?rev=1ff557ddf68731c825bcc9f74a30fe519e968089#1ff557dd)
+       Fresh fluent-fallback v0.7.2
+       Fresh icu_calendar v2.1.1
+       Fresh sha2 v0.10.8
+       Fresh deranged v0.5.8
+       Fresh diplomat_core v0.14.0
+       Fresh time-macros v0.2.27
+       Fresh proc-macro-error2 v2.0.1
+       Fresh dwrote v0.11.5
+       Fresh mls-rs-crypto-hpke v0.20.0
+       Fresh icu_collator v2.1.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\icu_collator)
+       Fresh neqo-transport v0.29.0 (https://github.com/mozilla/neqo?tag=v0.29.0#18832752)
+       Fresh gleam v0.15.1
+       Fresh webrender_api v0.62.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\webrender_api)
+       Fresh sfv v0.14.0
+       Fresh crossbeam-queue v0.3.8
+       Fresh paste v1.0.11
+       Fresh filetime_win v0.2.0
+       Fresh guid_win v0.2.0
+       Fresh rc_crypto v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\rc_crypto)
+       Fresh cubeb v0.32.0
+       Fresh mls-rs-identity-x509 v0.20.0
+       Fresh hashbrown v0.14.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\hashbrown-0.14)
+       Fresh skv v0.0.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\skv)
+       Fresh rsclientcerts-util v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\rsclientcerts-util)
+       Fresh arraystring v0.3.0
+       Fresh mio v1.2.0
+       Fresh num-integer v0.1.46
+       Fresh debug_tree v0.4.0
+       Fresh replace_with v0.1.8
+       Fresh macro_rules_attribute-proc_macro v0.2.2
+       Fresh keccak v0.1.6
+       Fresh jxl_simd v0.4.3 (https://github.com/libjxl/jxl-rs?rev=c41cbfaf34c2c8ebc3fb6655c885fe427ab9542a#c41cbfaf)
+       Fresh time-core v0.1.8
+       Fresh spin v0.10.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\spin)
+       Fresh svg_fmt v0.4.1
+       Fresh tracy-rs v0.1.2
+       Fresh litrs v0.4.1
+       Fresh num-conv v0.2.0
+       Fresh time v0.3.47
+       Fresh document-features v0.2.11
+       Fresh wr_glyph_rasterizer v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\wr_glyph_rasterizer)
+       Fresh etagere v0.2.13
+       Fresh mls-rs v0.54.0
+       Fresh jxl_transforms v0.4.3 (https://github.com/libjxl/jxl-rs?rev=c41cbfaf34c2c8ebc3fb6655c885fe427ab9542a#c41cbfaf)
+       Fresh sha3 v0.10.8
+       Fresh macro_rules_attribute v0.2.2
+       Fresh l10nregistry v0.3.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\l10n\rust\l10nregistry-rs)
+       Fresh audioipc2 v0.6.0 (https://github.com/mozilla/audioipc?rev=c9dcbaee1624daad2fa6b1445fd047efde4f1ec0#c9dcbaee)
+       Fresh rsclientcerts v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\rsclientcerts)
+       Fresh kvstore v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\kvstore)
+       Fresh fallible_collections v0.5.1
+       Fresh unicase v2.6.0
+       Fresh jwcrypto v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\jwcrypto)
+       Fresh bits v0.2.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\bitsdownload\bits_client\bits)
+       Fresh swgl v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\swgl)
+       Fresh neqo-qpack v0.29.0 (https://github.com/mozilla/neqo?tag=v0.29.0#18832752)
+       Fresh mls-rs-crypto-nss v0.2.1 (https://github.com/mozilla/mls-platform-api?rev=2a2e344019bfc76b7e566ee6e0549cf668d90127#2a2e3440)
+       Fresh flatbuffers v25.12.19
+       Fresh quinn-udp v0.6.0
+       Fresh ohttp v0.7.2 (https://github.com/martinthomson/ohttp#600931b5)
+       Fresh jxl_macros v0.4.3 (https://github.com/libjxl/jxl-rs?rev=c41cbfaf34c2c8ebc3fb6655c885fe427ab9542a#c41cbfaf)
+       Fresh diplomat v0.14.0
+       Fresh icu_time v2.1.1
+       Fresh wgpu-core-deps-windows-linux-android v29.0.0 (https://github.com/gfx-rs/wgpu?rev=1ff557ddf68731c825bcc9f74a30fe519e968089#1ff557dd)
+       Fresh goblin v0.8.999 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\goblin)
+       Fresh fluent-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\l10n\rust\fluent-ffi)
+       Fresh dom v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\base\rust)
+       Fresh style_traits v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\components\style_traits)
+       Fresh mls-rs-provider-sqlite v0.22.0 (https://github.com/mozilla/mls-platform-api?rev=2a2e344019bfc76b7e566ee6e0549cf668d90127#2a2e3440)
+       Fresh serde_cbor_2 v0.13.0
+       Fresh icu_provider_adapters v2.1.1
+       Fresh uluru v3.0.0
+       Fresh itertools v0.13.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\rust\itertools)
+       Fresh rand_distr v0.4.3
+       Fresh types v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\support\types)
+       Fresh plane-split v0.18.0
+       Fresh style_derive v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\components\style_derive)
+       Fresh http v1.4.0
+       Fresh webrender_build v0.0.2 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\webrender_build)
+       Fresh audio_thread_priority v0.35.1
+       Fresh errno v0.3.14
+       Fresh dirs-sys v0.3.7
+       Fresh bhttp v0.7.2
+       Fresh bitreader v0.3.6
+       Fresh clubcard v0.3.3
+       Fresh extend v1.2.0
+       Fresh memmap2 v0.9.3
+       Fresh runloop v0.1.0
+       Fresh diplomat-runtime v0.14.0
+       Fresh zlib-rs v0.6.3 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\zlib-rs)
+       Fresh mime v0.3.16
+       Fresh topological-sort v0.1.0
+       Fresh seahash v4.1.0
+       Fresh array-init v2.1.0
+       Fresh quick-error v1.2.3
+       Fresh harfbuzz-sys v0.6.1 (https://github.com/hsivonen/rust-harfbuzz?rev=9d58a23a98772a197291d04af93f7041b7093d95#9d58a23a)
+       Fresh moz_cbor v0.1.2
+       Fresh murmurhash3 v0.0.5
+       Fresh rust_cascade v1.5.0
+       Fresh cose v0.1.4 (https://github.com/franziskuskiefer/cose-rust?rev=43c22248d136c8b38fe42ea709d08da6355cf04b#43c22248)
+       Fresh harfbuzz v0.6.0 (https://github.com/hsivonen/rust-harfbuzz?rev=9d58a23a98772a197291d04af93f7041b7093d95#9d58a23a)
+       Fresh dns-parser v0.8.0
+       Fresh jxl v0.4.3 (https://github.com/libjxl/jxl-rs?rev=c41cbfaf34c2c8ebc3fb6655c885fe427ab9542a#c41cbfaf)
+       Fresh adblock v0.12.1
+       Fresh webrender v0.62.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wr\webrender)
+       Fresh mime_guess v2.0.4
+       Fresh icu_capi v2.1.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\icu_capi)
+       Fresh authenticator v0.6.0 (https://github.com/mozilla/authenticator-rs?tag=v0.6.0#86caf8b8)
+       Fresh suggest v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\suggest)
+       Fresh clubcard-crlite v0.4.0
+       Fresh mp4parse v0.17.0 (https://github.com/mozilla/mp4parse-rust?rev=b693c7e4a91d1d5a391c0404d18b6fc94714894e#b693c7e4)
+       Fresh dirs v4.0.0
+       Fresh rustix v1.1.4
+       Fresh neqo-http3 v0.29.0 (https://github.com/mozilla/neqo?tag=v0.29.0#18832752)
+       Fresh style v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\components\style)
+       Fresh tabs v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\tabs)
+       Fresh relevancy v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\relevancy)
+       Fresh mls-platform-api v0.2.0 (https://github.com/mozilla/mls-platform-api?rev=2a2e344019bfc76b7e566ee6e0549cf668d90127#2a2e3440)
+       Fresh l10nregistry-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\l10n\rust\l10nregistry-ffi)
+       Fresh buildid_reader v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\buildid_reader)
+       Fresh wgpu-core v29.0.0 (https://github.com/gfx-rs/wgpu?rev=1ff557ddf68731c825bcc9f74a30fe519e968089#1ff557dd)
+       Fresh neqo-udp v0.29.0 (https://github.com/mozilla/neqo?tag=v0.29.0#18832752)
+       Fresh bits_client v0.2.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\bitsdownload\bits_client)
+       Fresh logins v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\logins)
+       Fresh mozglue-static v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\mozglue\static\rust)
+       Fresh lockstore_rs v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\lockstore\lockstore_rs)
+       Fresh webext-storage v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\webext-storage)
+       Fresh encoding_c v0.9.8
+       Fresh encoding_c_mem v0.2.6
+       Fresh prio v0.16.2
+       Fresh collator_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\js\src\builtin\intl\collator_glue)
+       Fresh filter_adult v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\filter_adult)
+       Fresh properties_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\js\src\irregexp\properties_glue)
+       Fresh search v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\search)
+       Fresh init_rust_components v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\init_rust_components)
+       Fresh cubeb-backend v0.32.0
+       Fresh storage v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\storage\rust)
+       Fresh mozurl v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\base\mozurl)
+       Fresh context_id v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\context_id)
+       Fresh breach-alerts v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\application-services\components\breach-alerts)
+       Fresh dogear v0.5.0
+       Fresh locale_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\js\src\builtin\intl\locale_glue)
+       Fresh unic-langid-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\locale\rust\unic-langid-ffi)
+       Fresh sha1 v0.10.5
+       Fresh uritemplate-next v0.2.0
+       Fresh urlpattern v0.6.0
+       Fresh midir v0.10.3 (https://github.com/mozilla/midir.git?rev=54759f681f3b523e120d047adec2bb1a97152017#54759f68)
+       Fresh ipdl_utils v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\ipc\rust\ipdl_utils)
+       Fresh happy-eyeballs v0.6.0 (https://github.com/mozilla/happy-eyeballs?tag=v0.6.0#0807628d)
+       Fresh webrtc-sdp v0.3.13
+       Fresh normalizer_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\js\src\builtin\normalizer_glue)
+       Fresh unicode-bidi-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\bidi\rust\unicode-bidi-ffi)
+       Fresh remove_dir_all v0.5.3
+       Fresh origin-trial-token v0.1.1
+       Fresh chardetng v1.0.0
+       Fresh xmldecl v0.2.0
+       Fresh data-encoding v2.3.3
+       Fresh typed-arena-nomut v0.1.0
+       Fresh oxilangtag v0.1.3
+       Fresh rustc-demangle v0.1.21
+       Fresh profiler_helper v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\tools\profiler\rust-helper)
+       Fresh oxilangtag-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\locale\rust\oxilangtag-ffi)
+       Fresh wpf-gpu-raster v0.1.0 (https://github.com/FirefoxGraphics/wpf-gpu-raster?rev=99979da091fd58fba8477e7fcdf5ec0727102916#99979da0)
+       Fresh data-encoding-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\fs\parent\rust\data-encoding-ffi)
+       Fresh encoding_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\encoding_glue)
+       Fresh chardetng_c v1.0.0
+       Fresh origin-trials-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\origin-trials\ffi)
+       Fresh webrender_bindings v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\webrender_bindings)
+       Fresh jsrust_shared v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\js\src\rust\shared)
+       Fresh rsdparsa_capi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\media\webrtc\sdp\rsdparsa_capi)
+       Fresh happy_eyeballs_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\protocol\http\happy_eyeballs_glue)
+       Fresh geckoservo v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\servo\ports\geckolib)
+       Fresh midir_impl v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\midi\midir_impl)
+       Fresh urlpattern_glue v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\base\urlpattern_glue)
+       Fresh uritemplate_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\base\uritemplate_glue)
+       Fresh crypto_hash v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\crypto_hash)
+       Fresh fluent-langneg-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\locale\rust\fluent-langneg-ffi)
+       Fresh bookmark_sync v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\places\bookmark_sync)
+       Fresh gkrust-uniffi-components v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\uniffi-bindgen-gecko-js\components)
+       Fresh audioipc2-client v0.6.0 (https://github.com/mozilla/audioipc?rev=c9dcbaee1624daad2fa6b1445fd047efde4f1ec0#c9dcbaee)
+       Fresh dap_ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\dap\ffi)
+       Fresh lockstore_ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\lockstore\lockstore_ffi)
+       Fresh bitsdownload v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\bitsdownload)
+       Fresh neqo_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\socket\neqo_glue)
+       Fresh trust-anchors v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\trust_anchors)
+       Fresh wgpu_bindings v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\wgpu_bindings)
+       Fresh buildid_reader_ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\buildid_reader\ffi)
+       Fresh localization-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\l10n\rust\localization-ffi)
+       Fresh qwac-trust-anchors v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\qwac_trust_anchors)
+       Fresh pdf-trust-anchors v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\pdf_trust_anchors)
+       Fresh mls_gk v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\mls\mls_gk)
+       Fresh mp4parse_capi v0.17.0 (https://github.com/mozilla/mp4parse-rust?rev=b693c7e4a91d1d5a391c0404d18b6fc94714894e#b693c7e4)
+       Fresh cert_storage v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\cert_storage)
+       Fresh authrs_bridge v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\webauthn\authrs_bridge)
+       Fresh mime-guess-ffi v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\fs\parent\rust\mime-guess-ffi)
+       Fresh content_classifier_engine v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\content-classifier\content_classifier_engine)
+       Fresh jxl_decoder v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\image\rust\jxl)
+       Fresh mdns_service v0.1.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\media\webrtc\transport\mdns_service)
+       Fresh harfbuzz_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\harfbuzz_glue)
+       Fresh cose-c v0.1.5
+       Fresh cascade_bloom_filter v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\cascade_bloom_filter)
+       Fresh zerocopy v0.8.27
+       Fresh libz-rs-sys v0.6.3
+       Fresh mapped_hyph v0.4.3 (https://github.com/jfkthame/mapped_hyph.git?rev=eff105f6ad7ec9b79816cfc1985a28e5340ad14b#eff105f6)
+       Fresh binary_http v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\protocol\http\binary_http)
+       Fresh fog_control v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\glean)
+       Fresh audioipc2-server v0.6.0 (https://github.com/mozilla/audioipc?rev=c9dcbaee1624daad2fa6b1445fd047efde4f1ec0#c9dcbaee)
+       Fresh oblivious_http v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\protocol\http\oblivious_http)
+       Fresh ipcclientcerts v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\ipcclientcerts)
+       Fresh osclientcerts v0.1.4 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\osclientcerts)
+       Fresh idna_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\base\idna_glue)
+       Fresh http_sfv v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\base\http-sfv)
+       Fresh app_collator_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\app_collator_glue)
+       Fresh dom_fragmentdirectives v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\dom\base\fragmentdirectives)
+       Fresh viaduct-necko v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\services\application-services\components\viaduct-necko)
+       Fresh data_storage v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\data_storage)
+       Fresh jog v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\glean\bindings\jog)
+       Fresh gecko-trace v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\gecko-trace)
+       Fresh locale_service_glue v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\intl\locale\rust\locale_service_glue)
+       Fresh widget_windows v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\widget\windows\rust)
+       Fresh shell_windows v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\browser\components\shell\rust\shell_windows)
+       Fresh ssl_tokens_cache v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\base\ssl_tokens_cache)
+       Fresh detect_win32k_conflicts v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\xre\detect_win32k_conflicts)
+       Fresh abridged_certs v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\manager\ssl\abridged_certs)
+       Fresh gecko_tracing v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\gecko_tracing)
+       Fresh rure v0.2.2 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\rust\rure)
+       Fresh signature_cache v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\security\certverifier\signature_cache)
+       Fresh aa-stroke v0.1.0 (https://github.com/FirefoxGraphics/aa-stroke?rev=5776bdfc8ad664a1503db668fab397d818a5f98a#5776bdfc)
+       Fresh gecko_logger v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\gecko_logger)
+       Fresh processtools v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\components\processtools)
+       Fresh gkrust_utils v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\xpcom\rust\gkrust_utils)
+       Fresh netwerk_helper v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\netwerk\base\rust-helper)
+       Fresh qcms v0.3.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\gfx\qcms)
+       Fresh moz_asserts v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\mozglue\static\rust\moz_asserts)
+       Fresh object v0.36.4
+       Fresh fnv v1.0.7
+       Fresh xml-rs v0.8.4
+       Fresh prefs_parser v0.0.1 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\modules\libpref\parser)
+       Fresh strsim v0.11.1
+       Fresh mozilla-central-workspace-hack v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\build\workspace-hack)
+       Fresh gkrust-shared v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\rust\shared)
+   Compiling gkrust v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\rust)
+     Running `set CARGO=C:\Users\Zachary\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin\cargo.exe&& set CARGO_CRATE_NAME=gkrust&& set CARGO_MANIFEST_DIR=C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\rust&& set CARGO_MANIFEST_PATH=C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\rust\Cargo.toml&& set CARGO_PKG_AUTHORS="The Mozilla Project Developers"&& set CARGO_PKG_DESCRIPTION="Rust code for libxul"&& set CARGO_PKG_HOMEPAGE=""&& set CARGO_PKG_LICENSE=MPL-2.0&& set CARGO_PKG_LICENSE_FILE=""&& set CARGO_PKG_NAME=gkrust&& set CARGO_PKG_README=""&& set CARGO_PKG_REPOSITORY=""&& set CARGO_PKG_RUST_VERSION=1.90.0&& set CARGO_PKG_VERSION=0.1.0&& set CARGO_PKG_VERSION_MAJOR=0&& set CARGO_PKG_VERSION_MINOR=1&& set CARGO_PKG_VERSION_PATCH=0&& set CARGO_PKG_VERSION_PRE=""&& set CARGO_PRIMARY_PACKAGE=1&& set PATH="C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\release\deps;C:/mozilla-build/msys2/usr/bin;C:\mozilla-build\bin;C:\Users\Zachary\.mozbuild\srcdirs\Floorp-Runtime-9bbb116d65a3\_virtualenvs\build\Scripts;C:\Users\Zachary\.mozbuild\srcdirs\Floorp-Runtime-9bbb116d65a3\_virtualenvs\mach\Scripts;C:\Users\Zachary\.cargo\bin;C:\Program Files\LLVM\bin;C:\nasm\nasm-2.16.03;C:\make441\bin;C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe;C:\Users\Zachary\AppData\Local\npm-cache\_npx\1e7f6d9597241db0\node_modules\.bin;C:\Users\Zachary\Documents\deepseek-harness\node_modules\.bin;C:\Users\Zachary\Documents\node_modules\.bin;C:\Users\Zachary\node_modules\.bin;C:\Users\node_modules\.bin;C:\node_modules\.bin;C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\run-script\lib\node-gyp-bin;C:\Users\Zachary\.proto\shims;C:\Users\Zachary\.proto\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files\PyManager\;C:\Program Files\nodejs\;C:\Program Files\Tailscale\;C:\bin;C:\Users\Zachary\Documents\Programs;C:\Program Files\Netbird;C:\Users\Zachary\AppData\Local\hermes\hermes-agent\venv\Scripts;C:\Users\Zachary\AppData\Local\hermes\bin;C:\Users\Zachary\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Zachary\AppData\Local\Programs\Python\Python312\;C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe;C:\Users\Zachary\.local\bin;C:\Program Files\platform-tools;C:\Users\Zachary\AppData\Local\Microsoft\WindowsApps;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Links;C:\Users\Zachary\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Zachary\.dotnet\tools;C:\Users\Zachary\AppData\Roaming\npm;C:\Users\Zachary\AppData\Local\spicetify;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Packages\DenoLand.Deno_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Program Files\PyManager\Scripts;C:\Users\Zachary\AppData\Local\Python\pythoncore-3.14-64\Scripts;C:\Users\Zachary\AppData\Local\Python\bin;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-15.2.0-x86_64-pc-windows-msvc;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build\bin;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Packages\jqlang.jq_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\flutter\flutter\bin;C:\Android\Sdk\cmdline-tools\latest\bin;C:\Android\Sdk\platform-tools;C:\Java\jdk-17.0.2\bin;C:\mozilla-build\msys2\usr\bin;C:/Users/Zachary/.cargo/bin"&& C:/Users/Zachary/.rustup/toolchains/stable-x86_64-pc-windows-msvc/bin/rustc.exe --crate-name gkrust --edition=2015 toolkit\library\rust\lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type staticlib --emit=dep-info,link -C panic=abort -C embed-bitcode=no -C debug-assertions=off --cfg "feature=\"mozilla-central-workspace-hack\"" --check-cfg cfg(docsrs,test) --check-cfg "cfg(feature, values(\"mozilla-central-workspace-hack\"))" -C metadata=f9b451511d3f314f -C extra-filename=-9f0f1a8956ddf55a --out-dir C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps --target x86_64-pc-windows-msvc -C linker=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/build/cargo-linker.bat -C strip=debuginfo -L dependency=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps -L dependency=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\release\deps --extern gkrust_shared=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps\libgkrust_shared-adbb6d36c1a487ea.rlib --extern mozglue_static=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps\libmozglue_static-cb2ce28d99396663.rlib --extern mozilla_central_workspace_hack=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps\libmozilla_central_workspace_hack-5bc89db9f4f5dce9.rlib --extern swgl=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps\libswgl-c77f0c3804b9ce2f.rlib -Clto -C debug-assertions=no -C debuginfo=2 -C control-flow-guard=yes --cap-lints warn -Cembed-bitcode=yes -C codegen-units=1 -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\build\cubeb-core-6d366fc52be5a972\out -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\build\whatsys-42aad386551b8ee1\out -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\build\mozglue-static-704a3032612a3846\out -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\build\swgl-5122592f7308a751\out -L "native=C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\atlmfc\lib\x64" -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\security\nss\lib\freebl\freebl_freebl3 -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\security -L "native=C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\atlmfc\lib\x64" -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\security -L "native=C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\atlmfc\lib\x64" -L "native=C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\atlmfc\lib\x64"`
+rustc-LLVM ERROR: out of memory
+Allocation failed
+error: could not compile `gkrust` (lib)
+
+Caused by:
+  process didn't exit successfully: `set CARGO=C:\Users\Zachary\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin\cargo.exe&& set CARGO_CRATE_NAME=gkrust&& set CARGO_MANIFEST_DIR=C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\rust&& set CARGO_MANIFEST_PATH=C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\rust\Cargo.toml&& set CARGO_PKG_AUTHORS="The Mozilla Project Developers"&& set CARGO_PKG_DESCRIPTION="Rust code for libxul"&& set CARGO_PKG_HOMEPAGE=""&& set CARGO_PKG_LICENSE=MPL-2.0&& set CARGO_PKG_LICENSE_FILE=""&& set CARGO_PKG_NAME=gkrust&& set CARGO_PKG_README=""&& set CARGO_PKG_REPOSITORY=""&& set CARGO_PKG_RUST_VERSION=1.90.0&& set CARGO_PKG_VERSION=0.1.0&& set CARGO_PKG_VERSION_MAJOR=0&& set CARGO_PKG_VERSION_MINOR=1&& set CARGO_PKG_VERSION_PATCH=0&& set CARGO_PKG_VERSION_PRE=""&& set CARGO_PRIMARY_PACKAGE=1&& set PATH="C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\release\deps;C:/mozilla-build/msys2/usr/bin;C:\mozilla-build\bin;C:\Users\Zachary\.mozbuild\srcdirs\Floorp-Runtime-9bbb116d65a3\_virtualenvs\build\Scripts;C:\Users\Zachary\.mozbuild\srcdirs\Floorp-Runtime-9bbb116d65a3\_virtualenvs\mach\Scripts;C:\Users\Zachary\.cargo\bin;C:\Program Files\LLVM\bin;C:\nasm\nasm-2.16.03;C:\make441\bin;C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.5.0_x64__8wekyb3d8bbwe;C:\Users\Zachary\AppData\Local\npm-cache\_npx\1e7f6d9597241db0\node_modules\.bin;C:\Users\Zachary\Documents\deepseek-harness\node_modules\.bin;C:\Users\Zachary\Documents\node_modules\.bin;C:\Users\Zachary\node_modules\.bin;C:\Users\node_modules\.bin;C:\node_modules\.bin;C:\Program Files\nodejs\node_modules\npm\node_modules\@npmcli\run-script\lib\node-gyp-bin;C:\Users\Zachary\.proto\shims;C:\Users\Zachary\.proto\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files\PyManager\;C:\Program Files\nodejs\;C:\Program Files\Tailscale\;C:\bin;C:\Users\Zachary\Documents\Programs;C:\Program Files\Netbird;C:\Users\Zachary\AppData\Local\hermes\hermes-agent\venv\Scripts;C:\Users\Zachary\AppData\Local\hermes\bin;C:\Users\Zachary\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Zachary\AppData\Local\Programs\Python\Python312\;C:\Program Files\WindowsApps\Microsoft.PowerShell_7.6.4.0_x64__8wekyb3d8bbwe;C:\Users\Zachary\.local\bin;C:\Program Files\platform-tools;C:\Users\Zachary\AppData\Local\Microsoft\WindowsApps;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Links;C:\Users\Zachary\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Zachary\.dotnet\tools;C:\Users\Zachary\AppData\Roaming\npm;C:\Users\Zachary\AppData\Local\spicetify;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Packages\DenoLand.Deno_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\Program Files\PyManager\Scripts;C:\Users\Zachary\AppData\Local\Python\pythoncore-3.14-64\Scripts;C:\Users\Zachary\AppData\Local\Python\bin;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Packages\BurntSushi.ripgrep.MSVC_Microsoft.Winget.Source_8wekyb3d8bbwe\ripgrep-15.2.0-x86_64-pc-windows-msvc;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.1.2-full_build\bin;C:\Users\Zachary\AppData\Local\Microsoft\WinGet\Packages\jqlang.jq_Microsoft.Winget.Source_8wekyb3d8bbwe;C:\flutter\flutter\bin;C:\Android\Sdk\cmdline-tools\latest\bin;C:\Android\Sdk\platform-tools;C:\Java\jdk-17.0.2\bin;C:\mozilla-build\msys2\usr\bin;C:/Users/Zachary/.cargo/bin"&& C:/Users/Zachary/.rustup/toolchains/stable-x86_64-pc-windows-msvc/bin/rustc.exe --crate-name gkrust --edition=2015 toolkit\library\rust\lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type staticlib --emit=dep-info,link -C panic=abort -C embed-bitcode=no -C debug-assertions=off --cfg "feature=\"mozilla-central-workspace-hack\"" --check-cfg cfg(docsrs,test) --check-cfg "cfg(feature, values(\"mozilla-central-workspace-hack\"))" -C metadata=f9b451511d3f314f -C extra-filename=-9f0f1a8956ddf55a --out-dir C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps --target x86_64-pc-windows-msvc -C linker=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/build/cargo-linker.bat -C strip=debuginfo -L dependency=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps -L dependency=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\release\deps --extern gkrust_shared=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps\libgkrust_shared-adbb6d36c1a487ea.rlib --extern mozglue_static=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps\libmozglue_static-cb2ce28d99396663.rlib --extern mozilla_central_workspace_hack=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps\libmozilla_central_workspace_hack-5bc89db9f4f5dce9.rlib --extern swgl=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\deps\libswgl-c77f0c3804b9ce2f.rlib -Clto -C debug-assertions=no -C debuginfo=2 -C control-flow-guard=yes --cap-lints warn -Cembed-bitcode=yes -C codegen-units=1 -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\build\cubeb-core-6d366fc52be5a972\out -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\build\whatsys-42aad386551b8ee1\out -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\build\mozglue-static-704a3032612a3846\out -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\x86_64-pc-windows-msvc\release\build\swgl-5122592f7308a751\out -L "native=C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\atlmfc\lib\x64" -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\security\nss\lib\freebl\freebl_freebl3 -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\security -L "native=C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\atlmfc\lib\x64" -L native=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\security -L "native=C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\atlmfc\lib\x64" -L "native=C:\Program Files\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\atlmfc\lib\x64"` (exit code: 0xc0000409, STATUS_STACK_BUFFER_OVERRUN)
+make[1]: *** [C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/config/makefiles/rust.mk:554: force-cargo-library-build] Error 101
+make[1]: Leaving directory 'C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/toolkit/library/rust'
+make: *** [C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/config/recurse.mk:79: toolkit/library/rust/target-objects] Error 2
+make: Leaving directory 'C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc'

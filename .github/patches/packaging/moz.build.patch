@@ -1,0 +1,12 @@
+diff --git a/moz.build b/moz.build
+index bd4e5d2b907..f652eef1cf5 100644
+--- a/moz.build
++++ b/moz.build
+@@ -173,6 +173,7 @@ DIRS += [
+     "python",
+     "testing",
+     "third_party/python",
++    "noraneko",
+ ]
+ 
+ if CONFIG["MOZ_APPSERVICES_IN_TREE"]:

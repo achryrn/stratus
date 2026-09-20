@@ -1,0 +1,16 @@
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index b884f0167e..3d3b72e246 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -167,6 +167,11 @@
+ @BINPATH@/@DLL_PREFIX@mozavcodec@DLL_SUFFIX@
+ @BINPATH@/@DLL_PREFIX@mozinference@DLL_SUFFIX@
+ 
++; [Noraneko Files]
++@RESPATH@/chrome/noraneko.manifest
++@RESPATH@/chrome/noraneko@JAREXT@
++@RESPATH@/browser/buildid2
++
+ ; [Components]
+ #ifdef ACCESSIBILITY
+ #ifdef XP_WIN

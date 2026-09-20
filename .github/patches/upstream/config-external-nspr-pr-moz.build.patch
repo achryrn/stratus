@@ -1,0 +1,31 @@
+diff --git a/config/external/nspr/pr/moz.build b/config/external/nspr/pr/moz.build
+index bb691f97dd0..d7e5f9ea7ae 100644
+--- a/config/external/nspr/pr/moz.build
++++ b/config/external/nspr/pr/moz.build
+@@ -50,14 +50,18 @@ elif CONFIG["OS_TARGET"] == "Darwin":
+     DEFINES["HAVE_BSD_FLOCK"] = True
+     DEFINES["HAVE_SOCKLEN_T"] = True
+     DEFINES["HAVE_POINTER_LOCALTIME_R"] = True
+-    SOURCES += [
+-        "/nsprpub/pr/src/md/unix/darwin.c",
+-        "/nsprpub/pr/src/md/unix/os_Darwin.s",
+-    ]
+-    # os_Darwin.s is a CPP-driven arch dispatcher (#ifdef __x86_64__ /
+-    # __i386__ / __ppc__ → #include "os_Darwin_<arch>.s"); without
+-    # preprocessing the resulting object would be empty.
+-    ASFLAGS += ["-x", "assembler-with-cpp"]
++    SOURCES += ["/nsprpub/pr/src/md/unix/darwin.c"]
++    # Use TARGET_CPU to select the correct assembly file for cross-compilation.
++    # The os_Darwin.s wrapper uses #ifdef which doesn't work reliably when
++    # cross-compiling from Linux with different host/target architectures.
++    if CONFIG["TARGET_CPU"] == "x86_64":
++        SOURCES += ["/nsprpub/pr/src/md/unix/os_Darwin_x86_64.s"]
++    elif CONFIG["TARGET_CPU"] == "x86":
++        SOURCES += ["/nsprpub/pr/src/md/unix/os_Darwin_x86.s"]
++    elif CONFIG["TARGET_CPU"] == "aarch64":
++        pass  # ARM64 uses compiler intrinsics, no assembly file needed
++    elif CONFIG["TARGET_CPU"] == "ppc":
++        SOURCES += ["/nsprpub/pr/src/md/unix/os_Darwin_ppc.s"]
+     DEFINES["HAVE_CRT_EXTERNS_H"] = True
+ elif CONFIG["OS_TARGET"] == "SunOS":
+     DEFINES["HAVE_FCNTL_FILE_LOCKING"] = True

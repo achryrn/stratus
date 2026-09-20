@@ -1,0 +1,8 @@
+ 0:01.10 W Warnings in third-party code are being suppressed from the terminal output. Use --show-all-warnings or --verbose to see them.
+ 0:01.10 W All warnings will still be dumped to C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\.mozbuild\logs\build\warnings_*.json at the end of the build.
+ 0:01.82 Clobber not needed.
+ 0:03.89 W Build argument 'dom/bindings' is a subdirectory and was ignored.
+ 0:03.89 W 0 compiler warnings present.
+ 0:03.92 To view a profile of the build, run |mach resource-usage|.
+ 0:03.92 Your build was successful!
+Streaming resource usage profile to: C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\.mozbuild\logs\build\profile_log_20260920_200600.json

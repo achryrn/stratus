@@ -1,0 +1,1251 @@
+ 0:01.16 W Warnings in third-party code are being suppressed from the terminal output. Use --show-all-warnings or --verbose to see them.
+ 0:01.16 W All warnings will still be dumped to C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\.mozbuild\logs\build\warnings_*.json at the end of the build.
+ 0:02.52 Clobber not needed.
+ 0:02.53 C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/config.status is out of date with respect to C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/.mozconfig.json
+ 0:03.28 Using Python 3.12.7 from C:\Users\Zachary\.mozbuild\srcdirs\Floorp-Runtime-9bbb116d65a3\_virtualenvs\build\Scripts\python.exe
+ 0:03.28 Adding configure options from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\.mozconfig
+ 0:03.28   --with-app-name=stratus
+ 0:03.28   --with-app-basename=Stratus
+ 0:03.28   --with-branding=browser/branding/noraneko-unofficial
+ 0:03.28   --disable-maintenance-service
+ 0:03.28   --disable-crashreporter
+ 0:03.28   --enable-rust-simd
+ 0:03.28   --target=x86_64-pc-windows-msvc
+ 0:03.28   --without-wasm-sandboxed-libraries
+ 0:03.28   MOZ_TELEMETRY_REPORTING=
+ 0:03.28   --enable-unverified-updates
+ 0:03.28   RUSTFLAGS=
+ 0:03.28   CARGO_BUILD_JOBS=2
+ 0:03.28 checking for vcs source checkout... git
+ 0:03.33 checking for a shell... C:/mozilla-build/msys2/usr/bin/sh.exe
+ 0:03.33 checking for host system type... x86_64-pc-windows-msvc
+ 0:03.43 checking for target system type... x86_64-pc-windows-msvc
+ 0:03.80 checking whether cross compiling... no
+ 0:03.91 checking if configuration file confvars.sh exists... C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/browser/confvars.sh
+ 0:03.92 checking if configuration file configure.sh exists... C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/browser/branding/noraneko-unofficial/configure.sh
+ 0:03.94 checking for Python 3... C:/Users/Zachary/.mozbuild/srcdirs/Floorp-Runtime-9bbb116d65a3/_virtualenvs/build/Scripts/python.exe (3.12.7)
+ 0:03.94 checking for git... C:/PROGRA~1/Git/cmd/git.exe
+ 0:03.99 checking for Git version... 2.55.0.windows.3
+ 0:03.99 checking for MozillaBuild directory... C:\mozilla-build
+ 0:03.99 checking for MozillaBuild version... 4.2.1
+ 0:04.07 checking for ccache... not found
+ 0:04.07 checking for the target C compiler... C:/PROGRA~1/LLVM/bin/clang-cl.exe
+ 0:04.11 checking whether the target C compiler can be used... yes
+ 0:04.11 checking the target C compiler version... 20.1.8
+ 0:04.11 checking the target C compiler works... yes
+ 0:04.11 checking for the target C++ compiler... C:/PROGRA~1/LLVM/bin/clang-cl.exe
+ 0:04.11 checking whether the target C++ compiler can be used... yes
+ 0:04.11 checking the target C++ compiler version... 20.1.8
+ 0:04.11 checking the target C++ compiler works... yes
+ 0:04.11 checking for the host C compiler... C:/PROGRA~1/LLVM/bin/clang-cl.exe
+ 0:04.11 checking whether the host C compiler can be used... yes
+ 0:04.11 checking the host C compiler version... 20.1.8
+ 0:04.12 checking the host C compiler works... yes
+ 0:04.12 checking for the host C++ compiler... C:/PROGRA~1/LLVM/bin/clang-cl.exe
+ 0:04.12 checking whether the host C++ compiler can be used... yes
+ 0:04.12 checking the host C++ compiler version... 20.1.8
+ 0:04.12 checking the host C++ compiler works... yes
+ 0:04.12 checking for 64-bit OS... yes
+ 0:04.17 checking for Windows SDK... 0x0a00 in C:/PROGRA~2/WI3CF2~1/10/
+ 0:04.17 checking for Universal CRT SDK... 10.0.26100.0 in C:/PROGRA~2/WI3CF2~1/10/
+ 0:04.25 checking for linker... C:/PROGRA~1/LLVM/bin/lld-link.exe
+ 0:04.25 checking for host_linker... C:/PROGRA~1/LLVM/bin/lld-link.exe
+ 0:04.26 checking for the assembler... C:/PROGRA~1/MICROS~1/18/COMMUN~1/VC/Tools/MSVC/1451~1.362/bin/Hostx64/x64/ml64.exe
+ 0:04.42 checking for llvm-objdump... C:/PROGRA~1/LLVM/bin/LLVM-O~2.EXE
+ 0:04.42 checking for rc... C:/PROGRA~1/LLVM/bin/llvm-rc.exe
+ 0:04.42 checking for ar... C:/PROGRA~1/LLVM/bin/llvm-lib.exe
+ 0:04.58 checking whether ar supports response files... yes
+ 0:04.58 checking for host_ar... C:/PROGRA~1/LLVM/bin/llvm-lib.exe
+ 0:04.58 checking for -mavxvnni support... yes
+ 0:04.58 checking for -mavx512bw support... yes
+ 0:04.58 checking for -mavx512vnni support... yes
+ 0:04.71 checking for malloc.h... yes
+ 0:04.71 checking for stdint.h... yes
+ 0:04.71 checking for inttypes.h... yes
+ 0:04.71 checking for alloca.h... no
+ 0:04.71 checking for sys/byteorder.h... no
+ 0:04.71 checking for getopt.h... no
+ 0:04.71 checking for unistd.h... no
+ 0:04.71 checking for nl_types.h... no
+ 0:04.71 checking for cpuid.h... yes
+ 0:04.71 checking for fts.h... no
+ 0:04.71 checking for sys/statvfs.h... no
+ 0:04.71 checking for sys/statfs.h... no
+ 0:04.71 checking for sys/vfs.h... no
+ 0:04.71 checking for sys/mount.h... no
+ 0:04.71 checking for sys/quota.h... no
+ 0:04.71 checking for sys/queue.h... no
+ 0:04.71 checking for sys/types.h... yes
+ 0:04.71 checking for netinet/in.h... no
+ 0:04.71 checking for byteswap.h... no
+ 0:04.72 checking for memfd_create in sys/mman.h... no
+ 0:04.72 checking whether the C++ compiler supports -Wdeprecated-literal-operator... yes
+ 0:04.72 checking whether the C compiler supports -Winvalid-utf8... yes
+ 0:04.72 checking whether the C++ compiler supports -Winvalid-utf8... yes
+ 0:04.72 checking whether the C compiler supports -Wno-unknown-pragmas... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-unknown-pragmas... yes
+ 0:04.72 checking whether the C compiler supports -Wno-ignored-pragmas... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-ignored-pragmas... yes
+ 0:04.72 checking whether the C compiler supports -Wno-deprecated-declarations... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-deprecated-declarations... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-microsoft-enum-value... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-microsoft-include... yes
+ 0:04.72 checking whether the C compiler supports -Wno-invalid-noreturn... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-invalid-noreturn... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-inconsistent-missing-override... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-implicit-exception-spec-mismatch... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-microsoft-exception-spec... yes
+ 0:04.72 checking whether the C++ compiler supports -Wno-unused-local-typedef... yes
+ 0:04.73 checking whether the C++ compiler supports -Wno-ignored-attributes... yes
+ 0:04.73 checking whether the C++ compiler supports -Wno-used-but-marked-unused... yes
+ 0:04.73 checking whether the C compiler supports -Wno-character-conversion... no
+ 0:04.73 checking whether the C++ compiler supports -Wno-character-conversion... no
+ 0:04.73 checking whether the C++ compiler supports -fno-sized-deallocation... no
+ 0:04.73 checking whether the C++ compiler supports -fno-aligned-new... no
+ 0:04.73 checking whether the C compiler supports -ffile-reproducible... yes
+ 0:04.73 checking whether the C++ compiler supports -ffile-reproducible... yes
+ 0:04.73 checking whether the C compiler supports -fdiagnostics-absolute-paths... yes
+ 0:04.73 checking whether the C++ compiler supports -fdiagnostics-absolute-paths... yes
+ 0:05.12 checking what kind of list files are supported by the linker... list
+ 0:05.12 checking for llvm_profdata... C:/PROGRA~1/LLVM/bin/LLVM-P~2.EXE
+ 0:05.26 checking for rustc... C:/Users/Zachary/.cargo/bin/rustc.exe
+ 0:05.26 checking for cargo... C:/Users/Zachary/.cargo/bin/cargo.exe
+ 0:06.51 Actually using 'C:\Users\Zachary\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin\rustc.exe'
+ 0:06.60 Actually using 'C:\Users\Zachary\.rustup\toolchains\stable-x86_64-pc-windows-msvc\bin\cargo.exe'
+ 0:06.63 checking rustc version... 1.98.1
+ 0:06.65 checking cargo version... 1.98.1
+ 0:06.88 checking for rust host triplet... x86_64-pc-windows-msvc
+ 0:06.97 checking for rust target triplet... x86_64-pc-windows-msvc
+ 0:06.97 checking for rustdoc... C:/Users/Zachary/.cargo/bin/rustdoc.exe
+ 0:07.26 checking for cbindgen... C:/Users/Zachary/.cargo/bin/cbindgen.exe
+ 0:07.26 checking for rustfmt... C:/Users/Zachary/.cargo/bin/rustfmt.exe
+ 0:07.30 checking for clang for bindgen... C:/PROGRA~1/LLVM/bin/clang.exe
+ 0:07.34 checking for libclang for bindgen... C:/Program Files/LLVM/bin/libclang.dll
+ 0:07.46 checking that libclang is new enough... yes
+ 0:07.46 checking bindgen cflags... ['-x', 'c++', '-fno-sized-deallocation', '-fno-aligned-new', '-DTRACING=1', '-DIMPL_LIBXUL', '-DMOZILLA_INTERNAL_API', '-DRUST_BINDGEN', '-DWIN32=1', '-D_CRT_USE_BUILTIN_OFFSETOF', '-DHAVE_VISIBILITY_HIDDEN_ATTRIBUTE=1', '-std=gnu++20']
+ 0:07.46 checking for tm_zone and tm_gmtoff in struct tm... no
+ 0:07.46 checking for _getc_nolock... yes
+ 0:07.46 checking for localeconv... yes
+ 0:07.50 checking for nodejs... C:\Program Files\nodejs\node.EXE (24.18.1)
+ 0:07.52 checking for tar... C:/WINDOWS/system32/tar.exe
+ 0:07.52 checking for unzip... C:/mozilla-build/bin/unzip.exe
+ 0:07.52 checking for the Mozilla API key... no
+ 0:07.52 checking for the Google Safebrowsing API key... no
+ 0:07.52 checking for the Bing API key... no
+ 0:07.52 checking for the Adjust SDK key... no
+ 0:07.52 checking for the Leanplum SDK key... no
+ 0:07.52 checking for the Pocket API key... no
+ 0:07.53 checking for midl... C:/PROGRA~2/WI3CF2~1/10/bin/10.0.26100.0/x64/midl.exe
+ 0:07.54 checking for llvm-dlltool... C:/PROGRA~1/LLVM/bin/LLVM-D~1.EXE
+ 0:07.55 checking for fxc... C:/PROGRA~2/WI3CF2~1/10/bin/10.0.26100.0/x64/fxc.exe
+ 0:07.55 checking for nasm... C:/nasm/nasm-2.16.03/nasm.exe
+ 0:07.62 checking nasm version... 2.16.03
+ 0:07.62 checking for dxcompiler.dll...
+ 0:07.62 W WARNING: Missing dxcompiler.dll dependency. WebGPU will be disabled
+ 0:07.62  ... not found
+ 0:07.63 checking for the Windows App SDK... C:\winappsdk-dll
+ 0:07.64 checking for dump_syms... not found
+ 0:07.65 checking for pdbstr... not found
+ 0:07.67 checking for winchecksec... not found
+ 0:07.67 checking for sin_len in struct sockaddr_in... no
+ 0:07.67 checking for sin_len6 in struct sockaddr_in6... no
+ 0:07.67 checking for sa_len in struct sockaddr... no
+ 0:07.67 checking for pthread_cond_timedwait_monotonic_np... no
+ 0:07.72 checking for the windows rust crate source... C:\Users\Zachary\Documents\Project\browser-dev\windows-0.62.2
+ 0:07.72 checking ONNX install path... no
+ 0:07.72 checking for valid C compiler optimization flags... yes
+ 0:07.74 checking for gmake... C:/make441/bin/make.exe
+ 0:07.76 checking for gmake version... 4.4.1
+ 0:07.92 checking for watchman... C:/mozilla-build/bin/watchman.exe
+ 0:07.92 checking for watchman version... 20250223.093309.0
+ 0:07.93 checking for xargs... C:/mozilla-build/msys2/usr/bin/xargs.exe
+ 0:07.94 checking for makensisu... not found
+ 0:07.95 checking for 7z... not found
+ 0:07.95 checking for upx... C:/mozilla-build/bin/upx.exe
+ 0:08.22 Creating config.status
+ 0:09.13 Reticulating splines...
+ 0:49.76 Finished reading 2752 moz.build files in 10.32s
+ 0:49.76 Read 59 gyp files in parallel contributing 0.00s to total wall time
+ 0:49.76 Processed into 21012 build config descriptors in 7.62s
+ 0:49.76 RecursiveMake backend executed in 12.66s
+ 0:49.76   5875 total backend files; 0 created; 0 updated; 5875 unchanged; 0 deleted; 20 -> 2228 Makefile
+ 0:49.76 FasterMake backend executed in 0.70s
+ 0:49.76   58 total backend files; 0 created; 0 updated; 58 unchanged; 0 deleted
+ 0:49.76 VisualStudio backend executed in 5.26s
+ 0:49.76 Generated Visual Studio solution at C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc\msvc\mozilla.sln
+ 0:49.76 Clangd backend executed in 2.94s
+ 0:49.76   1357 total backend files; 0 created; 1 updated; 1356 unchanged; 0 deleted
+ 0:49.76 Total wall time: 40.67s; CPU time: 32.56s; Efficiency: 80%; Untracked: 1.16s
+ 0:51.45 Configure complete!
+ 0:51.45 Be sure to run |mach build| to pick up any changes
+ 0:51.68 W Adding make options from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\.mozconfig
+    AUTOCLOBBER=1
+    MOZ_PARALLEL_BUILD=4
+    MOZ_OBJDIR=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc
+    OBJDIR=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc
+    FOUND_MOZCONFIG=C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/.mozconfig
+    export FOUND_MOZCONFIG
+ 0:51.68 C:/make441/bin/make.exe -f client.mk -j4 -s
+ 0:55.76 ./buildid.h.stub
+ 0:55.77 ./source-repo.h.stub
+ 0:55.91 ./TestGeckoTraceEvents.h.stub
+ 0:55.92 ./GeckoTraceEvents.h.stub
+ 0:57.06 ./application.ini.stub
+ 0:57.29 config/makefiles/xpidl/necko.xpt
+ 0:58.08 ./application.ini.h.stub
+ 1:00.54 necko_deps_built = C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/mozIThirdPartyUtil.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAndroidContentInputStream.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIArrayBufferInputStream.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAsyncStreamCopier.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAsyncStreamCopier2.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAsyncVerifyRedirectCallback.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAuthInformation.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAuthModule.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAuthPrompt.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAuthPrompt2.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAuthPromptAdapterFactory.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAuthPromptCallback.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIAuthPromptProvider.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIBackgroundFileSaver.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIBaseChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIBufferedStreams.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIByteRangeRequest.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsICacheInfoChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsICachingChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsICancelable.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsICaptivePortalService.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIChannelEventSink.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIChildChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIClassOfService.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIClassifiedChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIContentSniffer.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIDHCPClient.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIDashboard.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIDashboardEventNotifier.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIDownloader.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIEncodedChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIExternalProtocolHandler.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIFileStreams.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIFileURL.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIForcePendingChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIFormPOSTActionChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIHttpAuthenticatorCallback.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIIOService.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIIncrementalDownload.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIIncrementalStreamLoader.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIInputStreamChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIInputStreamPump.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIInterceptionInfo.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsILoadContextInfo.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsILoadGroup.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsILoadGroupChild.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsILoadInfo.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIMIMEInputStream.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIMockNetworkLayerController.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIMultiPartChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsINestedURI.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsINetAddr.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsINetUtil.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsINetworkConnectivityService.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsINetworkInfoService.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsINetworkInterceptController.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsINetworkLinkService.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsINullChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIParentChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIParentRedirectingChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIPermission.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIPermissionManager.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIPrivateBrowsingChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProgressEventSink.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIPrompt.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProtocolHandler.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProtocolProxyCallback.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProtocolProxyFilter.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProtocolProxyService.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProtocolProxyService2.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProxiedChannel.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProxiedProtocolHandler.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIProxyInfo.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIRandomGenerator.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIRedirectChannelRegistrar.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIRedirectHistoryEntry.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIRedirectResultListener.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIRequest.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIRequestContext.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIRequestObserver.idl C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/netwerk/base/nsIRequestObserverProxy.idl C:/Users/Zachary/Documents/Project/browser
+ 1:00.57 config/makefiles/xpidl/xptdata.stub
+ 1:02.94 W warning: Cargo.toml: unused manifest key: patch.crates-io.ohttp.revision
+ 1:02.94 W warning: workspace (manifest) generated 1 warning
+ 1:03.22 browser/app
+ 1:15.89 gfx/harfbuzz/src
+ 1:15.94 gfx/ipc
+ 1:26.15 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.15 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/NotXPCOMTest.rs:261:88
+ 1:26.16 W     |
+ 1:26.16 W 261 |     pub Method2: unsafe extern "system" fn (this: *const nsIScriptableWithNotXPCOM) -> libc::c_void,
+ 1:26.16 W     |                                                                                    ----^^^^^^^^^^^^
+ 1:26.16 W     |                                                                                    |
+ 1:26.16 W     |                                                                                    help: remove the return type to implicitly return `()`
+ 1:26.16 W     |
+ 1:26.16 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.16 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.16 W     = note: `#[warn(c_void_returns)]` on by default
+ 1:26.16 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.16 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/NotXPCOMTest.rs:272:39
+ 1:26.16 W     |
+ 1:26.16 W 272 |     pub unsafe fn Method2(&self, ) -> libc::c_void {
+ 1:26.16 W     |                                   ----^^^^^^^^^^^^
+ 1:26.16 W     |                                   |
+ 1:26.16 W     |                                   help: remove the return type to implicitly return `()`
+ 1:26.16 W     |
+ 1:26.16 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.16 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.16 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.16 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/imgICache.rs:154:122
+ 1:26.16 W     |
+ 1:26.16 W 154 |     pub ClearCacheForControlledDocument: unsafe extern "system" fn (this: *const imgICache, doc: *const libc::c_void) -> libc::c_void,
+ 1:26.16 W     |                                                                                                                      ----^^^^^^^^^^^^
+ 1:26.16 W     |                                                                                                                      |
+ 1:26.16 W     |                                                                                                                      help: remove the return type to implicitly return `()`
+ 1:26.16 W     |
+ 1:26.16 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.16 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.16 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.16 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/imgICache.rs:286:87
+ 1:26.16 W     |
+ 1:26.16 W 286 |     pub unsafe fn ClearCacheForControlledDocument(&self, doc: *const libc::c_void) -> libc::c_void {
+ 1:26.16 W     |                                                                                   ----^^^^^^^^^^^^
+ 1:26.16 W     |                                                                                   |
+ 1:26.16 W     |                                                                                   help: remove the return type to implicitly return `()`
+ 1:26.16 W     |
+ 1:26.16 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.16 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.16 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.16 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/imgIContainer.rs:258:132
+ 1:26.16 W     |
+ 1:26.16 W 258 | ...cument: *const libc::c_void) -> libc::c_void,
+ 1:26.16 W     |                                ----^^^^^^^^^^^^
+ 1:26.16 W     |                                |
+ 1:26.16 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.16 W     |
+ 1:26.16 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.16 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.16 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.16 W     --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/imgIContainer.rs:1024:93
+ 1:26.16 W      |
+ 1:26.17 W 1024 |     pub unsafe fn PropagateUseCounters(&self, aReferencingDocument: *const libc::c_void) -> libc::c_void {
+ 1:26.17 W      |                                                                                         ----^^^^^^^^^^^^
+ 1:26.17 W      |                                                                                         |
+ 1:26.17 W      |                                                                                         help: remove the return type to implicitly return `()`
+ 1:26.17 W      |
+ 1:26.17 W      = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.17 W      = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.17 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.17 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocShell.rs:339:89
+ 1:26.17 W     |
+ 1:26.17 W 339 |     pub DetachEditorFromWindow: unsafe extern "system" fn (this: *const nsIDocShell) -> libc::c_void,
+ 1:26.17 W     |                                                                                     ----^^^^^^^^^^^^
+ 1:26.17 W     |                                                                                     |
+ 1:26.17 W     |                                                                                     help: remove the return type to implicitly return `()`
+ 1:26.17 W     |
+ 1:26.17 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.17 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.17 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.17 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocShell.rs:428:107
+ 1:26.17 W     |
+ 1:26.17 W 428 |     pub SetInvisible: unsafe extern "system" fn (this: *const nsIDocShell, aIsInvisibleDocshell: bool) -> libc::c_void,
+ 1:26.17 W     |                                                                                                       ----^^^^^^^^^^^^
+ 1:26.17 W     |                                                                                                       |
+ 1:26.17 W     |                                                                                                       help: remove the return type to implicitly return `()`
+ 1:26.17 W     |
+ 1:26.17 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.17 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.17 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.17 W     --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocShell.rs:1421:54
+ 1:26.17 W      |
+ 1:26.17 W 1421 |     pub unsafe fn DetachEditorFromWindow(&self, ) -> libc::c_void {
+ 1:26.17 W      |                                                  ----^^^^^^^^^^^^
+ 1:26.17 W      |                                                  |
+ 1:26.17 W      |                                                  help: remove the return type to implicitly return `()`
+ 1:26.17 W      |
+ 1:26.17 W      = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.17 W      = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.17 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.17 W     --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocShell.rs:1801:70
+ 1:26.17 W      |
+ 1:26.17 W 1801 |     pub unsafe fn SetInvisible(&self, aIsInvisibleDocshell: bool) -> libc::c_void {
+ 1:26.17 W      |                                                                  ----^^^^^^^^^^^^
+ 1:26.17 W      |                                                                  |
+ 1:26.17 W      |                                                                  help: remove the return type to implicitly return `()`
+ 1:26.17 W      |
+ 1:26.17 W      = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.17 W      = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.17 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.17 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocumentViewer.rs:281:93
+ 1:26.17 W     |
+ 1:26.17 W 281 |     pub ForgetReloadEncoding: unsafe extern "system" fn (this: *const nsIDocumentViewer) -> libc::c_void,
+ 1:26.17 W     |                                                                                         ----^^^^^^^^^^^^
+ 1:26.17 W     |                                                                                         |
+ 1:26.17 W     |                                                                                         help: remove the return type to implicitly return `()`
+ 1:26.17 W     |
+ 1:26.17 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.17 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.17 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.17 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIDocumentViewer.rs:798:52
+ 1:26.17 W     |
+ 1:26.17 W 798 |     pub unsafe fn ForgetReloadEncoding(&self, ) -> libc::c_void {
+ 1:26.17 W     |                                                ----^^^^^^^^^^^^
+ 1:26.17 W     |                                                |
+ 1:26.17 W     |                                                help: remove the return type to implicitly return `()`
+ 1:26.17 W     |
+ 1:26.17 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.17 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.17 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.17 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:245:116
+ 1:26.17 W     |
+ 1:26.17 W 245 |     pub LogFailure: unsafe extern "system" fn (this: *const nsIGfxInfo, failure: *const ::nsstring::nsACString) -> libc::c_void,
+ 1:26.17 W     |                                                                                                                ----^^^^^^^^^^^^
+ 1:26.17 W     |                                                                                                                |
+ 1:26.17 W     |                                                                                                                help: remove the return type to implicitly return `()`
+ 1:26.18 W     |
+ 1:26.18 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.18 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.18 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.18 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:248:129
+ 1:26.18 W     |
+ 1:26.18 W 248 | ...onst ::nsstring::nsACString) -> libc::c_void,
+ 1:26.18 W     |                                ----^^^^^^^^^^^^
+ 1:26.18 W     |                                |
+ 1:26.18 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.18 W     |
+ 1:26.18 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.18 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.18 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.18 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:263:73
+ 1:26.18 W     |
+ 1:26.18 W 263 |     pub GetData: unsafe extern "system" fn (this: *const nsIGfxInfo) -> libc::c_void,
+ 1:26.18 W     |                                                                     ----^^^^^^^^^^^^
+ 1:26.18 W     |                                                                     |
+ 1:26.18 W     |                                                                     help: remove the return type to implicitly return `()`
+ 1:26.18 W     |
+ 1:26.18 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.18 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.18 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.18 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:703:80
+ 1:26.18 W     |
+ 1:26.18 W 703 |     pub unsafe fn LogFailure(&self, failure: *const ::nsstring::nsACString) -> libc::c_void {
+ 1:26.18 W     |                                                                            ----^^^^^^^^^^^^
+ 1:26.18 W     |                                                                            |
+ 1:26.18 W     |                                                                            help: remove the return type to implicitly return `()`
+ 1:26.18 W     |
+ 1:26.18 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.18 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.18 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.19 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:711:93
+ 1:26.19 W     |
+ 1:26.19 W 711 |     pub unsafe fn SetCodecSupportInfo(&self, supportInfo: *const ::nsstring::nsACString) -> libc::c_void {
+ 1:26.19 W     |                                                                                         ----^^^^^^^^^^^^
+ 1:26.19 W     |                                                                                         |
+ 1:26.19 W     |                                                                                         help: remove the return type to implicitly return `()`
+ 1:26.19 W     |
+ 1:26.19 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.19 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.19 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.19 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIGfxInfo.rs:759:39
+ 1:26.19 W     |
+ 1:26.19 W 759 |     pub unsafe fn GetData(&self, ) -> libc::c_void {
+ 1:26.19 W     |                                   ----^^^^^^^^^^^^
+ 1:26.19 W     |                                   |
+ 1:26.19 W     |                                   help: remove the return type to implicitly return `()`
+ 1:26.19 W     |
+ 1:26.19 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.19 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.19 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.19 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIObjectInputStream.rs:141:127
+ 1:26.19 W     |
+ 1:26.19 W 141 | ... libc::c_char, aLength: u32) -> libc::c_void,
+ 1:26.19 W     |                                ----^^^^^^^^^^^^
+ 1:26.19 W     |                                |
+ 1:26.19 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.19 W     |
+ 1:26.19 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.19 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.19 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.19 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIObjectInputStream.rs:190:81
+ 1:26.19 W     |
+ 1:26.19 W 190 |     pub unsafe fn PutBuffer(&self, aBuffer: *mut libc::c_char, aLength: u32) -> libc::c_void {
+ 1:26.19 W     |                                                                             ----^^^^^^^^^^^^
+ 1:26.19 W     |                                                                             |
+ 1:26.19 W     |                                                                             help: remove the return type to implicitly return `()`
+ 1:26.19 W     |
+ 1:26.19 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.19 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.19 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.19 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIObjectOutputStream.rs:146:128
+ 1:26.19 W     |
+ 1:26.19 W 146 | ... libc::c_char, aLength: u32) -> libc::c_void,
+ 1:26.19 W     |                                ----^^^^^^^^^^^^
+ 1:26.19 W     |                                |
+ 1:26.19 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.19 W     |
+ 1:26.19 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.19 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.19 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.19 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIObjectOutputStream.rs:239:81
+ 1:26.19 W     |
+ 1:26.19 W 239 |     pub unsafe fn PutBuffer(&self, aBuffer: *mut libc::c_char, aLength: u32) -> libc::c_void {
+ 1:26.19 W     |                                                                             ----^^^^^^^^^^^^
+ 1:26.19 W     |                                                                             |
+ 1:26.19 W     |                                                                             help: remove the return type to implicitly return `()`
+ 1:26.19 W     |
+ 1:26.19 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.19 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.19 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.19 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:388:160
+ 1:26.19 W     |
+ 1:26.19 W 388 | ...ild: *mut *const nsISHEntry) -> libc::c_void,
+ 1:26.19 W     |                                ----^^^^^^^^^^^^
+ 1:26.19 W     |                                |
+ 1:26.19 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.19 W     |
+ 1:26.19 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.19 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.19 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.19 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:394:76
+ 1:26.19 W     |
+ 1:26.19 W 394 |     pub ClearEntry: unsafe extern "system" fn (this: *const nsISHEntry) -> libc::c_void,
+ 1:26.19 W     |                                                                        ----^^^^^^^^^^^^
+ 1:26.19 W     |                                                                        |
+ 1:26.19 W     |                                                                        help: remove the return type to implicitly return `()`
+ 1:26.20 W     |
+ 1:26.20 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.20 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:404:184
+ 1:26.20 W     |
+ 1:26.20 W 404 | ...noreBC: *const libc::c_void) -> libc::c_void,
+ 1:26.20 W     |                                ----^^^^^^^^^^^^
+ 1:26.20 W     |                                |
+ 1:26.20 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.20 W     |
+ 1:26.20 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.20 W     --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:1732:124
+ 1:26.20 W      |
+ 1:26.20 W 1732 | ...ild: *mut *const nsISHEntry) -> libc::c_void {
+ 1:26.20 W      |                                ----^^^^^^^^^^^^
+ 1:26.20 W      |                                |
+ 1:26.20 W      |                                help: remove the return type to implicitly return `()`
+ 1:26.20 W      |
+ 1:26.20 W      = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W      = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.20 W     --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:1762:42
+ 1:26.20 W      |
+ 1:26.20 W 1762 |     pub unsafe fn ClearEntry(&self, ) -> libc::c_void {
+ 1:26.20 W      |                                      ----^^^^^^^^^^^^
+ 1:26.20 W      |                                      |
+ 1:26.20 W      |                                      help: remove the return type to implicitly return `()`
+ 1:26.20 W      |
+ 1:26.20 W      = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W      = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.20 W     --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHEntry.rs:1803:148
+ 1:26.20 W      |
+ 1:26.20 W 1803 | ...noreBC: *const libc::c_void) -> libc::c_void {
+ 1:26.20 W      |                                ----^^^^^^^^^^^^
+ 1:26.20 W      |                                |
+ 1:26.20 W      |                                help: remove the return type to implicitly return `()`
+ 1:26.20 W      |
+ 1:26.20 W      = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W      = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.20 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:149:114
+ 1:26.20 W     |
+ 1:26.20 W 149 |     pub InternalSetRequestedIndex: unsafe extern "system" fn (this: *const nsISHistory, aRequestedIndex: i32) -> libc::c_void,
+ 1:26.20 W     |                                                                                                              ----^^^^^^^^^^^^
+ 1:26.20 W     |                                                                                                              |
+ 1:26.20 W     |                                                                                                              help: remove the return type to implicitly return `()`
+ 1:26.20 W     |
+ 1:26.20 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.20 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:212:123
+ 1:26.20 W     |
+ 1:26.20 W 212 | ..., aEntry: *const nsISHEntry) -> libc::c_void,
+ 1:26.20 W     |                                ----^^^^^^^^^^^^
+ 1:26.20 W     |                                |
+ 1:26.20 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.20 W     |
+ 1:26.20 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.20 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:219:112
+ 1:26.20 W     |
+ 1:26.20 W 219 |     pub RemoveFrameEntries: unsafe extern "system" fn (this: *const nsISHistory, aEntry: *const nsISHEntry) -> libc::c_void,
+ 1:26.20 W     |                                                                                                            ----^^^^^^^^^^^^
+ 1:26.20 W     |                                                                                                            |
+ 1:26.20 W     |                                                                                                            help: remove the return type to implicitly return `()`
+ 1:26.20 W     |
+ 1:26.20 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.20 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:225:123
+ 1:26.20 W     |
+ 1:26.20 W 225 | ..., aEntry: *const nsISHEntry) -> libc::c_void,
+ 1:26.20 W     |                                ----^^^^^^^^^^^^
+ 1:26.20 W     |                                |
+ 1:26.20 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.20 W     |
+ 1:26.20 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.20 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.20 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.21 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:228:149
+ 1:26.21 W     |
+ 1:26.21 W 228 | ... nsISHEntry, aReplace: bool) -> libc::c_void,
+ 1:26.21 W     |                                ----^^^^^^^^^^^^
+ 1:26.21 W     |                                |
+ 1:26.21 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.21 W     |
+ 1:26.21 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.21 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.21 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.21 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:329:77
+ 1:26.21 W     |
+ 1:26.21 W 329 |     pub unsafe fn InternalSetRequestedIndex(&self, aRequestedIndex: i32) -> libc::c_void {
+ 1:26.21 W     |                                                                         ----^^^^^^^^^^^^
+ 1:26.21 W     |                                                                         |
+ 1:26.21 W     |                                                                         help: remove the return type to implicitly return `()`
+ 1:26.21 W     |
+ 1:26.21 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.21 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.21 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.21 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:666:86
+ 1:26.21 W     |
+ 1:26.21 W 666 |     pub unsafe fn RemoveDynEntries(&self, aIndex: i32, aEntry: *const nsISHEntry) -> libc::c_void {
+ 1:26.21 W     |                                                                                  ----^^^^^^^^^^^^
+ 1:26.21 W     |                                                                                  |
+ 1:26.21 W     |                                                                                  help: remove the return type to implicitly return `()`
+ 1:26.21 W     |
+ 1:26.21 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.21 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.21 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.21 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:695:75
+ 1:26.21 W     |
+ 1:26.21 W 695 |     pub unsafe fn RemoveFrameEntries(&self, aEntry: *const nsISHEntry) -> libc::c_void {
+ 1:26.21 W     |                                                                       ----^^^^^^^^^^^^
+ 1:26.21 W     |                                                                       |
+ 1:26.21 W     |                                                                       help: remove the return type to implicitly return `()`
+ 1:26.21 W     |
+ 1:26.21 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.21 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.21 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.21 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:711:86
+ 1:26.21 W     |
+ 1:26.21 W 711 |     pub unsafe fn EnsureCorrectEntryAtCurrIndex(&self, aEntry: *const nsISHEntry) -> libc::c_void {
+ 1:26.21 W     |                                                                                  ----^^^^^^^^^^^^
+ 1:26.21 W     |                                                                                  |
+ 1:26.21 W     |                                                                                  help: remove the return type to implicitly return `()`
+ 1:26.21 W     |
+ 1:26.21 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.21 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.21 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.21 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsISHistory.rs:719:112
+ 1:26.21 W     |
+ 1:26.21 W 719 |     pub unsafe fn EvictDocumentViewersOrReplaceEntry(&self, aNewSHEntry: *const nsISHEntry, aReplace: bool) -> libc::c_void {
+ 1:26.21 W     |                                                                                                            ----^^^^^^^^^^^^
+ 1:26.21 W     |                                                                                                            |
+ 1:26.21 W     |                                                                                                            help: remove the return type to implicitly return `()`
+ 1:26.21 W     |
+ 1:26.21 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.21 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.21 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.21 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIStreamBufferAccess.rs:139:128
+ 1:26.21 W     |
+ 1:26.21 W 139 | ... libc::c_char, aLength: u32) -> libc::c_void,
+ 1:26.22 W     |                                ----^^^^^^^^^^^^
+ 1:26.22 W     |                                |
+ 1:26.22 W     |                                help: remove the return type to implicitly return `()`
+ 1:26.22 W     |
+ 1:26.22 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.22 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.22 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.22 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIStreamBufferAccess.rs:213:81
+ 1:26.22 W     |
+ 1:26.22 W 213 |     pub unsafe fn PutBuffer(&self, aBuffer: *mut libc::c_char, aLength: u32) -> libc::c_void {
+ 1:26.22 W     |                                                                             ----^^^^^^^^^^^^
+ 1:26.22 W     |                                                                             |
+ 1:26.22 W     |                                                                             help: remove the return type to implicitly return `()`
+ 1:26.22 W     |
+ 1:26.22 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.22 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.22 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.22 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsITaskbarTabPreview.rs:142:94
+ 1:26.22 W     |
+ 1:26.22 W 142 |     pub EnsureRegistration: unsafe extern "system" fn (this: *const nsITaskbarTabPreview) -> libc::c_void,
+ 1:26.22 W     |                                                                                          ----^^^^^^^^^^^^
+ 1:26.22 W     |                                                                                          |
+ 1:26.22 W     |                                                                                          help: remove the return type to implicitly return `()`
+ 1:26.22 W     |
+ 1:26.22 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.22 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.22 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.22 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsITaskbarTabPreview.rs:257:50
+ 1:26.22 W     |
+ 1:26.22 W 257 |     pub unsafe fn EnsureRegistration(&self, ) -> libc::c_void {
+ 1:26.22 W     |                                              ----^^^^^^^^^^^^
+ 1:26.22 W     |                                              |
+ 1:26.22 W     |                                              help: remove the return type to implicitly return `()`
+ 1:26.22 W     |
+ 1:26.22 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.22 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.22 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.22 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:205:83
+ 1:26.22 W     |
+ 1:26.22 W 205 |     pub EnableWritePoll: unsafe extern "system" fn (this: *const nsIUDPSocket) -> libc::c_void,
+ 1:26.22 W     |                                                                               ----^^^^^^^^^^^^
+ 1:26.22 W     |                                                                               |
+ 1:26.22 W     |                                                                               help: remove the return type to implicitly return `()`
+ 1:26.22 W     |
+ 1:26.22 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.22 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.22 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.22 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:211:95
+ 1:26.22 W     |
+ 1:26.22 W 211 |     pub AddOutputBytes: unsafe extern "system" fn (this: *const nsIUDPSocket, aBytes: u32) -> libc::c_void,
+ 1:26.22 W     |                                                                                           ----^^^^^^^^^^^^
+ 1:26.22 W     |                                                                                           |
+ 1:26.22 W     |                                                                                           help: remove the return type to implicitly return `()`
+ 1:26.22 W     |
+ 1:26.22 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.22 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.22 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.22 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:214:94
+ 1:26.22 W     |
+ 1:26.22 W 214 |     pub AddInputBytes: unsafe extern "system" fn (this: *const nsIUDPSocket, aBytes: u32) -> libc::c_void,
+ 1:26.22 W     |                                                                                          ----^^^^^^^^^^^^
+ 1:26.22 W     |                                                                                          |
+ 1:26.22 W     |                                                                                          help: remove the return type to implicitly return `()`
+ 1:26.22 W     |
+ 1:26.22 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.23 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.23 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.23 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:217:91
+ 1:26.23 W     |
+ 1:26.23 W 217 |     pub MarkAsTRRServiceChannel: unsafe extern "system" fn (this: *const nsIUDPSocket) -> libc::c_void,
+ 1:26.23 W     |                                                                                       ----^^^^^^^^^^^^
+ 1:26.23 W     |                                                                                       |
+ 1:26.23 W     |                                                                                       help: remove the return type to implicitly return `()`
+ 1:26.23 W     |
+ 1:26.23 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.23 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.23 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.23 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:637:47
+ 1:26.23 W     |
+ 1:26.23 W 637 |     pub unsafe fn EnableWritePoll(&self, ) -> libc::c_void {
+ 1:26.23 W     |                                           ----^^^^^^^^^^^^
+ 1:26.23 W     |                                           |
+ 1:26.23 W     |                                           help: remove the return type to implicitly return `()`
+ 1:26.23 W     |
+ 1:26.23 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.23 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.23 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.23 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:674:57
+ 1:26.23 W     |
+ 1:26.23 W 674 |     pub unsafe fn AddOutputBytes(&self, aBytes: u32) -> libc::c_void {
+ 1:26.23 W     |                                                     ----^^^^^^^^^^^^
+ 1:26.23 W     |                                                     |
+ 1:26.23 W     |                                                     help: remove the return type to implicitly return `()`
+ 1:26.23 W     |
+ 1:26.23 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.23 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.23 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.23 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:695:56
+ 1:26.23 W     |
+ 1:26.23 W 695 |     pub unsafe fn AddInputBytes(&self, aBytes: u32) -> libc::c_void {
+ 1:26.23 W     |                                                    ----^^^^^^^^^^^^
+ 1:26.23 W     |                                                    |
+ 1:26.23 W     |                                                    help: remove the return type to implicitly return `()`
+ 1:26.23 W     |
+ 1:26.23 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.23 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.23 W warning: declarations returning `c_void` are not compatible with C functions returning `void`
+ 1:26.23 W    --> C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/xpcrs/rt/nsIUDPSocket.rs:712:55
+ 1:26.23 W     |
+ 1:26.23 W 712 |     pub unsafe fn MarkAsTRRServiceChannel(&self, ) -> libc::c_void {
+ 1:26.23 W     |                                                   ----^^^^^^^^^^^^
+ 1:26.23 W     |                                                   |
+ 1:26.23 W     |                                                   help: remove the return type to implicitly return `()`
+ 1:26.23 W     |
+ 1:26.23 W     = help: returning `()` in Rust is equivalent to returning `void` in C
+ 1:26.23 W     = note: `c_void` is only used through raw pointers for compatibility with `void` pointers
+ 1:26.23 W warning: `xpcom` (lib) generated 50 warnings
+ 1:26.23 W warning: unused import: `marker::options::*`
+ 1:26.23 W   --> tools\profiler\rust-api\src\lib.rs:20:9
+ 1:26.23 W    |
+ 1:26.23 W 20 | pub use marker::options::*;
+ 1:26.23 W    |         ^^^^^^^^^^^^^^^^^^
+ 1:26.23 W    |
+ 1:26.23 W    = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+ 1:26.23 W warning: `gecko-profiler` (lib) generated 1 warning (run `cargo fix --lib -p gecko-profiler` to apply 1 suggestion)
+ 1:26.37    Compiling gkrust v0.1.0 (C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\toolkit\library\rust)
+ 2:06.38 gfx/ots/src
+ 2:24.27 gfx/skia
+ 2:26.17 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\gfx\ots\src\Unified_cpp_gfx_ots_src2.cpp:74:
+ 2:32.89 W 2 warnings generated.
+ 2:33.29 gfx/src
+ 3:23.56 gfx/thebes
+ 3:34.62 gfx/vr/service/openvr
+ 3:52.91 gfx/vr/service
+ 5:20.75 gfx/vr
+ 7:21.04 gfx/webrender_bindings
+ 7:28.66 gfx/ycbcr
+ 7:58.15 hal
+ 8:00.58 image/build
+ 8:14.65 image/decoders/icon
+ 8:22.59 image/decoders/icon/win
+ 8:23.41 image/decoders
+ 8:46.61 image/encoders/bmp
+ 8:49.50 image/encoders/ico
+ 8:50.64 image/encoders/jpeg
+ 8:52.17 image/encoders/png
+ 8:53.27 image/encoders/webp
+ 8:54.59 image/remote
+ 8:57.08 image
+ 9:09.11 intl/components/src/calendar
+ 9:38.71 intl/components
+ 9:42.08 intl/hyphenation/glue
+ 9:55.25 intl/l10n
+10:05.88 intl/locale
+10:07.21 intl/locale/windows
+10:16.43 intl/lwbrk
+10:22.09 intl/strres
+10:23.37 intl/uconv
+10:26.87 intl/unicharutil/util
+10:28.79 ipc/chromium
+10:36.53 ipc/glue
+10:59.23 ipc/glue/test/utility_process_xpcom
+11:18.67 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\ipc\chromium\Unified_cpp_ipc_chromium0.cpp:101:
+11:24.67 W 2 warnings generated.
+11:24.98 ipc/ipdl
+11:32.41 ipc/mscom
+11:50.72 ipc/testshell
+12:09.50 js/loader
+12:35.61 config/external/ffi/win64_intel.asm.stub
+12:36.91 C:/PROGRA~1/LLVM/bin/clang-cl.exe -E -fms-compatibility-version=19.51 -EP -TC -DNDEBUG=1 -DTRIMMED=1 -DTARGET=X86_WIN64 -DX86_WIN64 -DFFI_NO_RAW_API -DFFI_STATIC_BUILD -DHAVE_AS_X86_PCREL -DEXPORT_JS_API -DMOZ_HAS_MOZGLUE -DMOZ_SUPPORT_LEAKCHECKING -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/js/src/ctypes/libffi -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/js/src/ctypes/libffi/include -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/js/src/ctypes/libffi/include -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/js/src/ctypes/libffi/src/x86 ../../../../js/src/ctypes/libffi/src/x86/win64_intel.S
+12:37.32 js/src/builtin/intl
+13:00.25 js/src/builtin
+13:13.25 js/src/builtin/temporal
+13:30.06 js/src/ctypes
+14:09.76 js/src/debugger
+14:17.17 js/src/ds
+14:21.85 js/src/frontend
+14:37.43 js/src/gc/StatsPhasesGenerated.inc.stub
+14:53.76 js/src/intgemm
+14:54.07 js/src/irregexp
+15:24.41 js/src/jit
+16:44.47 js/src/proxy
+16:48.18 js/src
+17:08.45 js/src/threading
+17:18.03 js/src/util
+17:32.70 js/src/vm
+18:03.21 js/src/wasm
+21:08.57 js/src/xsum
+21:12.77 modules/fdlibm/src
+21:22.98 mozglue/static
+21:29.92 js/xpconnect/loader
+21:49.81 js/xpconnect/src
+22:11.72 js/xpconnect/tests/components/native
+22:18.82 js/xpconnect/wrappers
+22:28.36 layout/base
+23:02.92 layout/build
+23:22.79 layout/forms
+23:33.43 layout/generic
+23:58.75 layout/inspector
+24:29.29 layout/ipc
+24:50.32 layout/mathml
+25:05.36 layout/painting
+25:14.05 layout/printing
+25:29.00 layout/style/nsComputedDOMStyleGenerated.inc.stub
+25:29.01 layout/style/nsCSSPropsGenerated.inc.stub
+25:31.12 layout/style/typedom
+25:49.99 layout/svg
+26:12.96 layout/tables
+26:14.87 layout
+26:24.05 layout/xul
+26:35.87 layout/xul/tree
+26:44.28 media/libcubeb/src
+26:45.84 W 6 warnings generated.
+26:47.51 W 1 warning generated.
+26:49.25 W 1 warning generated.
+26:54.93 media/libdav1d/asm
+26:55.58 W 1 warning generated.
+26:56.13 media/libdav1d/16bd_cdef_apply_tmpl.c.stub
+26:56.14 media/libdav1d/8bd_cdef_apply_tmpl.c.stub
+26:56.88 media/libdav1d/16bd_cdef_tmpl.c.stub
+26:57.51 media/libdav1d/8bd_cdef_tmpl.c.stub
+26:58.10 media/libdav1d/16bd_fg_apply_tmpl.c.stub
+26:58.69 media/libdav1d/8bd_fg_apply_tmpl.c.stub
+26:59.27 media/libdav1d/16bd_filmgrain_tmpl.c.stub
+26:59.88 media/libdav1d/8bd_filmgrain_tmpl.c.stub
+27:00.08 media/libjpeg/src/wrapper
+27:00.48 media/libdav1d/16bd_ipred_prepare_tmpl.c.stub
+27:01.09 media/libdav1d/8bd_ipred_prepare_tmpl.c.stub
+27:01.69 media/libdav1d/16bd_ipred_tmpl.c.stub
+27:02.28 media/libdav1d/8bd_ipred_tmpl.c.stub
+27:02.88 media/libdav1d/16bd_itx_tmpl.c.stub
+27:03.46 media/libdav1d/8bd_itx_tmpl.c.stub
+27:04.05 media/libdav1d/16bd_lf_apply_tmpl.c.stub
+27:04.67 media/libdav1d/8bd_lf_apply_tmpl.c.stub
+27:05.29 media/libdav1d/16bd_loopfilter_tmpl.c.stub
+27:05.90 media/libdav1d/8bd_loopfilter_tmpl.c.stub
+27:06.50 media/libdav1d/16bd_looprestoration_tmpl.c.stub
+27:07.10 media/libdav1d/8bd_looprestoration_tmpl.c.stub
+27:07.70 media/libdav1d/16bd_lr_apply_tmpl.c.stub
+27:08.29 media/libdav1d/8bd_lr_apply_tmpl.c.stub
+27:08.89 media/libdav1d/16bd_mc_tmpl.c.stub
+27:09.48 media/libdav1d/8bd_mc_tmpl.c.stub
+27:10.07 media/libdav1d/16bd_recon_tmpl.c.stub
+27:10.67 media/libdav1d/8bd_recon_tmpl.c.stub
+27:12.20 media/libjpeg
+27:26.05 media/libmkv
+27:26.58 W 1 warning generated.
+27:28.70 media/libnestegg/src
+27:28.83 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\media\libnestegg\src\Unified_c_media_libnestegg_src0.c:2:
+27:29.46 W 1 warning generated.
+27:29.74 media/libpng
+27:30.62 media/libspeex_resampler/src
+27:31.03 W 6 warnings generated.
+27:31.27 W 4 warnings generated.
+27:31.62 W 1 warning generated.
+27:33.32 media/libwebp/sharpyuv
+27:36.25 W 15 warnings generated.
+27:41.36 media/libwebp/src/dec
+27:48.88 media/libwebp/src/demux
+27:54.25 media/libwebp/src/dsp
+27:59.48 media/libwebp/src/enc
+28:21.05 media/libwebp/src/moz
+28:21.97 media/libwebp/src/utils
+28:23.51 media/libyuv/libyuv
+28:31.71 media/psshparser
+28:35.66 modules/brotli
+28:37.26 modules/libjar
+28:55.16 modules/libjar/zipwriter
+29:02.11 modules/libpref
+29:03.92 modules/woff2
+29:05.48 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\modules\woff2\Unified_cpp_modules_woff20.cpp:38:
+29:07.67 W 1 warning generated.
+29:08.28 netwerk/base/http-sfv
+29:13.53 netwerk/base/mozurl
+29:17.37 netwerk/base/ascii_pac_utils.inc.stub
+29:17.60 netwerk/base/urlpattern_glue
+29:18.40 netwerk/build
+29:26.37 netwerk/cache2
+29:36.88 netwerk/cookie
+30:08.80 netwerk/dns/etld_data.inc.stub
+30:10.46 netwerk/ipc
+30:16.75 netwerk/mime
+30:24.88 netwerk/protocol/about
+31:05.21 netwerk/protocol/data
+31:10.44 netwerk/protocol/file
+31:27.14 netwerk/protocol/http/happy_eyeballs_glue
+31:30.02 netwerk/protocol/http
+31:43.86 netwerk/protocol/res
+31:55.55 netwerk/protocol/viewsource
+32:27.38 netwerk/protocol/websocket
+32:59.19 netwerk/protocol/webtransport
+33:42.70 netwerk/sctp/datachannel
+33:52.01 netwerk/sctp/src
+33:53.34 W 12 warnings generated.
+33:53.93 W 1 warning generated.
+33:54.52 W 1 warning generated.
+34:08.51 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\netwerk\sctp\src\Unified_c_netwerk_sctp_src1.c:2:
+34:09.28 W 1 warning generated.
+34:15.72 netwerk/socket/neqo_glue
+34:16.04 netwerk/socket
+34:21.48 netwerk/streamconv/converters
+34:26.12 netwerk/streamconv
+34:31.26 netwerk/system
+34:33.20 netwerk/system/win32
+34:34.88 netwerk/url-classifier
+34:41.71 netwerk/wifi
+34:48.32 other-licenses/snappy
+34:50.69 parser/expat
+34:53.55 parser/html
+35:14.92 parser/htmlaccel
+35:15.53 parser/htmlparser
+35:20.91 parser/prototype
+35:29.46 security/certverifier
+35:30.64 security/ct
+35:35.08 security/lockstore
+35:38.04 security/manager/pki
+35:39.19 security/manager/ssl/nsSTSPreloadListGenerated.inc.stub
+35:39.20 security/manager/ssl/xpcshell.inc.stub
+35:43.11 security/manager/ssl/addons-public.inc.stub
+35:43.98 security/nss/lib/mozpkix
+35:44.06 security/manager/ssl/addons-public-intermediate.inc.stub
+35:45.59 security/sandbox/common
+35:56.45 security/manager/ssl/addons-stage.inc.stub
+35:57.28 security/manager/ssl/addons-stage-intermediate.inc.stub
+35:57.79 security/sandbox/win/src/sandboxbroker
+35:58.13 security/manager/ssl/content-signature-prod.inc.stub
+35:58.99 security/manager/ssl/content-signature-stage.inc.stub
+35:59.82 security/manager/ssl/content-signature-dev.inc.stub
+36:00.53 security/manager/ssl/content-signature-local.inc.stub
+36:02.09 security/sandbox/win/src/sandboxtarget
+36:03.33 services/application-services/components/viaduct-necko
+36:06.27 startupcache
+36:11.10 storage
+36:17.65 third_party/abseil-cpp/absl/base/base_gn
+36:24.66 third_party/abseil-cpp/absl/base/log_severity_gn
+36:26.15 third_party/abseil-cpp/absl/base/malloc_internal_gn
+36:28.41 third_party/abseil-cpp/absl/base/raw_logging_internal_gn
+36:29.17 third_party/abseil-cpp/absl/base/spinlock_wait_gn
+36:30.08 third_party/abseil-cpp/absl/base/strerror_gn
+36:30.30 third_party/abseil-cpp/absl/base/throw_delegate_gn
+36:31.58 third_party/abseil-cpp/absl/base/tracing_internal_gn
+36:31.93 third_party/abseil-cpp/absl/container/hashtablez_sampler_gn
+36:32.20 third_party/abseil-cpp/absl/container/raw_hash_set_gn
+36:33.09 third_party/abseil-cpp/absl/crc/cpu_detect_gn
+36:34.75 third_party/abseil-cpp/absl/crc/crc32c_gn
+36:35.14 third_party/abseil-cpp/absl/crc/crc_cord_state_gn
+36:37.07 third_party/abseil-cpp/absl/crc/crc_internal_gn
+36:37.33 third_party/abseil-cpp/absl/debugging/debugging_internal_gn
+36:37.82 third_party/abseil-cpp/absl/debugging/demangle_internal_gn
+36:37.85 third_party/abseil-cpp/absl/debugging/examine_stack_gn
+36:39.32 third_party/abseil-cpp/absl/debugging/failure_signal_handler_gn
+36:39.99 third_party/abseil-cpp/absl/debugging/leak_check_gn
+36:40.37 third_party/abseil-cpp/absl/debugging/stacktrace_gn
+36:40.72 third_party/abseil-cpp/absl/debugging/symbolize_gn
+36:41.80 third_party/abseil-cpp/absl/hash/city_gn
+36:42.42 third_party/abseil-cpp/absl/hash/hash_gn
+36:43.27 third_party/abseil-cpp/absl/hash/low_level_hash_gn
+36:43.75 third_party/abseil-cpp/absl/log/die_if_null_gn
+36:45.14 third_party/abseil-cpp/absl/log/globals_gn
+36:46.36 third_party/abseil-cpp/absl/log/initialize_gn
+36:47.95 third_party/abseil-cpp/absl/log/internal/check_op_gn
+36:50.46 third_party/abseil-cpp/absl/log/internal/conditions_gn
+36:50.64 third_party/abseil-cpp/absl/log/internal/fnmatch_gn
+36:51.16 third_party/abseil-cpp/absl/log/internal/format_gn
+36:52.78 third_party/abseil-cpp/absl/log/internal/globals_gn
+36:53.13 third_party/abseil-cpp/absl/log/internal/log_message_gn
+36:55.80 third_party/abseil-cpp/absl/log/internal/log_sink_set_gn
+36:56.44 third_party/abseil-cpp/absl/log/internal/nullguard_gn
+36:57.98 third_party/abseil-cpp/absl/log/internal/proto_gn
+36:58.33 third_party/abseil-cpp/absl/log/internal/structured_proto_gn
+37:00.80 third_party/abseil-cpp/absl/log/internal/vlog_config_gn
+37:01.03 third_party/abseil-cpp/absl/log/log_sink_gn
+37:01.31 third_party/abseil-cpp/absl/numeric/int128_gn
+37:04.53 third_party/abseil-cpp/absl/profiling/exponential_biased_gn
+37:05.19 third_party/abseil-cpp/absl/random/distributions_gn
+37:06.16 third_party/abseil-cpp/absl/random/internal/entropy_pool_gn
+37:06.49 third_party/abseil-cpp/absl/random/internal/platform_gn
+37:06.93 third_party/abseil-cpp/absl/random/internal/randen_gn
+37:07.98 third_party/abseil-cpp/absl/random/internal/randen_hwaes_gn
+37:08.93 third_party/abseil-cpp/absl/random/internal/randen_hwaes_impl_gn
+37:08.97 third_party/abseil-cpp/absl/random/internal/randen_slow_gn
+37:09.72 third_party/abseil-cpp/absl/random/internal/seed_material_gn
+37:10.69 third_party/abseil-cpp/absl/random/seed_gen_exception_gn
+37:10.88 third_party/abseil-cpp/absl/random/seed_sequences_gn
+37:12.74 third_party/abseil-cpp/absl/status/status_gn
+37:12.81 third_party/abseil-cpp/absl/status/statusor_gn
+37:14.28 third_party/abseil-cpp/absl/strings/cord_gn
+37:17.65 third_party/abseil-cpp/absl/strings/cord_internal_gn
+37:18.63 third_party/abseil-cpp/absl/strings/cordz_functions_gn
+37:20.53 third_party/abseil-cpp/absl/strings/cordz_handle_gn
+37:20.65 third_party/abseil-cpp/absl/strings/cordz_info_gn
+37:21.86 third_party/abseil-cpp/absl/strings/internal_gn
+37:23.57 third_party/abseil-cpp/absl/strings/str_format_internal_gn
+37:23.99 third_party/abseil-cpp/absl/strings/string_view_gn
+37:24.27 third_party/abseil-cpp/absl/strings/strings_gn
+37:26.66 W 25 warnings generated.
+37:26.87 third_party/abseil-cpp/absl/synchronization/graphcycles_internal_gn
+37:27.62 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\third_party\abseil-cpp\absl\strings\strings_gn\Unified_cpp_strings_strings_gn0.cpp:20:
+37:29.12 third_party/abseil-cpp/absl/synchronization/kernel_timeout_internal_gn
+37:29.24 third_party/abseil-cpp/absl/synchronization/synchronization_gn
+37:30.44 W 1 warning generated.
+37:32.06 third_party/abseil-cpp/absl/time/internal/cctz/civil_time_gn
+37:32.18 third_party/abseil-cpp/absl/time/internal/cctz/time_zone_gn
+37:33.57 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\third_party\abseil-cpp\absl\synchronization\synchronization_gn\Unified_cpp_synchronization_gn0.cpp:83:
+37:34.13 third_party/abseil-cpp/absl/time/time_gn
+37:34.66 W 2 warnings generated.
+37:36.09 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\third_party\abseil-cpp\absl\time\internal\cctz\time_zone_gn\Unified_cpp_cctz_time_zone_gn0.cpp:47:
+37:37.50 third_party/libsrtp/src
+37:39.58 third_party/libwebrtc/api/adaptation/resource_adaptation_api_gn
+37:40.79 third_party/libwebrtc/api/audio/aec3_config_gn
+37:41.44 third_party/libwebrtc/api/audio/aec3_factory_gn
+37:42.72 third_party/libwebrtc/api/audio/audio_frame_api_gn
+37:44.25 third_party/libwebrtc/api/audio/audio_processing_gn
+37:45.45 third_party/libwebrtc/api/audio/audio_processing_statistics_gn
+37:46.32 third_party/libwebrtc/api/audio/builtin_audio_processing_builder_gn
+37:46.60 third_party/libwebrtc/api/audio_codecs/L16/audio_decoder_L16_gn
+37:49.38 third_party/libwebrtc/api/audio_codecs/L16/audio_encoder_L16_gn
+37:49.47 third_party/libwebrtc/api/audio_codecs/audio_codecs_api_gn
+37:52.45 third_party/libwebrtc/api/audio_codecs/builtin_audio_decoder_factory_gn
+37:52.54 W 2 warnings generated.
+37:52.82 third_party/libwebrtc/api/audio_codecs/builtin_audio_encoder_factory_gn
+37:53.12 third_party/libwebrtc/api/audio_codecs/g711/audio_decoder_g711_gn
+37:55.74 third_party/libwebrtc/api/audio_codecs/g711/audio_encoder_g711_gn
+37:56.26 third_party/libwebrtc/api/audio_codecs/g722/audio_decoder_g722_gn
+37:56.31 third_party/libwebrtc/api/audio_codecs/g722/audio_encoder_g722_gn
+37:58.94 third_party/libwebrtc/api/audio_codecs/opus/audio_decoder_multiopus_gn
+37:59.30 third_party/libwebrtc/api/audio_codecs/opus/audio_decoder_opus_gn
+37:59.52 third_party/libwebrtc/api/audio_codecs/opus/audio_encoder_multiopus_gn
+38:02.16 third_party/libwebrtc/api/audio_codecs/opus/audio_encoder_opus_config_gn
+38:02.83 third_party/libwebrtc/api/audio_codecs/opus/audio_encoder_opus_gn
+38:04.60 third_party/libwebrtc/api/audio_codecs/opus_audio_decoder_factory_gn
+38:04.94 third_party/libwebrtc/api/audio_options_api_gn
+38:05.97 third_party/libwebrtc/api/crypto/options_gn
+38:06.98 third_party/libwebrtc/api/environment/deprecated_global_field_trials_gn
+38:07.49 third_party/libwebrtc/api/environment/environment_factory_gn
+38:08.73 third_party/libwebrtc/api/field_trials_registry_gn
+38:09.49 third_party/libwebrtc/api/frame_transformer_factory_gn
+38:09.70 third_party/libwebrtc/api/frame_transformer_interface_gn
+38:11.14 third_party/libwebrtc/api/media_stream_interface_gn
+38:11.91 third_party/libwebrtc/api/neteq/default_neteq_controller_factory_gn
+38:12.60 third_party/libwebrtc/api/neteq/default_neteq_factory_gn
+38:13.59 third_party/libwebrtc/api/neteq/neteq_api_gn
+38:14.91 third_party/libwebrtc/api/neteq/tick_timer_gn
+38:16.06 third_party/libwebrtc/api/priority_gn
+38:16.49 third_party/libwebrtc/api/rtc_error_gn
+38:16.89 third_party/libwebrtc/api/rtc_event_log/rtc_event_log_gn
+38:17.99 third_party/libwebrtc/api/rtp_headers_gn
+38:18.85 third_party/libwebrtc/api/rtp_packet_info_gn
+38:19.17 third_party/libwebrtc/api/rtp_parameters_gn
+38:20.07 third_party/libwebrtc/api/rtp_sender_setparameters_callback_gn
+38:21.94 third_party/libwebrtc/api/task_queue/pending_task_safety_flag_gn
+38:22.72 third_party/libwebrtc/api/task_queue/task_queue_gn
+38:24.00 third_party/libwebrtc/api/transport/bitrate_settings_gn
+38:24.30 third_party/libwebrtc/api/transport/goog_cc_gn
+38:24.62 third_party/libwebrtc/api/transport/network_control_gn
+38:25.13 third_party/libwebrtc/api/transport/rtp/corruption_detection_message_gn
+38:27.07 third_party/libwebrtc/api/transport/rtp/dependency_descriptor_gn
+38:27.44 third_party/libwebrtc/api/transport_api_gn
+38:27.48 third_party/libwebrtc/api/units/data_rate_gn
+38:28.66 third_party/libwebrtc/api/units/data_size_gn
+38:29.44 third_party/libwebrtc/api/units/frequency_gn
+38:29.54 third_party/libwebrtc/api/units/time_delta_gn
+38:30.59 third_party/libwebrtc/api/units/timestamp_gn
+38:31.38 third_party/libwebrtc/api/video/builtin_video_bitrate_allocator_factory_gn
+38:31.44 third_party/libwebrtc/api/video/corruption_detection/corruption_detection_settings_generator_gn
+38:32.58 third_party/libwebrtc/api/video/corruption_detection/frame_instrumentation_data_gn
+38:33.51 third_party/libwebrtc/api/video/corruption_detection/frame_instrumentation_data_reader_gn
+38:33.90 third_party/libwebrtc/api/video/corruption_detection/frame_instrumentation_evaluation_gn
+38:34.19 third_party/libwebrtc/api/video/corruption_detection/frame_instrumentation_generator_factory_gn
+38:36.09 third_party/libwebrtc/api/video/encoded_frame_gn
+38:36.81 third_party/libwebrtc/api/video/encoded_image_gn
+38:37.64 third_party/libwebrtc/api/video/frame_buffer_gn
+38:39.58 third_party/libwebrtc/api/video/video_adaptation_gn
+38:39.68 third_party/libwebrtc/api/video/video_bitrate_allocation_gn
+38:41.69 third_party/libwebrtc/api/video/video_bitrate_allocator_gn
+38:42.10 third_party/libwebrtc/api/video/video_frame_gn
+38:44.80 third_party/libwebrtc/api/video/video_frame_i010_gn
+38:45.23 third_party/libwebrtc/api/video/video_frame_metadata_gn
+38:48.10 third_party/libwebrtc/api/video/video_rtp_headers_gn
+38:49.04 third_party/libwebrtc/api/video_codecs/builtin_video_decoder_factory_gn
+38:49.30 third_party/libwebrtc/api/video_codecs/encoder_speed_controller_factory_gn
+38:50.93 third_party/libwebrtc/api/video_codecs/rtc_software_fallback_wrappers_gn
+38:51.27 third_party/libwebrtc/api/video_codecs/scalability_mode_gn
+38:52.14 third_party/libwebrtc/api/video_codecs/scalability_mode_helper_gn
+38:53.22 third_party/libwebrtc/api/video_codecs/video_codecs_api_gn
+38:54.78 third_party/libwebrtc/api/video_codecs/vp8_temporal_layers_factory_gn
+38:55.61 third_party/libwebrtc/audio/audio_gn
+38:59.18 third_party/libwebrtc/audio/utility/audio_frame_operations_gn
+38:59.30 third_party/libwebrtc/call/adaptation/resource_adaptation_gn
+39:01.84 third_party/libwebrtc/call/bitrate_allocator_gn
+39:02.62 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\third_party\libwebrtc\call\adaptation\resource_adaptation_gn\Unified_cpp_source_adaptation_gn0.cpp:65:
+39:04.58 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\third_party\libwebrtc\audio\audio_gn\Unified_cpp_audio_audio_gn0.cpp:20:
+39:05.40 W 1 warning generated.
+39:05.65 third_party/libwebrtc/call/bitrate_configurator_gn
+39:05.93 third_party/libwebrtc/call/call_gn
+39:07.75 third_party/libwebrtc/call/call_interfaces_gn
+39:12.51 W 1 warning generated.
+39:12.73 third_party/libwebrtc/call/payload_type_picker_gn
+39:12.84 third_party/libwebrtc/call/rtp_interfaces_gn
+39:16.21 third_party/libwebrtc/call/rtp_receiver_gn
+39:16.79 third_party/libwebrtc/call/rtp_sender_gn
+39:18.58 third_party/libwebrtc/call/version_gn
+39:18.89 third_party/libwebrtc/call/video_receive_stream_api_gn
+39:20.19 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\third_party\libwebrtc\call\rtp_receiver_gn\Unified_cpp_rtp_receiver_gn0.cpp:2:
+39:22.06 W 1 warning generated.
+39:22.29 third_party/libwebrtc/call/video_send_stream_api_gn
+39:22.72 third_party/libwebrtc/common_audio/common_audio_avx2_gn
+39:24.64 third_party/libwebrtc/common_audio/common_audio_c_gn
+39:26.75 third_party/libwebrtc/common_audio/common_audio_cc_gn
+39:27.20 third_party/libwebrtc/common_audio/common_audio_gn
+39:27.55 third_party/libwebrtc/common_audio/common_audio_sse2_gn
+39:28.77 third_party/libwebrtc/common_audio/third_party/ooura/fft_size_128_gn
+39:29.46 third_party/libwebrtc/common_audio/third_party/ooura/fft_size_256_gn
+39:29.53 third_party/libwebrtc/common_audio/third_party/spl_sqrt_floor/spl_sqrt_floor_gn
+39:29.86 third_party/libwebrtc/common_video/common_video_gn
+39:30.20 W C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\third_party\libwebrtc\common_audio\common_audio_gn\Unified_cpp_common_audio_gn0.cpp(110,10): warning: the current #pragma pack alignment value is modified in the included file [-Wpragma-pack]
+39:30.20 W   110 | #include "../../../../../third_party/libwebrtc/common_audio/wav_header.cc"
+39:30.20 W       |          ^
+39:30.20 W C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\third_party\libwebrtc\common_audio\wav_header.cc(95,9): note: previous '#pragma pack' directive that modifies alignment is here
+39:30.20 W    95 | #pragma pack(2)
+39:30.20 W       |         ^
+39:30.34 third_party/libwebrtc/common_video/generic_frame_descriptor/generic_frame_descriptor_gn
+39:32.43 W 1 warning generated.
+39:32.52 third_party/libwebrtc/logging/rtc_event_audio_gn
+39:32.65 third_party/libwebrtc/logging/rtc_event_bwe_gn
+39:35.18 third_party/libwebrtc/logging/rtc_event_bwe_update_scream_gn
+39:35.43 third_party/libwebrtc/logging/rtc_event_field_gn
+39:37.49 third_party/libwebrtc/logging/rtc_event_number_encodings_gn
+39:39.05 third_party/libwebrtc/logging/rtc_event_pacing_gn
+39:39.48 third_party/libwebrtc/logging/rtc_event_rtp_rtcp_gn
+39:39.57 third_party/libwebrtc/logging/rtc_event_video_gn
+39:42.31 third_party/libwebrtc/logging/rtc_stream_config_gn
+39:42.70 third_party/libwebrtc/media/adapted_video_track_source_gn
+39:43.25 third_party/libwebrtc/media/codec_gn
+39:45.99 third_party/libwebrtc/media/media_constants_gn
+39:46.34 third_party/libwebrtc/media/rid_description_gn
+39:46.57 third_party/libwebrtc/media/rtc_audio_video_gn
+39:49.10 third_party/libwebrtc/media/rtc_internal_video_codecs_gn
+39:49.55 third_party/libwebrtc/media/rtc_sdp_video_format_utils_gn
+39:50.51 third_party/libwebrtc/media/rtc_simulcast_encoder_adapter_gn
+39:52.33 third_party/libwebrtc/media/video_adapter_gn
+39:52.67 third_party/libwebrtc/media/video_broadcaster_gn
+39:55.23 third_party/libwebrtc/media/video_common_gn
+39:55.57 third_party/libwebrtc/media/video_source_base_gn
+39:56.71 third_party/libwebrtc/modules/async_audio_processing/async_audio_processing_gn
+39:57.17 third_party/libwebrtc/modules/audio_coding/audio_coding_gn
+39:58.12 W In file included from C:\Users\Zachary\Documents\Project\browser-dev\Floorp-Runtime\obj-x86_64-pc-windows-msvc\third_party\libwebrtc\media\video_source_base_gn\Unified_cpp_video_source_base_gn0.cpp:2:
+39:58.56 W 1 warning generated.
+39:58.78 third_party/libwebrtc/modules/audio_coding/audio_coding_opus_common_gn
+39:59.44 third_party/libwebrtc/modules/audio_coding/audio_encoder_cng_gn
+40:00.78 third_party/libwebrtc/modules/audio_coding/audio_network_adaptor_config_gn
+40:01.79 third_party/libwebrtc/modules/audio_coding/audio_network_adaptor_gn
+40:01.99 third_party/libwebrtc/modules/audio_coding/g711_c_gn
+40:02.05 third_party/libwebrtc/modules/audio_coding/g711_gn
+40:02.40 third_party/libwebrtc/modules/audio_coding/g722_c_gn
+40:02.76 third_party/libwebrtc/modules/audio_coding/g722_gn
+40:04.59 third_party/libwebrtc/modules/audio_coding/isac_vad_gn
+40:05.35 third_party/libwebrtc/modules/audio_coding/legacy_encoded_audio_frame_gn
+40:05.58 third_party/libwebrtc/modules/audio_coding/neteq_gn
+40:07.76 third_party/libwebrtc/modules/audio_coding/pcm16b_c_gn
+40:08.08 third_party/libwebrtc/modules/audio_coding/pcm16b_gn
+40:11.08 third_party/libwebrtc/modules/audio_coding/red_gn
+40:13.96 third_party/libwebrtc/modules/audio_coding/webrtc_cng_gn
+40:14.13 third_party/libwebrtc/modules/audio_coding/webrtc_multiopus_gn
+40:15.89 third_party/libwebrtc/modules/audio_coding/webrtc_opus_gn
+40:16.41 third_party/libwebrtc/modules/audio_coding/webrtc_opus_wrapper_gn
+40:18.25 third_party/libwebrtc/modules/audio_mixer/audio_frame_manipulator_gn
+40:18.57 third_party/libwebrtc/modules/audio_mixer/audio_mixer_impl_gn
+40:20.65 third_party/libwebrtc/modules/audio_processing/aec3/aec3_avx2_gn
+40:21.02 third_party/libwebrtc/modules/audio_processing/aec3/aec3_gn
+40:27.24 third_party/libwebrtc/modules/audio_processing/aec_dump/null_aec_dump_factory_gn
+40:29.68 third_party/libwebrtc/modules/audio_processing/aec_dump_interface_gn
+40:30.43 third_party/libwebrtc/modules/audio_processing/agc/agc_gn
+40:32.13 third_party/libwebrtc/modules/audio_processing/agc/legacy_agc_gn
+40:34.17 third_party/libwebrtc/modules/audio_processing/agc/level_estimation_gn
+40:34.42 third_party/libwebrtc/modules/audio_processing/agc2/adaptive_digital_gain_controller_gn
+40:35.72 third_party/libwebrtc/modules/audio_processing/agc2/biquad_filter_gn
+40:36.17 third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor_gn
+40:37.39 third_party/libwebrtc/modules/audio_processing/agc2/cpu_features_gn
+40:37.59 third_party/libwebrtc/modules/audio_processing/agc2/fixed_digital_gn
+40:39.31 third_party/libwebrtc/modules/audio_processing/agc2/gain_applier_gn
+40:39.47 third_party/libwebrtc/modules/audio_processing/agc2/input_volume_controller_gn
+40:40.86 third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter_gn
+40:41.57 third_party/libwebrtc/modules/audio_processing/agc2/noise_level_estimator_gn
+40:42.67 third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_vad_auto_correlation_gn
+40:43.66 third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_vad_gn
+40:44.52 third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_vad_layers_gn
+40:44.93 third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_vad_lp_residual_gn
+40:45.89 third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_vad_pitch_gn
+40:46.97 third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_vad_spectral_features_gn
+40:47.03 third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/vector_math_avx2_gn
+40:48.25 third_party/libwebrtc/modules/audio_processing/agc2/saturation_protector_gn
+40:48.96 third_party/libwebrtc/modules/audio_processing/agc2/speech_level_estimator_gn
+40:50.81 third_party/libwebrtc/modules/audio_processing/agc2/vad_wrapper_gn
+40:51.58 third_party/libwebrtc/modules/audio_processing/apm_logging_gn
+40:52.12 third_party/libwebrtc/modules/audio_processing/audio_buffer_gn
+40:53.34 third_party/libwebrtc/modules/audio_processing/audio_frame_proxies_gn
+40:54.57 third_party/libwebrtc/modules/audio_processing/audio_processing_gn
+40:56.13 third_party/libwebrtc/modules/audio_processing/capture_levels_adjuster/capture_levels_adjuster_gn
+40:58.43 third_party/libwebrtc/modules/audio_processing/capture_mixer/capture_mixer_gn
+40:58.81 third_party/libwebrtc/modules/audio_processing/gain_controller2_gn
+41:00.89 third_party/libwebrtc/modules/audio_processing/high_pass_filter_gn
+41:02.65 third_party/libwebrtc/modules/audio_processing/ns/ns_gn
+41:03.38 third_party/libwebrtc/modules/audio_processing/post_filter_gn
+41:04.22 third_party/libwebrtc/modules/audio_processing/rms_level_gn
+41:06.19 third_party/libwebrtc/modules/audio_processing/utility/cascaded_biquad_filter_gn
+41:06.46 third_party/libwebrtc/modules/audio_processing/utility/pffft_wrapper_gn
+41:06.82 third_party/libwebrtc/modules/audio_processing/vad/vad_gn
+41:08.74 third_party/libwebrtc/modules/congestion_controller/congestion_controller_gn
+41:08.78 third_party/libwebrtc/modules/congestion_controller/goog_cc/alr_detector_gn
+41:10.09 third_party/libwebrtc/modules/congestion_controller/goog_cc/delay_based_bwe_gn
+41:12.44 third_party/libwebrtc/modules/congestion_controller/goog_cc/estimators_gn
+41:13.74 third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_gn
+41:14.00 third_party/libwebrtc/modules/congestion_controller/goog_cc/link_capacity_estimator_gn
+41:16.27 third_party/libwebrtc/modules/congestion_controller/goog_cc/loss_based_bwe_v2_gn
+41:17.28 third_party/libwebrtc/modules/congestion_controller/goog_cc/probe_controller_gn
+41:17.96 third_party/libwebrtc/modules/congestion_controller/goog_cc/pushback_controller_gn
+41:20.23 third_party/libwebrtc/modules/congestion_controller/goog_cc/send_side_bwe_gn
+41:21.00 third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller_gn
+41:21.29 third_party/libwebrtc/modules/congestion_controller/rtp/control_handler_gn
+41:23.59 third_party/libwebrtc/modules/congestion_controller/rtp/transport_feedback_gn
+41:24.32 third_party/libwebrtc/modules/congestion_controller/scream/delay_based_congestion_control_gn
+41:25.37 third_party/libwebrtc/modules/congestion_controller/scream/scream_network_controller_gn
+41:26.93 third_party/libwebrtc/modules/congestion_controller/scream/scream_v2_gn
+41:28.50 third_party/libwebrtc/modules/congestion_controller/scream/scream_v2_parameters_gn
+41:29.49 third_party/libwebrtc/modules/desktop_capture/desktop_capture_differ_sse2_gn
+41:30.39 third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn
+41:30.40 third_party/libwebrtc/modules/desktop_capture/primitives_gn
+41:33.63 third_party/libwebrtc/modules/pacing/interval_budget_gn
+41:34.52 third_party/libwebrtc/modules/pacing/pacing_gn
+41:35.51 W LLVM ERROR: out of memory
+41:35.51 W Allocation failed
+41:35.52 W PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace, preprocessed source, and associated run script.
+41:35.52 W Stack dump:
+41:35.53 W 0.	Program arguments: C:/PROGRA~1/LLVM/bin/clang-cl.exe -fms-compatibility-version=19.51 -std:c++20 -FoUnified_cpp_desktop_capture_gn0.obj -c -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/stl_wrappers -D_MSVC_STL_HARDENING=1 -guard:cf -DNDEBUG -DTRIMMED=1 -DABSL_ALLOCATOR_NOTHROW=1 -DPROTOBUF_ENABLE_DEBUG_LOGGING_MAY_LEAK_PII=0 -DRTC_DAV1D_IN_INTERNAL_DECODER_FACTORY -DRTC_ENABLE_VP9 -DWEBRTC_DEPRECATE_PLAN_B -DWEBRTC_ENABLE_PROTOBUF=0 -DWEBRTC_ENCODER_PSNR_STATS -DWEBRTC_LIBRARY_IMPL -DWEBRTC_MOZILLA_BUILD -DWEBRTC_NON_STATIC_TRACE_EVENT_HANDLERS=0 -DWEBRTC_STRICT_FIELD_TRIALS=0 -DDYNAMIC_ANNOTATIONS_ENABLED=0 -DNVALGRIND -DCERT_CHAIN_PARA_HAS_EXTRA_FIELDS -DNOMINMAX -DNTDDI_VERSION=0x0A000000 -DPSAPI_VERSION=2 -DRTC_ENABLE_WIN_WGC -DUNICODE -DUSE_AURA=1 -DWEBRTC_WIN -DWIN32 -DWIN32_LEAN_AND_MEAN -DWINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP -DWINVER=0x0A00 -D_ATL_NO_OPENGL -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_RAND_S -D_CRT_SECURE_NO_DEPRECATE -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_HAS_EXCEPTIONS=0 -D_HAS_NODISCARD -D_SCL_SECURE_NO_DEPRECATE -D_SECURE_ATL -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WINDOWS -D_WINSOCK_DEPRECATED_NO_WARNINGS -D__STD_C -DWEBRTC_ENABLE_AVX2 -DWINAPI_NO_BUNDLED_LIBRARIES -DMOZ_HAS_MOZGLUE -DMOZILLA_INTERNAL_API -DIMPL_LIBXUL -DMOZ_SUPPORT_LEAKCHECKING -DSTATIC_EXPORTABLE_JS_API -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/gbm/gbm -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/drm/drm -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/drm/drm/include -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/drm/drm/include/libdrm -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/pipewire -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/include/libwebrtc_overrides -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/ipc/ipdl/_ipdlheaders -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/third_party/libwebrtc/gen -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/ipc/chromium/src -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/media/libyuv -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/media/libyuv/libyuv/include -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/abseil-cpp -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/libwebrtc -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/tools/profiler/public -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/include -MD -DMOZILLA_CLIENT -FI C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/mozilla-config.h -Zc:sizedDealloc- -Gy -Zc:inline -Gw -D_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING -TP -GR- -D_HAS_EXCEPTIONS=0 -ffile-reproducible -fdiagnostics-absolute-paths -Z7 -O2 -Oy -W3 -Wbitfield-enum-conversion -Wempty-body -Wformat-type-confusion -Wignored-qualifiers -Wpointer-arith -Wshadow-field-in-constructor-modified -Wsign-compare -Wtautological-constant-in-range-compare -Wtype-limits -Wno-error=tautological-type-limit-compare -Wunreachable-code -Wunreachable-code-return -Wunused-but-set-parameter -Wno-invalid-offsetof -Wclass-varargs -Wempty-init-stmt -Wfloat-overflow-conversion -Wfloat-zero-conversion -Wloop-analysis -Wno-range-loop-analysis -Wno-deprecated-anon-enum-enum-conversion -Wno-deprecated-enum-enum-conversion -Wdeprecated-literal-operator -Winvalid-utf8 -Wcomma -Wimplicit-fallthrough -Wstring-conversion -Wno-inline-new-delete -Wno-error=deprecated-declarations -Wno-error=array-bounds -Wno-error=free-nonheap-object -Wno-error=atomic-alignment -Wno-error=deprecated-builtins -Wno-unknown-pragmas -Wno-ignored-pragmas -Wno-deprecated-declarations -Wno-microsoft-enum-value -Wno-microsoft-include -Wno-invalid-noreturn -Wno-inconsistent-missing-override -Wno-implicit-exception-spec-mismatch -Wno-microsoft-exception-spec -Wno-unused-local-typedef -Wno-ignored-attributes -Wno-used-but-marked-unused -Wno-psabi -Wthread-safety -Wno-error=builtin-macro-redefined -Wno-vla-cxx-extension -Wno-unknown-warning-option -fno-strict-aliasing -Xclang -ffp-contract=off -Xclang -MP -Xclang -dependency-file -Xclang .deps/Unified_cpp_desktop_capture_gn0.obj.pp -Xclang -MT -Xclang Unified_cpp_desktop_capture_gn0.obj Unified_cpp_desktop_capture_gn0.cpp
+41:35.53 W 1.	C:/PROGRA~1/MICROS~1/18/COMMUN~1/VC/Tools/MSVC/1451~1.362/include\xstring:1086:60: current parser token ')'
+41:35.53 W 2.	C:/PROGRA~1/MICROS~1/18/COMMUN~1/VC/Tools/MSVC/1451~1.362/include\xstring:26:1 <Spelling=C:/PROGRA~1/MICROS~1/18/COMMUN~1/VC/Tools/MSVC/1451~1.362/include\yvals_core.h:1901:5>: parsing namespace 'std'
+41:35.53 W 3.	C:/PROGRA~1/MICROS~1/18/COMMUN~1/VC/Tools/MSVC/1451~1.362/include\xstring:589:1: parsing struct/union/class body 'std::basic_string'
+41:35.53 W 4.	C:/PROGRA~1/MICROS~1/18/COMMUN~1/VC/Tools/MSVC/1451~1.362/include\xstring:1085:53: parsing function body 'std::basic_string::basic_string<_Elem, _Traits, _Alloc>'
+41:35.53 W 5.	C:/PROGRA~1/MICROS~1/18/COMMUN~1/VC/Tools/MSVC/1451~1.362/include\xstring:1085:53: in compound statement ('{}')
+41:35.53 W Exception Code: 0xC000001D
+41:35.57 W LLVM ERROR: out of memory
+41:35.57 W Allocation failed
+41:35.57 W PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace, preprocessed source, and associated run script.
+41:35.57 W Stack dump:
+41:35.59 W 0.	Program arguments: C:/PROGRA~1/LLVM/bin/clang-cl.exe -fms-compatibility-version=19.51 -std:c++20 -FoUnified_cpp_interval_budget_gn0.obj -c -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/stl_wrappers -D_MSVC_STL_HARDENING=1 -guard:cf -DNDEBUG -DTRIMMED=1 -DABSL_ALLOCATOR_NOTHROW=1 -DPROTOBUF_ENABLE_DEBUG_LOGGING_MAY_LEAK_PII=0 -DRTC_DAV1D_IN_INTERNAL_DECODER_FACTORY -DRTC_ENABLE_VP9 -DWEBRTC_DEPRECATE_PLAN_B -DWEBRTC_ENABLE_PROTOBUF=0 -DWEBRTC_ENCODER_PSNR_STATS -DWEBRTC_LIBRARY_IMPL -DWEBRTC_MOZILLA_BUILD -DWEBRTC_NON_STATIC_TRACE_EVENT_HANDLERS=0 -DWEBRTC_STRICT_FIELD_TRIALS=0 -DDYNAMIC_ANNOTATIONS_ENABLED=0 -DNVALGRIND -DCERT_CHAIN_PARA_HAS_EXTRA_FIELDS -DNOMINMAX -DNTDDI_VERSION=0x0A000000 -DPSAPI_VERSION=2 -DRTC_ENABLE_WIN_WGC -DUNICODE -DUSE_AURA=1 -DWEBRTC_WIN -DWIN32 -DWIN32_LEAN_AND_MEAN -DWINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP -DWINVER=0x0A00 -D_ATL_NO_OPENGL -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_RAND_S -D_CRT_SECURE_NO_DEPRECATE -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_HAS_EXCEPTIONS=0 -D_HAS_NODISCARD -D_SCL_SECURE_NO_DEPRECATE -D_SECURE_ATL -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WINDOWS -D_WINSOCK_DEPRECATED_NO_WARNINGS -D__STD_C -DWEBRTC_ENABLE_AVX2 -DWINAPI_NO_BUNDLED_LIBRARIES -DMOZ_HAS_MOZGLUE -DMOZILLA_INTERNAL_API -DIMPL_LIBXUL -DMOZ_SUPPORT_LEAKCHECKING -DSTATIC_EXPORTABLE_JS_API -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/libwebrtc/modules/pacing/interval_budget_gn -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/third_party/libwebrtc/modules/pacing/interval_budget_gn -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/include/libwebrtc_overrides -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/ipc/ipdl/_ipdlheaders -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/third_party/libwebrtc/gen -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/ipc/chromium/src -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/abseil-cpp -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/libwebrtc -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/tools/profiler/public -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/include -MD -DMOZILLA_CLIENT -FI C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/mozilla-config.h -Zc:sizedDealloc- -Gy -Zc:inline -Gw -D_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING -TP -GR- -D_HAS_EXCEPTIONS=0 -ffile-reproducible -fdiagnostics-absolute-paths -Z7 -O2 -Oy -W3 -Wbitfield-enum-conversion -Wempty-body -Wformat-type-confusion -Wignored-qualifiers -Wpointer-arith -Wshadow-field-in-constructor-modified -Wsign-compare -Wtautological-constant-in-range-compare -Wtype-limits -Wno-error=tautological-type-limit-compare -Wunreachable-code -Wunreachable-code-return -Wunused-but-set-parameter -Wno-invalid-offsetof -Wclass-varargs -Wempty-init-stmt -Wfloat-overflow-conversion -Wfloat-zero-conversion -Wloop-analysis -Wno-range-loop-analysis -Wno-deprecated-anon-enum-enum-conversion -Wno-deprecated-enum-enum-conversion -Wdeprecated-literal-operator -Winvalid-utf8 -Wcomma -Wimplicit-fallthrough -Wstring-conversion -Wno-inline-new-delete -Wno-error=deprecated-declarations -Wno-error=array-bounds -Wno-error=free-nonheap-object -Wno-error=atomic-alignment -Wno-error=deprecated-builtins -Wno-unknown-pragmas -Wno-ignored-pragmas -Wno-deprecated-declarations -Wno-microsoft-enum-value -Wno-microsoft-include -Wno-invalid-noreturn -Wno-inconsistent-missing-override -Wno-implicit-exception-spec-mismatch -Wno-microsoft-exception-spec -Wno-unused-local-typedef -Wno-ignored-attributes -Wno-used-but-marked-unused -Wno-psabi -Wthread-safety -Wno-error=builtin-macro-redefined -Wno-vla-cxx-extension -Wno-unknown-warning-option -fno-strict-aliasing -Xclang -ffp-contract=off -Xclang -MP -Xclang -dependency-file -Xclang .deps/Unified_cpp_interval_budget_gn0.obj.pp -Xclang -MT -Xclang Unified_cpp_interval_budget_gn0.obj Unified_cpp_interval_budget_gn0.cpp
+41:35.59 W 1.	C:/PROGRA~2/WI3CF2~1/10/Include/10.0.26100.0/ucrt\ctype.h:33:76: current parser token ';'
+41:35.59 W Exception Code: 0xC000001D
+41:35.61 W LLVM ERROR: out of memory
+41:35.61 W Allocation failed
+41:35.61 W PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace, preprocessed source, and associated run script.
+41:35.61 W Stack dump:
+41:35.63 W 0.	Program arguments: C:/PROGRA~1/LLVM/bin/clang-cl.exe -fms-compatibility-version=19.51 -std:c++20 -Foprioritized_packet_queue.obj -c -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/stl_wrappers -D_MSVC_STL_HARDENING=1 -guard:cf -DNDEBUG -DTRIMMED=1 -DABSL_ALLOCATOR_NOTHROW=1 -DPROTOBUF_ENABLE_DEBUG_LOGGING_MAY_LEAK_PII=0 -DRTC_DAV1D_IN_INTERNAL_DECODER_FACTORY -DRTC_ENABLE_VP9 -DWEBRTC_DEPRECATE_PLAN_B -DWEBRTC_ENABLE_PROTOBUF=0 -DWEBRTC_ENCODER_PSNR_STATS -DWEBRTC_LIBRARY_IMPL -DWEBRTC_MOZILLA_BUILD -DWEBRTC_NON_STATIC_TRACE_EVENT_HANDLERS=0 -DWEBRTC_STRICT_FIELD_TRIALS=0 -DDYNAMIC_ANNOTATIONS_ENABLED=0 -DNVALGRIND -DCERT_CHAIN_PARA_HAS_EXTRA_FIELDS -DNOMINMAX -DNTDDI_VERSION=0x0A000000 -DPSAPI_VERSION=2 -DRTC_ENABLE_WIN_WGC -DUNICODE -DUSE_AURA=1 -DWEBRTC_WIN -DWIN32 -DWIN32_LEAN_AND_MEAN -DWINAPI_FAMILY=WINAPI_FAMILY_DESKTOP_APP -DWINVER=0x0A00 -D_ATL_NO_OPENGL -D_CRT_NONSTDC_NO_WARNINGS -D_CRT_RAND_S -D_CRT_SECURE_NO_DEPRECATE -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_HAS_EXCEPTIONS=0 -D_HAS_NODISCARD -D_SCL_SECURE_NO_DEPRECATE -D_SECURE_ATL -D_UNICODE -D_WIN32_WINNT=0x0A00 -D_WINDOWS -D_WINSOCK_DEPRECATED_NO_WARNINGS -D__STD_C -DWEBRTC_ENABLE_AVX2 -DWINAPI_NO_BUNDLED_LIBRARIES -DMOZ_HAS_MOZGLUE -DMOZILLA_INTERNAL_API -DIMPL_LIBXUL -DMOZ_SUPPORT_LEAKCHECKING -DSTATIC_EXPORTABLE_JS_API -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/libwebrtc/modules/pacing/pacing_gn -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/third_party/libwebrtc/modules/pacing/pacing_gn -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/include/libwebrtc_overrides -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/ipc/ipdl/_ipdlheaders -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/third_party/libwebrtc/gen -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/ipc/chromium/src -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/abseil-cpp -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/libwebrtc -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/tools/profiler/public -IC:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/dist/include -MD -DMOZILLA_CLIENT -FI C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/obj-x86_64-pc-windows-msvc/mozilla-config.h -Zc:sizedDealloc- -Gy -Zc:inline -Gw -D_SILENCE_TR1_NAMESPACE_DEPRECATION_WARNING -TP -GR- -D_HAS_EXCEPTIONS=0 -ffile-reproducible -fdiagnostics-absolute-paths -Z7 -O2 -Oy -W3 -Wbitfield-enum-conversion -Wempty-body -Wformat-type-confusion -Wignored-qualifiers -Wpointer-arith -Wshadow-field-in-constructor-modified -Wsign-compare -Wtautological-constant-in-range-compare -Wtype-limits -Wno-error=tautological-type-limit-compare -Wunreachable-code -Wunreachable-code-return -Wunused-but-set-parameter -Wno-invalid-offsetof -Wclass-varargs -Wempty-init-stmt -Wfloat-overflow-conversion -Wfloat-zero-conversion -Wloop-analysis -Wno-range-loop-analysis -Wno-deprecated-anon-enum-enum-conversion -Wno-deprecated-enum-enum-conversion -Wdeprecated-literal-operator -Winvalid-utf8 -Wcomma -Wimplicit-fallthrough -Wstring-conversion -Wno-inline-new-delete -Wno-error=deprecated-declarations -Wno-error=array-bounds -Wno-error=free-nonheap-object -Wno-error=atomic-alignment -Wno-error=deprecated-builtins -Wno-unknown-pragmas -Wno-ignored-pragmas -Wno-deprecated-declarations -Wno-microsoft-enum-value -Wno-microsoft-include -Wno-invalid-noreturn -Wno-inconsistent-missing-override -Wno-implicit-exception-spec-mismatch -Wno-microsoft-exception-spec -Wno-unused-local-typedef -Wno-ignored-attributes -Wno-used-but-marked-unused -Wno-psabi -Wthread-safety -Wno-error=builtin-macro-redefined -Wno-vla-cxx-extension -Wno-unknown-warning-option -fno-strict-aliasing -Xclang -ffp-contract=off -Xclang -MP -Xclang -dependency-file -Xclang .deps/prioritized_packet_queue.obj.pp -Xclang -MT -Xclang prioritized_packet_queue.obj C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/third_party/libwebrtc/modules/pacing/prioritized_packet_queue.cc
+41:35.63 W 1.	C:\Program Files\LLVM\lib\clang\20\include\immintrin.h:716:2: current parser token 'include'
+41:35.63 W 2.	C:\Program Files\LLVM\lib\clang\20\include\avx10_2copyintrin.h:59:77: parsing function body '_mm_move_epi16'
+41:35.63 W 3.	C:\Program Files\LLVM\lib\clang\20\include\avx10_2copyintrin.h:59:77: in compound statement ('{}')
+41:35.63 W Exception Code: 0xC000001D
+41:35.95 W LLVM ERROR: out of memory
+41:35.95 W Allocation failed
+41:36.13 E make[4]: *** [C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/config/rules.mk:668: prioritized_packet_queue.obj] Error 3
+41:36.70 E make[3]: *** [C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/config/recurse.mk:79: third_party/libwebrtc/modules/pacing/pacing_gn/target-objects] Error 2
+41:36.81 E make[3]: *** Waiting for unfinished jobs....
+41:36.87 make: *** virtual memory exhausted
+41:37.09 E make[3]: *** [C:/Users/Zachary/Documents/Project/browser-dev/Floorp-Runtime/config/recurse.mk:79: third_party/libwebrtc/modules/desktop_capture/desktop_capture_gn/target-objects] Error 2

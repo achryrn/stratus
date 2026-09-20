@@ -1,0 +1,197 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+name: "Mac build"
+
+on:
+  workflow_dispatch:
+    inputs:
+      debug:
+        type: boolean
+        required: true
+      pgo:
+        type: boolean
+        required: true
+      requested_MOZ_BUILD_DATE:
+        description: "Optional 14-digit build ID assertion"
+        type: string
+        required: false
+        default: ""
+
+  workflow_call:
+    inputs:
+      debug:
+        type: boolean
+        required: true
+      pgo:
+        type: boolean
+        required: true
+      MOZ_BUILD_DATE:
+        description: "Trusted resolved 14-digit build ID"
+        type: string
+        required: true
+    outputs:
+      artifact-name:
+        description: "Final universal macOS artifact name"
+        value: ${{ jobs.part2_no_pgo.outputs.artifact-name || jobs.part4_pgo.outputs.artifact-name }}
+      artifact-id:
+        description: "Final universal macOS artifact ID"
+        value: ${{ jobs.part2_no_pgo.outputs.artifact-id || jobs.part4_pgo.outputs.artifact-id }}
+      artifact-digest:
+        description: "Final universal macOS artifact digest"
+        value: ${{ jobs.part2_no_pgo.outputs.artifact-digest || jobs.part4_pgo.outputs.artifact-digest }}
+      expected-build-id:
+        description: "Expected build ID embedded in the final artifact"
+        value: ${{ jobs.part2_no_pgo.outputs.expected-build-id || jobs.part4_pgo.outputs.expected-build-id }}
+
+permissions:
+  actions: read
+  contents: read
+
+run-name: ${{toJSON(inputs.pgo) == 'true' && '[PGO] ' || ''}}Mac x64 build${{toJSON(inputs.debug) == 'true' && ' Debug' || ''}}
+jobs:
+  resolve-build-context:
+    uses: ./.github/workflows/resolve-build-context.yml
+    with:
+      resolved_moz_build_date: ${{ inputs.MOZ_BUILD_DATE || '' }}
+      requested_moz_build_date: >-
+        ${{ inputs.requested_MOZ_BUILD_DATE || '' }}
+      require_run_metadata: false
+
+  download-macos-sdk:
+    runs-on: macos-26
+    steps:
+      - name: Get macOS SDK path
+        id: get-sdk
+        run: |
+          REQUIRED_SDK_MIN="26.4"
+          SELECTED_XCODE=""
+
+          for xcode in $(ls -d /Applications/Xcode*.app 2>/dev/null | sort -Vr); do
+            [ -L "$xcode" ] && continue
+            case "$xcode" in *beta*) continue ;; esac
+
+            SDK_DIR="${xcode}/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs"
+            [ -d "$SDK_DIR" ] || continue
+
+            MACOS_SDK=$(ls -1d "$SDK_DIR"/MacOSX*.sdk 2>/dev/null | sort -V | tail -n 1)
+            [ -z "$MACOS_SDK" ] && continue
+
+            SDK_VERSION=$(basename "$MACOS_SDK" | sed -n 's/MacOSX\([0-9.]*\)\.sdk/\1/p')
+            [ -z "$SDK_VERSION" ] && continue
+
+            echo "  $(basename "$xcode"): SDK $SDK_VERSION"
+
+            if [ "$(printf '%s\n%s' "$SDK_VERSION" "$REQUIRED_SDK_MIN" | sort -V | head -n1)" = "$REQUIRED_SDK_MIN" ]; then
+              SELECTED_XCODE="$xcode"
+              break
+            fi
+          done
+
+          if [ -z "$SELECTED_XCODE" ]; then
+            echo "Error: No stable Xcode found with macOS SDK >= $REQUIRED_SDK_MIN"
+            ls -1d /Applications/Xcode*.app 2>/dev/null
+            exit 1
+          fi
+
+          echo "Using Xcode: $SELECTED_XCODE"
+          sudo xcode-select -s "$SELECTED_XCODE"
+          xcodebuild -version
+
+          SDK_PATH=$(xcrun --sdk macosx --show-sdk-path)
+          echo "SDK_PATH=$SDK_PATH" >> $GITHUB_ENV
+          echo "sdk_path=$SDK_PATH" >> $GITHUB_OUTPUT
+          echo "Using macOS SDK: $SDK_PATH"
+
+      - name: Tar and upload macOS SDK as artifact
+        run: |
+          tar -czf macos_sdk.tar.gz -C "${{ env.SDK_PATH }}" .
+
+      - name: Upload macOS SDK as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-sdk
+          path: macos_sdk.tar.gz
+          retention-days: 1
+          if-no-files-found: error
+          overwrite: true
+
+  part1-x86_64:
+    needs: [resolve-build-context, download-macos-sdk]
+    uses: ./.github/workflows/common-build.yml
+    with:
+      platform: mac
+      arch: x86_64
+      debug: ${{ inputs.debug }}
+      pgo: ${{ inputs.pgo }}
+      pgo_mode: ${{ inputs.pgo && 'generate' || '' }}
+      MOZ_BUILD_DATE: ${{ needs.resolve-build-context.outputs.expected-build-id }}
+
+  part1-aarch64:
+    needs: [resolve-build-context, download-macos-sdk]
+    uses: ./.github/workflows/common-build.yml
+    with:
+      platform: mac
+      arch: aarch64
+      debug: ${{ inputs.debug }}
+      pgo: ${{ inputs.pgo }}
+      pgo_mode: ${{ inputs.pgo && 'generate' || '' }}
+      MOZ_BUILD_DATE: ${{ needs.resolve-build-context.outputs.expected-build-id }}
+
+  part2:
+    needs: [resolve-build-context, part1-x86_64, part1-aarch64]
+    if: ${{ inputs.pgo }}
+    uses: ./.github/workflows/mac_pgo.yml
+    with:
+      MOZ_BUILD_DATE: ${{ needs.resolve-build-context.outputs.expected-build-id }}
+
+  part3-x86_64:
+    needs: [resolve-build-context, part2]
+    if: ${{ inputs.pgo }}
+    uses: ./.github/workflows/common-build.yml
+    with:
+      platform: mac
+      arch: x86_64
+      debug: ${{ inputs.debug }}
+      pgo: ${{ inputs.pgo }}
+      pgo_mode: use
+      pgo_artifact_name: floorp-x86_64-apple-darwin-profdata-and-jarlog
+      MOZ_BUILD_DATE: ${{ needs.resolve-build-context.outputs.expected-build-id }}
+
+  part3-aarch64:
+    needs: [resolve-build-context, part2]
+    if: ${{ inputs.pgo }}
+    uses: ./.github/workflows/common-build.yml
+    with:
+      platform: mac
+      arch: aarch64
+      debug: ${{ inputs.debug }}
+      pgo: ${{ inputs.pgo }}
+      pgo_mode: use
+      pgo_artifact_name: floorp-aarch64-apple-darwin-profdata-and-jarlog
+      MOZ_BUILD_DATE: ${{ needs.resolve-build-context.outputs.expected-build-id }}
+
+  part2_no_pgo:
+    name: "Integration (No PGO)"
+    needs: [resolve-build-context, part1-x86_64, part1-aarch64]
+    if: ${{ !inputs.pgo }}
+    uses: ./.github/workflows/mac_integration.yml
+    secrets: inherit
+    with:
+      x86_64_artifact_name: floorp-mac-x86_64-moz-artifact
+      aarch64_artifact_name: floorp-mac-aarch64-moz-artifact
+      MOZ_BUILD_DATE: ${{ needs.resolve-build-context.outputs.expected-build-id }}
+      debug: ${{ inputs.debug }}
+
+  part4_pgo:
+    name: "Integration (With PGO)"
+    needs: [resolve-build-context, part3-x86_64, part3-aarch64]
+    if: ${{ inputs.pgo }}
+    uses: ./.github/workflows/mac_integration.yml
+    secrets: inherit
+    with:
+      x86_64_artifact_name: floorp-mac-x86_64-moz-artifact
+      aarch64_artifact_name: floorp-mac-aarch64-moz-artifact
+      MOZ_BUILD_DATE: ${{ needs.resolve-build-context.outputs.expected-build-id }}
+      debug: ${{ inputs.debug }}

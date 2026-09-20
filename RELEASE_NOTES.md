@@ -121,6 +121,26 @@ Evidence for this slice:
 
 I recovered the pinned Floorp Runtime source at daily-998 (commit 2d38da4d11be1e0e615f4ddd785ad5e77c95e18d) from the upstream repository. I updated the runtime unofficial branding inputs to Stratus, including the application name, vendor, profile, remoting name, user agent name, locale brand strings, and debug build branding selector. A full Gecko binary build is still required before these source changes can appear in the installer.
 
+## M10.1 Gecko build toolchain recovered
+
+I assembled the full Windows Gecko toolchain locally:
+
+- MozillaBuild 4.2.1 at C:\mozilla-build
+- Rust MSVC 1.98.1 with cargo, rustup, and cbindgen
+- LLVM/Clang 20.1.8 providing clang-cl
+- NASM 2.16.03, GNU Make 4.4.1, Python 3.12
+- Windows App SDK 2.2 redistributable DLLs (hash-verified against the pinned
+  taskgraph sha256)
+- windows 0.62.2 Rust crate source for the FFI bindings build
+
+I applied the upstream Noraneko patches, set the implied runtime values to
+Stratus (vendor, profile, application name, remoting name), and the runtime
+now configures cleanly. A full optimized Gecko build is in progress with 4
+parallel jobs so clang-cl stays within the available memory. Once the build
+finishes, the produced nightly binaries replace the staged runtime, the
+installer is rebuilt and signed, and update manifests and checksums are
+regenerated.
+
 ## Known limitations (documented)
 
 - Byte counts remain zero for HTTP/2 and chunked transfers because

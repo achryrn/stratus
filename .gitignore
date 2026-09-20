@@ -1,6 +1,12 @@
 /dist/
 **/_dist/
 installer/*.exe
+/.claude/
+/.cursorrules
+/.secrets
+/AGENTS.md
+/CLAUDE.md
+/*.md
 **/node_modules/
 **/.turbo
 **/.vite/

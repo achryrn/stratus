@@ -25,6 +25,11 @@ jobs:
           Expand-Archive -Path _dist/bin/stratus-stage.zip -DestinationPath _dist/bin -Force
           Test-Path _dist/bin/floorp/floorp.exe
           Test-Path _dist/bin/floorp/noraneko/content/core.js
+      - name: Install NSIS
+        shell: pwsh
+        run: |
+          winget install --id NSIS.NSIS --silent --accept-package-agreements --accept-source-agreements --disable-interactivity
+          Get-ChildItem 'C:\Program Files (x86)\NSIS' -ErrorAction SilentlyContinue | Select-Object -First 3 Name
       - name: Build installer
         shell: pwsh
         run: |

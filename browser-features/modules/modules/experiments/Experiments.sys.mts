@@ -32,7 +32,7 @@ const FORCE_ENROLLED_EXPERIMENTS_PREF = "floorp.experiments.forceEnrolled";
 // This enforces that the fetch target is controlled by the shipping code
 // rather than passed in at runtime.
 const DEFAULT_EXPERIMENTS_URL =
-  "https://updates.floorp.app/experiments/experiments.json";
+  "https://stratus-browser.org/updates/experiments.json";
 
 const { setTimeout, clearTimeout } = ChromeUtils.importESModule(
   "resource://gre/modules/Timer.sys.mjs",

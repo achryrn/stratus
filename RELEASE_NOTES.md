@@ -212,15 +212,31 @@ Stratus:
 - Icons: icon16/32/48/64/128.png, document.ico, the private-browsing toolbar
   icon, and the window/app icon chain all use the new Stratus mark (matte
   black square with a neon red S).
-- The tradmark line now reads "Stratus and the Stratus logos are trademarks
+- The trademark line now reads "Stratus and the Stratus logos are trademarks
   of Stratus."
+- Preferences sidebar Labs row: the upstream `-firefoxlabs-brand-name`
+  term (Firefox Labs) now reads Stratus Labs. I proved the chain with a
+  decisive live test - I patched the staged brandings.ftl to
+  STRATUS-TEST-LABS, relaunched, and the sidebar row changed to the test
+  value; I then set Stratus Labs, cleared the startup cache, relaunched,
+  and confirmed the live row reads "Stratus Labs" (OCR conf 0.99) with
+  zero "Floorp Labs" hits in 8479 staged files.
+- Exe icons: floorp.exe DIB frames decode with blue 0.000 and red
+  0.069-0.077 (top colors #0e0708, #ff1e00, #000000); private_browsing.exe
+  PNG frames 1-5 decode red 0.073-0.077 with the same Stratus palette.
+  The updater.exe art is a neutral monochrome installer glyph (blue 0.000,
+  red 0.000), so I left it untouched.
 
 The change is reproducible: tools/release/apply-brand.ps1 patches the FTL,
-dtd and properties files, and tools/release/stratus-brand-assets.py
-regenerates the logo, wordmark, icon and background assets. Internal
-identifiers that are runtime contracts (floorp.* prefs, resource://floorp,
+dtd and properties files (including the Labs brandings term),
+tools/release/stratus-brand-assets.py regenerates the logo, wordmark, icon
+and background assets, and tools/release/stratus-exe-icons.py stamps the
+red Stratus S mark into the staged exe icon groups. Internal identifiers
+that are runtime contracts (floorp.* prefs, resource://floorp,
 chrome://floorp, floorp.exe, the profile directory name) are intentionally
-unchanged.
+unchanged. I re-ran apply-brand.ps1 against the stage to confirm it is
+idempotent (brandings.ftl still reads Stratus Labs, legacy floorp-named
+branding files stay deleted).
 
 ## Known limitations (documented)
 

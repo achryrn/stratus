@@ -29,7 +29,8 @@ mark(384).save(os.path.join(out, 'about-logo@2x.png'))
 mark(192, (10, 4, 4, 255)).save(os.path.join(out, 'about-logo-private.png'))
 mark(384, (10, 4, 4, 255)).save(os.path.join(out, 'about-logo-private@2x.png'))
 mark(256).save(os.path.join(out, 'document.ico'), sizes=[(16, 16), (24, 24), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
-mark(256, (255, 255, 255, 0)).save(os.path.join(out, 'floorp-pb-toolbar-icon.ico'), sizes=[(16, 16), (32, 32), (48, 48)])
+pb = mark(256, (255, 255, 255, 0))
+pb.save(os.path.join(out, 'stratus-pb-toolbar-icon.ico'), sizes=[(16, 16), (32, 32), (48, 48)])
 
 im = Image.new('RGBA', (300, 236), (12, 7, 8, 255))
 im.alpha_composite(mark(160), (70, 38))
@@ -44,7 +45,7 @@ gd.ellipse([600, 380, 1200, 900], fill=(176, 76, 255, 40))
 glow = glow.filter(ImageFilter.GaussianBlur(90))
 bg = Image.alpha_composite(bg, glow)
 bg.alpha_composite(mark(240), (520, 200))
-bg.save(os.path.join(out, 'floorp-background.png'))
+bg.save(os.path.join(out, 'stratus-background.png'))
 
 wordmark = ('<?xml version="1.0" encoding="UTF-8"?>\n'
 

@@ -18,9 +18,9 @@ export const UPDATE_CHANNEL = "beta";
 
 const BRAND_PREFS: Record<string, string | boolean> = {
   // The runtime's welcome/override flow (startup.homepage_welcome_url =
-  // "about:welcome | https://blog.floorp.app" + .additional =
-  // "https://floorp.app/privacy") opens Floorp blog + privacy tabs on
-  // first run / version changes. Suppress it: no placeholder tabs at boot.
+  // "about:welcome | vendor blog" + .additional = "vendor privacy page")
+  // opens placeholder tabs on first run / version changes. Suppress it:
+  // no placeholder tabs at boot.
   "startup.homepage_welcome_url": "about:blank",
   "startup.homepage_welcome_url.additional": "",
   "browser.startup.homepage_override.mstone": "ignore",

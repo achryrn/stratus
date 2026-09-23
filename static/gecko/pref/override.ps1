@@ -102,7 +102,7 @@ try {
     # Add new preferences to the end of the file
     if ($NewPrefs.Count -gt 0) {
         $FirefoxContent += "`n"
-        $FirefoxContent += "// Floorp custom preferences (added by override.ps1)`n"
+        $FirefoxContent += "// Stratus custom preferences (added by override.ps1)`n"
         foreach ($pref in $NewPrefs) {
             $FirefoxContent += "$pref`n"
         }

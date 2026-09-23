@@ -109,7 +109,7 @@ done < "$OVERRIDE_INI"
 # Add new preferences to the end of the file
 if [[ ${#NEW_PREFS[@]} -gt 0 ]]; then
     echo "" >> "$TEMP_FILE"
-    echo "// Floorp custom preferences (added by override.sh)" >> "$TEMP_FILE"
+    echo "// Stratus custom preferences (added by override.sh)" >> "$TEMP_FILE"
     for pref in "${NEW_PREFS[@]}"; do
         echo "$pref" >> "$TEMP_FILE"
     done

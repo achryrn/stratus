@@ -4,7 +4,7 @@ const backgroundImages = import.meta.glob("../assets/background/*.avif", {
   query: "?url",
 });
 
-const stratusImages = import.meta.glob("../assets/floorp/*.png", {
+const stratusImages = import.meta.glob("../assets/stratus/*.png", {
   eager: true,
   import: "default",
   query: "?url",

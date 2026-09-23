@@ -193,6 +193,35 @@ publisher warning when the installer is run; the updater URL points at the
 stratus-browser.org domain, which requires external DNS and hosting to go live.
 The bytes-zero limitation for HTTP/2 and chunked transfers is unchanged.
 
+## M10.3 Runtime brand post-patching (jarless artifact)
+
+The rebuilt runtime ships with its chrome files unpacked on disk instead of a
+jar, which finally makes the binary-level brand reachable. I removed every
+remaining Floorp or Ablaze tag from the shipped surfaces and replaced it with
+Stratus:
+
+- Window title: brand.ftl terms (-brand-short-name, -brand-full-name,
+  -brand-product-name, -vendor-short-name) now read Stratus; the live window
+  title is confirmed as "Stratus".
+- Locale brand files: brand.dtd and brand.properties (brandShorterName,
+  brandShortName, brandFullName, vendorShortName) in every locale.
+- About surfaces: about-logo (svg + all png sizes, including the private
+  variants), the firefox/about wordmarks (replaced with the STRATUS
+  wordmark), the private-browsing art, and the about background (a matte
+  black canvas with red, cyan and purple glows).
+- Icons: icon16/32/48/64/128.png, document.ico, the private-browsing toolbar
+  icon, and the window/app icon chain all use the new Stratus mark (matte
+  black square with a neon red S).
+- The tradmark line now reads "Stratus and the Stratus logos are trademarks
+  of Stratus."
+
+The change is reproducible: tools/release/apply-brand.ps1 patches the FTL,
+dtd and properties files, and tools/release/stratus-brand-assets.py
+regenerates the logo, wordmark, icon and background assets. Internal
+identifiers that are runtime contracts (floorp.* prefs, resource://floorp,
+chrome://floorp, floorp.exe, the profile directory name) are intentionally
+unchanged.
+
 ## Known limitations (documented)
 
 - Byte counts remain zero for HTTP/2 and chunked transfers because

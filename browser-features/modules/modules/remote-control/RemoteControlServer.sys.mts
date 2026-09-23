@@ -871,6 +871,7 @@ class RemoteControlHttpServer implements nsIServerSocketListener {
 // -- lifecycle ----------------------------------------------------------------
 
 let server: RemoteControlHttpServer | null = null;
+let remoteListenRetries = 0;
 let enabledObserver: { observe(): void } | null = null;
 let tokenObserver: { observe(): void } | null = null;
 
@@ -926,8 +927,31 @@ function syncServer(): void {
   }
   if (server) return;
   const port = Services.prefs.getIntPref(REMOTE_PORT_PREF, DEFAULT_PORT);
-  server = new RemoteControlHttpServer();
-  server.start(port, currentToken(), buildRouter());
+  const candidate = new RemoteControlHttpServer();
+  try {
+    candidate.start(port, currentToken(), buildRouter());
+    remoteListenRetries = 0;
+    server = candidate;
+  } catch (error) {
+    console.error("[remote-control] listen failed:", error);
+    candidate.stop();
+    remoteListenRetries++;
+    if (remoteListenRetries <= 5) {
+      const delayMs = [100, 500, 1000, 3000, 6000][remoteListenRetries - 1] ?? 6000;
+      console.error(
+        "[remote-control] retry " + remoteListenRetries + " of 5 in " + delayMs + "ms",
+      );
+      setTimeout(() => {
+        if (!server && isEnabled()) {
+          remoteListenRetries = Math.max(0, remoteListenRetries - 1);
+          syncServer();
+        }
+      }, delayMs);
+    } else {
+      console.error("[remote-control] giving up after " + remoteListenRetries + " attempts");
+      remoteListenRetries = 0;
+    }
+  }
 }
 
 export function _getServerForTest(): RemoteControlHttpServer | null {

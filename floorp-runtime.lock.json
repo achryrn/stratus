@@ -2,10 +2,10 @@
   "schemaVersion": 1,
   "source": {
     "repository": "Floorp-Projects/Floorp-Runtime",
-    "trackingRef": "nora-0.2.0",
-    "ref": "daily-998",
-    "commit": "2d38da4d11be1e0e615f4ddd785ad5e77c95e18d",
-    "tree": "e555a371e1a24f18c8085058461f92c06e0b997d",
+    "trackingRef": "stratus-runtime-0.2.0",
+    "ref": "stratus-runtime-0.2.0",
+    "commit": "2242ae33382c6ded6a285dd44f8d8b3a1f301596",
+    "tree": "d0f7e3e592fcf6ac15cc7f348137722b8cba7025",
     "release": {
       "id": 359773143,
       "immutable": false
@@ -722,17 +722,17 @@
       "asset": {
         "id": 489491165,
         "name": "floorp-windows-x86_64-moz-artifact.zip",
-        "size": 133135974,
-        "sha256": "d5c3cbcb3c7c3f0852d36047f45fcf98c10fdb3b9160316b1cd242e9119bbe8c"
+        "size": 134810114,
+        "sha256": "3e9c77921957f2d01a199e37a0fb6de66c3c7da1bfb1efdba541a7a9be8c3e8c"
       },
       "applicationIniAsset": {
         "id": 489491166,
         "name": "windows-x86_64-application-ini.zip",
-        "size": 535,
-        "sha256": "49a78a5484e97e2ce80b1341522da6e1616aa878cf163e2964cd3c7863b90ae4"
+        "size": 525,
+        "sha256": "a2c8e2524b6f239157120176e086b24db1d0176fe0cc16bcaf8bd3feecb217ea"
       },
       "version": "153.0",
-      "buildId": "20260725075208"
+      "buildId": "20260920195716"
     }
   ]
 }

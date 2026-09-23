@@ -87,6 +87,17 @@ if (import.meta.env.MODE === "dev") {
       await loaderModule.default();
       setStartupMarker("nora.startup.loader", "loaded");
 
+      // Production-stance startup hook: the agent-control server must be
+      // listening before browser tests run, exactly like a production boot.
+      try {
+        ChromeUtils.importESModule(
+          "resource://noraneko/modules/remote-control/RemoteControlServer.sys.mjs",
+        )
+          .initRemoteControl();
+      } catch (error) {
+        console.error("[startup] remote-control init failed:", error);
+      }
+
       const testModule = await importWithRetry(
         "http://localhost:5181/loader/test/index.ts",
       );

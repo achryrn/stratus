@@ -320,6 +320,17 @@ with the Stratus identity:
 5. Verification: the same gate as every milestone (host tests, smoke
    tests, staged build + launch, one browser-integrated subset).
 
+Status: executed. The rebuild is complete and this document tracks the
+result. `floorp-runtime.lock.json` pins commit
+2242ae33382c6ded6a285dd44f8d8b3a1f301596 (tree
+d0f7e3e592fcf6ac15cc7f348137722b8cba7025) on the `stratus-runtime-0.2.0`
+branch, the windows artifact records the CI-built moz artifact (build ID
+20260920195716), and the runtime validator accepts the lock. The staged
+runtime in `_dist/bin/floorp/` is the rebuilt binary; the full
+browser-integrated suite (152 tests), host suite (213), and smoke gate (6)
+are green against it, and the installer was rebuilt from a verified stage
+and re-signed.
+
 ### 10.2 Intentionally-kept internal identifiers (must match the runtime)
 
 These are functional contracts with the unmodified runtime; renaming them

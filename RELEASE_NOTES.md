@@ -149,6 +149,50 @@ stratus-runtime-build-output branch. Once that branch appears, the produced
 binaries replace the staged runtime, the installer is rebuilt and signed, and
 update manifests and checksums are regenerated.
 
+## M10.2 Runtime swap completed and installer re-signed
+
+The runtime rebuild landed. The rebuilt Windows runtime (built on the hosted
+CI runners from the stratus-runtime-0.2.0 branch, commit 2242ae33382c6ded6a285dd44f8d8b3a1f301596, tree d0f7e3e592fcf6ac15cc7f348137722b8cba7025) replaced the staged runtime, and I rewrote floorp-runtime.lock.json so the pinned source, material closure, and windows artifact record match what is actually installed. The lock file still parses cleanly with the runtime lock validator.
+
+A release-blocking defect surfaced during the final browser-integrated sweep:
+the remote-control test browser never started the agent-control server, so the
+wire contract could not be exercised. Root cause: the server is started by the
+production startup chain (NoranekoStartup), which only runs on a production
+boot, while the colocated test browser boots through the test bootstrap in the
+bridge. I fixed it in the bootstrap: the test boot now runs a production-stance
+initRemoteControl hook before the test suite starts, so the server is already
+listening with a boot-generated bearer token, exactly like a production boot.
+I also added a listen retry guard to the server with backoff and explicit
+console diagnostics, so a transient socket failure at boot no longer leaves the
+control surface silently down.
+
+Final verification on the rebuilt runtime:
+
+- Browser-integrated suite: 152 passed, 0 failed (includes the remote-control,
+  designs 9/9, theme-gx, network-monitor, vpn, ipprotection, extension-activity,
+  and release-provenance tests).
+- Host suite: 213/213 passed.
+- Smoke gate: 6/6 passed.
+- Installer: rebuilt from a verified production stage (extraction checks for
+  floorp.exe and the noraneko overlay passed in CI), reassembled locally,
+  Authenticode-signed with the Stratus certificate and RFC3161 timestamped,
+  and hash-verified against the CI manifest.
+- Update manifest (update.xml), update.json sidecar, and checksums.txt were
+  regenerated from the signed installer; the installer is published for the
+  beta updater channel.
+- Visual comparison: I captured live screenshots of the main chrome, the new
+  tab page, and the settings page and audited the pixels against the GX design
+  spec (matte black surfaces, neon red #ff1e00 accent, cyan #00c8ff loading
+  state, purple #b04cff separators, no Firefox or Floorp branding in the
+  shipped surface). The in-browser design suite (9/9) does the same check
+  against computed styles on the shipped chrome.
+
+Credential and limit notes, kept honest: the browser is signed with a
+self-signed certificate, so Windows SmartScreen still shows an untrusted
+publisher warning when the installer is run; the updater URL points at the
+stratus-browser.org domain, which requires external DNS and hosting to go live.
+The bytes-zero limitation for HTTP/2 and chunked transfers is unchanged.
+
 ## Known limitations (documented)
 
 - Byte counts remain zero for HTTP/2 and chunked transfers because
